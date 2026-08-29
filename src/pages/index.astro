@@ -16,25 +16,30 @@ const doors = [
   {
     href: '/general-dermatology/',
     kicker: 'General dermatology',
-    line: 'Chronic doesn’t mean unexplained. Acne, eczema, rashes, and the conditions other clinics stopped investigating.',
+    headline: 'We look for the cause before we treat.',
+    blurb: 'Acne, eczema, rashes — treated at the cause, so they clear faster.',
     restore: false,
   },
   {
     href: '/skin-cancer/',
     kicker: 'Skin cancer',
-    line: 'Caught early, it’s a small procedure. Screening, Mohs surgery, and reconstruction by the same surgeon.',
+    headline: 'Caught early, it’s easier to treat.',
+    blurb:
+      'Screening, Mohs surgery, radiation therapy, and reconstruction — every stage, in one building.',
     restore: false,
   },
   {
     href: '/cosmetic/',
     kicker: 'Cosmetic',
-    line: 'Nobody should be able to tell. Injectables, lasers, and body contouring, kept deliberately conservative.',
+    headline: 'Nobody should be able to tell.',
+    blurb: 'Injectables, lasers, and body contouring, kept deliberately conservative.',
     restore: true,
   },
   {
     href: '/glp-1-restore/',
     kicker: 'GLP-1 Restore',
-    line: 'You lost the weight. Now restore the rest — hair, skin, and muscle, under a physician’s direction.',
+    headline: 'Weight loss takes more than weight. Now restore the rest.',
+    blurb: 'Muscle, hair, and skin — under a physician’s direction.',
     restore: true,
   },
 ];
@@ -79,7 +84,8 @@ const doors = [
         doors.map((d) => (
           <Card href={d.href} restore={d.restore} class="door">
             <span class="door__kicker">{d.kicker}</span>
-            <p class="door__line">{d.line}</p>
+            <p class="door__headline">{d.headline}</p>
+            <p class="door__blurb">{d.blurb}</p>
             <span class="door__go" aria-hidden="true">
               Learn more →
             </span>
@@ -242,11 +248,15 @@ const doors = [
     display: block;
     margin-bottom: var(--space-3);
   }
-  .door__line {
+  .door__headline {
     font-family: var(--display);
     font-size: var(--fs-h3);
     line-height: var(--lh-h3);
     color: var(--evergreen);
+    margin-bottom: var(--space-3);
+  }
+  .door__blurb {
+    color: var(--stone);
     margin-bottom: var(--space-4);
   }
   .door__go {
@@ -254,7 +264,7 @@ const doors = [
     font-weight: 600;
     color: var(--evergreen);
   }
-  .door--restore .door__go {
+  .card--restore .door__go {
     color: var(--brass-deep);
   }
 
