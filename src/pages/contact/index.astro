@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import SectionBand from '@components/SectionBand.astro';
-import Breadcrumbs from '@components/Breadcrumbs.astro';
 import CallbackForm from '@components/CallbackForm.astro';
 import PlaceholderImage from '@components/PlaceholderImage.astro';
 import { practice } from '@data/site';
@@ -13,16 +12,10 @@ import { practice } from '@data/site';
   path="/contact/"
 >
   <SectionBand>
-    <Breadcrumbs
-      crumbs={[
-        { label: 'Home', href: '/' },
-        { label: 'Contact', href: '/contact/' },
-      ]}
-    />
     <h1>Request an appointment.</h1>
     <p class="lede">
       Leave your name and number and our team will call you back, usually within one business day.
-      We’re often booked several months out for routine visits — if you have a concerning or
+      We’re often booked several weeks out for routine visits — if you have a concerning or
       changing spot, tell us and we’ll get you in sooner.
     </p>
 

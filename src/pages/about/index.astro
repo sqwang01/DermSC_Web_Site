@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import SectionBand from '@components/SectionBand.astro';
-import Breadcrumbs from '@components/Breadcrumbs.astro';
 import ProviderCard from '@components/ProviderCard.astro';
 import StubNotice from '@components/StubNotice.astro';
 import { providers } from '@data/site';
@@ -13,12 +12,6 @@ import { providers } from '@data/site';
   path="/about/"
 >
   <SectionBand>
-    <Breadcrumbs
-      crumbs={[
-        { label: 'Home', href: '/' },
-        { label: 'About', href: '/about/' },
-      ]}
-    />
     <h1>Independent since 2006.</h1>
     <p class="lede">
       Advanced Dermatology is a physician-owned dermatology practice in Dana Point, California.
