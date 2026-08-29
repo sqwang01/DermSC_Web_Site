@@ -102,11 +102,10 @@ const faqs = [
 >
   <!-- 1 · Hero -->
   <SectionBand as="div" class="hero">
-    <Breadcrumbs crumbs={[{ label: 'Hair restoration', href: '/cosmetic/hair-restoration/' }]} />
+    <Breadcrumbs crumbs={[{ label: 'Hair restoration', href: '/cosmetic/' }]} />
     <div class="hero__copy" data-reveal>
       <span class="eyebrow">Restore — under a physician’s direction</span>
       <h1>Hair loss is a symptom. We find out of what.</h1>
-      <p class="hero__sub">Restore at Advanced Dermatology.</p>
       <p class="lede">
         Most of our hair patients are women who were told there was nothing to do. Some conditions
         that look identical in the mirror are quietly destroying follicles while you wait. The
@@ -253,7 +252,7 @@ const faqs = [
     </div>
   </SectionBand>
 
-  <!-- 10 · The consultation & pricing (§12.10 then §12.8, verbatim) -->
+  <!-- 10 · The consultation & pricing (§12.10 verbatim; §12.8 opener, minus the "price is the price" line per client 2026-08-29) -->
   <SectionBand aria-labelledby="pricing-heading">
     <div class="prose" data-reveal>
       <h2 id="pricing-heading">The consultation &amp; pricing</h2>
@@ -263,10 +262,7 @@ const faqs = [
         it won’t do.
       </p>
       <p>Pricing for the cash components is provided in writing before a series starts.</p>
-      <p>
-        We don’t run flash sales, holiday promotions, or discount packages. The price is the price,
-        and it doesn’t go down if you wait.
-      </p>
+      <p>We don’t run flash sales, holiday promotions, or discount packages.</p>
     </div>
   </SectionBand>
 
@@ -322,10 +318,6 @@ const faqs = [
   }
   .hero__copy {
     margin-top: var(--space-8);
-  }
-  .hero__sub {
-    color: var(--stone);
-    margin-top: var(--space-3);
   }
   .hero .lede {
     margin-top: var(--space-4);

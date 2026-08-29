@@ -52,6 +52,13 @@ interface Props {
    * neuromodulators, microneedling, laser/IPL, and peels (client, 2026-08-29, D24).
    */
   whoPerforms: string;
+  /**
+   * Slugs of the providers who deliver this modality, shown as cards in "Who
+   * you'll see" alongside Dr. Moinfar. Set to the two physician assistants on the
+   * modalities they perform (neuromodulators, laser/IPL, peels, microneedling);
+   * leave unset for the modalities Dr. Moinfar performs herself.
+   */
+  alsoSeenSlugs?: string[];
   faqs: QA[];
 }
 
@@ -82,16 +89,18 @@ const visitSteps = Astro.props.visitSteps ?? [
 
 const toParas = (v: string | string[]) => (Array.isArray(v) ? v : [v]);
 const moinfar = providers.find((p) => p.slug === 'dr-maryam-moinfar')!;
+const alsoSeen = (Astro.props.alsoSeenSlugs ?? []).map(
+  (slug) => providers.find((p) => p.slug === slug)!,
+);
 ---
 
 <BaseLayout title={title} description={description} path={path} schema={schema} restore>
   <!-- 1 · Hero -->
   <SectionBand as="div" class="hero">
-    <Breadcrumbs crumbs={[{ label: breadcrumbLabel, href: path }]} />
+    <Breadcrumbs crumbs={[{ label: breadcrumbLabel, href: '/cosmetic/' }]} />
     <div class="hero__copy" data-reveal>
       <span class="eyebrow">Restore — under a physician’s direction</span>
       <h1>{h1}</h1>
-      <p class="hero__sub">Restore at Advanced Dermatology.</p>
       <p class="lede">{lede}</p>
       <div class="hero__cta">
         <Button href="/contact/" variant="restore">Book a consultation</Button>
@@ -137,15 +146,14 @@ const moinfar = providers.find((p) => p.slug === 'dr-maryam-moinfar')!;
     </div>
   </SectionBand>
 
-  <!-- 5 · Why here rather than a storefront (§7.2 — claim, then structure; closes on §7.6 sentence 5) -->
+  <!-- 5 · Why here rather than a storefront (§7.2 claim-then-structure; client copy, 2026-08-29) -->
   <SectionBand tone="evergreen" aria-labelledby="why-heading">
     <div class="band-prose" data-reveal>
       <h2 id="why-heading">Why here rather than a storefront</h2>
       <p>
-        A dermatologist assesses you, and no one here has a product target to hit. When a treatment
-        won’t get you what you’re after, we say so — and we don’t book it. When we say a procedure
-        isn’t right for you, that recommendation costs us money. It costs no one else anything, which
-        is exactly why you can trust it.
+        Dr. Moinfar assesses you. She won’t book a treatment that’s wrong for you, or more of it
+        than you need — no one upstream sets a quota telling her otherwise. That’s why you can trust
+        it.
       </p>
     </div>
   </SectionBand>
@@ -153,8 +161,11 @@ const moinfar = providers.find((p) => p.slug === 'dr-maryam-moinfar')!;
   <!-- 6 · Who you'll see -->
   <SectionBand aria-labelledby="team-heading">
     <h2 id="team-heading" class="section-title" data-reveal>Who you’ll see</h2>
-    <div class="team" data-reveal>
-      <ProviderCard provider={moinfar} />
+    <div class:list={['team', { 'team--multi': alsoSeen.length }]} data-reveal>
+      <div class="team__cards">
+        <ProviderCard provider={moinfar} />
+        {alsoSeen.map((p) => <ProviderCard provider={p} />)}
+      </div>
       <p class="team__note">{whoPerforms}</p>
     </div>
   </SectionBand>
@@ -171,7 +182,7 @@ const moinfar = providers.find((p) => p.slug === 'dr-maryam-moinfar')!;
     </div>
   </SectionBand>
 
-  <!-- 8 · The consultation & pricing (§12.10 then §12.8, verbatim) -->
+  <!-- 8 · The consultation & pricing (§12.10 verbatim; §12.8 opener, minus the "price is the price" line per client 2026-08-29) -->
   <SectionBand aria-labelledby="pricing-heading">
     <div class="prose" data-reveal>
       <h2 id="pricing-heading">The consultation &amp; pricing</h2>
@@ -180,10 +191,7 @@ const moinfar = providers.find((p) => p.slug === 'dr-maryam-moinfar')!;
         your health history and medications, and tell you plainly whether this will help — and what
         it won’t do.
       </p>
-      <p>
-        We don’t run flash sales, holiday promotions, or discount packages. The price is the price,
-        and it doesn’t go down if you wait.
-      </p>
+      <p>We don’t run flash sales, holiday promotions, or discount packages.</p>
       <p>
         Itemized pricing is provided in writing at the consultation; there’s no published price
         list.
@@ -233,10 +241,6 @@ const moinfar = providers.find((p) => p.slug === 'dr-maryam-moinfar')!;
   }
   .hero__copy {
     margin-top: var(--space-8);
-  }
-  .hero__sub {
-    color: var(--stone);
-    margin-top: var(--space-3);
   }
   .hero .lede {
     margin-top: var(--space-4);
@@ -302,16 +306,29 @@ const moinfar = providers.find((p) => p.slug === 'dr-maryam-moinfar')!;
     display: grid;
     gap: var(--space-8);
   }
+  .team__cards {
+    display: grid;
+    gap: var(--space-8);
+  }
   @media (min-width: 760px) {
-    .team {
+    /* One provider: card beside the note. */
+    .team:not(.team--multi) {
       grid-template-columns: 320px 1fr;
       align-items: start;
+      gap: var(--space-12);
+    }
+    /* PAs deliver this modality: provider cards in a row, note beneath. */
+    .team--multi .team__cards {
+      grid-template-columns: repeat(3, minmax(0, 240px));
       gap: var(--space-12);
     }
   }
   .team__note {
     max-width: 44ch;
     color: var(--stone);
+  }
+  .team--multi .team__note {
+    max-width: 60ch;
   }
 
   /* Closing */

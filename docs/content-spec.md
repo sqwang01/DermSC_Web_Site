@@ -755,12 +755,15 @@ surgery](/skin-cancer/) are handled by the same team, in the same building.
 
 1. **Hero** — eyebrow _"Restore — under a physician's direction"_ + H1 + lede (injectables, lasers,
    microneedling, body contouring — offered by the practice that reads your pathology, kept
-   intentionally conservative). Descriptor line under H1: **Restore at Advanced Dermatology.** CTA
-   `Book a consultation` / `How it works ↓`.
-2. **The restraint case** — "We would rather take less." (§7.6, verbatim.) Everything here is meant
-   to look like you ten years ago, not like work. The person who assesses you is a board-certified
-   dermatologist who will tell you when a treatment won't help — "We will turn people away. That's
-   the point of having a physician involved." (§7.6, verbatim.)
+   intentionally conservative). CTA `Book a consultation` / `How it works ↓`. (No "Restore at
+   Advanced Dermatology." sub-head — removed D26.)
+2. **Our philosophy** _(id: `how-it-works`; was "We would rather take less.")_ — client-supplied
+   copy, 2026-08-29, supersedes the §7.6 verbatim lines that ran here (D27). Three paragraphs: good
+   cosmetic work can't be pointed to — people say you look well, not different — and every procedure
+   is chosen and dosed toward that; it isn't one injection or one laser pass, it's a plan (what to
+   treat, what to leave alone, how much, revisited over months) and the planning is the skill; a
+   board-certified dermatologist builds that plan and will recommend against a treatment rather than
+   book it, which is why a physician is in the room before anything is scheduled.
 3. **The menu** — sub-page cards, each with the brass top-rule, one sentence in the patient's
    language, and a link. Grouped **For the face** / **For the body and hair** (D24):
    - **Neuromodulators** — _"Botox, Dysport, and the muscles that etch lines in."_ → `/cosmetic/neuromodulators/`
@@ -800,8 +803,8 @@ surgery](/skin-cancer/) are handled by the same team, in the same building.
 
 #### Drafted copy (D16 — 2026-08-28, pending client proof)
 
-Final prose for the build. Section anchor for the secondary CTA: `#how-it-works` (the restraint
-case). Delivery model is client-confirmed (2026-08-29): Dr. Moinfar assesses every patient and does
+Final prose for the build. Section anchor for the secondary CTA: `#how-it-works` (the philosophy
+section). Delivery model is client-confirmed (2026-08-29): Dr. Moinfar assesses every patient and does
 filler, collagen stimulators, and threads herself; the physician assistants do neuromodulators,
 microneedling, laser/IPL, and peels. Open placeholder, not blocking: whether payment plans are
 offered (FAQ item held back).
@@ -815,23 +818,22 @@ offered (FAQ item held back).
 
 - Eyebrow: Restore — under a physician's direction
 - H1: Nobody should be able to tell. That's the whole job.
-- Descriptor (sub-head): Restore at Advanced Dermatology.
 - Lede: Injectables, lasers, microneedling, and body contouring — offered by the same practice that
   reads your pathology, and kept intentionally conservative. Everything here is meant to look like
   you ten years ago, not like work.
 - CTAs: `Book a consultation` → `/contact/` · `How it works ↓` (anchor to §2)
 
-**2 · We would rather take less** _(id: `how-it-works`)_
+**2 · Our philosophy** _(id: `how-it-works`)_
 
-We would rather take less.
+Good cosmetic work can't be pointed to. Nobody says you look different. They say you look well.
+Every procedure here is chosen and dosed toward that.
 
-Everything on this page is meant to leave you looking rested, not done. The measure of good
-cosmetic work is that nobody can point to it — no one says you look different, they say you look
-well.
+It isn't one injection or one laser pass. It's a plan — what to treat, what to leave alone, how
+much, revisited over months. That planning is the skill. The needle just carries it out.
 
-The person who assesses you is a board-certified dermatologist. She will tell you when a treatment
-won't get you what you're after, and she won't book it. We will turn people away. That's the point
-of having a physician involved.
+A board-certified dermatologist builds that plan. When a treatment won't get you what you're after,
+she'll say so — and recommend against it, not book it. That's why a physician is in the room before
+anything is scheduled.
 
 **3 · What Restore covers** _(cards with the brass top-rule, grouped under two subheads)_
 
@@ -909,7 +911,7 @@ has its own program — [GLP-1 Restore](/glp-1-restore/).
 **Sections** (Restore variant — shared `RestoreTreatmentPage` shell, D24)
 
 1. **Hero** — eyebrow _"Restore — under a physician's direction"_ + H1 + lede. CTA `Book a
-   consultation` / `How it works ↓`. Breadcrumb: Neuromodulators only (D25).
+   consultation` / `How it works ↓`. Breadcrumb: `‹ Neuromodulators` — a back link to `/cosmetic/` (D25, D29).
 2. **What's offered** (id: `how-it-works`) — what a neuromodulator does (relaxes the muscle that
    folds the skin; not volume, not sun-damage lines); common areas (forehead, glabella, crow's
    feet); maintained not banked (onset days, settles ~2 weeks, wears off ~3–4 months); dosed to
@@ -920,15 +922,18 @@ has its own program — [GLP-1 Restore](/glp-1-restore/).
    willing to repeat a few times a year. Not right: static lines from volume loss or sun damage
    (need filler/resurfacing); pregnant or breastfeeding (defer); some neuromuscular
    conditions/medications reviewed at consult.
-5. **Why here rather than a storefront** — §7.2 claim-then-structure, closing on §7.6 sentence 5
-   verbatim ("When we say a procedure isn't right for you, that recommendation costs us money…").
-   Shared across the seven face pages.
-6. **Who you'll see** — Dr. Moinfar assesses and sets the plan; a **physician assistant** performs
-   the injections (client, 2026-08-29 — PAs do neuromodulators, microneedling, laser/IPL, peels).
+5. **Why here rather than a storefront** — client copy (2026-08-29 / D28), one paragraph, shared
+   across the seven face pages: _"Dr. Moinfar assesses you. She won't book a treatment that's wrong
+   for you, or more of it than you need — no one upstream sets a quota telling her otherwise.
+   That's why you can trust it."_ (§7.2 claim-then-structure; paraphrases §7.6 sentences 4–5.)
+6. **Who you'll see** — three provider cards: Dr. Moinfar (assesses and sets the plan) plus
+   **Madeline Fee PA-C and Shylie Falahati PA-C**, one of whom performs the injections (client,
+   2026-08-29 — PAs do neuromodulators, microneedling, laser/IPL, peels; both PA cards shown D26).
 7. **Evidence** — standardized baseline/follow-up photography (P17); own images only; no stock, no
    borrowed before/afters.
-8. **The consultation & pricing** — §12.10 verbatim, then §12.8 verbatim; itemized pricing in
-   writing at the consultation; no published price list.
+8. **The consultation & pricing** — §12.10 verbatim, then §12.8 first sentence only ("price is the
+   price" line dropped on procedure pages — D30); itemized pricing in writing at the consultation;
+   no published price list.
 9. **FAQ** — "does Botox hurt", "how long does it last", "how much is Botox in Dana Point" (per
    area/unit, in writing, no promotions), "will my face look frozen", "how soon does it work",
    "can I have it while pregnant or breastfeeding" (no — wait). `FAQPage` schema.
@@ -941,7 +946,7 @@ has its own program — [GLP-1 Restore](/glp-1-restore/).
   type A" framing, no brand superlatives; brass on Restore pages only; never "complimentary/free".
 - **CTA:** primary `Book a consultation` → `/contact/`; secondary `How it works ↓`.
 - **Schema:** `MedicalProcedure` (neuromodulator treatment), `FAQPage`, `MedicalBusiness`.
-- **Internal links:** fillers, collagen-stimulators, Dr. Moinfar bio, GLP-1 Restore (via FAQ context on fillers page, not required here). Cosmetic hub is reached via the global nav/footer only — the breadcrumb no longer carries it (D25).
+- **Internal links:** fillers, collagen-stimulators, Dr. Moinfar bio, GLP-1 Restore (via FAQ context on fillers page, not required here). Cosmetic hub is reached via the global nav/footer and the `‹` back link in the breadcrumb slot (D25, D29).
 
 #### Drafted copy (D16 / D24 — 2026-08-29, pending client proof)
 
@@ -963,7 +968,7 @@ spec of record.
 **Sections** (Restore variant — shared `RestoreTreatmentPage` shell, D24)
 
 1. **Hero** — eyebrow + H1 + lede (hyaluronic acid; replaces lost volume, small amounts, matched to
-   your proportions; dissolvable). Breadcrumb: Dermal fillers only (D25).
+   your proportions; dissolvable). Breadcrumb: `‹ Dermal fillers` — a back link to `/cosmetic/` (D25, D29).
 2. **What's offered** (id: `how-it-works`) — hyaluronic acid specifically (a substance the skin
    already makes; reversible with an enzyme); where it's used (cheeks, tear trough, lips, chin/jaw,
    nasolabial folds); how long it lasts (several months to a couple of years by product/area);
@@ -972,11 +977,13 @@ spec of record.
 4. **Candidacy** — good fit: volume loss showing as hollowing/shadowing, want subtle correction,
    understand it's maintained. Not right: want a dramatic structural change; active skin infection
    at the site; pregnant or breastfeeding (defer); severe allergy history reviewed at consult.
-5. **Why here rather than a storefront** — shared §7.2 block.
+5. **Why here rather than a storefront** — shared client block (D28).
 6. **Who you'll see** — **Dr. Moinfar injects the filler herself** (client, 2026-08-29 — she does
    all filler, collagen stimulators, and threads; PAs do not).
 7. **Evidence** — P17, own images only.
-8. **The consultation & pricing** — §12.10 + §12.8 verbatim; itemized pricing in writing.
+8. **The consultation & pricing** — §12.10 verbatim; §12.8 first sentence only (the "price is the
+   price, and it doesn't go down if you wait" line is dropped on procedure pages — D30); itemized
+   pricing in writing.
 9. **FAQ** — "how long does filler last", "does it hurt" (lidocaine in product + topical numbing),
    "can it be undone" (yes — hyaluronidase), "will my face look puffy/overfilled", "how much is
    filler in Dana Point" (per syringe/area, in writing, no packages), "can I have filler on a
@@ -1013,8 +1020,8 @@ of record.
 **Sections** (Restore variant — shared `RestoreTreatmentPage` shell, D24)
 
 1. **Hero** — eyebrow + H1 + lede (poly-L-lactic acid and calcium hydroxylapatite; prompt your own
-   collagen over months; short series; gradual by nature). Breadcrumb: Collagen-stimulating
-   injectables only (D25).
+   collagen over months; short series; gradual by nature). Breadcrumb: `‹ Collagen-stimulating
+   injectables` — a back link to `/cosmetic/` (D25, D29).
 2. **What's offered** (id: `how-it-works`) — what these are (products such as PLLA and CaHA; a
    scaffold, not day-one volume); how it differs from HA filler (gradual, works with your own
    tissue, not dissolvable the same way); a short series then patience (2–3 sessions weeks apart,
@@ -1024,11 +1031,13 @@ of record.
    result over months, willing to do a series. Not right: want an immediate change or single-line
    spot correction (HA filler better); pregnant/breastfeeding; active infection at the site;
    certain autoimmune conditions reviewed at consult.
-5. **Why here rather than a storefront** — shared §7.2 block.
+5. **Why here rather than a storefront** — shared client block (D28).
 6. **Who you'll see** — **Dr. Moinfar performs the injections herself** (client, 2026-08-29 — she
    does all filler, collagen stimulators, and threads; PAs do not).
 7. **Evidence** — P17, own images only.
-8. **The consultation & pricing** — §12.10 + §12.8 verbatim; itemized pricing in writing.
+8. **The consultation & pricing** — §12.10 verbatim; §12.8 first sentence only (the "price is the
+   price, and it doesn't go down if you wait" line is dropped on procedure pages — D30); itemized
+   pricing in writing.
 9. **FAQ** — "how is this different from filler", "how long until I see a result" (weeks to
    months), "how many sessions", "how long does it last" (~2 years then maintained), "is it
    reversible" (not the way HA is), "does it hurt". `FAQPage` schema.
@@ -1065,7 +1074,7 @@ Section list above is the spec of record.
 
 1. **Hero** — eyebrow + H1 + lede (VBeam targets *red*, IPL targets *brown*; both aim energy at
    colour in the skin, so skin-type safety and tool choice are clinical decisions). Breadcrumb:
-   Laser & IPL only (D25).
+   `‹ Laser & IPL` — a back link to `/cosmetic/` (D25, D29).
 2. **What's offered** (id: `how-it-works`) — VBeam for red (vessels, facial redness, rosacea; a day
    or two of pink, brief bruising at higher settings); IPL for brown (sun spots, blotchy tone on
    face/chest/hands; ~3–5 sessions; spots darken then flake over ~a week); skin type comes first
@@ -1078,11 +1087,14 @@ Section list above is the spec of record.
    sun avoidance. Not right: tanned/recent sun exposure (wait); deeper skin tone where risk is
    higher and the right device may not be available; melasma (IPL can worsen it); active
    infection/cold sore; expecting one-and-done; pregnant (defer elective light treatment).
-5. **Why here rather than a storefront** — shared §7.2 block.
-6. **Who you'll see** — Dr. Moinfar assesses and sets the plan; a **physician assistant** performs
-   the VBeam / IPL treatment (client, 2026-08-29).
+5. **Why here rather than a storefront** — shared client block (D28).
+6. **Who you'll see** — three provider cards: Dr. Moinfar (assesses and sets the plan) plus
+   **Madeline Fee PA-C and Shylie Falahati PA-C**, one of whom performs the VBeam / IPL treatment
+   (client, 2026-08-29; both PA cards shown D26).
 7. **Evidence** — P17, own images only.
-8. **The consultation & pricing** — §12.10 + §12.8 verbatim; itemized pricing in writing.
+8. **The consultation & pricing** — §12.10 verbatim; §12.8 first sentence only (the "price is the
+   price, and it doesn't go down if you wait" line is dropped on procedure pages — D30); itemized
+   pricing in writing.
 9. **FAQ** — "how long is the recovery", "does it hurt", "is VBeam or IPL safe for darker skin"
    (both target colour — higher risk on tanned/darker skin; assessed first), "how many sessions",
    "can IPL treat melasma" (usually avoided — IPL can worsen it), "when can I be in the sun
@@ -1123,7 +1135,7 @@ the spec of record.
 
 1. **Hero** — eyebrow + H1 + lede (dissolvable sutures lift mild sagging in the mid-face/jawline
    and prompt collagen as they dissolve; smaller intervention than a facelift, smaller job — that
-   trade is the point). Breadcrumb: Silhouette InstaLift only (D25).
+   trade is the point). Breadcrumb: `‹ Silhouette InstaLift` — a back link to `/cosmetic/` (D25, D29).
 2. **What's offered** (id: `how-it-works`) — what it is (absorbable poly-L-lactic acid sutures with
    cones; in-office, local anesthesia); two effects on two timelines (modest lift on the day; then
    collagen along the suture path as it dissolves over months; sutures gone within ~6 months); how
@@ -1133,11 +1145,13 @@ the spec of record.
 4. **Candidacy** — good fit: early jowl or mid-face laxity, want a subtle lift, accept temporary
    and partial, can take ~a week of social downtime. Not right: significant sagging or heavy tissue
    (a facelift is the honest answer); very thin tissue; active infection; pregnant/breastfeeding.
-5. **Why here rather than a storefront** — shared §7.2 block; §7.6 sentence 5 is especially apt
-   here (turning someone toward surgery elsewhere is the concrete example).
+5. **Why here rather than a storefront** — shared client block (D28); especially apt here — "won't
+   book a treatment that's wrong for you" covers turning someone toward surgery elsewhere.
 6. **Who you'll see** — Dr. Moinfar assesses candidacy and performs the placement.
 7. **Evidence** — P17, own images only.
-8. **The consultation & pricing** — §12.10 + §12.8 verbatim; itemized pricing in writing.
+8. **The consultation & pricing** — §12.10 verbatim; §12.8 first sentence only (the "price is the
+   price, and it doesn't go down if you wait" line is dropped on procedure pages — D30); itemized
+   pricing in writing.
 9. **FAQ** — "how long does a Silhouette InstaLift last", "does it hurt", "what's the downtime",
    "is it the same as a facelift" (no), "can the threads be felt or seen", "who places the
    threads" (a dermatologist). `FAQPage` schema.
@@ -1172,7 +1186,7 @@ above is the spec of record.
 
 1. **Hero** — eyebrow + H1 + lede (removes outer layers in a controlled way so newer skin
    surfaces; lighter peels even out tone with little downtime, deeper ones ask for a week of
-   peeling; usually a short series). Breadcrumb: Chemical peels only (D25).
+   peeling; usually a short series). Breadcrumb: `‹ Chemical peels` — a back link to `/cosmetic/` (D25, D29).
 2. **What's offered** (id: `how-it-works`) — superficial peels (glycolic, salicylic, lactic; tone,
    mild texture, congestion; little downtime; a series); medium-depth peels (TCA, Jessner's; sun
    damage, deeper texture, some scarring; ~a week of peeling); depth sets everything; skin type and
@@ -1182,11 +1196,14 @@ above is the spec of record.
 4. **Candidacy** — good fit: dull/uneven tone, sun spots, rough texture, mild acne scarring;
    willing to do a series and avoid sun. Not right: active cold sore/infection; recent isotretinoin
    (wait several months); very sensitised skin; expecting one visit to do everything.
-5. **Why here rather than a storefront** — shared §7.2 block.
-6. **Who you'll see** — Dr. Moinfar assesses and sets the plan; a **physician assistant** performs
-   the peel (client, 2026-08-29).
+5. **Why here rather than a storefront** — shared client block (D28).
+6. **Who you'll see** — three provider cards: Dr. Moinfar (assesses and sets the plan) plus
+   **Madeline Fee PA-C and Shylie Falahati PA-C**, one of whom performs the peel (client,
+   2026-08-29; both PA cards shown D26).
 7. **Evidence** — P17, own images only.
-8. **The consultation & pricing** — §12.10 + §12.8 verbatim; itemized pricing in writing.
+8. **The consultation & pricing** — §12.10 verbatim; §12.8 first sentence only (the "price is the
+   price, and it doesn't go down if you wait" line is dropped on procedure pages — D30); itemized
+   pricing in writing.
 9. **FAQ** — "how many peels will I need", "does it hurt", "how much downtime is there", "are peels
    safe for darker skin" (superficial generally yes; deeper needs caution), "can I wear makeup
    afterward", "can I have a peel while pregnant" (some agents yes, some no). `FAQPage` schema.
@@ -1222,7 +1239,7 @@ peel. Section list above is the spec of record.
 
 1. **Hero** — eyebrow + H1 + lede (hundreds of tiny controlled punctures; the healing response
    lays down new collagen over months; texture, fine lines, pores, some scarring; works by
-   compounding). Breadcrumb: Microneedling only (D25).
+   compounding). Breadcrumb: `‹ Microneedling` — a back link to `/cosmetic/` (D25, D29).
 2. **What's offered** (id: `how-it-works`) — how it works (fine needles at a set depth; collagen
    over the following months); with or without growth factors (or platelet-rich plasma from your
    own blood, applied after; whether it adds enough is discussed, not assumed); a short series (3–6
@@ -1233,11 +1250,14 @@ peel. Section list above is the spec of record.
    patient with a result over months across a series. Not right: active acne or skin infection in
    the area; keloid-prone or on blood thinners (reviewed at consult); pregnant/breastfeeding for
    the PRP add-on; want a single-session change.
-5. **Why here rather than a storefront** — shared §7.2 block.
-6. **Who you'll see** — Dr. Moinfar assesses and sets the plan; a **physician assistant** performs
-   the microneedling (client, 2026-08-29).
+5. **Why here rather than a storefront** — shared client block (D28).
+6. **Who you'll see** — three provider cards: Dr. Moinfar (assesses and sets the plan) plus
+   **Madeline Fee PA-C and Shylie Falahati PA-C**, one of whom performs the microneedling (client,
+   2026-08-29; both PA cards shown D26).
 7. **Evidence** — P17, own images only.
-8. **The consultation & pricing** — §12.10 + §12.8 verbatim; itemized pricing in writing.
+8. **The consultation & pricing** — §12.10 verbatim; §12.8 first sentence only (the "price is the
+   price, and it doesn't go down if you wait" line is dropped on procedure pages — D30); itemized
+   pricing in writing.
 9. **FAQ** — "does microneedling hurt", "how much downtime is there", "how many sessions", "when
    will I see results", "what are growth factors and PRP", "is an at-home derma-roller the same
    thing" (no — depth and sterility differ; not recommended). `FAQPage` schema.
@@ -1298,14 +1318,18 @@ microneedling. Section list above is the spec of record.
 5. **Candidacy** — good fit if you're near your goal and want tone or strength a gym plateau hasn't
    given you / not right for you if you're after large-volume weight loss, are pregnant, or have an
    implanted electronic device or metal in the treatment area (⚠️ screening at consultation, §9.5).
-6. **Why here** — a dermatologist decides whether this is the right tool before you book; the
-   practice owns both EmSculpt Neo and CoolSculpting and has no reason to push either (P19); results
-   photographed on a fixed protocol (P17).
-7. **Who you'll see** — Dr. Moinfar and the Restore team (TODO client: treating provider). Photo placeholders.
+6. **Why here rather than a storefront** — shared client block (D28): _"Dr. Moinfar assesses you.
+   She won't book a treatment that's wrong for you, or more of it than you need — no one upstream
+   sets a quota telling her otherwise. That's why you can trust it."_ Plus a second sentence keeping
+   the device-neutrality point (P19): the practice owns both EmSculpt Neo and CoolSculpting and has
+   no reason to steer you toward one over the other. (Fixed-protocol photography moved to §8 Evidence.)
+7. **Who you'll see** — three provider cards: Dr. Moinfar (assesses and sets the plan) plus
+   **Madeline Fee PA-C and Shylie Falahati PA-C**, one of whom performs the treatment (client,
+   2026-08-29 / D26). Photo placeholders.
 8. **Evidence** — honest interim statement: own-practice consented series in progress (§6.4); the
    practice publishes only its own images; device-labeling figures are labeled as such.
 9. **The consultation & pricing** — §12.10 verbatim; price per area and per series in writing
-   before scheduling; §12.8 pricing-integrity paragraph verbatim.
+   before scheduling; §12.8 first sentence only ("price is the price" line dropped — D30).
 10. **FAQ** — long-tail: "how many EmSculpt Neo sessions do I need", "does EmSculpt Neo hurt",
     "is EmSculpt Neo permanent", "EmSculpt Neo vs CoolSculpting" (cross-link), "can I do EmSculpt
     Neo while on a GLP-1" — answer stays factual and **non-causal (§9.3):** yes, many patients do;
@@ -1331,8 +1355,8 @@ Final prose for the build. Section anchor for the secondary CTA: `#how-it-works`
 (§9.2 / §9.3):** "FDA-cleared" not "-approved"; the treatment-area table is a real table, never five
 identical bullets; fat-reduction claims are abdomen/thighs only; the 25% / 30% stat is always
 adjacent to "individual results vary" and attributed to device labeling; **no sentence links GLP-1
-muscle loss causally to the device.** Open placeholders: treating provider for the muscle track;
-re-check the area table against current device labeling at build.
+muscle loss causally to the device.** Open placeholders: re-check the area table against current
+device labeling at build.
 
 **Meta**
 
@@ -1386,16 +1410,20 @@ turned up gradually through the session, and you can talk the whole time.
   have an implanted electronic device or metal in the treatment area. We screen for this at the
   consultation.
 
-**6 · Why here**
+**6 · Why here rather than a storefront**
 
-A dermatologist decides whether this is the right tool before you book. The practice owns both
-EmSculpt Neo and CoolSculpting and has no reason to steer you toward one over the other. Results
-are photographed on a fixed protocol.
+Dr. Moinfar assesses you. She won't book a treatment that's wrong for you, or more of it than you
+need — no one upstream sets a quota telling her otherwise. That's why you can trust it.
+
+The practice owns both EmSculpt Neo and CoolSculpting and has no reason to steer you toward one
+over the other.
 
 **7 · Who you'll see**
 
-Dr. Moinfar and the Restore team. _(TODO client: name the treating provider for the muscle track.)_
-Provider card → `/about/dr-maryam-moinfar/`.
+Dr. Moinfar assesses every patient and sets the plan; one of our physician assistants performs the
+treatment. Three provider cards — Dr. Moinfar, Madeline Fee PA-C, Shylie Falahati PA-C (client,
+2026-08-29 / D26) → `/about/dr-maryam-moinfar/`, `/about/madeline-fee-pa-c/`,
+`/about/shylie-falahati-pa-c/`.
 
 **8 · Evidence**
 
@@ -1405,7 +1433,9 @@ figures are from device labeling and are labeled as such. No stock, no borrowed 
 **9 · The consultation & pricing**
 
 §12.10 verbatim (the consultation promise). Price per area and per series in writing before
-scheduling. Then §12.8 verbatim (the pricing-integrity paragraph).
+scheduling. Then §12.8 first sentence only — "We don't run flash sales, holiday promotions, or
+discount packages." The "price is the price, and it doesn't go down if you wait" line is dropped on
+procedure pages (D30).
 
 **10 · FAQ** _(FAQPage schema)_
 
@@ -1468,11 +1498,13 @@ CTAs: `Book a consultation` → `/contact/` · `Call 949.248.4547`
 6. **Candidacy** — good fit if you have a specific pinchable bulge near your goal weight / not right
    for you for overall weight loss, for loose skin without a fat pocket, or with certain
    cold-related conditions (⚠️ screening at consultation, §9.5).
-7. **Who you'll see** — Restore team (TODO client). Photo placeholders.
+7. **Who you'll see** — three provider cards: Dr. Moinfar (assesses and sets the plan) plus
+   **Madeline Fee PA-C and Shylie Falahati PA-C**, one of whom performs the treatment (client,
+   2026-08-29 / D26). Photo placeholders.
 8. **Evidence** — own-practice consented images in progress (§6.4); standardized protocol (P17); no
    borrowed before/afters.
-9. **The consultation & pricing** — §12.10 verbatim; §12.8 pricing-integrity paragraph verbatim;
-   price per applicator/area in writing before scheduling.
+9. **The consultation & pricing** — §12.10 verbatim; §12.8 first sentence only ("price is the
+   price" line dropped — D30); price per applicator/area in writing before scheduling.
 10. **FAQ** — long-tail: "how long does CoolSculpting take to work", "is CoolSculpting permanent",
     "does CoolSculpting hurt", "how many CoolSculpting sessions", "CoolSculpting vs EmSculpt Neo"
     (cross-link), "what is paradoxical adipose hyperplasia" — name it honestly: rare, delayed
@@ -1547,8 +1579,10 @@ Link: [EmSculpt Neo](/cosmetic/emsculpt-neo/).
 
 **7 · Who you'll see**
 
-The Restore team. _(TODO client: name the treating provider.)_ Provider card →
-`/about/dr-maryam-moinfar/`.
+Dr. Moinfar assesses every patient and sets the plan; one of our physician assistants performs the
+treatment. Three provider cards — Dr. Moinfar, Madeline Fee PA-C, Shylie Falahati PA-C (client,
+2026-08-29 / D26) → `/about/dr-maryam-moinfar/`, `/about/madeline-fee-pa-c/`,
+`/about/shylie-falahati-pa-c/`.
 
 **8 · Evidence**
 
@@ -1557,8 +1591,9 @@ borrowed before-and-afters.
 
 **9 · The consultation & pricing**
 
-§12.10 verbatim (the consultation promise). Then §12.8 verbatim (the pricing-integrity paragraph).
-Price per applicator/area in writing before scheduling.
+§12.10 verbatim (the consultation promise). Then §12.8 first sentence only — "We don't run flash
+sales, holiday promotions, or discount packages." ("price is the price" line dropped on procedure
+pages — D30.) Price per applicator/area in writing before scheduling.
 
 **10 · FAQ** _(FAQPage schema)_
 
@@ -1636,7 +1671,7 @@ the other device we offer.
 9. **Evidence** — two or three consented before/afters in progress (§6.4); standardized protocol
    (P17); no stock, no borrowed images.
 10. **The consultation & pricing** — §12.10 verbatim; pricing for the cash components in writing
-    before a series starts; §12.8 pricing-integrity paragraph verbatim.
+    before a series starts; §12.8 first sentence only ("price is the price" line dropped — D30).
 11. **FAQ** — long-tail: "why is my hair falling out after weight loss" (cross-link GLP-1 Restore),
     "does PRP work for hair loss" (candidacy, diagnosis-dependent), "do I need a biopsy for hair
     loss", "will my hair grow back after chemo", "is hair loss covered by insurance" (the §9.4
@@ -1752,7 +1787,8 @@ protocol. No stock, no borrowed images.
 **10 · The consultation & pricing**
 
 §12.10 verbatim (the consultation promise). Pricing for the cash components in writing before a
-series starts. Then §12.8 verbatim (the pricing-integrity paragraph).
+series starts. Then §12.8 first sentence only — "We don't run flash sales, holiday promotions, or
+discount packages." ("price is the price" line dropped on procedure pages — D30.)
 
 **11 · FAQ** _(FAQPage schema)_
 

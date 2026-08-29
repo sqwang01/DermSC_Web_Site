@@ -3,7 +3,9 @@
  * Breadcrumb trail + BreadcrumbList JSON-LD. Omit on the home page.
  * `crumbs` is ordered root → current. The last item is the current page (not linked).
  * A single-crumb trail (cosmetic procedure pages, D25) renders the page name only and
- * emits no JSON-LD — a one-item BreadcrumbList carries no information.
+ * emits no JSON-LD — a one-item BreadcrumbList carries no information. When that single
+ * crumb has an `href`, it renders as a back link — `‹ <label>` pointing at the parent
+ * section — so the procedure pages keep a way up to /cosmetic/ (D29).
  */
 import { siteMeta } from '@data/site';
 
@@ -16,6 +18,7 @@ interface Props {
 }
 
 const { crumbs } = Astro.props;
+const backLink = crumbs.length === 1 && crumbs[0].href ? crumbs[0] : null;
 
 const schema = {
   '@context': 'https://schema.org',
@@ -29,21 +32,27 @@ const schema = {
 };
 ---
 
-<nav class="crumbs" aria-label="Breadcrumb">
-  <ol>
-    {
-      crumbs.map((c, i) => (
-        <li>
-          {c.href && i < crumbs.length - 1 ? (
-            <a href={c.href}>{c.label}</a>
-          ) : (
-            <span aria-current="page">{c.label}</span>
-          )}
-        </li>
-      ))
-    }
-  </ol>
-</nav>
+{
+  backLink ? (
+    <nav class="crumbs crumbs--back" aria-label="Breadcrumb">
+      <a href={backLink.href}><span class="crumbs__chevron" aria-hidden="true">‹</span>{backLink.label}</a>
+    </nav>
+  ) : (
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        {crumbs.map((c, i) => (
+          <li>
+            {c.href && i < crumbs.length - 1 ? (
+              <a href={c.href}>{c.label}</a>
+            ) : (
+              <span aria-current="page">{c.label}</span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )
+}
 
 {
   crumbs.length > 1 && (
@@ -79,5 +88,12 @@ const schema = {
 
   .crumbs [aria-current='page'] {
     color: var(--ink);
+  }
+
+  /* Single-crumb back link (cosmetic procedure pages, D29) */
+  .crumbs--back .crumbs__chevron {
+    display: inline-block;
+    margin-right: 0.15em;
+    text-decoration: none;
   }
 </style>

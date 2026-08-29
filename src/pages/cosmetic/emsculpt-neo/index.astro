@@ -12,6 +12,9 @@ const description =
   'EmSculpt Neo in Dana Point — an FDA-cleared, non-invasive treatment that builds muscle and reduces fat in cleared areas in one 30-minute session. Individual results vary.';
 
 const moinfar = providers.find((p) => p.slug === 'dr-maryam-moinfar')!;
+const alsoSeen = ['madeline-fee-pa-c', 'shylie-falahati-pa-c'].map(
+  (slug) => providers.find((p) => p.slug === slug)!,
+);
 
 // MedicalProcedure (EmSculpt Neo / non-invasive body contouring). FAQPage schema comes from <Faq>.
 // "FDA-cleared", never "-approved". Individual-results language kept adjacent to the figures (§9.2).
@@ -72,11 +75,10 @@ const faqs = [
 >
   <!-- 1 · Hero -->
   <SectionBand as="div" class="hero">
-    <Breadcrumbs crumbs={[{ label: 'EmSculpt Neo', href: '/cosmetic/emsculpt-neo/' }]} />
+    <Breadcrumbs crumbs={[{ label: 'EmSculpt Neo', href: '/cosmetic/' }]} />
     <div class="hero__copy" data-reveal>
       <span class="eyebrow">Restore — under a physician’s direction</span>
       <h1>Muscle and fat, in one 30-minute treatment.</h1>
-      <p class="hero__sub">Restore at Advanced Dermatology.</p>
       <p class="lede">
         EmSculpt Neo is an FDA-cleared, non-invasive treatment. In clinical studies, treated areas
         showed an average 25% increase in muscle mass and an average 30% reduction in fat.
@@ -187,14 +189,18 @@ const faqs = [
     </div>
   </SectionBand>
 
-  <!-- 6 · Why here -->
+  <!-- 6 · Why here rather than a storefront (client copy, 2026-08-29; device-neutrality point kept — P19) -->
   <SectionBand tone="evergreen" aria-labelledby="why-heading">
     <div class="band-prose" data-reveal>
-      <h2 id="why-heading">Why here</h2>
+      <h2 id="why-heading">Why here rather than a storefront</h2>
       <p>
-        A dermatologist decides whether this is the right tool before you book. The practice owns
-        both EmSculpt Neo and CoolSculpting and has no reason to steer you toward one over the
-        other. Results are photographed on a fixed protocol.
+        Dr. Moinfar assesses you. She won’t book a treatment that’s wrong for you, or more of it
+        than you need — no one upstream sets a quota telling her otherwise. That’s why you can trust
+        it.
+      </p>
+      <p>
+        The practice owns both EmSculpt Neo and CoolSculpting and has no reason to steer you toward
+        one over the other.
       </p>
     </div>
   </SectionBand>
@@ -202,11 +208,14 @@ const faqs = [
   <!-- 7 · Who you'll see -->
   <SectionBand aria-labelledby="team-heading">
     <h2 id="team-heading" class="section-title" data-reveal>Who you’ll see</h2>
-    <div class="team" data-reveal>
-      <ProviderCard provider={moinfar} />
+    <div class="team team--multi" data-reveal>
+      <div class="team__cards">
+        <ProviderCard provider={moinfar} />
+        {alsoSeen.map((p) => <ProviderCard provider={p} />)}
+      </div>
       <p class="team__note">
-        Dr. Moinfar and the Restore team.
-        {/* TODO(client): name the treating provider for the muscle track. */}
+        Dr. Moinfar assesses every patient and sets the plan. One of our physician assistants
+        performs the treatment.
       </p>
     </div>
   </SectionBand>
@@ -233,10 +242,7 @@ const faqs = [
         it won’t do.
       </p>
       <p>Price per area and per series is provided in writing before scheduling.</p>
-      <p>
-        We don’t run flash sales, holiday promotions, or discount packages. The price is the price,
-        and it doesn’t go down if you wait.
-      </p>
+      <p>We don’t run flash sales, holiday promotions, or discount packages.</p>
     </div>
   </SectionBand>
 
@@ -292,10 +298,6 @@ const faqs = [
   }
   .hero__copy {
     margin-top: var(--space-8);
-  }
-  .hero__sub {
-    color: var(--stone);
-    margin-top: var(--space-3);
   }
   .hero .lede {
     margin-top: var(--space-4);
@@ -375,15 +377,23 @@ const faqs = [
     display: grid;
     gap: var(--space-8);
   }
+  .team__cards {
+    display: grid;
+    gap: var(--space-8);
+  }
   @media (min-width: 760px) {
-    .team {
+    .team:not(.team--multi) {
       grid-template-columns: 320px 1fr;
       align-items: start;
       gap: var(--space-12);
     }
+    .team--multi .team__cards {
+      grid-template-columns: repeat(3, minmax(0, 240px));
+      gap: var(--space-12);
+    }
   }
   .team__note {
-    max-width: 44ch;
+    max-width: 60ch;
     color: var(--stone);
   }
 
