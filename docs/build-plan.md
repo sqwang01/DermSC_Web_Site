@@ -47,7 +47,7 @@ move to Cloudflare optional, later.
 
 ## Phase 2 — Core pages (Week 2)
 
-- [x] Home `/` — built to the content-spec (hero, four doors, independence §12.3, restraint §12.4,
+- [x] Home `/` — built to the content-spec (hero, four doors, independence §12.3,
       providers, patient-story slot, location). Needs: real photos, "three providers" / "two PAs"
       wording check against current staff, client copy proof.
 - [ ] About `/about/` (independence explainer §7.5, the team, the building, careers stub)

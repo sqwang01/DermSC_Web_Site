@@ -97,12 +97,11 @@ _(All "Book/Request a consultation" routes to the same callback form; never "com
    §2.1 expressions ("Chronic doesn't mean unexplained." / "Caught early, it's a small procedure." /
    "Nobody should be able to tell." / "You lost the weight. Now restore the rest.").
 3. **The independence paragraph, compressed** — §12.3 verbatim.
-4. **The restraint paragraph** — §12.4 verbatim (Less skin / Less filler / Less guessing).
-5. **Who you'll see** — four provider cards, name + credential + one line, photo placeholders,
+4. **Who you'll see** — four provider cards, name + credential + one line, photo placeholders,
    link to bios. Continuity note (§12.6, trimmed).
-6. **Patient story** — reserved slot. Until an approved story exists, render a short honest
+5. **Patient story** — reserved slot. Until an approved story exists, render a short honest
    placeholder ("A patient story belongs here — we're collecting them with consent"). Flagged §6.4.
-7. **Location & hours** — NAP, map embed, parking/access line, `Request an appointment`.
+6. **Location & hours** — NAP, map embed, parking/access line, `Request an appointment`.
 
 - **Honest limitation:** the honest-access paragraph (§12.9) — routine visits booked months out;
   concerning spots seen sooner; Restore consults separate.

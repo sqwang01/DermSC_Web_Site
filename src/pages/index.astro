@@ -101,40 +101,20 @@ const doors = [
       <h2 id="independence-heading">Who we answer to.</h2>
       <p>
         Most dermatology practices in Orange County have been bought — by hospital systems, by
-        private equity, by national groups. Advanced Dermatology hasn’t. It’s why your biopsy is
-        read by a dermatopathologist Dr. Moinfar chose herself, why we’ve kept a radiation unit for
-        the patients who need it, and why we can tell you a treatment won’t help you — because no
-        one here has a target to hit.
+        private equity, by national groups. Advanced Dermatology hasn’t.
       </p>
+      <p>
+        It’s why our doctors give patients their cell phone numbers. It’s why we’ve kept a radiation
+        unit here, so patients who can’t or shouldn’t have surgery have another option. And it’s why
+        we recommend the best treatment, not the most expensive one — because no one here has a
+        target to hit.
+      </p>
+      <p>We treat you the way we’d want our own families treated.</p>
       <p><a class="link-underline band-prose__link" href="/about/">More about the practice</a></p>
     </div>
   </SectionBand>
 
-  <!-- 4 · Restraint (brand doc §12.4, verbatim) -->
-  <SectionBand aria-labelledby="restraint-heading">
-    <h2 id="restraint-heading" class="section-title" data-reveal>
-      What restraint looks like here.
-    </h2>
-    <dl class="restraint" data-reveal>
-      <div>
-        <dt>Less skin.</dt>
-        <dd>
-          The best skin cancer outcome is the one caught early — a small procedure instead of a
-          large one.
-        </dd>
-      </div>
-      <div>
-        <dt>Less filler.</dt>
-        <dd>Everything we do is meant to look like you, ten years ago — not like work.</dd>
-      </div>
-      <div>
-        <dt>Less guessing.</dt>
-        <dd>We look for the cause before we treat the symptom.</dd>
-      </div>
-    </dl>
-  </SectionBand>
-
-  <!-- 5 · Who you'll see -->
+  <!-- 4 · Who you'll see -->
   <SectionBand tone="fog" id="providers" aria-labelledby="providers-heading">
     <h2 id="providers-heading" class="section-title" data-reveal>Who you’ll see.</h2>
     <div class="providers" data-reveal>
@@ -146,7 +126,7 @@ const doors = [
     </p>
   </SectionBand>
 
-  <!-- 6 · Patient story — reserved slot (brand doc §6.4) -->
+  <!-- 5 · Patient story — reserved slot (brand doc §6.4) -->
   <SectionBand aria-label="Patient stories">
     <div class="story" data-reveal>
       <p class="story__mark">A patient story belongs here.</p>
@@ -157,7 +137,7 @@ const doors = [
     </div>
   </SectionBand>
 
-  <!-- 7 · Location & hours -->
+  <!-- 6 · Location & hours -->
   <SectionBand tone="evergreen-deep" aria-labelledby="location-heading">
     <div class="location" data-reveal>
       <div class="location__info">
@@ -280,22 +260,6 @@ const doors = [
   }
   .band-prose__link {
     color: var(--paper);
-  }
-
-  /* Restraint */
-  .restraint {
-    display: grid;
-    gap: var(--space-8);
-    max-width: 62ch;
-  }
-  .restraint dt {
-    font-family: var(--display);
-    font-size: var(--fs-h3);
-    color: var(--evergreen);
-    margin-bottom: var(--space-2);
-  }
-  .restraint dd {
-    margin: 0;
   }
 
   /* Providers */
