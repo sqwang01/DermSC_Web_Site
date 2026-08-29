@@ -50,15 +50,15 @@ const doors = [
   <SectionBand as="div" class="hero">
     <div class="hero__grid">
       <div class="hero__copy" data-reveal>
-        <span class="eyebrow">Serious medicine. Natural results.</span>
-        <h1>The diagnosis comes before the treatment.</h1>
+        <h1>Serious medicine. Twenty years of it.</h1>
+        <p class="hero__tagline">We’ll tell you what you need. And what you don’t.</p>
         <p class="hero__sub">
           Advanced Dermatology is a physician-owned practice in Dana Point, California, serving
           South Orange County since {practice.foundedYear}.
         </p>
         <p class="lede">
           Medical dermatology, skin cancer surgery, and a physician-directed cosmetic and GLP-1
-          recovery program — in one independent practice that has never been sold.
+          recovery program — under one roof, one owner, for twenty years.
         </p>
         <div class="hero__cta">
           <Button href="/contact/" variant="primary">Request an appointment</Button>
@@ -186,6 +186,14 @@ const doors = [
     display: grid;
     gap: var(--space-12);
     align-items: center;
+  }
+  .hero__tagline {
+    font-family: var(--display);
+    font-size: var(--fs-h3);
+    line-height: var(--lh-h3);
+    color: var(--evergreen);
+    margin-top: var(--space-4);
+    max-width: 28ch;
   }
   .hero__sub {
     color: var(--stone);
