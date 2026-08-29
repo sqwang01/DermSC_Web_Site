@@ -89,15 +89,15 @@ const visitSteps = Astro.props.visitSteps ?? [
 
 const toParas = (v: string | string[]) => (Array.isArray(v) ? v : [v]);
 const moinfar = providers.find((p) => p.slug === 'dr-maryam-moinfar')!;
-const alsoSeen = (Astro.props.alsoSeenSlugs ?? []).map(
-  (slug) => providers.find((p) => p.slug === slug)!,
+const alsoSeen = (Astro.props.alsoSeenSlugs ?? []).map((slug) =>
+  providers.find((p) => p.slug === slug)!
 );
 ---
 
 <BaseLayout title={title} description={description} path={path} schema={schema} restore>
   <!-- 1 · Hero -->
   <SectionBand as="div" class="hero">
-    <Breadcrumbs crumbs={[{ label: breadcrumbLabel, href: '/cosmetic/' }]} />
+    <Breadcrumbs crumbs={[{ label: breadcrumbLabel, href: '/cosmetic/#menu-heading' }]} />
     <div class="hero__copy" data-reveal>
       <span class="eyebrow">Restore — under a physician’s direction</span>
       <h1>{h1}</h1>
@@ -124,7 +124,13 @@ const alsoSeen = (Astro.props.alsoSeenSlugs ?? []).map(
         ))
       }
     </div>
-    {offeredNote && <p class="offerings__note" data-reveal>{offeredNote}</p>}
+    {
+      offeredNote && (
+        <p class="offerings__note" data-reveal>
+          {offeredNote}
+        </p>
+      )
+    }
   </SectionBand>
 
   <!-- 3 · How a treatment visit works -->

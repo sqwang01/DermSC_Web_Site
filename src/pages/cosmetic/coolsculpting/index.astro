@@ -12,8 +12,8 @@ const description =
   'CoolSculpting in Dana Point — cryolipolysis for pinchable fat in cleared areas. We offer both CoolSculpting and EmSculpt Neo and have no incentive to steer you toward either.';
 
 const moinfar = providers.find((p) => p.slug === 'dr-maryam-moinfar')!;
-const alsoSeen = ['madeline-fee-pa-c', 'shylie-falahati-pa-c'].map(
-  (slug) => providers.find((p) => p.slug === slug)!,
+const alsoSeen = ['madeline-fee-pa-c', 'shylie-falahati-pa-c'].map((slug) =>
+  providers.find((p) => p.slug === slug)!
 );
 
 // MedicalProcedure (CoolSculpting / cryolipolysis). FAQPage schema comes from <Faq>.
@@ -80,7 +80,7 @@ const faqs = [
 >
   <!-- 1 · Hero -->
   <SectionBand as="div" class="hero">
-    <Breadcrumbs crumbs={[{ label: 'CoolSculpting', href: '/cosmetic/' }]} />
+    <Breadcrumbs crumbs={[{ label: 'CoolSculpting', href: '/cosmetic/#menu-heading' }]} />
     <div class="hero__copy" data-reveal>
       <span class="eyebrow">Restore — under a physician’s direction</span>
       <h1>Cryolipolysis for pinchable fat.</h1>
@@ -156,14 +156,12 @@ const faqs = [
     <div class="prose" data-reveal>
       <h2 id="candidacy-heading">Candidacy</h2>
       <p>
-        <strong>A good fit</strong> if you have a specific pinchable bulge and you’re near your goal
-        weight.
+        <strong>A good fit</strong> if you have a specific pinchable bulge and you’re near your goal weight.
       </p>
       <p>
-        <strong>Not right for you</strong> for overall weight loss, for loose skin without a fat
-        pocket underneath, or if you have a cold-related condition such as cryoglobulinemia, cold
-        agglutinin disease, or paroxysmal cold hemoglobinuria. We screen for this at the
-        consultation.
+        <strong>Not right for you</strong> for overall weight loss, for loose skin without a fat pocket
+        underneath, or if you have a cold-related condition such as cryoglobulinemia, cold agglutinin
+        disease, or paroxysmal cold hemoglobinuria. We screen for this at the consultation.
       </p>
     </div>
   </SectionBand>
@@ -237,8 +235,8 @@ const faqs = [
       <h2 id="more-heading" class="section-title">Related</h2>
       <p>
         If you want tone or strength as well as fat reduction,
-        <a class="link-underline" href="/cosmetic/emsculpt-neo/">EmSculpt Neo</a> is the other
-        device we offer.
+        <a class="link-underline" href="/cosmetic/emsculpt-neo/">EmSculpt Neo</a> is the other device
+        we offer.
       </p>
     </div>
   </SectionBand>

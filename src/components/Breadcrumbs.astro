@@ -4,8 +4,11 @@
  * `crumbs` is ordered root → current. The last item is the current page (not linked).
  * A single-crumb trail (cosmetic procedure pages, D25) renders the page name only and
  * emits no JSON-LD — a one-item BreadcrumbList carries no information. When that single
- * crumb has an `href`, it renders as a back link — `‹ <label>` pointing at the parent
- * section — so the procedure pages keep a way up to /cosmetic/ (D29).
+ * crumb has an `href`, it renders as a back link — `‹` pointing at the parent section,
+ * with the page name shown alongside as plain text — so the procedure pages keep a way
+ * up to /cosmetic/ (D29). Only the chevron is a link: the page name sits next to it,
+ * not inside the `<a>`, so clicking the name of the procedure you're already reading
+ * doesn't accidentally navigate away (D30-fix, client 2026-08-29).
  */
 import { siteMeta } from '@data/site';
 
@@ -35,7 +38,10 @@ const schema = {
 {
   backLink ? (
     <nav class="crumbs crumbs--back" aria-label="Breadcrumb">
-      <a href={backLink.href}><span class="crumbs__chevron" aria-hidden="true">‹</span>{backLink.label}</a>
+      <a class="crumbs__chevron" href={backLink.href} aria-label="Back to Cosmetic">
+        ‹
+      </a>
+      <span class="crumbs__label">{backLink.label}</span>
     </nav>
   ) : (
     <nav class="crumbs" aria-label="Breadcrumb">
@@ -90,10 +96,26 @@ const schema = {
     color: var(--ink);
   }
 
-  /* Single-crumb back link (cosmetic procedure pages, D29) */
+  /* Single-crumb back link (cosmetic procedure pages, D29). Only the chevron is a
+     link — sized up and padded for a real tap target — the page name beside it is
+     plain text, not part of the link (D30-fix). */
+  .crumbs--back {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--fs-small);
+  }
   .crumbs--back .crumbs__chevron {
-    display: inline-block;
-    margin-right: 0.15em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: calc(var(--space-2) * -1) calc(var(--space-1) * -1) calc(var(--space-2) * -1) 0;
+    padding: var(--space-2) var(--space-1);
+    font-size: 1.5em;
+    line-height: 1;
     text-decoration: none;
+  }
+  .crumbs--back .crumbs__label {
+    color: var(--stone);
   }
 </style>

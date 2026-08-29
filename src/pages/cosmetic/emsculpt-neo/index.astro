@@ -12,8 +12,8 @@ const description =
   'EmSculpt Neo in Dana Point — an FDA-cleared, non-invasive treatment that builds muscle and reduces fat in cleared areas in one 30-minute session. Individual results vary.';
 
 const moinfar = providers.find((p) => p.slug === 'dr-maryam-moinfar')!;
-const alsoSeen = ['madeline-fee-pa-c', 'shylie-falahati-pa-c'].map(
-  (slug) => providers.find((p) => p.slug === slug)!,
+const alsoSeen = ['madeline-fee-pa-c', 'shylie-falahati-pa-c'].map((slug) =>
+  providers.find((p) => p.slug === slug)!
 );
 
 // MedicalProcedure (EmSculpt Neo / non-invasive body contouring). FAQPage schema comes from <Faq>.
@@ -75,7 +75,7 @@ const faqs = [
 >
   <!-- 1 · Hero -->
   <SectionBand as="div" class="hero">
-    <Breadcrumbs crumbs={[{ label: 'EmSculpt Neo', href: '/cosmetic/' }]} />
+    <Breadcrumbs crumbs={[{ label: 'EmSculpt Neo', href: '/cosmetic/#menu-heading' }]} />
     <div class="hero__copy" data-reveal>
       <span class="eyebrow">Restore — under a physician’s direction</span>
       <h1>Muscle and fat, in one 30-minute treatment.</h1>
@@ -127,28 +127,28 @@ const faqs = [
               <tr>
                 <th scope="row">{row.area}</th>
                 <td>
-                  {
-                    row.muscle ? (
-                      'Yes'
-                    ) : (
-                      <>
-                        <span class="visually-hidden">No</span>
-                        <span class="dash" aria-hidden="true">—</span>
-                      </>
-                    )
-                  }
+                  {row.muscle ? (
+                    'Yes'
+                  ) : (
+                    <>
+                      <span class="visually-hidden">No</span>
+                      <span class="dash" aria-hidden="true">
+                        —
+                      </span>
+                    </>
+                  )}
                 </td>
                 <td>
-                  {
-                    row.fat ? (
-                      'Yes'
-                    ) : (
-                      <>
-                        <span class="visually-hidden">No</span>
-                        <span class="dash" aria-hidden="true">—</span>
-                      </>
-                    )
-                  }
+                  {row.fat ? (
+                    'Yes'
+                  ) : (
+                    <>
+                      <span class="visually-hidden">No</span>
+                      <span class="dash" aria-hidden="true">
+                        —
+                      </span>
+                    </>
+                  )}
                 </td>
               </tr>
             ))
@@ -178,13 +178,13 @@ const faqs = [
     <div class="prose" data-reveal>
       <h2 id="candidacy-heading">Candidacy</h2>
       <p>
-        <strong>A good fit</strong> if you’re near your goal weight and want tone or strength that a
-        gym plateau hasn’t given you.
+        <strong>A good fit</strong> if you’re near your goal weight and want tone or strength that a gym
+        plateau hasn’t given you.
       </p>
       <p>
-        <strong>Not right for you</strong> if you’re looking for large-volume weight loss, if you’re
-        pregnant, or if you have an implanted electronic device or metal in the treatment area. We
-        screen for this at the consultation.
+        <strong>Not right for you</strong> if you’re looking for large-volume weight loss, if you’re pregnant,
+        or if you have an implanted electronic device or metal in the treatment area. We screen for this
+        at the consultation.
       </p>
     </div>
   </SectionBand>
@@ -275,8 +275,8 @@ const faqs = [
       <ul class="more__list">
         <li>
           For pinchable fat without a muscle goal,
-          <a class="link-underline" href="/cosmetic/coolsculpting/">CoolSculpting</a> may be the
-          better fit.
+          <a class="link-underline" href="/cosmetic/coolsculpting/">CoolSculpting</a> may be the better
+          fit.
         </li>
         <li>
           On a GLP-1? The muscle track of our
