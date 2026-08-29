@@ -505,22 +505,32 @@ built this program." — Dr. Maryam Moinfar, board-certified dermatologist
 - **H1:** `We look for the cause before we treat.`
 - **Audience:** the New Medical Patient (§3.4) — including the patient dismissed elsewhere ("it's
   just stress", "you'll grow out of it") whose problem never resolved. **Pillar:** 1 Accuracy.
-- **Proofs:** P11 (Dr. Moinfar reviews pathology across all providers weekly — lead), P9 (dermoscopy
-  used by every provider), P10 (specimens processed in-house, read by a dermatopathologist Dr.
-  Moinfar chose personally), P15 (physicians give patients their cell numbers), P3 (same providers
-  for years), P1 (independence — substrate, arrives second).
+- **Proofs:** P23 (Dr. Moinfar trained both PAs at the exam table before either saw a patient alone
+  — leads the §12.5 accuracy paragraph, D23), P11 (Dr. Moinfar reviews pathology across all
+  providers weekly), P9 (dermoscopy used by every provider), P10 (specimens processed in-house, read
+  by a dermatopathologist Dr. Moinfar chose personally) — P9/P10/P11 run in the first-visit steps
+  and the `MedicalProcedure` schema, no longer in the hero lede or section 3 (D23); P15 (physicians
+  give patients their cell numbers), P3 (same providers for years), P1 (independence — substrate,
+  arrives second).
 
 **Sections** (medical variant — _Surveillance / what to watch for_ replaces _Pricing_)
 
-1. **Hero** — eyebrow _"Serious medicine. Natural results."_ + H1 (the practice's position, stated
-   first: cause before symptom) + lede (the conditions in the patient's words + "every provider
-   examines with a dermatoscope; every biopsy gets a second read"). CTA `Request an appointment` /
-   `Call 949.248.4547`. Placeholder: `[Photo: exam room, natural light]`.
+1. **Hero** — eyebrow _"General dermatology"_ (plain category label, D23 — was the
+   _"Serious medicine. Natural results."_ tagline) + H1 (the practice's position, stated
+   first: cause before symptom) + lede (the conditions in the patient's words, then the position
+   restated: "this is where we slow down and ask why it keeps happening — not just what will make it
+   stop for now"; the dermatoscope / second-read proof was removed from the lede, D23). CTA
+   `Request an appointment` / `Call 949.248.4547`. Placeholder: `[Photo: exam room, natural light]`.
 2. **The problem** — "Chronic doesn't mean unexplained." Name the dismissed-before
    experience plainly: a rash called stress, acne you were told to wait out, and it never cleared —
    that usually means the cause was never found. Tone §8.5: patient, thorough, faintly relieving.
-3. **The accuracy paragraph** — §12.5 **verbatim** (dermatoscope on every provider; in-house lab;
-   the chosen dermatopathologist; the weekly pathology review nobody bills for).
+3. **The accuracy paragraph** — §12.5 **verbatim** (revised D23): the fast way to practice vs. the
+   slow one; judgment from years of seeing these conditions, plus Dr. Moinfar having trained both
+   PAs at the exam table before either saw a patient alone; how that shows up in a visit — full
+   history, whole-skin exam, biopsy or labs when the picture isn't clear; finding the reason is
+   slower but it's the only "treated" that holds. The in-house-lab / chosen-dermatopathologist /
+   weekly-review proof moved out of this section and out of the hero lede (D23) — it still runs in
+   the first-visit steps and the `MedicalProcedure` schema.
 4. **What we treat** — grouped, anchor-linked blocks (2–4 sentences each; candidacy / management
    language, never cure or outcome), **not** individual condition sub-pages at launch (D18).
    Groups + anchors: `#acne` **Acne** · `#inflammatory-skin` **Eczema, psoriasis & rosacea**
@@ -542,8 +552,9 @@ built this program." — Dr. Maryam Moinfar, board-certified dermatologist
    or changing spots seen sooner; Restore consultations scheduled separately).
 9. **FAQ** — long-tail: "how long does it take to get a dermatology appointment in Dana Point",
    "do I need a referral to see a dermatologist", "what happens during a skin biopsy", "will I get a
-   diagnosis at the first visit", "how often should I have a full-skin exam", "do you treat
-   children", "is teledermatology available". `FAQPage` schema.
+   diagnosis at the first visit", "how often should I have a full-skin exam", "is teledermatology
+   available". `FAQPage` schema. _("Do you treat children?" removed D23 — reverses D22 item (2)'s
+   keep; no pediatric content remains anywhere on the site.)_
 10. **Closing CTA** — what an appointment is, how to request one, the honest lead time, the
     urgent-spot exception. `Request an appointment`.
 11. **Cross-sell** — one line to `/skin-cancer/` (annual skin exams and screening).
@@ -576,12 +587,13 @@ back until confirmed).
 
 **1 · Hero**
 
-- Eyebrow: Serious medicine. Natural results.
+- Eyebrow: General dermatology _(Revised D23 — plain category label, was the
+  "Serious medicine. Natural results." tagline; matches the Skin cancer eyebrow treatment from D19.)_
 - H1: We look for the cause before we treat.
 - Lede: Acne that never fully cleared. A rash that keeps coming back. Eczema, psoriasis, rosacea,
-  hives, or a nail or patch of scalp that changed. Every provider here examines with a dermatoscope,
-  and every biopsy is read twice — once by a dermatopathologist Dr. Moinfar chose herself, and again
-  by her the same week.
+  hives, or a nail or patch of scalp that changed. This is where we slow down and ask why it keeps
+  happening — not just what will make it stop for now. _(Revised D23 — dermatoscope / read-twice
+  proof removed from the lede; it still runs in the first-visit steps and schema.)_
 - CTAs: `Request an appointment` → `/contact/` · `Call 949.248.4547`
 - Photo: exam room, natural light
 
@@ -595,12 +607,21 @@ Sometimes those answers are right. Often they're what you get when no one has ha
 properly. A condition that keeps returning has a reason it keeps returning. This visit is about
 finding that reason, not renewing a prescription that isn't working.
 
-**3 · How we get the diagnosis right** _(§12.5 verbatim)_
+**3 · How we get the diagnosis right** _(§12.5 verbatim — revised D23)_
 
-Every provider here examines with a dermatoscope. Biopsies are processed in our own lab and read by
-a dermatopathologist Dr. Moinfar selected personally. And every week, she reviews the pathology from
-all three providers herself — a second read on the diagnoses that determine everything that happens
-next. Nobody bills for that hour. It's simply how the practice was built.
+There's a fast way to practice dermatology: a quick look, a prescription, on to the next room. It
+works often enough that most places never find out when it doesn't.
+
+Our providers here have seen every condition on this page enough times, over enough years, to know
+when something looks routine and isn't — and Dr. Moinfar trained both physician assistants herself,
+at the exam table, before either saw a patient alone. That's where the judgment comes from, not from
+a protocol.
+
+It shows up in how a visit runs: a full history, skin exam even when you came in about one spot, and
+a biopsy or lab work when the picture isn't clear — because a cream that quiets a symptom without
+answering why it started usually means you're back here in six months with the same rash.
+
+Finding the reason is slower. It's also the only version of "treated" that holds.
 
 → _How the practice is set up_ → `/about/`
 
@@ -699,9 +720,8 @@ visits.
    significant sun exposure, atypical moles, or skin cancer in the family. After a skin cancer, the
    schedule is closer — often every three to six months at first. If you notice a change between
    visits, don't wait for the next appointment.
-6. **Do you treat children?** — Yes — eczema, warts, molluscum, rashes, birthmarks, and teenage
-   acne, among other things. We're conservative about treating young skin; part of the visit is
-   telling you what genuinely needs treating and what will resolve on its own.
+_(Removed D23: "Do you treat children?" — reverses D22 item (2), which had kept this FAQ after the
+Pediatric block came out of §4. No pediatric content remains on the site.)_
 
 _(Held: "Is teledermatology available?" — pending client confirmation of whether it is offered and
 for whom.)_
