@@ -1,0 +1,110 @@
+---
+/**
+ * FAQ list — native <details>, no JavaScript. Emits FAQPage JSON-LD from the same data.
+ * Answers are plain strings or an array of paragraph strings.
+ */
+interface QA {
+  q: string;
+  a: string | string[];
+}
+interface Props {
+  heading?: string;
+  items: QA[];
+  /** Set false on a page that already emits FAQPage schema elsewhere. */
+  emitSchema?: boolean;
+}
+
+const { heading, items, emitSchema = true } = Astro.props;
+const toParas = (a: string | string[]) => (Array.isArray(a) ? a : [a]);
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((it) => ({
+    '@type': 'Question',
+    name: it.q,
+    acceptedAnswer: { '@type': 'Answer', text: toParas(it.a).join('\n\n') },
+  })),
+};
+---
+
+<section class="faq">
+  {heading && <h2 class="faq__heading">{heading}</h2>}
+  <dl class="faq__list">
+    {
+      items.map((it) => (
+        <div class="faq__item">
+          <details>
+            <summary>
+              <dt>{it.q}</dt>
+            </summary>
+            <dd>
+              {toParas(it.a).map((p) => (
+                <p>{p}</p>
+              ))}
+            </dd>
+          </details>
+        </div>
+      ))
+    }
+  </dl>
+</section>
+
+{emitSchema && <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />}
+
+<style>
+  .faq__heading {
+    margin-bottom: var(--space-8);
+  }
+
+  .faq__item {
+    border-top: var(--border-hair);
+  }
+  .faq__item:last-child {
+    border-bottom: var(--border-hair);
+  }
+
+  details {
+    padding: var(--space-4) 0;
+  }
+
+  summary {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    cursor: pointer;
+    list-style: none;
+    padding: var(--space-2) 0;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary::before {
+    content: '+';
+    flex: none;
+    font-family: var(--display);
+    font-size: 1.4rem;
+    line-height: 1.2;
+    color: var(--brass-deep);
+  }
+  details[open] summary::before {
+    content: '\2013'; /* en dash */
+  }
+
+  dt {
+    font-family: var(--display);
+    font-size: var(--fs-h3);
+    line-height: var(--lh-h3);
+    color: var(--evergreen);
+  }
+
+  dd {
+    margin: var(--space-3) 0 var(--space-4);
+    padding-left: calc(1.4rem + var(--space-4));
+    max-width: var(--wrap-prose);
+  }
+  dd p + p {
+    margin-top: var(--space-4);
+  }
+</style>

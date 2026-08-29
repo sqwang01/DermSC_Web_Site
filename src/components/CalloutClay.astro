@@ -1,0 +1,42 @@
+---
+/**
+ * Clinical-signal callout. --clay is reserved for content where a patient needs to act on a
+ * medical concern (style guide §2.4) — "call us sooner" lists, urgent-symptom notes.
+ * Never use this for marketing emphasis, pricing, or decoration.
+ */
+interface Props {
+  heading?: string;
+  class?: string;
+}
+const { heading, class: className } = Astro.props;
+---
+
+<aside class:list={['clay', className]}>
+  {heading && <p class="clay__heading">{heading}</p>}
+  <div class="clay__body"><slot /></div>
+</aside>
+
+<style>
+  .clay {
+    border-left: 3px solid var(--clay);
+    background: var(--paper);
+    padding: var(--space-6) var(--space-8);
+    border-radius: var(--radius);
+  }
+
+  .clay__heading {
+    font-family: var(--body);
+    font-weight: 600;
+    color: var(--clay);
+    margin-bottom: var(--space-3);
+  }
+
+  .clay__body :global(ul) {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .clay__body :global(li + li) {
+    margin-top: var(--space-2);
+  }
+</style>

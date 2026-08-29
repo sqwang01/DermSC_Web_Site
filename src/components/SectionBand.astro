@@ -1,0 +1,48 @@
+---
+/**
+ * Full-width section wrapper with consistent vertical rhythm and an optional background.
+ * tone: page (default) · fog · evergreen · evergreen-deep
+ * Content is constrained to --wrap unless `bleed` is set.
+ */
+interface Props {
+  tone?: 'page' | 'fog' | 'evergreen' | 'evergreen-deep';
+  as?: 'section' | 'div' | 'article' | 'aside';
+  id?: string;
+  bleed?: boolean;
+  class?: string;
+  reveal?: boolean;
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
+}
+
+const {
+  tone = 'page',
+  as: Tag = 'section',
+  id,
+  bleed = false,
+  class: className,
+  reveal = false,
+  ...aria
+}: Props = Astro.props;
+
+const toneClass =
+  tone === 'fog'
+    ? 'section--fog'
+    : tone === 'evergreen'
+      ? 'section--evergreen'
+      : tone === 'evergreen-deep'
+        ? 'section--evergreen-deep'
+        : '';
+---
+
+<Tag class:list={['section', toneClass, className]} id={id} {...aria}>
+  {
+    bleed ? (
+      <slot />
+    ) : (
+      <div class="wrap" data-reveal={reveal ? '' : undefined}>
+        <slot />
+      </div>
+    )
+  }
+</Tag>

@@ -1,0 +1,47 @@
+---
+/**
+ * Card — sits on --paper over --page/--fog, 1px --line border, no shadow.
+ * `restore` adds the 3px brass top rule (the sub-brand marker). Restore pages only.
+ * If `href` is set the whole card is a link.
+ */
+interface Props {
+  href?: string;
+  restore?: boolean;
+  class?: string;
+}
+
+const { href, restore = false, class: className } = Astro.props;
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag class:list={['card', restore && 'card--restore', href && 'card--link', className]} href={href}>
+  <slot />
+</Tag>
+
+<style>
+  .card {
+    display: block;
+    background: var(--paper);
+    border: var(--border-hair);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-none);
+    padding: var(--space-8);
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .card--restore {
+    border-top: 3px solid var(--brass);
+  }
+
+  .card--link {
+    transition: border-color 0.18s ease;
+  }
+  .card--link:hover {
+    border-color: var(--evergreen);
+  }
+  .card--restore.card--link:hover {
+    border-color: var(--line);
+    border-top-color: var(--brass);
+  }
+</style>

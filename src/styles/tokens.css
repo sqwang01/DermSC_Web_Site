@@ -1,0 +1,99 @@
+/**
+ * Design tokens — Advanced Dermatology.
+ * Source of truth: docs/reference/style-guide.md. If this file and the style guide disagree,
+ * the style guide wins. Do not add a third accent colour. Do not normalise base size to 16px.
+ */
+
+:root {
+  /* ---- Brand: Advanced Dermatology ---- */
+  --evergreen: #1f3b32; /* master brand: headlines, primary buttons, wordmark */
+  --evergreen-deep: #14281f; /* full-bleed bands, footer, button hover */
+
+  /* ---- Restore sub-brand — permitted on Cosmetic + GLP-1 Restore only ---- */
+  --brass: #a5854e; /* rules, dots, borders, display-size Restore text only */
+  --brass-deep: #7a6033; /* Restore body-size text and filled Restore buttons */
+
+  /* ---- Neutrals ---- */
+  --ink: #20272a; /* primary text */
+  --stone: #6a6255; /* secondary text, captions, form hints (never < 15px) */
+  --page: #f6f3eb; /* page background */
+  --paper: #ffffff; /* raised surfaces: header, cards, panels, fields */
+  --fog: #eeeae0; /* alternating section bands */
+  --line: #e2ddd0; /* 1px rules and borders only — never text */
+
+  /* ---- Clinical signal — medical urgency only (style guide §2.4) ---- */
+  --clay: #9c5f45; /* "call us sooner" content. Never near a price or a badge. */
+
+  /* ---- Typography ---- */
+  --display:
+    'Newsreader', 'Newsreader Fallback', Charter, Cambria, Georgia, 'Times New Roman', serif;
+  --body:
+    'Public Sans', 'Public Sans Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
+    Arial, sans-serif;
+
+  --fs-h1: clamp(2.5rem, 5.4vw, 4.15rem);
+  --fs-h2: clamp(2rem, 4.2vw, 3.1rem);
+  --fs-h3: clamp(1.4rem, 2.4vw, 1.62rem);
+  --fs-lede: 1.28rem;
+  --fs-body: 1.125rem; /* 18px at browser default */
+  --fs-small: 0.95rem;
+  --fs-eyebrow: 0.78rem;
+  --fs-button: 0.95rem;
+  --fs-stat: 1.5rem;
+
+  --lh-h1: 1.06;
+  --lh-h2: 1.1;
+  --lh-h3: 1.18;
+  --lh-lede: 1.55;
+  --lh-body: 1.65;
+
+  --tracking-h1: -0.022em;
+  --tracking-h2: -0.015em;
+  --tracking-eyebrow: 0.16em;
+  --tracking-button: 0.02em;
+
+  /* ---- Spacing scale — nothing between steps (style guide §4) ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* ---- Layout ---- */
+  --wrap: 1220px;
+  --wrap-prose: 60ch; /* body prose measure */
+  --wrap-lede: 54ch; /* hero / lede measure */
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --section-y: clamp(4.5rem, 9vw, 8rem);
+
+  /* ---- Shape ---- */
+  --radius: 3px; /* maximum. Or zero. No pill shapes. */
+
+  /* ---- Borders / shadow ---- */
+  --border-hair: 1px solid var(--line);
+  --shadow-none: none; /* cards carry no shadow; keep this explicit so nobody adds one */
+
+  /* ---- Focus — visible 2.5px brass outline at 3px offset, never removed ---- */
+  --focus-ring: 2.5px solid var(--brass);
+  --focus-offset: 3px;
+
+  /* ---- Controls ---- */
+  --control-min-h: 52px; /* minimum button / tap target height */
+
+  /* ---- Motion — fade-and-rise only ---- */
+  --motion-duration: 0.7s;
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-travel: 18px;
+}
+
+/* Motion is opt-in; this switch is read by the reveal utility and every transition. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration: 0s;
+    --motion-travel: 0px;
+  }
+}

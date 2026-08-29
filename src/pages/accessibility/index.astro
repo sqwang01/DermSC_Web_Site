@@ -1,0 +1,36 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionBand from '@components/SectionBand.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+import StubNotice from '@components/StubNotice.astro';
+import { practice } from '@data/site';
+---
+
+<BaseLayout
+  title="Accessibility Statement · Advanced Dermatology"
+  description="Advanced Dermatology aims to meet WCAG 2.1 AA on this website. If you encounter a barrier, please contact us and we will help."
+  path="/accessibility/"
+  noindex
+>
+  <SectionBand>
+    <Breadcrumbs
+      crumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Accessibility statement', href: '/accessibility/' },
+      ]}
+    />
+    <h1>Accessibility statement</h1>
+    <div class="prose">
+      <p>
+        We aim to meet the Web Content Accessibility Guidelines (WCAG) 2.1, Level AA, across this
+        site, and we test with keyboard-only navigation and a screen reader.
+      </p>
+      <p>
+        If you run into something that gets in your way, call us at
+        <a class="link-underline" href={`tel:${practice.phoneHref}`}>{practice.phone}</a> and we’ll give
+        you the information you need and fix the barrier.
+      </p>
+    </div>
+    <StubNotice spec="docs/content-spec.md → Legal (accessibility)" />
+  </SectionBand>
+</BaseLayout>

@@ -1,0 +1,367 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionBand from '@components/SectionBand.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+import Faq from '@components/Faq.astro';
+import ProviderCard from '@components/ProviderCard.astro';
+import Button from '@components/Button.astro';
+import { practice, providers, siteMeta } from '@data/site';
+
+const title = 'Injectables & Laser Treatments · Dana Point';
+const description =
+  'Neuromodulators, dermal fillers, laser, chemical peels, and microneedling in Dana Point — conservative, physician-directed, and matched to your own anatomy.';
+
+const moinfar = providers.find((p) => p.slug === 'dr-maryam-moinfar')!;
+
+// MedicalProcedure (injectable and laser cosmetic dermatology). FAQPage schema comes from <Faq>.
+// Candidacy and methodology only — no outcome or percentage claims (§9.1).
+const procedureSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalProcedure',
+  name: 'Injectable and laser cosmetic dermatology',
+  procedureType: 'https://schema.org/TherapeuticProcedure',
+  bodyLocation: 'Face and skin',
+  howPerformed:
+    'A dermatologist assessment, standardized baseline photography, then treatment — neuromodulators, dermal fillers, laser resurfacing and vascular or pigment treatment, chemical peels, or microneedling — matched to the patient’s own anatomy and skin type, followed by a photographed follow-up. Doses are conservative; effects are temporary and maintained over time.',
+  provider: {
+    '@type': 'MedicalBusiness',
+    name: practice.legalName,
+    '@id': `${siteMeta.origin}/#practice`,
+  },
+};
+
+const offerings = [
+  {
+    name: 'Neuromodulators (Botox and equivalents)',
+    body: 'Soften the muscle movement that etches lines in over time. The effect isn’t permanent; it wears off over a few months by design, and it’s maintained rather than banked.',
+  },
+  {
+    name: 'Dermal fillers',
+    body: 'Replace volume that’s been lost, matched to your own proportions. Conservative by default — the aim is that the change reads as “rested,” not “filled.”',
+  },
+  {
+    name: 'Laser',
+    body: 'Resurfacing, and treatments for visible vessels and pigment, matched to your skin type. Downtime is real and depends on the setting; we tell you what to expect before you book.',
+  },
+  {
+    name: 'Chemical peels',
+    body: 'Surface renewal for tone and texture, usually a short series rather than a single treatment.',
+  },
+  {
+    name: 'Microneedling (with or without growth factors)',
+    body: 'Stimulates collagen over months. Gradual by nature; the result compounds rather than appears.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Does Botox hurt?',
+    a: 'Most people describe it as a quick pinch. The needles are very fine and each area takes a few seconds. No anesthesia is needed.',
+  },
+  {
+    q: 'How long does filler last?',
+    a: 'It depends on the product and the area — generally several months to a couple of years. It’s maintained over time rather than done once.',
+  },
+  {
+    q: 'How much is Botox in Dana Point?',
+    a: 'It’s priced per area and quoted in writing at your consultation, once we know what you’re treating. We don’t discount it or run promotions, so the figure you’re quoted is the figure.',
+  },
+  {
+    q: 'How long is laser recovery?',
+    a: 'Anywhere from a day or two of redness for lighter settings to about a week of visible peeling for deeper resurfacing. We tell you which applies before you book.',
+  },
+  {
+    q: 'Can I have filler while I’m on a GLP-1 medication?',
+    a: 'Yes, many patients do. If facial volume loss is part of why you’re here, the GLP-1 Restore program addresses that specifically.',
+  },
+  {
+    q: 'Will I look “done”?',
+    a: 'Not if we’ve done our job. Everything is dosed conservatively and matched to your own features; the intent is that people see you looking rested, not that they see the work.',
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path="/cosmetic/injectables-and-laser/"
+  schema={[procedureSchema]}
+  restore
+>
+  <!-- 1 · Hero -->
+  <SectionBand as="div" class="hero">
+    <Breadcrumbs
+      crumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Cosmetic', href: '/cosmetic/' },
+        { label: 'Injectables & laser', href: '/cosmetic/injectables-and-laser/' },
+      ]}
+    />
+    <div class="hero__copy" data-reveal>
+      <span class="eyebrow">Restore — under a physician’s direction</span>
+      <h1>Meant to look like you, ten years ago.</h1>
+      <p class="hero__sub">Restore at Advanced Dermatology.</p>
+      <p class="lede">
+        Neuromodulators, dermal fillers, laser, chemical peels, and microneedling — dosed
+        conservatively, matched to your own face, and assessed first by a dermatologist who will
+        tell you when something won’t help.
+      </p>
+      <div class="hero__cta">
+        <Button href="/contact/" variant="restore">Book a consultation</Button>
+        <Button href="#how-it-works" variant="secondary">How it works ↓</Button>
+      </div>
+    </div>
+  </SectionBand>
+
+  <!-- 2 · What's offered -->
+  <SectionBand id="how-it-works" tone="fog" aria-labelledby="offered-heading">
+    <h2 id="offered-heading" class="section-title" data-reveal>What’s offered</h2>
+    <div class="offerings" data-reveal>
+      {
+        offerings.map((o) => (
+          <article class="offering prose">
+            <h3>{o.name}</h3>
+            <p>{o.body}</p>
+          </article>
+        ))
+      }
+    </div>
+    <p class="offerings__note" data-reveal>
+      {/* TODO(client): confirm laser devices/platforms in use, then name them above. */}
+      None of this is one-and-done: neuromodulators and fillers need maintenance, and laser and
+      peels need a series and real downtime.
+    </p>
+  </SectionBand>
+
+  <!-- 3 · How a treatment visit works -->
+  <SectionBand aria-labelledby="visit-heading">
+    <div class="prose" data-reveal>
+      <h2 id="visit-heading">How a treatment visit works</h2>
+      <ol class="steps">
+        <li>
+          Assessment — we look at the area, review your history and medications, and agree on what’s
+          realistic.
+        </li>
+        <li>Standardized photographs at baseline, on a fixed protocol.</li>
+        <li>The treatment itself.</li>
+        <li>Recovery — what to expect, and for how long.</li>
+        <li>A follow-up, with photographs, to see what the treatment actually did.</li>
+      </ol>
+    </div>
+  </SectionBand>
+
+  <!-- 4 · Candidacy -->
+  <SectionBand tone="fog" aria-labelledby="candidacy-heading">
+    <div class="prose" data-reveal>
+      <h2 id="candidacy-heading">Candidacy</h2>
+      <p>
+        <strong>A good fit</strong> if you want a change no one can point to — softer lines, restored
+        volume, better tone — and you’re willing to maintain it.
+      </p>
+      <p>
+        <strong>Not right for you</strong> if you want a dramatic or immediate structural change, or
+        if you’re pregnant or breastfeeding, in which case we’ll ask you to wait.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 5 · Why here rather than a storefront (§7.2 — claim, then structure) -->
+  <SectionBand tone="evergreen" aria-labelledby="why-heading">
+    <div class="band-prose" data-reveal>
+      <h2 id="why-heading">Why here rather than a storefront</h2>
+      <p>
+        A dermatologist assesses you, and no one here has a product target to hit. When a treatment
+        won’t get you what you’re after, we say so — and we don’t book it. When we say a procedure
+        isn’t right for you, that recommendation costs us money. It costs no one else anything, which
+        is exactly why you can trust it.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 6 · Who you'll see -->
+  <SectionBand aria-labelledby="team-heading">
+    <h2 id="team-heading" class="section-title" data-reveal>Who you’ll see</h2>
+    <div class="team" data-reveal>
+      <ProviderCard provider={moinfar} />
+      <p class="team__note">
+        Dr. Moinfar assesses every patient.
+        {/* TODO(client): name the injector(s)/PA(s) who deliver treatments. */}
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 7 · Evidence -->
+  <SectionBand tone="fog" aria-labelledby="evidence-heading">
+    <div class="prose" data-reveal>
+      <h2 id="evidence-heading">Evidence</h2>
+      <p>
+        Results here are photographed at baseline and follow-up on a fixed protocol. We publish only
+        our own images, and consented sets are still being built. We don’t use stock photography or
+        borrowed before-and-afters.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 8 · The consultation & pricing (§12.10 then §12.8, verbatim) -->
+  <SectionBand aria-labelledby="pricing-heading">
+    <div class="prose" data-reveal>
+      <h2 id="pricing-heading">The consultation &amp; pricing</h2>
+      <p>
+        A consultation takes twenty minutes. We’ll look at the area you’re concerned about, review
+        your health history and medications, and tell you plainly whether this will help — and what
+        it won’t do.
+      </p>
+      <p>
+        We don’t run flash sales, holiday promotions, or discount packages. The price is the price,
+        and it doesn’t go down if you wait.
+      </p>
+      <p>
+        Itemized pricing is provided in writing at the consultation; there’s no published price
+        list.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 9 · FAQ -->
+  <SectionBand tone="fog" aria-labelledby="faq-heading">
+    <Faq heading="Questions patients ask" items={faqs} />
+  </SectionBand>
+
+  <!-- 10 · Closing CTA -->
+  <SectionBand tone="evergreen-deep" aria-labelledby="cta-heading">
+    <div class="closing" data-reveal>
+      <h2 id="cta-heading">Book a consultation</h2>
+      <p>
+        A consultation is twenty minutes and a straight answer about whether a treatment will help.
+        Leave your name and number and our team will call you back.
+      </p>
+      <div class="closing__cta">
+        <Button href="/contact/" variant="restore">Book a consultation</Button>
+        <Button href={`tel:${practice.phoneHref}`} variant="secondary">
+          Call {practice.phone}
+        </Button>
+      </div>
+    </div>
+  </SectionBand>
+
+  <!-- 11 · Cross-sell -->
+  <SectionBand aria-labelledby="more-heading">
+    <div class="more" data-reveal>
+      <h2 id="more-heading" class="section-title">Related</h2>
+      <p>
+        For the body rather than the face,
+        <a class="link-underline" href="/cosmetic/emsculpt-neo/">EmSculpt Neo</a> and
+        <a class="link-underline" href="/cosmetic/coolsculpting/">CoolSculpting</a> are covered on
+        their own pages.
+      </p>
+    </div>
+  </SectionBand>
+</BaseLayout>
+
+<style>
+  .section-title {
+    margin-bottom: var(--space-12);
+  }
+
+  /* Hero */
+  .hero {
+    padding-block: var(--section-y);
+  }
+  .hero__copy {
+    margin-top: var(--space-8);
+  }
+  .hero__sub {
+    color: var(--stone);
+    margin-top: var(--space-3);
+  }
+  .hero .lede {
+    margin-top: var(--space-4);
+    max-width: 60ch;
+  }
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+
+  /* Offerings */
+  .offerings {
+    display: grid;
+    gap: var(--space-12);
+  }
+  @media (min-width: 760px) {
+    .offerings {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .offering h3 {
+    margin-bottom: var(--space-3);
+  }
+  .offerings__note {
+    margin-top: var(--space-12);
+    max-width: 60ch;
+    color: var(--stone);
+  }
+
+  /* Generic prose */
+  .prose {
+    max-width: 60ch;
+  }
+  .prose h2 {
+    margin-bottom: var(--space-6);
+  }
+  .prose p + p {
+    margin-top: var(--space-4);
+  }
+  .steps {
+    padding-left: 1.4rem;
+    margin-top: var(--space-6);
+  }
+  .steps li + li {
+    margin-top: var(--space-4);
+  }
+
+  /* Evergreen band prose */
+  .band-prose {
+    max-width: 60ch;
+  }
+  .band-prose h2 {
+    margin-bottom: var(--space-6);
+  }
+
+  /* Who you'll see */
+  .team {
+    display: grid;
+    gap: var(--space-8);
+  }
+  @media (min-width: 760px) {
+    .team {
+      grid-template-columns: 320px 1fr;
+      align-items: start;
+      gap: var(--space-12);
+    }
+  }
+  .team__note {
+    max-width: 44ch;
+    color: var(--stone);
+  }
+
+  /* Closing */
+  .closing {
+    max-width: 60ch;
+  }
+  .closing h2 {
+    margin-bottom: var(--space-6);
+  }
+  .closing__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+
+  .more {
+    max-width: 60ch;
+  }
+</style>

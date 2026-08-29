@@ -1,0 +1,320 @@
+---
+/**
+ * Site header. --paper surface, 1px --line bottom.
+ * Brass sub-brand marker on Cosmetic + GLP-1 Restore — the only brass in the global chrome.
+ * Mobile navigation is a native <details> disclosure (works without JS).
+ */
+import { primaryNav, practice } from '@data/site';
+
+interface Props {
+  /** Current path, for aria-current. */
+  path: string;
+  /** Restore pages get a consultation + call sticky bar instead of plain tap-to-call. */
+  restore?: boolean;
+}
+const { path, restore = false } = Astro.props;
+const isCurrent = (href: string) => path === href || (href !== '/' && path.startsWith(href));
+---
+
+<header class="site-header">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="wrap site-header__inner">
+    <a class="wordmark" href="/" aria-label={`${practice.legalName} — home`}>
+      <span class="wordmark__name">Advanced Dermatology</span>
+      <span class="wordmark__place">Dana Point, California</span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Primary">
+      <ul>
+        {
+          primaryNav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class:list={['nav-link', item.restore && 'nav-link--restore']}
+                aria-current={isCurrent(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <a class="header-phone" href={`tel:${practice.phoneHref}`}>
+        <span class="visually-hidden">Call the practice at </span>{practice.phone}
+      </a>
+      <a class="btn btn--primary header-cta" href="/contact/">Request an appointment</a>
+    </div>
+
+    <details class="nav-mobile">
+      <summary aria-label="Open menu">
+        <span class="nav-mobile__bars" aria-hidden="true"></span>
+        <span class="nav-mobile__text">Menu</span>
+      </summary>
+      <div class="nav-mobile__panel">
+        <ul>
+          {
+            primaryNav.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class:list={['nav-link', item.restore && 'nav-link--restore']}
+                  aria-current={isCurrent(item.href) ? 'page' : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+          <li>
+            <a href="/contact/" class="nav-link">Contact</a>
+          </li>
+        </ul>
+        <a class="btn btn--primary" href="/contact/">Request an appointment</a>
+      </div>
+    </details>
+  </div>
+</header>
+
+<!-- Sticky bottom bar, mobile only. Restore pages show consultation + call. -->
+{
+  restore ? (
+    <div class="sticky-bar sticky-bar--restore">
+      <a class="sticky-bar__cta" href="/contact/">
+        Request a consultation
+      </a>
+      <a class="sticky-bar__call" href={`tel:${practice.phoneHref}`}>
+        <span class="visually-hidden">Call </span>Call
+      </a>
+    </div>
+  ) : (
+    <a class="sticky-bar sticky-bar__call-only" href={`tel:${practice.phoneHref}`}>
+      Call {practice.phone}
+    </a>
+  )
+}
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--paper);
+    border-bottom: var(--border-hair);
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    min-height: 76px;
+    padding-block: var(--space-3);
+  }
+
+  .wordmark {
+    text-decoration: none;
+    flex: none;
+    line-height: 1.1;
+  }
+  .wordmark__name {
+    display: block;
+    font-family: var(--display);
+    font-size: 1.3rem;
+    color: var(--evergreen);
+    letter-spacing: -0.01em;
+  }
+  .wordmark__place {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-top: 2px;
+  }
+
+  .nav-desktop {
+    display: none;
+    margin-left: auto;
+  }
+  .nav-desktop ul {
+    display: flex;
+    gap: var(--space-6);
+    list-style: none;
+    padding: 0;
+  }
+
+  .nav-link {
+    display: inline-block;
+    padding: var(--space-2) 0;
+    font-size: var(--fs-small);
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+  }
+  .nav-link:hover {
+    color: var(--evergreen);
+  }
+  .nav-link[aria-current='page'] {
+    border-bottom-color: var(--evergreen);
+  }
+
+  /* Restore sub-brand marker — brass dot before the label. */
+  .nav-link--restore {
+    position: relative;
+  }
+  .nav-link--restore::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 0.4em;
+    border-radius: 50%;
+    background: var(--brass);
+    vertical-align: 0.15em;
+  }
+  .nav-link--restore[aria-current='page'] {
+    border-bottom-color: var(--brass);
+  }
+
+  .site-header__actions {
+    display: none;
+    align-items: center;
+    gap: var(--space-6);
+    flex: none;
+  }
+
+  .header-phone {
+    font-size: var(--fs-small);
+    font-weight: 600;
+    color: var(--evergreen);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .header-cta {
+    /* uses global .btn rules; tighten height for the bar */
+    min-height: 44px;
+    padding-block: 0.6rem;
+  }
+
+  /* ---- Mobile disclosure ---- */
+  .nav-mobile {
+    margin-left: auto;
+    flex: none;
+  }
+  .nav-mobile summary {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 44px;
+    padding: var(--space-2) var(--space-3);
+    list-style: none;
+    cursor: pointer;
+    font-size: var(--fs-small);
+    font-weight: 600;
+    color: var(--evergreen);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .nav-mobile summary::-webkit-details-marker {
+    display: none;
+  }
+  .nav-mobile__bars {
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+    box-shadow:
+      0 5px 0 currentColor,
+      0 -5px 0 currentColor;
+  }
+
+  .nav-mobile__panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: var(--paper);
+    border-bottom: var(--border-hair);
+    padding: var(--space-4) var(--gutter) var(--space-8);
+  }
+  .nav-mobile__panel ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: var(--space-6);
+  }
+  .nav-mobile__panel li {
+    border-top: var(--border-hair);
+  }
+  .nav-mobile__panel .nav-link {
+    display: block;
+    padding: var(--space-4) 0;
+    font-size: 1.05rem;
+  }
+  .nav-mobile__panel .btn {
+    width: 100%;
+  }
+
+  .sticky-bar {
+    position: sticky;
+    bottom: 0;
+    z-index: 40;
+    background: var(--evergreen);
+    color: var(--paper);
+    font-weight: 600;
+  }
+  .sticky-bar__call-only {
+    display: block;
+    text-align: center;
+    padding: var(--space-4);
+    text-decoration: none;
+    color: var(--paper);
+  }
+  .sticky-bar--restore {
+    display: flex;
+  }
+  .sticky-bar--restore .sticky-bar__cta {
+    flex: 1;
+    text-align: center;
+    padding: var(--space-4);
+    background: var(--brass-deep);
+    color: var(--paper);
+    text-decoration: none;
+  }
+  .sticky-bar--restore .sticky-bar__call {
+    flex: none;
+    padding: var(--space-4) var(--space-8);
+    color: var(--paper);
+    text-decoration: none;
+  }
+
+  @media (min-width: 960px) {
+    .nav-desktop,
+    .site-header__actions {
+      display: flex;
+    }
+    .nav-mobile,
+    .sticky-bar {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Close the mobile menu on Escape or when a link inside it is followed.
+  const details = document.querySelector<HTMLDetailsElement>('.nav-mobile');
+  if (details) {
+    details.addEventListener('keydown', (e) => {
+      if ((e as KeyboardEvent).key === 'Escape') details.open = false;
+    });
+    details.querySelectorAll('a').forEach((a) =>
+      a.addEventListener('click', () => {
+        details.open = false;
+      })
+    );
+    document.addEventListener('click', (e) => {
+      if (details.open && !details.contains(e.target as Node)) details.open = false;
+    });
+  }
+</script>

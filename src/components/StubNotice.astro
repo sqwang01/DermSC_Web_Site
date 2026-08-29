@@ -1,0 +1,29 @@
+---
+/**
+ * Temporary in-progress marker for pages that are scaffolded but not yet written to
+ * docs/content-spec.md. Remove the component from a page once its real content lands.
+ * Deliberately plain — never styled to look like finished content.
+ */
+interface Props {
+  spec?: string;
+}
+const { spec } = Astro.props;
+---
+
+<p class="stub-notice">
+  This page is being written. {spec ? `Spec: ${spec}.` : ''} Meanwhile, to reach the practice, call
+  <a class="link-underline" href="tel:+19492484547">949.248.4547</a> or
+  <a class="link-underline" href="/contact/">request an appointment</a>.
+</p>
+
+<style>
+  .stub-notice {
+    max-width: 60ch;
+    margin-top: var(--space-8);
+    padding: var(--space-6);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius);
+    color: var(--stone);
+    font-size: var(--fs-small);
+  }
+</style>

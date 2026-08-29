@@ -1,0 +1,38 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionBand from '@components/SectionBand.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+import StubNotice from '@components/StubNotice.astro';
+---
+
+<BaseLayout
+  title="Privacy Policy · Advanced Dermatology"
+  description="How Advanced Dermatology's website handles the limited information collected through the callback form. The site does not collect protected health information."
+  path="/privacy/"
+  noindex
+>
+  <SectionBand>
+    <Breadcrumbs
+      crumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Privacy policy', href: '/privacy/' },
+      ]}
+    />
+    <h1>Privacy policy</h1>
+    <div class="prose">
+      <p>
+        This website is informational. It does not collect protected health information. The
+        callback form collects only your name, phone number, optional email, a preferred time to
+        call, and which area of care you’re asking about — so a member of our team can call you
+        back. Please don’t include medical details in the form.
+      </p>
+      <p>
+        We don’t sell or rent this information. It’s used to contact you about your request and is
+        retained only as long as needed for that purpose.
+      </p>
+    </div>
+    <StubNotice
+      spec="docs/content-spec.md → Legal (privacy: form fields, retention, analytics vendor)"
+    />
+  </SectionBand>
+</BaseLayout>

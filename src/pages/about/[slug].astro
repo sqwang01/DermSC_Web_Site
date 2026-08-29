@@ -1,0 +1,100 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionBand from '@components/SectionBand.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+import PlaceholderImage from '@components/PlaceholderImage.astro';
+import StubNotice from '@components/StubNotice.astro';
+import { providers, siteMeta, practice } from '@data/site';
+
+export const getStaticPaths = (() => {
+  return providers.map((p) => ({ params: { slug: p.slug }, props: { provider: p } }));
+}) satisfies GetStaticPaths;
+
+const { provider } = Astro.props;
+const path = `/about/${provider.slug}/`;
+
+const physicianSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Physician',
+  name: provider.name,
+  medicalSpecialty: 'Dermatology',
+  worksFor: {
+    '@type': 'MedicalBusiness',
+    name: practice.legalName,
+    '@id': `${siteMeta.origin}/#practice`,
+  },
+  url: new URL(path, siteMeta.origin).href,
+};
+---
+
+<BaseLayout
+  title={`${provider.name} · Advanced Dermatology`}
+  description={`${provider.firstReference}. ${provider.cardLine}`}
+  path={path}
+  schema={[physicianSchema]}
+>
+  <SectionBand>
+    <Breadcrumbs
+      crumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'About', href: '/about/' },
+        { label: provider.name, href: path },
+      ]}
+    />
+    <div class="bio">
+      <PlaceholderImage
+        label={`${provider.name}, eye-level portrait in the working environment, daylight, no lab coat staged on white`}
+        ratio="4 / 5"
+        class="bio__photo"
+      />
+      <div class="bio__body">
+        <h1>{provider.name}</h1>
+        <p class="bio__cred">{provider.credential}</p>
+        <p class="lede">{provider.cardLine}</p>
+        <p class="bio__role">{provider.role}</p>
+        <ul class="bio__links">
+          {
+            provider.serviceLinks.map((l) => (
+              <li>
+                <a class="link-underline" href={l.href}>
+                  {l.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <StubNotice spec="docs/content-spec.md → Provider bios" />
+      </div>
+    </div>
+  </SectionBand>
+</BaseLayout>
+
+<style>
+  .bio {
+    display: grid;
+    gap: var(--space-12);
+  }
+  .bio__photo {
+    max-width: 360px;
+  }
+  .bio__cred {
+    color: var(--stone);
+    margin: var(--space-2) 0 var(--space-6);
+  }
+  .bio__role {
+    margin-top: var(--space-4);
+  }
+  .bio__links {
+    margin-top: var(--space-6);
+    padding-left: 1.1rem;
+  }
+  .bio__links li + li {
+    margin-top: var(--space-2);
+  }
+  @media (min-width: 820px) {
+    .bio {
+      grid-template-columns: 360px 1fr;
+    }
+  }
+</style>

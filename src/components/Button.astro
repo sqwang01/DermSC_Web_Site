@@ -1,0 +1,87 @@
+---
+/**
+ * Button / call-to-action link.
+ * variant: primary (evergreen) · secondary (outline) · restore (brass-deep fill — Restore pages only)
+ * One primary per screen region (style guide §5).
+ */
+interface Props {
+  href?: string;
+  type?: 'button' | 'submit';
+  variant?: 'primary' | 'secondary' | 'restore';
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { href, type = 'button', variant = 'primary', class: className, ...rest } = Astro.props;
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag
+  class:list={['btn', `btn--${variant}`, className]}
+  href={href}
+  type={href ? undefined : type}
+  {...rest}
+>
+  <span class="btn__label"><slot /></span>
+</Tag>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--control-min-h);
+    padding: 0.9rem 1.6rem;
+    border-radius: var(--radius);
+    border: 1.5px solid transparent;
+    font-family: var(--body);
+    font-size: var(--fs-button);
+    font-weight: 600;
+    letter-spacing: var(--tracking-button);
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color 0.18s ease,
+      border-color 0.18s ease,
+      color 0.18s ease;
+  }
+
+  .btn__label {
+    display: inline-block;
+  }
+
+  .btn--primary {
+    background: var(--evergreen);
+    color: var(--paper);
+    border-color: var(--evergreen);
+  }
+  .btn--primary:hover {
+    background: var(--evergreen-deep);
+    border-color: var(--evergreen-deep);
+    color: var(--paper);
+  }
+
+  .btn--secondary {
+    background: transparent;
+    color: var(--evergreen);
+    border-color: var(--line);
+  }
+  .btn--secondary:hover {
+    background: transparent;
+    border-color: var(--evergreen);
+    color: var(--evergreen-deep);
+  }
+
+  /* Restore actions only — brass-deep carries body-size text at AA (style guide §2.2). */
+  .btn--restore {
+    background: var(--brass-deep);
+    color: var(--paper);
+    border-color: var(--brass-deep);
+  }
+  .btn--restore:hover {
+    background: #6a5330;
+    border-color: #6a5330;
+    color: var(--paper);
+  }
+</style>

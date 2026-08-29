@@ -1,0 +1,249 @@
+---
+/**
+ * Callback-request form. Collects name, phone, optional email, preferred time, service,
+ * and referral source. No free-text medical field — the site stays out of PHI scope (D4).
+ * Posts to /api/callback (Vercel function). Works without JS (function 303-redirects to
+ * /thank-you/); JS enhances with an inline status message.
+ */
+import { formEndpoint } from '@data/site';
+
+interface Props {
+  /** Pre-select the service dropdown, e.g. "skin-cancer". */
+  service?: string;
+  /** Heading rendered above the form. */
+  heading?: string;
+  /** brass submit button on Restore pages. */
+  restore?: boolean;
+}
+
+const { service, heading, restore = false } = Astro.props;
+
+const services = [
+  { value: '', label: 'Select one' },
+  { value: 'general-dermatology', label: 'General dermatology' },
+  { value: 'skin-cancer', label: 'Skin cancer' },
+  { value: 'cosmetic', label: 'Cosmetic' },
+  { value: 'glp-1-restore', label: 'GLP-1 Restore' },
+  { value: 'not-sure', label: 'Not sure yet' },
+];
+---
+
+<div class="cbf">
+  {heading && <h2 class="cbf__heading">{heading}</h2>}
+  <p class="cbf__note">
+    Please don’t include medical details here — we’ll go over those by phone. If you have a changing
+    or bleeding spot, call us and say so, and we’ll get you in sooner.
+  </p>
+
+  <form class="cbf__form" method="post" action={formEndpoint} novalidate>
+    <!-- Honeypot: real people leave this empty. -->
+    <div class="cbf__hp" aria-hidden="true">
+      <label for="cbf-company">Company</label>
+      <input id="cbf-company" name="company" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <div class="cbf__row">
+      <label for="cbf-name">Full name</label>
+      <input id="cbf-name" name="name" type="text" autocomplete="name" required />
+    </div>
+
+    <div class="cbf__grid">
+      <div class="cbf__row">
+        <label for="cbf-phone">Phone</label>
+        <input id="cbf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required />
+      </div>
+      <div class="cbf__row">
+        <label for="cbf-email">Email <span class="cbf__opt">(optional)</span></label>
+        <input id="cbf-email" name="email" type="email" autocomplete="email" />
+      </div>
+    </div>
+
+    <div class="cbf__grid">
+      <div class="cbf__row">
+        <label for="cbf-service">Which area of care</label>
+        <select id="cbf-service" name="service" required>
+          {
+            services.map((s) => (
+              <option value={s.value} selected={service === s.value} disabled={s.value === ''}>
+                {s.label}
+              </option>
+            ))
+          }
+        </select>
+      </div>
+      <div class="cbf__row">
+        <label for="cbf-time">Best time to reach you</label>
+        <input id="cbf-time" name="preferred_time" type="text" autocomplete="off" />
+        <span class="cbf__hint">For example: weekday mornings, or after 3 pm.</span>
+      </div>
+    </div>
+
+    <div class="cbf__row">
+      <label for="cbf-source"
+        >How did you hear about us? <span class="cbf__opt">(optional)</span></label
+      >
+      <input id="cbf-source" name="referral_source" type="text" autocomplete="off" />
+    </div>
+
+    <button
+      type="submit"
+      class:list={['btn', restore ? 'btn--restore' : 'btn--primary', 'cbf__submit']}
+    >
+      Request a callback
+    </button>
+
+    <p class="cbf__status" role="status" aria-live="polite" hidden></p>
+  </form>
+</div>
+
+<style>
+  .cbf {
+    max-width: 40rem;
+  }
+  .cbf__heading {
+    margin-bottom: var(--space-4);
+  }
+  .cbf__note {
+    font-size: var(--fs-small);
+    color: var(--stone);
+    max-width: 52ch;
+    margin-bottom: var(--space-8);
+  }
+
+  .cbf__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .cbf__grid {
+    display: grid;
+    gap: var(--space-6);
+  }
+  @media (min-width: 560px) {
+    .cbf__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .cbf__row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  label {
+    font-weight: 600;
+    font-size: var(--fs-small);
+  }
+  .cbf__opt {
+    font-weight: 400;
+    color: var(--stone);
+  }
+  .cbf__hint {
+    font-size: var(--fs-small);
+    color: var(--stone);
+  }
+
+  input,
+  select {
+    min-height: var(--control-min-h);
+    padding: 0.75rem 0.9rem;
+    font-size: 1.0625rem; /* >= 17px so iOS does not zoom; visually ~18px */
+    background: var(--paper);
+    border: 1px solid var(--stone);
+    border-radius: var(--radius);
+  }
+  input:focus-visible,
+  select:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-offset);
+  }
+
+  .cbf__hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .cbf__submit {
+    align-self: flex-start;
+  }
+
+  .cbf__status {
+    font-size: var(--fs-small);
+    padding: var(--space-4);
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+  }
+  .cbf__status[data-state='ok'] {
+    border-color: var(--evergreen);
+    color: var(--evergreen);
+  }
+  .cbf__status[data-state='error'] {
+    border-left: 3px solid var(--clay);
+    color: var(--clay);
+  }
+</style>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('.cbf__form');
+  const status = document.querySelector<HTMLParagraphElement>('.cbf__status');
+
+  if (form && status) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+
+      // Minimal client validation; the function validates authoritatively.
+      const required = ['name', 'phone', 'service'];
+      for (const field of required) {
+        const el = form.elements.namedItem(field) as HTMLInputElement | HTMLSelectElement | null;
+        if (el && !el.value.trim()) {
+          el.focus();
+          show('error', 'Please add your name, phone, and which area of care you need.');
+          return;
+        }
+      }
+
+      submit && (submit.disabled = true);
+      show('pending', 'Sending your request…');
+
+      try {
+        const body = new URLSearchParams();
+        new FormData(form).forEach((value, key) => body.append(key, String(value)));
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body,
+        });
+        if (res.ok) {
+          form.reset();
+          show(
+            'ok',
+            'Thank you. We have your request and will call you back, usually within one business day.'
+          );
+        } else {
+          const data = await res.json().catch(() => ({}));
+          show('error', data.message || 'Something went wrong. Please call us at 949.248.4547.');
+        }
+      } catch {
+        show('error', 'We could not send that just now. Please call us at 949.248.4547.');
+      } finally {
+        submit && (submit.disabled = false);
+      }
+    });
+  }
+
+  function show(state: 'pending' | 'ok' | 'error', message: string) {
+    if (!status) return;
+    status.hidden = false;
+    status.textContent = message;
+    status.dataset.state = state;
+  }
+</script>

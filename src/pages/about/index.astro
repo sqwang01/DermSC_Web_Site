@@ -1,0 +1,61 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionBand from '@components/SectionBand.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+import ProviderCard from '@components/ProviderCard.astro';
+import StubNotice from '@components/StubNotice.astro';
+import { providers } from '@data/site';
+---
+
+<BaseLayout
+  title="About Advanced Dermatology · Dana Point"
+  description="Advanced Dermatology is a physician-owned practice in Dana Point, California, founded by Dr. Maryam Moinfar in 2006. It has never been sold to a hospital system or private equity group."
+  path="/about/"
+>
+  <SectionBand>
+    <Breadcrumbs
+      crumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'About', href: '/about/' },
+      ]}
+    />
+    <h1>Independent since 2006.</h1>
+    <p class="lede">
+      Advanced Dermatology is a physician-owned dermatology practice in Dana Point, California.
+      Founded by Dr. Maryam Moinfar in 2006, it provides medical dermatology and skin cancer care
+      alongside Restore, its physician-directed hair, body, and cosmetic program. The practice has
+      never been sold to a hospital system, private equity group, or national roll-up.
+    </p>
+  </SectionBand>
+
+  <SectionBand tone="fog" id="providers" aria-labelledby="team-heading">
+    <h2 id="team-heading" class="team-heading">Our providers</h2>
+    <div class="team">
+      {providers.map((p) => <ProviderCard provider={p} />)}
+    </div>
+  </SectionBand>
+
+  <SectionBand>
+    <StubNotice spec="docs/content-spec.md → About (independence explainer §7.5 verbatim)" />
+  </SectionBand>
+</BaseLayout>
+
+<style>
+  .team-heading {
+    margin-bottom: var(--space-12);
+  }
+  .team {
+    display: grid;
+    gap: var(--space-12);
+  }
+  @media (min-width: 640px) {
+    .team {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (min-width: 1000px) {
+    .team {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

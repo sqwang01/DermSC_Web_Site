@@ -1,0 +1,160 @@
+---
+/**
+ * Site footer. --evergreen-deep surface, --paper text.
+ * NAP matches the Google Business Profile exactly. No review count, no "as seen in" strip,
+ * no social widgets (style guide §8, D13).
+ */
+import { practice, footerLinks } from '@data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap site-footer__grid">
+    <div class="site-footer__nap">
+      <p class="site-footer__name">{practice.legalName}</p>
+      <address>
+        {practice.street}<br />
+        {practice.city}, {practice.state}
+        {practice.postalCode}<br />
+        <a href={`tel:${practice.phoneHref}`}>{practice.phone}</a>
+        {
+          practice.fax && (
+            <>
+              <br />
+              Fax {practice.fax}
+            </>
+          )
+        }
+      </address>
+      <p class="site-footer__hours">
+        {practice.hours.map((h) => <span>{h.label}</span>)}
+      </p>
+      <p class="site-footer__independent">Independent since {practice.foundedYear}.</p>
+    </div>
+
+    {
+      footerLinks.map((col) => (
+        <nav class="site-footer__col" aria-label={col.heading}>
+          <p class="site-footer__heading">{col.heading}</p>
+          <ul>
+            {col.links.map((l) => (
+              <li>
+                <a href={l.href}>{l.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ))
+    }
+
+    <div class="site-footer__col">
+      <p class="site-footer__heading">Shop</p>
+      <ul>
+        <li>
+          <a href={practice.shopUrl} target="_blank" rel="noopener">
+            Skin-care shop
+            <span class="visually-hidden"> (opens in a new tab)</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="wrap site-footer__legal">
+    <p>
+      &copy; {year}
+      {practice.legalName}. This site is for general information and does not constitute medical
+      advice or create a physician–patient relationship.
+    </p>
+    <p>
+      <a href="/privacy/">Privacy policy</a> · <a href="/accessibility/">Accessibility statement</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--evergreen-deep);
+    color: var(--paper);
+    padding-block: var(--section-y) var(--space-12);
+    font-size: var(--fs-small);
+  }
+
+  .site-footer a {
+    color: var(--paper);
+    text-decoration: none;
+  }
+  .site-footer a:hover {
+    color: var(--paper);
+    text-decoration: underline;
+    text-underline-offset: 0.14em;
+  }
+
+  .site-footer__grid {
+    display: grid;
+    gap: var(--space-12) var(--space-8);
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer__name {
+    font-family: var(--display);
+    font-size: 1.2rem;
+    margin-bottom: var(--space-3);
+  }
+
+  address {
+    font-style: normal;
+    line-height: 1.7;
+  }
+
+  .site-footer__hours {
+    margin-top: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    color: #cdd8d0;
+  }
+
+  .site-footer__independent {
+    margin-top: var(--space-4);
+    font-family: var(--display);
+    color: #cdd8d0;
+  }
+
+  .site-footer__heading {
+    font-size: var(--fs-eyebrow);
+    font-weight: 600;
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: #cdd8d0;
+    margin-bottom: var(--space-4);
+  }
+
+  .site-footer__col ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .site-footer__legal {
+    margin-top: var(--space-16);
+    padding-top: var(--space-8);
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    color: #cdd8d0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+  .site-footer__legal p {
+    max-width: 62ch;
+  }
+
+  @media (min-width: 720px) {
+    .site-footer__grid {
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    }
+  }
+</style>

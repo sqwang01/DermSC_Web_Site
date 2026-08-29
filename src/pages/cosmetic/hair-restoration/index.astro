@@ -1,0 +1,484 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionBand from '@components/SectionBand.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+import Faq from '@components/Faq.astro';
+import ProviderCard from '@components/ProviderCard.astro';
+import Button from '@components/Button.astro';
+import { practice, providers, siteMeta } from '@data/site';
+
+const title = 'Hair Loss Evaluation & Restoration · Dana Point';
+const description =
+  'Hair loss is a symptom. At Advanced Dermatology in Dana Point, evaluation starts with trichoscopy, labs, and — where needed — a scalp biopsy, before any treatment plan.';
+
+const moinfar = providers.find((p) => p.slug === 'dr-maryam-moinfar')!;
+
+// MedicalProcedure (hair loss evaluation / trichology). FAQPage schema comes from <Faq>.
+// Diagnosis-first; PRP is diagnosis-dependent, never a default (§7.4). Candidacy, not outcomes (§9.1).
+const procedureSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalProcedure',
+  name: 'Hair loss evaluation (trichology)',
+  procedureType: 'https://schema.org/DiagnosticProcedure',
+  bodyLocation: 'Scalp and hair',
+  howPerformed:
+    'A clinical history, a scalp examination with trichoscopy, blood work for iron, thyroid, vitamin D and other contributors where indicated, and a small scalp biopsy when the pattern calls for one. Standardized baseline photography and a written plan follow. Treatment is matched to the diagnosis; PRP or PRF is used only where the diagnosis supports it.',
+  provider: {
+    '@type': 'MedicalBusiness',
+    name: practice.legalName,
+    '@id': `${siteMeta.origin}/#practice`,
+  },
+};
+
+const causes = [
+  {
+    name: 'Telogen effluvium',
+    body: 'Shedding a few months after a stress event: illness, surgery, rapid weight loss, childbirth. Usually settles once the trigger passes.',
+  },
+  {
+    name: 'Androgenetic (pattern) hair loss',
+    body: 'Gradual thinning along the part or the crown, often with a hereditary component.',
+  },
+  {
+    name: 'Scarring alopecias',
+    body: 'Lichen planopilaris, frontal fibrosing alopecia, CCCA. These destroy follicles permanently and need a biopsy to catch.',
+  },
+  {
+    name: 'Alopecia areata',
+    body: 'Patchy loss from an immune process.',
+  },
+  {
+    name: 'Traction',
+    body: 'Tension from styling, over time.',
+  },
+  {
+    name: 'Systemic and nutritional contributors',
+    body: 'Thyroid, iron, and other systemic or nutritional factors that show up on labs.',
+  },
+];
+
+const billing = [
+  { medical: 'Office visit and scalp exam', cash: 'PRP / PRF series' },
+  { medical: 'Scalp biopsy', cash: 'Standardized photography' },
+  { medical: 'Laboratory studies', cash: 'Supplement protocol' },
+  { medical: 'Diagnosis', cash: 'Structured follow-up intervals' },
+  { medical: 'Prescription therapy', cash: 'Program coordination' },
+];
+
+const faqs = [
+  {
+    q: 'Why is my hair falling out after weight loss?',
+    a: 'Rapid weight loss is a common trigger for telogen effluvium, a temporary shed that shows up two to four months later. If you’re on a GLP-1 medication, our GLP-1 Restore program covers this specifically.',
+  },
+  {
+    q: 'Does PRP work for hair loss?',
+    a: 'For some diagnoses it’s a reasonable option; for others it does nothing and delays the treatment that would help. Whether it’s right for you depends on what the evaluation finds.',
+  },
+  {
+    q: 'Do I need a biopsy for hair loss?',
+    a: 'Not always. It’s warranted when the pattern or the trichoscopy suggests a scarring process, because those are the cases where waiting costs follicles.',
+  },
+  {
+    q: 'Will my hair grow back after chemotherapy?',
+    a: 'In most cases it regrows once treatment ends, though the timeline and early texture vary. We’ll walk you through what to expect.',
+  },
+  {
+    q: 'Is hair loss evaluation covered by insurance?',
+    a: 'The medical workup — the visit, the scalp exam, labs, a biopsy, and prescription therapy — is billed to insurance. A PRP or PRF series, standardized photography, and program coordination are not covered and are quoted in writing.',
+  },
+  {
+    q: 'How long before I see regrowth?',
+    a: 'Months, not weeks. Most treatment plans need three to six months before there’s a visible change, and some patterns need ongoing maintenance.',
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path="/cosmetic/hair-restoration/"
+  schema={[procedureSchema]}
+  restore
+>
+  <!-- 1 · Hero -->
+  <SectionBand as="div" class="hero">
+    <Breadcrumbs
+      crumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Cosmetic', href: '/cosmetic/' },
+        { label: 'Hair restoration', href: '/cosmetic/hair-restoration/' },
+      ]}
+    />
+    <div class="hero__copy" data-reveal>
+      <span class="eyebrow">Restore — under a physician’s direction</span>
+      <h1>Hair loss is a symptom. We find out of what.</h1>
+      <p class="hero__sub">Restore at Advanced Dermatology.</p>
+      <p class="lede">
+        Most of our hair patients are women who were told there was nothing to do. Some conditions
+        that look identical in the mirror are quietly destroying follicles while you wait. The
+        evaluation is what tells them apart.
+      </p>
+      <div class="hero__cta">
+        <Button href="/contact/" variant="restore">Request a hair consultation</Button>
+        <Button href="/about/dr-maryam-moinfar/" variant="secondary">About Dr. Moinfar →</Button>
+      </div>
+    </div>
+  </SectionBand>
+
+  <!-- 2 · Why the diagnosis comes first (§7.4 in patient terms) -->
+  <SectionBand id="how-it-works" tone="evergreen" aria-labelledby="why-heading">
+    <div class="band-prose" data-reveal>
+      <h2 id="why-heading">Why the diagnosis comes first</h2>
+      <p>
+        A practice with a revenue target sells the PRP series, because that’s the product. If the
+        cause is a scarring alopecia — lichen planopilaris, frontal fibrosing alopecia, CCCA — that
+        series does nothing while the follicles are lost for good. A biopsy first can tell you PRP
+        is the wrong treatment for you. The benefit is the follicles you keep.
+      </p>
+      <p>
+        No one here has a monthly target, so the evaluation isn’t shaped by what’s easiest to sell.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 3 · What we look for -->
+  <SectionBand tone="fog" aria-labelledby="causes-heading">
+    <h2 id="causes-heading" class="section-title" data-reveal>What we look for</h2>
+    <div class="causes" data-reveal>
+      {
+        causes.map((c) => (
+          <article class="causes__item prose">
+            <h3>{c.name}</h3>
+            <p>{c.body}</p>
+          </article>
+        ))
+      }
+    </div>
+    <p class="causes__note" data-reveal>
+      Many patients have more than one of these at once. Treating the wrong one costs months.
+    </p>
+  </SectionBand>
+
+  <!-- 4 · How an evaluation works -->
+  <SectionBand aria-labelledby="eval-heading">
+    <div class="prose" data-reveal>
+      <h2 id="eval-heading">How an evaluation works</h2>
+      <ol class="steps">
+        <li>History — timeline, family pattern, medications, diet, recent stressors.</li>
+        <li>A scalp exam with trichoscopy.</li>
+        <li>
+          Blood work for iron, thyroid, vitamin D, and other contributors where indicated.
+        </li>
+        <li>A small scalp biopsy when the pattern calls for one.</li>
+        <li>Standardized baseline photographs.</li>
+        <li>A written plan.</li>
+      </ol>
+    </div>
+  </SectionBand>
+
+  <!-- 5 · Billing, stated plainly (§9.4) -->
+  <SectionBand tone="fog" aria-labelledby="billing-heading">
+    <h2 id="billing-heading" class="section-title" data-reveal>Billing, stated plainly</h2>
+    <p class="billing__intro" data-reveal>
+      The medical workup is billed to your insurance as medical care, because that’s what it is. The
+      program elements around it are not covered and are quoted to you in writing.
+    </p>
+    <div class="billing__scroll" data-reveal>
+      <table class="billing">
+        <thead>
+          <tr>
+            <th scope="col">Billed to insurance (medical)</th>
+            <th scope="col">Not covered (cash)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            billing.map((row) => (
+              <tr>
+                <td>{row.medical}</td>
+                <td>{row.cash}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <p class="billing__caption" data-reveal>
+      {/* ⚠️ Billing structure to be confirmed with counsel before launch (§9.4). */}
+      Billing structure is being confirmed with counsel ahead of launch.
+    </p>
+  </SectionBand>
+
+  <!-- 6 · Treatment, once there's a diagnosis -->
+  <SectionBand aria-labelledby="treatment-heading">
+    <div class="prose" data-reveal>
+      <h2 id="treatment-heading">Treatment, once there’s a diagnosis</h2>
+      <ul class="list">
+        <li>Prescription therapy matched to the diagnosis — topical or oral.</li>
+        <li>PRP or PRF where the diagnosis supports it — never as a default.</li>
+        <li>Treatment of an underlying scarring process, where that’s the cause.</li>
+        <li>Supplements only to correct a deficiency we’ve documented on labs.</li>
+        <li>Referral where the cause sits outside dermatology.</li>
+      </ul>
+    </div>
+  </SectionBand>
+
+  <!-- 7 · Post-chemotherapy hair (gentlest tone — §8.5; never "cosmetic") -->
+  <SectionBand tone="fog" aria-labelledby="chemo-heading">
+    <div class="prose" data-reveal>
+      <h2 id="chemo-heading">Post-chemotherapy hair</h2>
+      <p>
+        Hair after chemotherapy regrows on its own timeline, and it often comes back with a
+        different texture or color for a while before it settles. We can tell you what’s normal,
+        what helps, and when it makes sense to start. This is medical care, not a cosmetic service.
+      </p>
+      {/* TODO(client): name the oncology referral partner only if approved. */}
+    </div>
+  </SectionBand>
+
+  <!-- 8 · Who you'll see -->
+  <SectionBand aria-labelledby="team-heading">
+    <h2 id="team-heading" class="section-title" data-reveal>Who you’ll see</h2>
+    <div class="team" data-reveal>
+      <ProviderCard provider={moinfar} />
+      <p class="team__note">
+        Dr. Maryam Moinfar handles hair and scalp. She trained under a hair specialist during
+        residency.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 9 · Evidence -->
+  <SectionBand tone="fog" aria-labelledby="evidence-heading">
+    <div class="prose" data-reveal>
+      <h2 id="evidence-heading">Evidence</h2>
+      <p>
+        Two or three consented before-and-afters are in progress; photography follows a
+        standardized protocol. No stock, no borrowed images.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 10 · The consultation & pricing (§12.10 then §12.8, verbatim) -->
+  <SectionBand aria-labelledby="pricing-heading">
+    <div class="prose" data-reveal>
+      <h2 id="pricing-heading">The consultation &amp; pricing</h2>
+      <p>
+        A consultation takes twenty minutes. We’ll look at the area you’re concerned about, review
+        your health history and medications, and tell you plainly whether this will help — and what
+        it won’t do.
+      </p>
+      <p>Pricing for the cash components is provided in writing before a series starts.</p>
+      <p>
+        We don’t run flash sales, holiday promotions, or discount packages. The price is the price,
+        and it doesn’t go down if you wait.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 11 · FAQ -->
+  <SectionBand tone="fog" aria-labelledby="faq-heading">
+    <Faq heading="Questions patients ask" items={faqs} />
+  </SectionBand>
+
+  <!-- 12 · Closing CTA -->
+  <SectionBand tone="evergreen-deep" aria-labelledby="cta-heading">
+    <div class="closing" data-reveal>
+      <h2 id="cta-heading">Request a hair consultation</h2>
+      <p>
+        A hair consultation is an evaluation, not a sales appointment — you’ll leave knowing what’s
+        happening and what the options are. Leave your name and number and our team will call you
+        back.
+      </p>
+      <div class="closing__cta">
+        <Button href="/contact/" variant="restore">Request a hair consultation</Button>
+        <Button href={`tel:${practice.phoneHref}`} variant="secondary">
+          Call {practice.phone}
+        </Button>
+      </div>
+    </div>
+  </SectionBand>
+
+  <!-- 13 · Cross-sell -->
+  <SectionBand aria-labelledby="more-heading">
+    <div class="more" data-reveal>
+      <h2 id="more-heading" class="section-title">Related</h2>
+      <ul class="more__list">
+        <li>
+          On a GLP-1 medication? Shedding is covered by the hair track of
+          <a class="link-underline" href="/glp-1-restore/">GLP-1 Restore</a>.
+        </li>
+        <li>
+          Scalp conditions like seborrheic dermatitis and psoriasis are treated through
+          <a class="link-underline" href="/general-dermatology/">general dermatology</a>.
+        </li>
+      </ul>
+    </div>
+  </SectionBand>
+</BaseLayout>
+
+<style>
+  .section-title {
+    margin-bottom: var(--space-12);
+  }
+
+  /* Hero */
+  .hero {
+    padding-block: var(--section-y);
+  }
+  .hero__copy {
+    margin-top: var(--space-8);
+  }
+  .hero__sub {
+    color: var(--stone);
+    margin-top: var(--space-3);
+  }
+  .hero .lede {
+    margin-top: var(--space-4);
+    max-width: 60ch;
+  }
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+
+  /* Generic prose */
+  .prose {
+    max-width: 60ch;
+  }
+  .prose h2 {
+    margin-bottom: var(--space-6);
+  }
+  .prose p + p {
+    margin-top: var(--space-4);
+  }
+  .steps {
+    padding-left: 1.4rem;
+    margin-top: var(--space-6);
+  }
+  .steps li + li {
+    margin-top: var(--space-4);
+  }
+  .list {
+    padding-left: 1.1rem;
+    margin-top: var(--space-6);
+  }
+  .list li + li {
+    margin-top: var(--space-3);
+  }
+
+  /* Evergreen band prose */
+  .band-prose {
+    max-width: 60ch;
+  }
+  .band-prose h2 {
+    margin-bottom: var(--space-6);
+  }
+  .band-prose p + p {
+    margin-top: var(--space-6);
+  }
+
+  /* Causes */
+  .causes {
+    display: grid;
+    gap: var(--space-10);
+  }
+  @media (min-width: 760px) {
+    .causes {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .causes__item h3 {
+    margin-bottom: var(--space-3);
+  }
+  .causes__note {
+    margin-top: var(--space-10);
+    max-width: 60ch;
+    color: var(--stone);
+  }
+
+  /* Billing table */
+  .billing__intro {
+    max-width: 60ch;
+    margin-bottom: var(--space-8);
+  }
+  .billing__scroll {
+    overflow-x: auto;
+  }
+  .billing {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 48rem;
+  }
+  .billing th,
+  .billing td {
+    text-align: left;
+    padding: var(--space-4) var(--space-6);
+    border-bottom: var(--border-hair);
+    vertical-align: top;
+  }
+  .billing thead th {
+    font-family: var(--body);
+    font-size: var(--fs-small);
+    font-weight: 600;
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--stone);
+    border-bottom: 1.5px solid var(--line);
+  }
+  .billing__caption {
+    margin-top: var(--space-6);
+    max-width: 60ch;
+    font-size: var(--fs-small);
+    color: var(--stone);
+  }
+
+  /* Who you'll see */
+  .team {
+    display: grid;
+    gap: var(--space-8);
+  }
+  @media (min-width: 760px) {
+    .team {
+      grid-template-columns: 320px 1fr;
+      align-items: start;
+      gap: var(--space-12);
+    }
+  }
+  .team__note {
+    max-width: 44ch;
+    color: var(--stone);
+  }
+
+  /* Closing */
+  .closing {
+    max-width: 60ch;
+  }
+  .closing h2 {
+    margin-bottom: var(--space-6);
+  }
+  .closing__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+
+  /* Cross-sell */
+  .more {
+    max-width: 60ch;
+  }
+  .more__list {
+    list-style: none;
+    padding-left: 0;
+  }
+  .more__list li {
+    padding-top: var(--space-6);
+    border-top: var(--border-hair);
+  }
+  .more__list li + li {
+    margin-top: var(--space-6);
+  }
+</style>

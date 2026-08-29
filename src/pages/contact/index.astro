@@ -1,0 +1,90 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionBand from '@components/SectionBand.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+import CallbackForm from '@components/CallbackForm.astro';
+import PlaceholderImage from '@components/PlaceholderImage.astro';
+import { practice } from '@data/site';
+---
+
+<BaseLayout
+  title="Contact Advanced Dermatology · Dana Point"
+  description="Request an appointment at Advanced Dermatology in Dana Point, CA. Leave your name and number and our team will call you back, usually within one business day."
+  path="/contact/"
+>
+  <SectionBand>
+    <Breadcrumbs
+      crumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Contact', href: '/contact/' },
+      ]}
+    />
+    <h1>Request an appointment.</h1>
+    <p class="lede">
+      Leave your name and number and our team will call you back, usually within one business day.
+      We’re often booked several months out for routine visits — if you have a concerning or
+      changing spot, tell us and we’ll get you in sooner.
+    </p>
+
+    <div class="contact">
+      <CallbackForm />
+
+      <aside class="contact__aside">
+        <h2>Visit</h2>
+        <address>
+          {practice.street}<br />
+          {practice.city}, {practice.state}
+          {practice.postalCode}
+        </address>
+        <p>
+          <a class="link-underline" href={`tel:${practice.phoneHref}`}>{practice.phone}</a>
+          {
+            practice.fax && (
+              <>
+                <br />
+                Fax {practice.fax}
+              </>
+            )
+          }
+        </p>
+        <p class="contact__hours">
+          {practice.hours.map((h) => <span>{h.label}</span>)}
+        </p>
+        <p class="contact__parking">TODO(client): parking and building-access details.</p>
+        <PlaceholderImage
+          label="street view of the building entrance for wayfinding, daylight"
+          ratio="4 / 3"
+        />
+      </aside>
+    </div>
+  </SectionBand>
+</BaseLayout>
+
+<style>
+  .contact {
+    display: grid;
+    gap: var(--space-16);
+    margin-top: var(--space-12);
+  }
+  .contact__aside address {
+    font-style: normal;
+    line-height: 1.7;
+    margin-bottom: var(--space-4);
+  }
+  .contact__hours {
+    display: flex;
+    flex-direction: column;
+    color: var(--stone);
+    margin: var(--space-4) 0;
+  }
+  .contact__parking {
+    color: var(--stone);
+    font-size: var(--fs-small);
+    margin-bottom: var(--space-6);
+  }
+  @media (min-width: 900px) {
+    .contact {
+      grid-template-columns: 1.4fr 1fr;
+    }
+  }
+</style>

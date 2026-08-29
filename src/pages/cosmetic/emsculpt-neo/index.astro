@@ -1,0 +1,425 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionBand from '@components/SectionBand.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+import Faq from '@components/Faq.astro';
+import ProviderCard from '@components/ProviderCard.astro';
+import Button from '@components/Button.astro';
+import { practice, providers, siteMeta } from '@data/site';
+
+const title = 'EmSculpt Neo in Dana Point · Muscle & Fat';
+const description =
+  'EmSculpt Neo in Dana Point — an FDA-cleared, non-invasive treatment that builds muscle and reduces fat in cleared areas in one 30-minute session. Individual results vary.';
+
+const moinfar = providers.find((p) => p.slug === 'dr-maryam-moinfar')!;
+
+// MedicalProcedure (EmSculpt Neo / non-invasive body contouring). FAQPage schema comes from <Faq>.
+// "FDA-cleared", never "-approved". Individual-results language kept adjacent to the figures (§9.2).
+const procedureSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalProcedure',
+  name: 'EmSculpt Neo (non-invasive body contouring)',
+  bodyLocation: 'Abdomen, thighs, buttocks, arms, calves',
+  howPerformed:
+    'High-intensity focused electromagnetic energy drives muscle contractions beyond voluntary effort, alongside radiofrequency heating that targets fat in the treated area. Sessions run about 30 minutes, fully clothed, with no incisions, anesthesia, or downtime, in a series over several weeks. FDA-cleared. Fat-reduction claims apply to the abdomen and thighs. Individual results vary.',
+  provider: {
+    '@type': 'MedicalBusiness',
+    name: practice.legalName,
+    '@id': `${siteMeta.origin}/#practice`,
+  },
+};
+
+// The area-specific table (§9.2). Never collapse into identical bullets.
+// ⚠️ Re-check against current device labeling at build — clearances change over time.
+const areas = [
+  { area: 'Abdomen', muscle: true, fat: true },
+  { area: 'Thighs', muscle: true, fat: true },
+  { area: 'Buttocks', muscle: true, fat: false },
+  { area: 'Arms', muscle: true, fat: false },
+  { area: 'Calves', muscle: true, fat: false },
+];
+
+const faqs = [
+  {
+    q: 'How many EmSculpt Neo sessions do I need?',
+    a: 'Most protocols are a short series over a few weeks, followed by occasional maintenance. The exact number depends on the area and your goal; we set it at the consultation.',
+  },
+  {
+    q: 'Does EmSculpt Neo hurt?',
+    a: 'Most patients describe intense but tolerable contractions and a warming sensation, similar to a hard workout. The intensity is adjustable and increased gradually.',
+  },
+  {
+    q: 'Is EmSculpt Neo permanent?',
+    a: 'Muscle and fat changes develop over the weeks after the series. Muscle tone is maintained with periodic sessions and ordinary activity. Individual results vary.',
+  },
+  {
+    q: 'EmSculpt Neo or CoolSculpting?',
+    a: 'CoolSculpting reduces a discrete pinchable fat pocket and does nothing for muscle. EmSculpt Neo builds muscle and, in the abdomen and thighs, also reduces fat. We own both, and the consultation is about which one matches what you want to change.',
+  },
+  {
+    q: 'Can I do EmSculpt Neo while I’m on a GLP-1 medication?',
+    a: 'Yes, many patients do. EmSculpt Neo builds muscle and reduces fat in cleared areas; it is not a treatment for medication side effects, and we don’t describe it as one. The muscle track of our GLP-1 Restore program is a separate discussion.',
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path="/cosmetic/emsculpt-neo/"
+  schema={[procedureSchema]}
+  restore
+>
+  <!-- 1 · Hero -->
+  <SectionBand as="div" class="hero">
+    <Breadcrumbs
+      crumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Cosmetic', href: '/cosmetic/' },
+        { label: 'EmSculpt Neo', href: '/cosmetic/emsculpt-neo/' },
+      ]}
+    />
+    <div class="hero__copy" data-reveal>
+      <span class="eyebrow">Restore — under a physician’s direction</span>
+      <h1>Muscle and fat, in one 30-minute treatment.</h1>
+      <p class="hero__sub">Restore at Advanced Dermatology.</p>
+      <p class="lede">
+        EmSculpt Neo is an FDA-cleared, non-invasive treatment. In clinical studies, treated areas
+        showed an average 25% increase in muscle mass and an average 30% reduction in fat.
+        Individual results vary.
+      </p>
+      <div class="hero__cta">
+        <Button href="/contact/" variant="restore">Book a consultation</Button>
+        <Button href="#how-it-works" variant="secondary">How it works ↓</Button>
+      </div>
+    </div>
+  </SectionBand>
+
+  <!-- 2 · How it works -->
+  <SectionBand id="how-it-works" tone="fog" aria-labelledby="how-heading">
+    <div class="prose" data-reveal>
+      <h2 id="how-heading">How it works</h2>
+      <p>
+        High-intensity focused electromagnetic energy drives muscle contractions well beyond what
+        you can produce voluntarily, while radiofrequency heating targets fat in the treated area. A
+        session runs about 30 minutes, fully clothed, with no incisions, no anesthesia, and no
+        downtime. It’s done as a series over several weeks, with periodic maintenance sessions
+        afterward.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 3 · Treatment areas — the area-specific table (§9.2), never collapsed -->
+  <SectionBand aria-labelledby="areas-heading">
+    <h2 id="areas-heading" class="section-title" data-reveal>Treatment areas</h2>
+    <p class="areas__intro" data-reveal>
+      What EmSculpt Neo is cleared to do depends on the area. It builds muscle in all five areas
+      below; it carries a fat-reduction claim for two of them.
+    </p>
+    <div class="areas__scroll" data-reveal>
+      <table class="areas">
+        <thead>
+          <tr>
+            <th scope="col">Area</th>
+            <th scope="col">Muscle</th>
+            <th scope="col">Fat reduction</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            areas.map((row) => (
+              <tr>
+                <th scope="row">{row.area}</th>
+                <td>
+                  {
+                    row.muscle ? (
+                      'Yes'
+                    ) : (
+                      <>
+                        <span class="visually-hidden">No</span>
+                        <span class="dash" aria-hidden="true">—</span>
+                      </>
+                    )
+                  }
+                </td>
+                <td>
+                  {
+                    row.fat ? (
+                      'Yes'
+                    ) : (
+                      <>
+                        <span class="visually-hidden">No</span>
+                        <span class="dash" aria-hidden="true">—</span>
+                      </>
+                    )
+                  }
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <p class="areas__caption" data-reveal>
+      Fat-reduction claims apply to the abdomen and thighs. For the buttocks, arms, and calves,
+      EmSculpt Neo is used to build and strengthen muscle.
+    </p>
+  </SectionBand>
+
+  <!-- 4 · What a session feels like -->
+  <SectionBand tone="fog" aria-labelledby="feel-heading">
+    <div class="prose" data-reveal>
+      <h2 id="feel-heading">What a session feels like</h2>
+      <p>
+        Strong but tolerable contractions and a warming sensation, like a hard workout. The
+        intensity is turned up gradually through the session, and you can talk the whole time.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 5 · Candidacy -->
+  <SectionBand aria-labelledby="candidacy-heading">
+    <div class="prose" data-reveal>
+      <h2 id="candidacy-heading">Candidacy</h2>
+      <p>
+        <strong>A good fit</strong> if you’re near your goal weight and want tone or strength that a
+        gym plateau hasn’t given you.
+      </p>
+      <p>
+        <strong>Not right for you</strong> if you’re looking for large-volume weight loss, if you’re
+        pregnant, or if you have an implanted electronic device or metal in the treatment area. We
+        screen for this at the consultation.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 6 · Why here -->
+  <SectionBand tone="evergreen" aria-labelledby="why-heading">
+    <div class="band-prose" data-reveal>
+      <h2 id="why-heading">Why here</h2>
+      <p>
+        A dermatologist decides whether this is the right tool before you book. The practice owns
+        both EmSculpt Neo and CoolSculpting and has no reason to steer you toward one over the
+        other. Results are photographed on a fixed protocol.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 7 · Who you'll see -->
+  <SectionBand aria-labelledby="team-heading">
+    <h2 id="team-heading" class="section-title" data-reveal>Who you’ll see</h2>
+    <div class="team" data-reveal>
+      <ProviderCard provider={moinfar} />
+      <p class="team__note">
+        Dr. Moinfar and the Restore team.
+        {/* TODO(client): name the treating provider for the muscle track. */}
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 8 · Evidence -->
+  <SectionBand tone="fog" aria-labelledby="evidence-heading">
+    <div class="prose" data-reveal>
+      <h2 id="evidence-heading">Evidence</h2>
+      <p>
+        Own-practice consented series are in progress; we publish only our own images. The 25% and
+        30% figures are from device labeling and are labeled as such. No stock, no borrowed
+        before-and-afters.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 9 · The consultation & pricing (§12.10 then §12.8, verbatim) -->
+  <SectionBand aria-labelledby="pricing-heading">
+    <div class="prose" data-reveal>
+      <h2 id="pricing-heading">The consultation &amp; pricing</h2>
+      <p>
+        A consultation takes twenty minutes. We’ll look at the area you’re concerned about, review
+        your health history and medications, and tell you plainly whether this will help — and what
+        it won’t do.
+      </p>
+      <p>Price per area and per series is provided in writing before scheduling.</p>
+      <p>
+        We don’t run flash sales, holiday promotions, or discount packages. The price is the price,
+        and it doesn’t go down if you wait.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 10 · FAQ -->
+  <SectionBand tone="fog" aria-labelledby="faq-heading">
+    <Faq heading="Questions patients ask" items={faqs} />
+  </SectionBand>
+
+  <!-- 11 · Closing CTA -->
+  <SectionBand tone="evergreen-deep" aria-labelledby="cta-heading">
+    <div class="closing" data-reveal>
+      <h2 id="cta-heading">Book a consultation</h2>
+      <p>
+        A consultation is twenty minutes: we look at the area, review your history, and tell you
+        whether this is the right tool. Leave your name and number and our team will call you back.
+      </p>
+      <div class="closing__cta">
+        <Button href="/contact/" variant="restore">Book a consultation</Button>
+        <Button href={`tel:${practice.phoneHref}`} variant="secondary">
+          Call {practice.phone}
+        </Button>
+      </div>
+    </div>
+  </SectionBand>
+
+  <!-- 12 · Cross-sell (no causal GLP-1 connector — §9.3) -->
+  <SectionBand aria-labelledby="more-heading">
+    <div class="more" data-reveal>
+      <h2 id="more-heading" class="section-title">Related</h2>
+      <ul class="more__list">
+        <li>
+          For pinchable fat without a muscle goal,
+          <a class="link-underline" href="/cosmetic/coolsculpting/">CoolSculpting</a> may be the
+          better fit.
+        </li>
+        <li>
+          On a GLP-1? The muscle track of our
+          <a class="link-underline" href="/glp-1-restore/">Restore program</a> is here.
+        </li>
+      </ul>
+    </div>
+  </SectionBand>
+</BaseLayout>
+
+<style>
+  .section-title {
+    margin-bottom: var(--space-12);
+  }
+
+  /* Hero */
+  .hero {
+    padding-block: var(--section-y);
+  }
+  .hero__copy {
+    margin-top: var(--space-8);
+  }
+  .hero__sub {
+    color: var(--stone);
+    margin-top: var(--space-3);
+  }
+  .hero .lede {
+    margin-top: var(--space-4);
+    max-width: 60ch;
+  }
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+
+  /* Generic prose */
+  .prose {
+    max-width: 60ch;
+  }
+  .prose h2 {
+    margin-bottom: var(--space-6);
+  }
+  .prose p + p {
+    margin-top: var(--space-4);
+  }
+
+  /* Evergreen band prose */
+  .band-prose {
+    max-width: 60ch;
+  }
+  .band-prose h2 {
+    margin-bottom: var(--space-6);
+  }
+
+  /* Treatment-area table */
+  .areas__intro {
+    max-width: 60ch;
+    margin-bottom: var(--space-8);
+  }
+  .areas__scroll {
+    overflow-x: auto;
+  }
+  .areas {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 40rem;
+  }
+  .areas th,
+  .areas td {
+    text-align: left;
+    padding: var(--space-4) var(--space-6);
+    border-bottom: var(--border-hair);
+  }
+  .areas thead th {
+    font-family: var(--body);
+    font-size: var(--fs-small);
+    font-weight: 600;
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--stone);
+    border-bottom: 1.5px solid var(--line);
+  }
+  .areas tbody th {
+    font-family: var(--body);
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .areas .dash {
+    color: var(--stone);
+  }
+  .areas__caption {
+    margin-top: var(--space-6);
+    max-width: 60ch;
+    font-size: var(--fs-small);
+    color: var(--stone);
+  }
+
+  /* Who you'll see */
+  .team {
+    display: grid;
+    gap: var(--space-8);
+  }
+  @media (min-width: 760px) {
+    .team {
+      grid-template-columns: 320px 1fr;
+      align-items: start;
+      gap: var(--space-12);
+    }
+  }
+  .team__note {
+    max-width: 44ch;
+    color: var(--stone);
+  }
+
+  /* Closing */
+  .closing {
+    max-width: 60ch;
+  }
+  .closing h2 {
+    margin-bottom: var(--space-6);
+  }
+  .closing__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+
+  /* Cross-sell */
+  .more {
+    max-width: 60ch;
+  }
+  .more__list {
+    list-style: none;
+    padding-left: 0;
+  }
+  .more__list li {
+    padding-top: var(--space-6);
+    border-top: var(--border-hair);
+  }
+  .more__list li + li {
+    margin-top: var(--space-6);
+  }
+</style>

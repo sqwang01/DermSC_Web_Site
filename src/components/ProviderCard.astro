@@ -1,0 +1,69 @@
+---
+/**
+ * Provider summary card. Photo is a labeled placeholder until real headshots exist
+ * (no lab-coat-on-white, no stock — style guide §7).
+ */
+import type { Provider } from '@data/site';
+import PlaceholderImage from './PlaceholderImage.astro';
+
+interface Props {
+  provider: Provider;
+  /** Link to the full bio. */
+  showLink?: boolean;
+}
+
+const { provider, showLink = true } = Astro.props;
+const bioHref = `/about/${provider.slug}/`;
+// "Dr. Maryam Moinfar" -> "Dr. Moinfar"; "Madeline Fee, PA-C" -> "Madeline Fee"
+const parts = provider.name.replace(/,.*$/, '').split(' ');
+const shortName = provider.name.startsWith('Dr.')
+  ? `Dr. ${parts[parts.length - 1]}`
+  : `${parts[0]} ${parts[1] ?? ''}`.trim();
+---
+
+<article class="pc">
+  <PlaceholderImage
+    label={`${provider.name}, eye-level portrait in the working environment, daylight`}
+    ratio="4 / 5"
+    class="pc__photo"
+  />
+  <div class="pc__body">
+    <h3 class="pc__name">{provider.name}</h3>
+    <p class="pc__cred">{provider.credential}</p>
+    <p class="pc__line">{provider.cardLine}</p>
+    {
+      showLink && (
+        <a class="pc__link link-underline" href={bioHref}>
+          Read {shortName}’s bio
+        </a>
+      )
+    }
+  </div>
+</article>
+
+<style>
+  .pc {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .pc__photo {
+    max-width: 320px;
+  }
+
+  .pc__name {
+    margin-bottom: var(--space-1);
+  }
+
+  .pc__cred {
+    font-size: var(--fs-small);
+    color: var(--stone);
+    margin-bottom: var(--space-3);
+  }
+
+  .pc__line {
+    max-width: 44ch;
+    margin-bottom: var(--space-3);
+  }
+</style>

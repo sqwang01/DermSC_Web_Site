@@ -1,0 +1,306 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionBand from '@components/SectionBand.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+import Card from '@components/Card.astro';
+import Faq from '@components/Faq.astro';
+import ProviderCard from '@components/ProviderCard.astro';
+import Button from '@components/Button.astro';
+import { practice, providers } from '@data/site';
+
+const title = 'Cosmetic Dermatology in Dana Point · Restore';
+const description =
+  'Injectables, lasers, and body contouring in Dana Point, kept deliberately conservative — Restore, a physician-directed program inside a twenty-year medical practice.';
+
+const moinfar = providers.find((p) => p.slug === 'dr-maryam-moinfar')!;
+
+// The five sub-page cards. One sentence each, in the patient's language (content-spec → Cosmetic hub §3).
+const menu = [
+  {
+    href: '/cosmetic/injectables-and-laser/',
+    label: 'Injectables & laser',
+    line: 'Meant to look like you, ten years ago.',
+  },
+  {
+    href: '/cosmetic/emsculpt-neo/',
+    label: 'EmSculpt Neo',
+    line: 'Muscle and fat, in one 30-minute treatment.',
+  },
+  {
+    href: '/cosmetic/coolsculpting/',
+    label: 'CoolSculpting',
+    line: 'Cryolipolysis for pinchable fat.',
+  },
+  {
+    href: '/cosmetic/hair-restoration/',
+    label: 'Hair restoration',
+    line: 'Hair loss is a symptom. We find out of what.',
+  },
+  {
+    href: '/cosmetic/restore-membership/',
+    label: 'The Restore Membership',
+    line: 'The practice you already trust, on a schedule.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Is a consultation an obligation to book?',
+    a: 'No. It’s twenty minutes to find out whether a treatment fits what you want to change. If it doesn’t, we’ll say so, and there’s nothing to schedule.',
+  },
+  {
+    q: 'Will results look natural?',
+    a: 'That’s the whole intent. Everything here is dosed conservatively and matched to your own face and body. Most patients hear that they look rested, not that they look different.',
+  },
+  {
+    q: 'Who performs the treatments?',
+    a: 'Dr. Moinfar assesses every patient. She and the Restore team perform the treatments; we’ll tell you who at your consultation.',
+  },
+  {
+    q: 'Do you photograph results?',
+    a: 'Yes. We take standardized photographs at baseline and follow-up, on a fixed protocol, so you and the physician are looking at evidence rather than impressions.',
+  },
+  // TODO(client): "Do you offer payment plans?" — held until the practice confirms.
+];
+---
+
+<BaseLayout title={title} description={description} path="/cosmetic/" restore>
+  <!-- 1 · Hero -->
+  <SectionBand as="div" class="hero">
+    <Breadcrumbs
+      crumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Cosmetic', href: '/cosmetic/' },
+      ]}
+    />
+    <div class="hero__copy" data-reveal>
+      <span class="eyebrow">Restore — under a physician’s direction</span>
+      <h1>Nobody should be able to tell. That’s the whole job.</h1>
+      <p class="hero__sub">Restore at Advanced Dermatology.</p>
+      <p class="lede">
+        Injectables, lasers, microneedling, and body contouring — offered by the same practice that
+        reads your pathology, and kept intentionally conservative. Everything here is meant to look
+        like you ten years ago, not like work.
+      </p>
+      <div class="hero__cta">
+        <Button href="/contact/" variant="restore">Book a consultation</Button>
+        <Button href="#how-it-works" variant="secondary">How it works ↓</Button>
+      </div>
+    </div>
+  </SectionBand>
+
+  <!-- 2 · We would rather take less (§7.6 sentences 2 and 4, verbatim) -->
+  <SectionBand id="how-it-works" tone="evergreen" aria-labelledby="restraint-heading">
+    <div class="band-prose" data-reveal>
+      <h2 id="restraint-heading">We would rather take less.</h2>
+      <p>
+        Everything on this page is meant to leave you looking rested, not done. The measure of good
+        cosmetic work is that nobody can point to it — no one says you look different, they say you
+        look well.
+      </p>
+      <p>
+        The person who assesses you is a board-certified dermatologist. She will tell you when a
+        treatment won’t get you what you’re after, and she won’t book it. We will turn people away.
+        That’s the point of having a physician involved.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 3 · The menu -->
+  <SectionBand tone="fog" aria-labelledby="menu-heading">
+    <h2 id="menu-heading" class="section-title" data-reveal>What Restore covers</h2>
+    <ul class="menu" data-reveal>
+      {
+        menu.map((m) => (
+          <li>
+            <Card href={m.href} restore>
+              <span class="menu__label">{m.label}</span>
+              <span class="menu__line">{m.line}</span>
+            </Card>
+          </li>
+        ))
+      }
+    </ul>
+  </SectionBand>
+
+  <!-- 4 · Who you'll see -->
+  <SectionBand aria-labelledby="team-heading">
+    <h2 id="team-heading" class="section-title" data-reveal>Who you’ll see</h2>
+    <div class="team" data-reveal>
+      <ProviderCard provider={moinfar} />
+      <p class="team__note">
+        Dr. Maryam Moinfar leads Restore and does the assessments herself.
+        {/* TODO(client): name the injector(s) and PA(s) who deliver treatments once confirmed. */}
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 5 · We don't run sales (§12.8, verbatim) -->
+  <SectionBand tone="fog" aria-labelledby="pricing-heading">
+    <div class="prose" data-reveal>
+      <h2 id="pricing-heading">We don’t run sales</h2>
+      <p>
+        We don’t run flash sales, holiday promotions, or discount packages. The price is the price,
+        and it doesn’t go down if you wait.
+      </p>
+      <p>You’ll get itemized pricing in writing at the consultation.</p>
+    </div>
+  </SectionBand>
+
+  <!-- 6 · The consultation (§12.10, verbatim) -->
+  <SectionBand aria-labelledby="consult-heading">
+    <div class="prose" data-reveal>
+      <h2 id="consult-heading">The consultation</h2>
+      <p>
+        A consultation takes twenty minutes. We’ll look at the area you’re concerned about, review
+        your health history and medications, and tell you plainly whether this will help — and what
+        it won’t do.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 7 · FAQ -->
+  <SectionBand tone="fog" aria-labelledby="faq-heading">
+    <Faq heading="Questions patients ask" items={faqs} />
+  </SectionBand>
+
+  <!-- 8 · Closing CTA -->
+  <SectionBand tone="evergreen-deep" aria-labelledby="cta-heading">
+    <div class="closing" data-reveal>
+      <h2 id="cta-heading">Book a consultation</h2>
+      <p>
+        A consultation is twenty minutes and a straight answer. Leave your name and number and our
+        team will call you back.
+      </p>
+      <div class="closing__cta">
+        <Button href="/contact/" variant="restore">Book a consultation</Button>
+        <Button href={`tel:${practice.phoneHref}`} variant="secondary">
+          Call {practice.phone}
+        </Button>
+      </div>
+    </div>
+  </SectionBand>
+
+  <!-- 9 · Cross-sell -->
+  <SectionBand aria-labelledby="more-heading">
+    <div class="more" data-reveal>
+      <h2 id="more-heading" class="section-title">Related</h2>
+      <p>
+        On a GLP-1 medication and dealing with hair shedding, facial volume loss, or lost strength?
+        That has its own program —
+        <a class="link-underline" href="/glp-1-restore/">GLP-1 Restore</a>.
+      </p>
+    </div>
+  </SectionBand>
+</BaseLayout>
+
+<style>
+  .section-title {
+    margin-bottom: var(--space-12);
+  }
+
+  /* Hero */
+  .hero {
+    padding-block: var(--section-y);
+  }
+  .hero__copy {
+    margin-top: var(--space-8);
+  }
+  .hero__sub {
+    color: var(--stone);
+    margin-top: var(--space-3);
+  }
+  .hero .lede {
+    margin-top: var(--space-4);
+    max-width: 60ch;
+  }
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+
+  /* Evergreen band prose */
+  .band-prose {
+    max-width: 60ch;
+  }
+  .band-prose h2 {
+    margin-bottom: var(--space-6);
+  }
+  .band-prose p + p {
+    margin-top: var(--space-6);
+  }
+
+  /* Menu */
+  .menu {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--space-4);
+  }
+  @media (min-width: 640px) {
+    .menu {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .menu__label {
+    display: block;
+    font-family: var(--display);
+    font-size: var(--fs-h3);
+    line-height: var(--lh-h3);
+    color: var(--evergreen);
+  }
+  .menu__line {
+    display: block;
+    margin-top: var(--space-3);
+    color: var(--ink);
+  }
+
+  /* Who you'll see */
+  .team {
+    display: grid;
+    gap: var(--space-8);
+  }
+  @media (min-width: 760px) {
+    .team {
+      grid-template-columns: 320px 1fr;
+      align-items: start;
+      gap: var(--space-12);
+    }
+  }
+  .team__note {
+    max-width: 44ch;
+    color: var(--stone);
+  }
+
+  /* Generic prose */
+  .prose {
+    max-width: 60ch;
+  }
+  .prose h2 {
+    margin-bottom: var(--space-6);
+  }
+  .prose p + p {
+    margin-top: var(--space-4);
+  }
+
+  /* Closing */
+  .closing {
+    max-width: 60ch;
+  }
+  .closing h2 {
+    margin-bottom: var(--space-6);
+  }
+  .closing__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+
+  /* Cross-sell */
+  .more {
+    max-width: 60ch;
+  }
+</style>

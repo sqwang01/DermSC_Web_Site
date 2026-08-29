@@ -1,0 +1,675 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionBand from '@components/SectionBand.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+import Faq from '@components/Faq.astro';
+import Button from '@components/Button.astro';
+import { practice, siteMeta } from '@data/site';
+
+const title = 'GLP-1 Restore · Hair, Skin & Muscle Recovery · Dana Point';
+const description =
+  'On a GLP-1 and unhappy with hair shedding, a hollow face, or lost strength? Restore at Advanced Dermatology is a physician-directed recovery program in Dana Point — diagnosis first.';
+
+// MedicalProcedure (EmSculpt Neo, the muscle track). FAQPage schema is emitted by the Faq component.
+// Kept non-causal: this describes the device, not a treatment for medication side effects (§9.3).
+const emsculptSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalProcedure',
+  name: 'EmSculpt Neo (non-invasive body contouring)',
+  bodyLocation: 'Abdomen, thighs, buttocks, arms, calves',
+  howPerformed:
+    'High-intensity focused electromagnetic energy drives muscle contractions beyond voluntary effort, alongside radiofrequency heating that targets fat in the treated area. Sessions run about 30 minutes, fully clothed, with no incisions, anesthesia, or downtime, in a series over several weeks. FDA-cleared. Individual results vary.',
+  provider: {
+    '@type': 'MedicalBusiness',
+    name: practice.legalName,
+    '@id': `${siteMeta.origin}/#practice`,
+  },
+};
+
+// The three "does this sound familiar?" checklists (§2). Booklet copy, kept intact.
+const familiar = [
+  {
+    id: 'familiar-hair',
+    label: 'Hair',
+    items: [
+      'There’s more hair in the shower drain than there used to be.',
+      'Your ponytail feels thinner in your hand.',
+      'You can see more scalp in photos, or in bright bathroom light.',
+    ],
+  },
+  {
+    id: 'familiar-skin',
+    label: 'Skin',
+    items: [
+      'Your face looks more hollow or tired than you expected.',
+      'Skin along your jaw or under your chin feels less firm.',
+      'Friends have asked if you’re feeling okay, even though you feel great.',
+    ],
+  },
+  {
+    id: 'familiar-muscle',
+    label: 'Muscle & strength',
+    items: [
+      'Your clothes are looser, but your arms and legs look soft rather than lean.',
+      'Stairs, groceries, and getting up off the floor feel harder.',
+      'You hit your goal weight and didn’t love what you saw in the mirror.',
+    ],
+  },
+];
+
+// The nine booklet FAQs, verbatim. Fillers Q&A uses the v2 injectables-review wording.
+const faqs = [
+  {
+    q: 'Do I have to stop my medication?',
+    a: 'No. Restore is designed to run alongside GLP-1 therapy. Decisions about your prescription belong to you and the physician who prescribes it. Our goal is to make it possible for you to stay on treatment without accepting hair loss, skin changes, and muscle loss as the price.',
+  },
+  {
+    q: 'Will my hair grow back?',
+    a: 'In most cases triggered by rapid weight loss, yes — the follicle isn’t destroyed. Some patients have a second, underlying pattern of hair loss that won’t reverse on its own. Your evaluation is what tells the two apart.',
+  },
+  {
+    q: 'Will fillers make me look different, not just refreshed?',
+    a: 'Our goal is restoring what rapid weight loss took, not changing your features. Volume restoration is conservative and matched to your own anatomy — the aim is looking like yourself, rested.',
+  },
+  {
+    q: 'Will people be able to tell I’ve had something done?',
+    a: 'Well-executed volume restoration and collagen treatments are designed to look like recovery, not visible “work.” Most patients hear that they look rested or well, not that they look different.',
+  },
+  {
+    q: 'I already lost the weight and I’m off the medication. Is it too late?',
+    a: 'No. Follicles that shed during a stress period generally remain viable, skin can be treated at any point after volume loss, and muscle can be rebuilt at any age.',
+  },
+  {
+    q: 'Does EmSculpt Neo hurt?',
+    a: 'Most patients describe intense but tolerable contractions and a warming sensation, similar to a hard workout. Intensity is adjustable and increased gradually.',
+  },
+  {
+    q: 'Can I do this if I’m still losing weight?',
+    a: 'Yes — and there’s an argument for starting sooner, since it’s easier to protect muscle and skin structure than to rebuild them. We’ll discuss timing at your visit.',
+  },
+  {
+    q: 'Isn’t this just supplements?',
+    a: 'No. Supplements are useful when they correct a documented deficiency and largely useless when they don’t. We test before we recommend.',
+  },
+  {
+    q: 'How much does it cost?',
+    a: 'It depends on what you need, which is why we don’t quote a number before evaluating you. You’ll get clear pricing in writing before anything is scheduled.',
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path="/glp-1-restore/"
+  schema={[emsculptSchema]}
+  restore
+>
+  <!-- 1 · Hero -->
+  <SectionBand as="div" class="hero">
+    <Breadcrumbs
+      crumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'GLP-1 Restore', href: '/glp-1-restore/' },
+      ]}
+    />
+    <div class="hero__copy" data-reveal>
+      <span class="eyebrow">Restore — under a physician’s direction</span>
+      <h1>You lost the weight. Now restore your hair, skin, and muscle.</h1>
+      <p class="hero__sub">
+        Restore at Advanced Dermatology — a guide to recovery for patients on GLP-1 medications.
+      </p>
+      <p class="lede">
+        Your medication is working. The number on the scale is going down. And yet — something feels
+        off: more hair in the drain, a face that looks more hollow or tired than you expected,
+        strength that isn’t what it was. All three are real, all three are well-documented, and all
+        three are treatable. None of them is a reason to stop your medication.
+      </p>
+      <div class="hero__cta">
+        <Button href="/contact/" variant="restore">Request a Restore consultation</Button>
+        <Button href="#how-it-works" variant="secondary">How it works ↓</Button>
+      </div>
+    </div>
+  </SectionBand>
+
+  <!-- 2 · Does any of this sound familiar? -->
+  <SectionBand tone="fog" aria-labelledby="familiar-heading">
+    <h2 id="familiar-heading" class="section-title" data-reveal>Does any of this sound familiar?</h2>
+    <p class="familiar__intro" data-reveal>
+      Your medication is working, and yet something feels off. If you checked even one of these,
+      you’re in the right place — and you’re not imagining it.
+    </p>
+    <div class="familiar" data-reveal>
+      {
+        familiar.map((group) => (
+          <article class="familiar__group" aria-labelledby={group.id}>
+            <h3 id={group.id}>{group.label}</h3>
+            <ul>
+              {group.items.map((line) => (
+                <li>{line}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+    <p class="familiar__close" data-reveal>
+      All three are real, all three are well-documented, and all three are treatable. None of them is
+      a reason to stop your medication.
+    </p>
+  </SectionBand>
+
+  <!-- 3 · The Restore approach -->
+  <SectionBand tone="evergreen" aria-labelledby="approach-heading">
+    <div class="band-prose" data-reveal>
+      <h2 id="approach-heading">The Restore approach</h2>
+      <p>
+        Restore was built for one specific patient: someone doing everything right on a GLP-1
+        medication, who’s losing hair, watching their face change, or losing strength — sometimes all
+        three — and doesn’t want to choose between their metabolic health and the rest of themselves.
+      </p>
+      <p>
+        It’s designed to work alongside your medication, not instead of it. We won’t ask you to stop
+        or reduce your GLP-1 — that conversation belongs to you and the physician who prescribes it.
+        Our role is to address what the medication doesn’t.
+      </p>
+      <p>
+        And it starts with a diagnosis, not a product. Part of the first visit is telling you what
+        actually needs treating and what will settle on its own once your weight stabilizes.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 4 · The three tracks. Each <article> is a self-contained, split-ready module:
+       on a future split, lift it whole to /glp-1-restore/{hair,skin,muscle}/ (see
+       docs/content-spec.md → GLP-1 Restore → "Structure decision"). -->
+  <SectionBand id="how-it-works" aria-label="The three recovery tracks">
+    <p class="tracks__intro" data-reveal>
+      Hair, skin, and muscle change for different reasons and are treated in different ways. Each
+      track begins with its own assessment by
+      <a class="link-underline" href="/about/dr-maryam-moinfar/">Dr. Maryam Moinfar</a> and its own
+      written plan.
+    </p>
+
+    <!-- TRACK: HAIR — split-ready module -->
+    <article id="hair" class="track" data-reveal>
+      <h2>Hair</h2>
+      <div class="prose">
+        <h3>Why your hair is shedding</h3>
+        <p>The short version: your follicles aren’t damaged. They’re paused.</p>
+        <p>
+          Most of the hair on your scalp is growing at any given moment; a smaller share is resting
+          and sheds naturally to make room for new growth. When the body goes through significant
+          stress — surgery, illness, or rapid weight loss — it triages, and a large group of
+          follicles shifts from growing into resting all at once. Dermatologists call this telogen
+          effluvium.
+        </p>
+        <p>
+          The part that surprises everyone is the delay. Paused follicles don’t shed immediately —
+          they let go two to four months later, often all at once. What you’re seeing today is an
+          echo of a shift that happened months ago.
+        </p>
+        <p>
+          What’s driving it: a steep drop in calories and especially protein; shortfalls in iron,
+          zinc, and vitamin D; the pace of the weight loss itself; and sometimes an underlying
+          pattern of hair loss that rapid weight loss has unmasked and accelerated. Telogen
+          effluvium is non-scarring — the follicle stays intact — and in most patients shedding
+          settles within several months once weight stabilizes. Some patients have a second,
+          underlying pattern that won’t resolve on its own. Telling the two apart is the point of the
+          evaluation.
+        </p>
+      </div>
+      <div class="track__cols">
+        <div class="track__col">
+          <h3>What this track includes</h3>
+          <ul>
+            <li>A focused scalp and hair assessment by Dr. Moinfar</li>
+            <li>A review of your medication, dose, and pace of weight loss</li>
+            <li>Targeted lab work where indicated</li>
+            <li>A written plan matched to what we find</li>
+          </ul>
+        </div>
+        <div class="track__col">
+          <h3>What to expect</h3>
+          <ul class="track__timeline">
+            <li><span>Month 1–2</span> Shedding often continues. Expected, not a sign of failure.</li>
+            <li>
+              <span>Month 3–4</span> Shedding slows; regrowth is happening beneath the surface.
+            </li>
+            <li>
+              <span>Month 6+</span> Visible density change. Most patients feel encouraged here.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </article>
+    <!-- /TRACK: HAIR -->
+
+    <!-- TRACK: SKIN — split-ready module -->
+    <article id="skin" class="track" data-reveal>
+      <h2>Skin</h2>
+      <div class="prose">
+        <h3>Why your skin is changing</h3>
+        <p>
+          The short version: your skin lost its support structure before it could catch up.
+        </p>
+        <p>
+          Your face is cushioned by small, distinct pockets of fat that sit under the skin and give
+          it its shape. Rapid weight loss doesn’t spare that fat, and when it goes quickly the skin
+          above it doesn’t always have time to adjust — a hollower, more tired look that has nothing
+          to do with sleep or stress.
+        </p>
+        <p>
+          It’s not only about volume. Skin’s firmness depends on collagen and elastin, structural
+          proteins the body builds continuously. Rapid weight loss and the nutritional shifts that
+          come with it can slow that production at the same time the skin has more work to do
+          covering a smaller frame. Two things going wrong at once is why the change can feel sudden.
+        </p>
+        <p>
+          What’s driving it: loss of volume in the facial fat compartments; reduced collagen and
+          elastin production during rapid weight change; the pace of the loss; age-related collagen
+          decline that the weight loss accelerates rather than causes; and nutritional gaps. Unlike
+          hair, some of this responds quickly — volume can often be addressed the same day — while
+          collagen-building treatments take longer and compound over months.
+        </p>
+      </div>
+      <div class="track__cols">
+        <div class="track__col">
+          <h3>What this track includes</h3>
+          <ul>
+            <li>A skin and facial-volume assessment by Dr. Moinfar</li>
+            <li>A discussion of which changes are structural and which are surface-level</li>
+            <li>
+              A written plan matched to what we find, which may include microneedling, with or
+              without added growth factors; medical-grade topical regimens suited to
+              post-weight-loss skin; dermal fillers to restore lost facial volume; and longer-term
+              collagen-stimulating treatments
+            </li>
+          </ul>
+        </div>
+        <div class="track__col">
+          <h3>What to expect</h3>
+          <ul class="track__timeline">
+            <li>
+              <span>Same visit</span> Volume-restoring treatments can show change immediately.
+            </li>
+            <li><span>Weeks 2–6</span> Texture and tone improve as new collagen forms.</li>
+            <li>
+              <span>Month 3+</span> The collagen effect from collagen-stimulating treatments becomes
+              visible.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </article>
+    <!-- /TRACK: SKIN -->
+
+    <!-- TRACK: MUSCLE — split-ready module. Kept self-contained: no sentence links GLP-1
+         muscle loss causally to EmSculpt Neo (§9.3). Adjacency only. -->
+    <article id="muscle" class="track" data-reveal>
+      <h2>Muscle</h2>
+      <div class="prose">
+        <h3>Why you feel weaker</h3>
+        <p>
+          The scale doesn’t tell you what you lost. When you lose weight you don’t lose only fat —
+          you lose a mix, and studies of rapid weight loss suggest a substantial portion of what’s
+          lost can come from lean mass, including muscle.
+        </p>
+        <p>
+          Same weight, different body. Weight loss alone and weight loss with muscle preserved can
+          land on the same number on the scale and produce a different-looking, differently capable
+          body.
+        </p>
+        <p>
+          That matters for several reasons. Muscle is metabolically active tissue, so less of it
+          means fewer calories burned at rest — making weight easier to regain and harder to lose
+          again. It’s also strength and function: stairs, groceries, getting up off the floor. And
+          it’s how you look — fat loss without muscle preservation produces a body that’s smaller
+          but softer, often not the result patients expected.
+        </p>
+        <p>
+          Why “just go to the gym” isn’t a complete answer: building muscle requires enough protein
+          and calories, both harder to get when appetite is suppressed, and many patients start
+          already deconditioned. Muscle is the one part of this that doesn’t take care of itself.
+        </p>
+      </div>
+      <div class="track__cols">
+        <div class="track__col">
+          <h3>What this track includes</h3>
+          <p>
+            EmSculpt Neo — an FDA-cleared, non-invasive treatment that stimulates muscle
+            contractions beyond what you can produce voluntarily, while targeting fat in the treated
+            area.
+          </p>
+          <ul>
+            <li>Roughly 30 minutes per session, fully clothed on the table</li>
+            <li>A series of sessions over several weeks</li>
+            <li>No incisions, anesthesia, or downtime</li>
+            <li>
+              Not a replacement for exercise or protein — a way to close the gap while appetite is
+              suppressed
+            </li>
+          </ul>
+          <p class="track__stat">
+            In clinical studies, treated areas showed an average 25% increase in muscle mass and an
+            average 30% reduction in fat. Individual results vary.
+          </p>
+          <p class="track__note">
+            Device labeling. Fat-reduction figures apply to the abdomen and thighs; for the
+            buttocks, arms, and calves, EmSculpt Neo is used to build and strengthen muscle.
+          </p>
+        </div>
+        <div class="track__col">
+          <h3>What to expect</h3>
+          <ul class="track__timeline">
+            <li>
+              <span>After the first sessions</span> Many patients feel more “engaged” in the treated
+              area before seeing visible change.
+            </li>
+            <li>
+              <span>Weeks after the series ends</span> Visible change typically continues developing.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </article>
+    <!-- /TRACK: MUSCLE -->
+
+    <p class="tracks__close" data-reveal>
+      Recovery generally tracks with stabilized weight and corrected nutrition. Results vary, and
+      some patterns require ongoing maintenance rather than a fixed endpoint.
+    </p>
+  </SectionBand>
+
+  <!-- 5 · Your first visit -->
+  <SectionBand tone="fog" aria-labelledby="first-visit-heading">
+    <div class="prose" data-reveal>
+      <h2 id="first-visit-heading">Your first visit</h2>
+      <p>
+        A conversation and an evaluation — not a treatment, and not a sales appointment. You’ll leave
+        knowing what’s actually happening and what your options are, including the option to do
+        nothing for now. We don’t quote a price before evaluating you; you’ll get clear pricing in
+        writing before anything is scheduled.
+      </p>
+      <h3>What we’ll ask of you</h3>
+      <ul>
+        <li>A protein intake we’ll help you set a realistic target for</li>
+        <li>Honesty about your dose, and any changes to it</li>
+        <li>
+          Photographs at intervals, because month-to-month change is nearly impossible to judge from
+          memory
+        </li>
+      </ul>
+    </div>
+  </SectionBand>
+
+  <!-- 6 · FAQ -->
+  <SectionBand aria-labelledby="faq-heading">
+    <Faq heading="Questions patients ask" items={faqs} />
+  </SectionBand>
+
+  <!-- 7 · Closing CTA + pull-quote -->
+  <SectionBand tone="evergreen-deep" aria-labelledby="cta-heading">
+    <div class="closing" data-reveal>
+      <h2 id="cta-heading">Request a Restore consultation</h2>
+      <p>
+        A Restore consultation is a conversation and an evaluation — you’ll leave knowing what’s
+        happening and what your options are. Leave your name and number and our team will call you
+        back.
+      </p>
+      <div class="closing__cta">
+        <Button href="/contact/" variant="restore">Request a Restore consultation</Button>
+        <Button href={`tel:${practice.phoneHref}`} variant="secondary">
+          Call {practice.phone}
+        </Button>
+      </div>
+      <blockquote class="closing__quote">
+        <p>
+          “Patients on these medications are doing something genuinely good for their health. They
+          shouldn’t have to trade their hair, their skin, or their strength for it. That’s the whole
+          reason we built this program.”
+        </p>
+        <cite>Dr. Maryam Moinfar, board-certified dermatologist</cite>
+      </blockquote>
+    </div>
+  </SectionBand>
+
+  <!-- 8 · Cross-sell -->
+  <SectionBand aria-labelledby="more-heading">
+    <div class="more" data-reveal>
+      <h2 id="more-heading" class="section-title">Related</h2>
+      <ul class="more__list">
+        <li>
+          On a GLP-1 and mainly concerned about shedding? The full hair workup — trichoscopy, labs,
+          and a scalp biopsy where needed — is on the
+          <a class="link-underline" href="/cosmetic/hair-restoration/">hair restoration</a> page.
+        </li>
+        <li>
+          Want the detail on the muscle track?
+          <a class="link-underline" href="/cosmetic/emsculpt-neo/">EmSculpt Neo</a> has its own page,
+          including the treatment-area table.
+        </li>
+        <li>
+          The program is directed by
+          <a class="link-underline" href="/about/dr-maryam-moinfar/">Dr. Maryam Moinfar</a>.
+        </li>
+      </ul>
+    </div>
+  </SectionBand>
+</BaseLayout>
+
+<style>
+  .section-title {
+    margin-bottom: var(--space-12);
+  }
+
+  /* Hero */
+  .hero {
+    padding-block: var(--section-y);
+  }
+  .hero__copy {
+    margin-top: var(--space-8);
+  }
+  .hero__sub {
+    color: var(--stone);
+    margin-top: var(--space-3);
+  }
+  .hero .lede {
+    margin-top: var(--space-4);
+    max-width: 60ch;
+  }
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+
+  /* Does this sound familiar? */
+  .familiar__intro {
+    max-width: 60ch;
+    margin-bottom: var(--space-10);
+  }
+  .familiar {
+    display: grid;
+    gap: var(--space-10);
+  }
+  @media (min-width: 760px) {
+    .familiar {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+    }
+  }
+  .familiar__group h3 {
+    margin-bottom: var(--space-4);
+  }
+  .familiar__group ul {
+    padding-left: 1.1rem;
+    max-width: 42ch;
+  }
+  .familiar__group li + li {
+    margin-top: var(--space-3);
+  }
+  .familiar__close {
+    margin-top: var(--space-10);
+    max-width: 60ch;
+    color: var(--stone);
+  }
+
+  /* Evergreen band prose */
+  .band-prose {
+    max-width: 60ch;
+  }
+  .band-prose h2 {
+    margin-bottom: var(--space-6);
+  }
+  .band-prose p + p {
+    margin-top: var(--space-6);
+  }
+
+  /* Tracks */
+  .tracks__intro {
+    max-width: 60ch;
+    margin-bottom: var(--space-16);
+  }
+  .track {
+    padding-top: var(--space-12);
+    border-top: var(--border-hair);
+  }
+  .track + .track {
+    margin-top: var(--space-16);
+  }
+  .track > h2 {
+    margin-bottom: var(--space-6);
+  }
+  .track .prose {
+    max-width: 60ch;
+  }
+  .track .prose h3 {
+    margin-bottom: var(--space-4);
+  }
+  .track .prose p + p {
+    margin-top: var(--space-4);
+  }
+  .track__cols {
+    display: grid;
+    gap: var(--space-10);
+    margin-top: var(--space-10);
+  }
+  @media (min-width: 760px) {
+    .track__cols {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+    }
+  }
+  .track__col h3 {
+    margin-bottom: var(--space-4);
+  }
+  .track__col ul {
+    padding-left: 1.1rem;
+    max-width: 48ch;
+  }
+  .track__col li + li {
+    margin-top: var(--space-3);
+  }
+  .track__col p {
+    max-width: 48ch;
+  }
+  .track__col p + ul {
+    margin-top: var(--space-4);
+  }
+  .track__timeline {
+    list-style: none;
+    padding-left: 0;
+  }
+  .track__timeline li {
+    padding-left: 0;
+  }
+  .track__timeline span {
+    display: block;
+    font-weight: 600;
+    color: var(--evergreen);
+  }
+  .track__stat {
+    margin-top: var(--space-6);
+    font-weight: 600;
+    color: var(--evergreen);
+  }
+  .track__note {
+    margin-top: var(--space-3);
+    font-size: var(--fs-small);
+    color: var(--stone);
+  }
+
+  .tracks__close {
+    max-width: 60ch;
+    margin-top: var(--space-16);
+    color: var(--stone);
+  }
+
+  /* First visit / generic prose */
+  .prose {
+    max-width: 60ch;
+  }
+  .prose h2 {
+    margin-bottom: var(--space-6);
+  }
+  .prose h3 {
+    margin: var(--space-8) 0 var(--space-4);
+  }
+  .prose p + p {
+    margin-top: var(--space-4);
+  }
+  .prose ul {
+    padding-left: 1.1rem;
+  }
+  .prose li + li {
+    margin-top: var(--space-3);
+  }
+
+  /* Closing */
+  .closing {
+    max-width: 60ch;
+  }
+  .closing h2 {
+    margin-bottom: var(--space-6);
+  }
+  .closing__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+  .closing__quote {
+    margin: var(--space-16) 0 0;
+    padding-left: var(--space-8);
+    border-left: 3px solid var(--brass);
+    max-width: 56ch;
+  }
+  .closing__quote p {
+    font-family: var(--display);
+    font-size: var(--fs-h3);
+    line-height: var(--lh-h3);
+  }
+  .closing__quote cite {
+    display: block;
+    margin-top: var(--space-4);
+    font-style: normal;
+    font-size: var(--fs-small);
+    color: #cdd8d0;
+  }
+
+  /* Cross-sell */
+  .more__list {
+    list-style: none;
+    padding-left: 0;
+    max-width: 60ch;
+  }
+  .more__list li {
+    padding-top: var(--space-6);
+    border-top: var(--border-hair);
+  }
+  .more__list li + li {
+    margin-top: var(--space-6);
+  }
+</style>

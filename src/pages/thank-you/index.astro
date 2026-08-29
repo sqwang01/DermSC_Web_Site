@@ -1,0 +1,21 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionBand from '@components/SectionBand.astro';
+import Button from '@components/Button.astro';
+---
+
+<BaseLayout
+  title="Request received · Advanced Dermatology"
+  description="Your callback request has been received."
+  path="/thank-you/"
+  noindex
+>
+  <SectionBand>
+    <h1>Thank you. We have your request.</h1>
+    <p class="lede">
+      Our team will call you back, usually within one business day. If you have a changing or
+      bleeding spot and need to be seen sooner, please call us directly at 949.248.4547.
+    </p>
+    <p><Button href="/" variant="secondary">Back to the home page</Button></p>
+  </SectionBand>
+</BaseLayout>

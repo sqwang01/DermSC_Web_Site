@@ -1,0 +1,342 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionBand from '@components/SectionBand.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+import Faq from '@components/Faq.astro';
+import ProviderCard from '@components/ProviderCard.astro';
+import Button from '@components/Button.astro';
+import { practice, providers, siteMeta } from '@data/site';
+
+const title = 'CoolSculpting in Dana Point · Fat Reduction';
+const description =
+  'CoolSculpting in Dana Point — cryolipolysis for pinchable fat in cleared areas. We offer both CoolSculpting and EmSculpt Neo and have no incentive to steer you toward either.';
+
+const moinfar = providers.find((p) => p.slug === 'dr-maryam-moinfar')!;
+
+// MedicalProcedure (CoolSculpting / cryolipolysis). FAQPage schema comes from <Faq>.
+// "Cleared areas" language; candidacy not outcomes; paradoxical adipose hyperplasia named, not omitted.
+const procedureSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalProcedure',
+  name: 'CoolSculpting (cryolipolysis)',
+  bodyLocation: 'Submental area, flanks, abdomen, back, thighs, under the buttocks, upper arms',
+  howPerformed:
+    'An applicator cools subcutaneous fat to a temperature that injures fat cells without harming the overlying skin; the body clears the treated cells over the following weeks to months. One or more cycles per area. Not a weight-loss treatment. A rare, delayed side effect, paradoxical adipose hyperplasia, is discussed before treatment. Individual results vary.',
+  provider: {
+    '@type': 'MedicalBusiness',
+    name: practice.legalName,
+    '@id': `${siteMeta.origin}/#practice`,
+  },
+};
+
+const compare = [
+  {
+    name: 'CoolSculpting',
+    body: 'Removes a discrete pinchable fat pocket. It has no effect on muscle.',
+  },
+  {
+    name: 'EmSculpt Neo',
+    body: 'Builds muscle and, in the abdomen and thighs, also reduces fat.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'How long does CoolSculpting take to work?',
+    a: 'The body clears the treated fat cells gradually. Most people see change over one to three months, and the fullest result at around three months.',
+  },
+  {
+    q: 'Is CoolSculpting permanent?',
+    a: 'The fat cells cleared after treatment don’t come back, but the cells that remain can still enlarge with weight gain. Individual results vary.',
+  },
+  {
+    q: 'Does CoolSculpting hurt?',
+    a: 'The first few minutes are intensely cold with a strong pull, then the area numbs. Afterward it can be sore, swollen, or briefly numb for a couple of weeks.',
+  },
+  {
+    q: 'How many CoolSculpting sessions will I need?',
+    a: 'Often more than one cycle per area, spaced out. We estimate this at the consultation, based on the area and how much fat is pinchable.',
+  },
+  {
+    q: 'CoolSculpting or EmSculpt Neo?',
+    a: 'CoolSculpting is for a discrete pinchable pocket and does nothing for muscle; EmSculpt Neo builds muscle and reduces fat in the abdomen and thighs. We own both.',
+  },
+  {
+    q: 'What is paradoxical adipose hyperplasia?',
+    a: 'It’s a rare, delayed side effect in which the treated area gradually enlarges instead of shrinking, usually months later, and needs surgical correction. It’s uncommon, but it’s real, and we go over it with you before treatment.',
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path="/cosmetic/coolsculpting/"
+  schema={[procedureSchema]}
+  restore
+>
+  <!-- 1 · Hero -->
+  <SectionBand as="div" class="hero">
+    <Breadcrumbs
+      crumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Cosmetic', href: '/cosmetic/' },
+        { label: 'CoolSculpting', href: '/cosmetic/coolsculpting/' },
+      ]}
+    />
+    <div class="hero__copy" data-reveal>
+      <span class="eyebrow">Restore — under a physician’s direction</span>
+      <h1>Cryolipolysis for pinchable fat.</h1>
+      <p class="hero__sub">Restore at Advanced Dermatology.</p>
+      <p class="lede">
+        CoolSculpting uses controlled cooling to reduce a pinchable fat bulge in cleared areas. It
+        is not a weight-loss treatment. We offer both CoolSculpting and EmSculpt Neo and have no
+        incentive to steer you toward either.
+      </p>
+      <div class="hero__cta">
+        <Button href="/contact/" variant="restore">Book a consultation</Button>
+        <Button href="#how-it-works" variant="secondary">How it works ↓</Button>
+      </div>
+    </div>
+  </SectionBand>
+
+  <!-- 2 · How it works -->
+  <SectionBand id="how-it-works" tone="fog" aria-labelledby="how-heading">
+    <div class="prose" data-reveal>
+      <h2 id="how-heading">How it works</h2>
+      <p>
+        An applicator cools the fat beneath the skin to a temperature that injures fat cells without
+        harming the skin above them. Over the following weeks to months, the body clears the treated
+        cells. Each area takes one or more cycles, and the result builds gradually.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 3 · Treatment areas -->
+  <SectionBand aria-labelledby="areas-heading">
+    <div class="prose" data-reveal>
+      <h2 id="areas-heading">Treatment areas</h2>
+      <p>
+        CoolSculpting works on pinchable fat: under the chin, the flanks, the abdomen, the back, the
+        inner and outer thighs, under the buttocks, and the upper arms.
+      </p>
+      {/* TODO(client): confirm the applicator set in use. */}
+    </div>
+  </SectionBand>
+
+  <!-- 4 · What a session feels like -->
+  <SectionBand tone="fog" aria-labelledby="feel-heading">
+    <div class="prose" data-reveal>
+      <h2 id="feel-heading">What a session feels like</h2>
+      <p>
+        Intense cold and a firm pulling sensation for the first several minutes, then the area goes
+        numb. You can read or work through it. Each applicator runs roughly 35 to 60 minutes.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 5 · CoolSculpting or EmSculpt Neo? (plain comparison, no steering — P19) -->
+  <SectionBand aria-labelledby="compare-heading">
+    <h2 id="compare-heading" class="section-title" data-reveal>CoolSculpting or EmSculpt Neo?</h2>
+    <div class="compare" data-reveal>
+      {
+        compare.map((c) => (
+          <article class="compare__item prose">
+            <h3>{c.name}</h3>
+            <p>{c.body}</p>
+          </article>
+        ))
+      }
+    </div>
+    <p class="compare__note" data-reveal>
+      We own both and have no incentive to recommend one over the other. The consultation is about
+      which one matches what you want to change — or whether neither is right.
+      <a class="link-underline" href="/cosmetic/emsculpt-neo/">Read about EmSculpt Neo</a>.
+    </p>
+  </SectionBand>
+
+  <!-- 6 · Candidacy -->
+  <SectionBand tone="fog" aria-labelledby="candidacy-heading">
+    <div class="prose" data-reveal>
+      <h2 id="candidacy-heading">Candidacy</h2>
+      <p>
+        <strong>A good fit</strong> if you have a specific pinchable bulge and you’re near your goal
+        weight.
+      </p>
+      <p>
+        <strong>Not right for you</strong> for overall weight loss, for loose skin without a fat
+        pocket underneath, or if you have a cold-related condition such as cryoglobulinemia, cold
+        agglutinin disease, or paroxysmal cold hemoglobinuria. We screen for this at the
+        consultation.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 7 · Who you'll see -->
+  <SectionBand aria-labelledby="team-heading">
+    <h2 id="team-heading" class="section-title" data-reveal>Who you’ll see</h2>
+    <div class="team" data-reveal>
+      <ProviderCard provider={moinfar} />
+      <p class="team__note">
+        The Restore team.
+        {/* TODO(client): name the treating provider. */}
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 8 · Evidence -->
+  <SectionBand tone="fog" aria-labelledby="evidence-heading">
+    <div class="prose" data-reveal>
+      <h2 id="evidence-heading">Evidence</h2>
+      <p>
+        Own-practice consented images are in progress; photography follows a standardized protocol.
+        No borrowed before-and-afters.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 9 · The consultation & pricing (§12.10 then §12.8, verbatim) -->
+  <SectionBand aria-labelledby="pricing-heading">
+    <div class="prose" data-reveal>
+      <h2 id="pricing-heading">The consultation &amp; pricing</h2>
+      <p>
+        A consultation takes twenty minutes. We’ll look at the area you’re concerned about, review
+        your health history and medications, and tell you plainly whether this will help — and what
+        it won’t do.
+      </p>
+      <p>Price per applicator and per area is provided in writing before scheduling.</p>
+      <p>
+        We don’t run flash sales, holiday promotions, or discount packages. The price is the price,
+        and it doesn’t go down if you wait.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 10 · FAQ -->
+  <SectionBand tone="fog" aria-labelledby="faq-heading">
+    <Faq heading="Questions patients ask" items={faqs} />
+  </SectionBand>
+
+  <!-- 11 · Closing CTA -->
+  <SectionBand tone="evergreen-deep" aria-labelledby="cta-heading">
+    <div class="closing" data-reveal>
+      <h2 id="cta-heading">Book a consultation</h2>
+      <p>
+        A consultation is twenty minutes: we look at the area, check that it’s a fat pocket rather
+        than loose skin, and tell you whether CoolSculpting fits. Leave your name and number and our
+        team will call you back.
+      </p>
+      <div class="closing__cta">
+        <Button href="/contact/" variant="restore">Book a consultation</Button>
+        <Button href={`tel:${practice.phoneHref}`} variant="secondary">
+          Call {practice.phone}
+        </Button>
+      </div>
+    </div>
+  </SectionBand>
+
+  <!-- 12 · Cross-sell -->
+  <SectionBand aria-labelledby="more-heading">
+    <div class="more" data-reveal>
+      <h2 id="more-heading" class="section-title">Related</h2>
+      <p>
+        If you want tone or strength as well as fat reduction,
+        <a class="link-underline" href="/cosmetic/emsculpt-neo/">EmSculpt Neo</a> is the other
+        device we offer.
+      </p>
+    </div>
+  </SectionBand>
+</BaseLayout>
+
+<style>
+  .section-title {
+    margin-bottom: var(--space-12);
+  }
+
+  /* Hero */
+  .hero {
+    padding-block: var(--section-y);
+  }
+  .hero__copy {
+    margin-top: var(--space-8);
+  }
+  .hero__sub {
+    color: var(--stone);
+    margin-top: var(--space-3);
+  }
+  .hero .lede {
+    margin-top: var(--space-4);
+    max-width: 60ch;
+  }
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+
+  /* Generic prose */
+  .prose {
+    max-width: 60ch;
+  }
+  .prose h2 {
+    margin-bottom: var(--space-6);
+  }
+  .prose p + p {
+    margin-top: var(--space-4);
+  }
+
+  /* Compare */
+  .compare {
+    display: grid;
+    gap: var(--space-10);
+  }
+  @media (min-width: 760px) {
+    .compare {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .compare__item h3 {
+    margin-bottom: var(--space-3);
+  }
+  .compare__note {
+    margin-top: var(--space-10);
+    max-width: 60ch;
+    color: var(--stone);
+  }
+
+  /* Who you'll see */
+  .team {
+    display: grid;
+    gap: var(--space-8);
+  }
+  @media (min-width: 760px) {
+    .team {
+      grid-template-columns: 320px 1fr;
+      align-items: start;
+      gap: var(--space-12);
+    }
+  }
+  .team__note {
+    max-width: 44ch;
+    color: var(--stone);
+  }
+
+  /* Closing */
+  .closing {
+    max-width: 60ch;
+  }
+  .closing h2 {
+    margin-bottom: var(--space-6);
+  }
+  .closing__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+
+  .more {
+    max-width: 60ch;
+  }
+</style>

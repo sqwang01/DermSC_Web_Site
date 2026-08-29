@@ -1,0 +1,429 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionBand from '@components/SectionBand.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+import CalloutClay from '@components/CalloutClay.astro';
+import Faq from '@components/Faq.astro';
+import ProviderCard from '@components/ProviderCard.astro';
+import Button from '@components/Button.astro';
+import PlaceholderImage from '@components/PlaceholderImage.astro';
+import { practice, providers, siteMeta } from '@data/site';
+
+const title = 'General Dermatology & Skin Conditions · Dana Point';
+const description =
+  'Acne, eczema, rosacea, psoriasis, rashes, hair and nail concerns, and annual skin exams in Dana Point. We look for the cause before we treat the symptom.';
+
+// Medical dermatology providers (Dr. Lander is Mohs-only, so he is not shown here).
+const careTeam = ['dr-maryam-moinfar', 'madeline-fee-pa-c', 'shylie-falahati-pa-c']
+  .map((slug) => providers.find((p) => p.slug === slug))
+  .filter((p): p is (typeof providers)[number] => Boolean(p));
+
+// MedicalProcedure (diagnostic skin examination). FAQPage schema is emitted by the Faq component.
+const dermExamSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalProcedure',
+  name: 'Diagnostic skin examination',
+  procedureType: 'https://schema.org/DiagnosticProcedure',
+  bodyLocation: 'Skin',
+  howPerformed:
+    'A clinical history and a full-skin examination with a dermatoscope. When the skin calls for it, a biopsy is processed in the practice’s own laboratory and read by a dermatopathologist, then reviewed again by Dr. Moinfar the same week. The visit concludes with a written diagnosis and management plan.',
+  provider: {
+    '@type': 'MedicalBusiness',
+    name: practice.legalName,
+    '@id': `${siteMeta.origin}/#practice`,
+  },
+};
+
+// What we treat — grouped, anchor-linked blocks (D18). No individual condition sub-pages at launch.
+const conditions = [
+  {
+    id: 'acne',
+    title: 'Acne',
+    body: 'Teenage and adult acne aren’t the same condition and don’t respond to the same things. Adult acne especially is often driven by something — hormones, a product, a medication, occasionally an underlying issue worth a blood test. We treat it as something to explain and control, not to wait out. It’s managed rather than cured, and a plan that holds is the goal.',
+  },
+  {
+    id: 'inflammatory-skin',
+    title: 'Eczema, psoriasis & rosacea',
+    body: 'Grouped here because the approach is the same. Each has subtypes and triggers that look alike on the surface and behave differently once you know which one you’re dealing with, so the first job is to identify that — sometimes with a biopsy or patch testing. All three are long-term conditions. They can’t be cured, but for most people they can be brought to the point where they’re not running the day.',
+  },
+  {
+    id: 'rashes-hives',
+    title: 'Rashes & hives',
+    body: 'Some rashes need nothing more than the right cream. Others are a sign of a reaction, an infection, or something systemic, and putting a steroid on them without knowing which only delays the answer. When a rash is widespread, keeps returning, or blisters, we work it up — that can mean patch testing for a contact allergy or a small biopsy. Chronic hives have a known evaluation path, and we follow it.',
+  },
+  {
+    id: 'infections-growths',
+    title: 'Skin infections, warts & molluscum',
+    body: 'Bacterial, fungal, and viral skin infections are common and usually straightforward to treat once they’re correctly identified; the catch is that they’re often mistaken for eczema, and eczema for them. Warts and molluscum are treated in the office, with the method chosen for the age of the patient and where the spots are.',
+  },
+  {
+    id: 'hair-scalp-nails',
+    title: 'Hair, scalp & nails',
+    body: 'A change in one nail is a different question from a change in every nail: the first can point to something local, the second to something internal, and we check accordingly. Scalp conditions like seborrheic dermatitis and psoriasis are treated here. Hair that’s thinning or shedding needs a fuller evaluation — trichoscopy, bloodwork, sometimes a scalp biopsy.',
+    link: { label: 'Diagnostic hair and scalp evaluation', href: '/cosmetic/hair-restoration/' },
+  },
+  {
+    id: 'pediatric',
+    title: 'Pediatric dermatology',
+    body: 'We see children for eczema, warts, molluscum, rashes, birthmarks, and adolescent acne, among other things. The exam and the explanation are pitched to the child and the parent, and we’re conservative about what actually needs treating at a young age versus what will settle on its own.',
+  },
+  {
+    id: 'skin-exams',
+    title: 'Annual full-skin exams',
+    body: 'A yearly head-to-toe check with a dermatoscope, for anyone with a history of sun exposure, blistering sunburns, atypical moles, or skin cancer in the family. It’s the same exam whether or not you have a specific worry.',
+    link: { label: 'A spot you’re worried about → skin cancer', href: '/skin-cancer/' },
+  },
+];
+
+const faqs = [
+  {
+    q: 'How long does it take to get a dermatology appointment in Dana Point?',
+    a: 'For a routine visit, often a few months — we’re a small practice and don’t shorten visits to fit more in. If you have a spot that’s new, changing, bleeding, or not healing, tell our team when you call and you’ll be seen sooner than the routine schedule.',
+  },
+  {
+    q: 'Do I need a referral to see a dermatologist?',
+    a: 'For most PPO plans, no — you can book directly. Some HMO plans require a referral from your primary care physician, so check with your plan first. Our team can tell you what your plan needs when they call you back.',
+  },
+  {
+    q: 'What happens during a skin biopsy?',
+    a: 'The area is numbed with a small injection of local anesthetic and a sample of skin a few millimeters across is taken. It takes a few minutes, and depending on the site you may get a stitch or two. The sample is read by a dermatopathologist; results usually take about a week, and we contact you with the result and the plan.',
+  },
+  {
+    q: 'Will I get a diagnosis at the first visit?',
+    a: 'Often, yes. Some conditions are clear on examination. Others need a biopsy, blood work, or a period of watching how the skin responds before the diagnosis is certain. If we’re not sure yet, we’ll say so and tell you the next step.',
+  },
+  {
+    q: 'How often should I have a full-skin exam?',
+    a: 'Once a year for most adults with a history of significant sun exposure, atypical moles, or skin cancer in the family. After a skin cancer, the schedule is closer — often every three to six months at first. If you notice a change between visits, don’t wait for the next appointment.',
+  },
+  {
+    q: 'Do you treat children?',
+    a: 'Yes — eczema, warts, molluscum, rashes, birthmarks, and teenage acne, among other things. We’re conservative about treating young skin; part of the visit is telling you what genuinely needs treating and what will resolve on its own.',
+  },
+  // TODO(client): "Is teledermatology available?" — held back until the practice confirms whether
+  // it is offered and for whom (established patients only, specific conditions, etc.).
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  path="/general-dermatology/"
+  schema={[dermExamSchema]}
+>
+  <!-- 1 · Hero -->
+  <SectionBand as="div" class="hero">
+    <Breadcrumbs
+      crumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'General dermatology', href: '/general-dermatology/' },
+      ]}
+    />
+    <div class="hero__grid">
+      <div class="hero__copy" data-reveal>
+        <span class="eyebrow">Serious medicine. Natural results.</span>
+        <h1>Chronic doesn’t mean unexplained.</h1>
+        <p class="lede">
+          Acne that never fully cleared. A rash that keeps coming back. Eczema, psoriasis, rosacea,
+          hives, or a nail or patch of scalp that changed. Every provider here examines with a
+          dermatoscope, and every biopsy is read twice — once by a dermatopathologist Dr. Moinfar
+          chose herself, and again by her the same week.
+        </p>
+        <div class="hero__cta">
+          <Button href="/contact/" variant="primary">Request an appointment</Button>
+          <Button href={`tel:${practice.phoneHref}`} variant="secondary">
+            Call {practice.phone}
+          </Button>
+        </div>
+      </div>
+      <div class="hero__media" data-reveal>
+        <PlaceholderImage label="exam room, natural light" ratio="4 / 5" />
+      </div>
+    </div>
+  </SectionBand>
+
+  <!-- 2 · The problem -->
+  <SectionBand tone="fog" aria-labelledby="problem-heading">
+    <div class="prose" data-reveal>
+      <h2 id="problem-heading">We look for the cause before we treat the symptom.</h2>
+      <p>
+        A lot of the people we see have been somewhere else first. They were told a rash was stress,
+        that the acne would pass with age, or that thinning hair was just hormones — and months or
+        years later, nothing had changed.
+      </p>
+      <p>
+        Sometimes those answers are right. Often they’re what you get when no one has had time to
+        look properly. A condition that keeps returning has a reason it keeps returning. This visit
+        is about finding that reason, not renewing a prescription that isn’t working.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 3 · How we get the diagnosis right (brand doc §12.5, verbatim) -->
+  <SectionBand aria-labelledby="accuracy-heading">
+    <div class="prose" data-reveal>
+      <h2 id="accuracy-heading">How we get the diagnosis right</h2>
+      <p>
+        Every provider here examines with a dermatoscope. Biopsies are processed in our own lab and
+        read by a dermatopathologist Dr. Moinfar selected personally. And every week, she reviews
+        the pathology from all three providers herself — a second read on the diagnoses that
+        determine everything that happens next. Nobody bills for that hour. It’s simply how the
+        practice was built.
+      </p>
+      {/* TODO(client): "all three providers" — confirm the medical-provider count (Moinfar, Fee,
+          Falahati) matches the §12.5 wording; same check is already flagged for the Home page. */}
+      <p><a class="link-underline" href="/about/">How the practice is set up</a></p>
+    </div>
+  </SectionBand>
+
+  <!-- 4 · What we treat -->
+  <SectionBand tone="fog" aria-labelledby="treat-heading">
+    <h2 id="treat-heading" class="section-title" data-reveal>What we treat</h2>
+    <p class="treat__intro" data-reveal>
+      Most of what we see is one of the following. If a spot is new, changing, bleeding, or won’t
+      heal, that’s a skin-cancer question — <a class="link-underline" href="/skin-cancer/"
+        >see what to watch for</a
+      >.
+    </p>
+    <div class="treat" data-reveal>
+      {
+        conditions.map((c) => (
+          <article class="treat__item prose" id={c.id}>
+            <h3>{c.title}</h3>
+            <p>{c.body}</p>
+            {c.link && (
+              <p>
+                <a class="link-underline" href={c.link.href}>
+                  {c.link.label}
+                </a>
+              </p>
+            )}
+          </article>
+        ))
+      }
+    </div>
+  </SectionBand>
+
+  <!-- 5 · What a first visit is like -->
+  <SectionBand aria-labelledby="visit-heading">
+    <div class="prose" data-reveal>
+      <h2 id="visit-heading">What a first visit is like</h2>
+      <ol class="visit">
+        <li>
+          We take a history — how long this has been going on, what’s been tried, what else is
+          happening with your health.
+        </li>
+        <li>
+          A full-skin examination with a dermatoscope, not just a look at the area you came in
+          about.
+        </li>
+        <li>
+          A biopsy only if the skin calls for one. If we take one, it’s processed in our lab, read
+          by the dermatopathologist Dr. Moinfar selected, and reviewed again by her that week.
+        </li>
+        <li>A written plan you leave with.</li>
+      </ol>
+      <p>
+        You’ll leave knowing what it is, or knowing exactly what we’re doing to find out. Some
+        conditions take more than one visit to pin down — we’ll tell you when that’s where we are
+        rather than guess.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 6 · Who you'll see -->
+  <SectionBand tone="fog" id="providers" aria-labelledby="team-heading">
+    <h2 id="team-heading" class="section-title" data-reveal>Who you’ll see</h2>
+    <div class="team" data-reveal>
+      {careTeam.map((p) => <ProviderCard provider={p} />)}
+    </div>
+    <p class="team__note" data-reveal>
+      Two of our physician assistants started here as medical assistants, went to PA school, and
+      came back. Dermatology has a turnover problem. We don’t.
+    </p>
+  </SectionBand>
+
+  <!-- 7 · When to come in sooner -->
+  <SectionBand aria-labelledby="sooner-heading">
+    <h2 id="sooner-heading" class="section-title" data-reveal>When to come in sooner</h2>
+    <div class="sooner" data-reveal>
+      <p class="sooner__intro">
+        A yearly visit is enough for most stable conditions. A few things are worth a call before
+        then.
+      </p>
+      <CalloutClay heading="Tell us if you notice">
+        <ul>
+          <li>A spot that is new, or one that’s changing in size, shape, or color</li>
+          <li>A sore that doesn’t heal within a few weeks, or heals and returns</li>
+          <li>Any spot that bleeds, or itches persistently without a clear cause</li>
+          <li>A rash that spreads quickly, blisters, or comes with a fever</li>
+          <li>A change in a single nail — its color or shape, or a new dark streak</li>
+        </ul>
+      </CalloutClay>
+      <p class="sooner__note">
+        If one of these describes what’s going on, say so when you request an appointment and we’ll
+        move you up.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 8 · Getting an appointment (brand doc §12.9, adapted) -->
+  <SectionBand tone="fog" aria-labelledby="access-heading">
+    <div class="prose" data-reveal>
+      <h2 id="access-heading">Getting an appointment</h2>
+      <p>
+        Request an appointment and our team will call you back. We’re often booked several months
+        out for routine visits — if you have a concerning or changing spot, tell us when you call
+        and we’ll get you in sooner. Hair and cosmetic consultations through Restore are scheduled
+        separately from medical visits.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 9 · FAQ -->
+  <SectionBand aria-labelledby="faq-heading">
+    <Faq heading="Questions patients ask" items={faqs} />
+  </SectionBand>
+
+  <!-- 10 · Closing CTA + cross-sell -->
+  <SectionBand tone="fog" aria-labelledby="cta-heading">
+    <div class="closing" data-reveal>
+      <h2 id="cta-heading">Request an appointment</h2>
+      <p>
+        An appointment is a full look at your skin, a history, and a plan — with a biopsy only if
+        the skin calls for one. Leave your name and number and our team will call you back. Routine
+        visits are often booked months out; a spot that’s new, changing, bleeding, or not healing is
+        triaged sooner, so tell us when you call.
+      </p>
+      <div class="closing__cta">
+        <Button href="/contact/" variant="primary">Request an appointment</Button>
+        <Button href={`tel:${practice.phoneHref}`} variant="secondary">
+          Call {practice.phone}
+        </Button>
+      </div>
+      <p class="closing__cross">
+        Due for a yearly skin check, or worried about a specific spot?
+        <a class="link-underline" href="/skin-cancer/">
+          Skin cancer screening and Mohs surgery
+        </a> are handled by the same team, in the same building.
+      </p>
+    </div>
+  </SectionBand>
+</BaseLayout>
+
+<style>
+  .section-title {
+    margin-bottom: var(--space-12);
+  }
+
+  /* Hero */
+  .hero {
+    padding-block: var(--section-y);
+  }
+  .hero__grid {
+    display: grid;
+    gap: var(--space-12);
+    align-items: center;
+    margin-top: var(--space-8);
+  }
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+  .hero__media {
+    max-width: 420px;
+  }
+  @media (min-width: 900px) {
+    .hero__grid {
+      grid-template-columns: 1.3fr 1fr;
+      gap: var(--space-24);
+    }
+  }
+
+  /* What we treat */
+  .treat__intro {
+    max-width: var(--wrap-prose);
+    margin-bottom: var(--space-12);
+  }
+  .treat {
+    display: grid;
+    gap: var(--space-12);
+  }
+  @media (min-width: 760px) {
+    .treat {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .treat__item {
+    scroll-margin-top: 6rem;
+  }
+  .treat__item h3 {
+    margin-bottom: var(--space-3);
+  }
+  .treat__item p + p {
+    margin-top: var(--space-4);
+  }
+
+  /* First visit */
+  .visit {
+    max-width: var(--wrap-prose);
+    padding-left: 1.4rem;
+    margin: var(--space-6) 0;
+  }
+  .visit li + li {
+    margin-top: var(--space-4);
+  }
+
+  /* Who you'll see */
+  .team {
+    display: grid;
+    gap: var(--space-12);
+  }
+  @media (min-width: 640px) {
+    .team {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (min-width: 1000px) {
+    .team {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .team__note {
+    margin-top: var(--space-12);
+    max-width: 60ch;
+    color: var(--stone);
+  }
+
+  /* When to come in sooner */
+  .sooner {
+    max-width: 60ch;
+  }
+  .sooner__intro {
+    margin-bottom: var(--space-6);
+  }
+  .sooner__note {
+    margin-top: var(--space-6);
+    color: var(--stone);
+  }
+
+  /* Closing */
+  .closing {
+    max-width: 60ch;
+  }
+  .closing h2 {
+    margin-bottom: var(--space-6);
+  }
+  .closing__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+  .closing__cross {
+    margin-top: var(--space-8);
+    color: var(--stone);
+  }
+</style>

@@ -1,0 +1,59 @@
+---
+/**
+ * Labeled placeholder block. Stands in for photography that is not ready.
+ * No stock photography, ever (style guide §7). The label is the brief for the real photo.
+ * When the real image lands, replace the whole component at the call site.
+ */
+interface Props {
+  /** The shot description, shown verbatim, e.g. "exam room, natural light". */
+  label: string;
+  /** CSS aspect-ratio, e.g. "16 / 9", "4 / 5", "1 / 1". */
+  ratio?: string;
+  class?: string;
+}
+
+const { label, ratio = '16 / 9', class: className } = Astro.props;
+---
+
+<figure
+  class:list={['ph', className]}
+  style={`--ph-ratio: ${ratio}`}
+  role="img"
+  aria-label={`Placeholder for photograph: ${label}`}
+>
+  <span class="ph__mark" aria-hidden="true">
+    <span class="ph__kicker">Photo</span>
+    {label}
+  </span>
+</figure>
+
+<style>
+  .ph {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: var(--ph-ratio);
+    width: 100%;
+    padding: var(--space-6);
+    background: var(--fog);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius);
+    color: var(--stone);
+  }
+
+  .ph__mark {
+    font-size: var(--fs-small);
+    line-height: 1.5;
+    text-align: center;
+    max-width: 40ch;
+  }
+
+  .ph__kicker {
+    display: block;
+    font-size: var(--fs-eyebrow);
+    font-weight: 600;
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    margin-bottom: var(--space-2);
+  }
+</style>

@@ -1,0 +1,77 @@
+---
+/**
+ * Breadcrumb trail + BreadcrumbList JSON-LD. Omit on the home page.
+ * `crumbs` is ordered root → current. The last item is the current page (not linked).
+ */
+import { siteMeta } from '@data/site';
+
+interface Crumb {
+  label: string;
+  href?: string;
+}
+interface Props {
+  crumbs: Crumb[];
+}
+
+const { crumbs } = Astro.props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: crumbs.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.label,
+    ...(c.href ? { item: new URL(c.href, siteMeta.origin).href } : {}),
+  })),
+};
+---
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    {
+      crumbs.map((c, i) => (
+        <li>
+          {c.href && i < crumbs.length - 1 ? (
+            <a href={c.href}>{c.label}</a>
+          ) : (
+            <span aria-current="page">{c.label}</span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+
+<style>
+  .crumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-3);
+    list-style: none;
+    padding: 0;
+    font-size: var(--fs-small);
+    color: var(--stone);
+  }
+
+  .crumbs li + li::before {
+    content: '/';
+    margin-right: var(--space-3);
+    color: var(--line);
+  }
+
+  .crumbs a {
+    color: var(--stone);
+    text-decoration: underline;
+    text-underline-offset: 0.14em;
+  }
+  .crumbs a:hover {
+    color: var(--evergreen);
+  }
+
+  .crumbs [aria-current='page'] {
+    color: var(--ink);
+  }
+</style>

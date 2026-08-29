@@ -1,0 +1,32 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionBand from '@components/SectionBand.astro';
+import Button from '@components/Button.astro';
+---
+
+<BaseLayout
+  title="Page not found · Advanced Dermatology"
+  description="That page could not be found."
+  path="/404/"
+  noindex
+>
+  <SectionBand>
+    <h1>We couldn’t find that page.</h1>
+    <p class="lede">
+      The link may be out of date. You can start from the home page, or call us at 949.248.4547.
+    </p>
+    <p class="not-found__actions">
+      <Button href="/" variant="primary">Home</Button>
+      <Button href="/contact/" variant="secondary">Request an appointment</Button>
+    </p>
+  </SectionBand>
+</BaseLayout>
+
+<style>
+  .not-found__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+</style>
