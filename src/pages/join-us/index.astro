@@ -1,68 +1,66 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import SectionBand from '@components/SectionBand.astro';
-import Breadcrumbs from '@components/Breadcrumbs.astro';
 import Button from '@components/Button.astro';
 import AlumniGallery from '@components/AlumniGallery.astro';
 import { practice } from '@data/site';
 import { alumni } from '@data/alumni';
 
-const title = 'Medical Assistant Careers in Dana Point';
+const title = 'Admin and medical assistant careers';
 const description =
-  'We hire pre-PA and pre-med medical assistants and train them at the exam table. Two of our physician assistants started in that role. How the path works, and how to apply.';
+  'A small, physician-owned dermatology practice in Dana Point, hiring front-office staff and medical assistants — permanent roles, plus a pre-PA training path. How to apply.';
 ---
 
 <BaseLayout title={title} description={description} path="/join-us/">
   <!-- 1 · Hero -->
   <SectionBand as="div" class="hero">
-    <Breadcrumbs
-      crumbs={[
-        { label: 'Home', href: '/' },
-        { label: 'Join us', href: '/join-us/' },
-      ]}
-    />
     <div class="hero__copy" data-reveal>
       <span class="eyebrow">Join us</span>
-      <h1>Two of our physician assistants started here as medical assistants.</h1>
+      <h1>We’re a small, physician-owned practice, and we’re hiring.</h1>
       <p class="lede">
-        For about twenty years, this practice has hired college graduates on their way to PA or
-        medical school, trained them at the exam table, and sent them off to their programs. More
-        than 100 people have come through that way. We’re hiring the next medical assistant now.
+        Advanced Dermatology has been in Dana Point since 2006. It’s physician-owned and
+        independent, all in one building, with a team of about seventeen. Two board-certified
+        dermatologists — one a fellowship-trained Mohs surgeon who does more than 1,000 Mohs cases
+        a year — and two physician assistants see patients here, and every week Dr. Moinfar reviews
+        the pathology across all of them. The reasoning behind a diagnosis gets talked through
+        rather than kept to one person. If you want to learn the medicine and not just get through
+        the day, it’s worth working here.
+      </p>
+      <p class="hero__hiring">
+        We’re hiring for two kinds of roles: administrative staff for the front office, and medical
+        assistants for the exam rooms. Both can be long-term jobs. Some of our medical assistants
+        also use the role as a step toward PA or medical school — a path we’ve supported for about
+        twenty years, and one more than 100 people have taken.
       </p>
       <div class="hero__cta">
         <Button href="#apply" variant="primary">How to apply</Button>
-        <Button href="#the-path" variant="secondary">How the path works ↓</Button>
+        <Button href="#the-path" variant="secondary">The training path ↓</Button>
       </div>
     </div>
   </SectionBand>
 
-  <!-- 2 · How the path works -->
-  <SectionBand id="the-path" tone="evergreen" aria-labelledby="path-heading">
-    <div class="band-prose" data-reveal>
-      <h2 id="path-heading">How the path works</h2>
+  <!-- 2 · What we're hiring for -->
+  <SectionBand id="roles" tone="fog" aria-labelledby="roles-heading">
+    <div class="prose" data-reveal>
+      <h2 id="roles-heading">What we’re hiring for</h2>
       <p>
-        The role is medical assistant. It’s a real clinical job — rooming patients, preparing rooms
-        and instruments, assisting during procedures, and keeping a busy dermatology practice
-        moving.
+        <strong>Medical assistants</strong> work in the exam rooms — rooming patients, setting up
+        procedures, and assisting the physicians and PAs through the day. It’s hands-on clinical
+        work from the first week. Some people build a career in the role; others use it for a year
+        or two of clinical experience before PA or medical school. We hire for both.
       </p>
       <p>
-        The training isn’t a classroom program. You work next to Dr. Moinfar and the physician
-        assistants, and you learn the way they did: seeing the conditions in person, hearing how a
-        diagnosis gets made, doing the parts you’re cleared to do and watching the rest.
-      </p>
-      <p>
-        Over about twenty years, more than 100 pre-PA and pre-med graduates have worked here on
-        their way to a program. A number of them are now physician assistants or physicians.
-        Madeline Fee and Shylie Falahati, two of the physician assistants on staff now, both started
-        here as medical assistants, went to PA school, and came back.
+        <strong>Administrative staff</strong> run the front office — scheduling, patient
+        coordination, and billing. These are long-term roles, and the work is steadier than the
+        exam rooms by design.
       </p>
     </div>
   </SectionBand>
 
-  <!-- 3 · What the job actually is -->
+  <!-- 3 · The medical assistant role -->
   <SectionBand aria-labelledby="job-heading">
     <div class="prose" data-reveal>
-      <h2 id="job-heading">What the job actually is</h2>
+      <h2 id="job-heading">The medical assistant role</h2>
       <p>
         A medical assistant here rooms patients and records their history, sets up and assists with
         biopsies and excisions, works alongside Dr. Lander on Mohs surgery days, assists with
@@ -70,31 +68,57 @@ const description =
         record system. The room turns over quickly and the day is full.
       </p>
       <p>
-        You’re given real responsibility early, which also means the first few months are a lot to
-        absorb. It’s a demanding job, and most people do it for a year or two before moving on to a
-        program. That’s the design, not a failure of it.
+        You’re given real responsibility early, which means the first few months are a lot to
+        absorb. It’s a demanding job. Some people do it for a year or two and move on to a clinical
+        program; others make it a career. Both are what the role is for.
       </p>
     </div>
   </SectionBand>
 
-  <!-- 4 · Why people leave, addressed directly -->
-  <SectionBand tone="fog" aria-labelledby="leave-heading">
+  <!-- 4 · Administrative roles -->
+  <SectionBand id="admin" tone="fog" aria-labelledby="admin-heading">
     <div class="prose" data-reveal>
-      <h2 id="leave-heading">People leave this job. That’s the point.</h2>
+      <h2 id="admin-heading">Administrative roles</h2>
       <p>
-        Most people who take this role are using it as a deliberate step toward PA school, medical
-        school, or nursing, and we hire knowing that. When someone is ready to apply, they leave
-        with clinical hours that hold up, a reference from a board-certified dermatologist who
-        trained them, and help thinking through where to apply.
+        The front office is a different kind of work from the exam rooms and a different kind of
+        hire. Scheduling, patient coordination, and billing keep the practice running, and those
+        roles are meant to last. In a practice this size, the front desk isn’t one seat of forty —
+        you know the patients who come through, and you work directly with the providers.
       </p>
       <p>
-        Dermatology has a turnover problem. Here, people leave for a reason we’re glad to have been
-        part of.
+        If you want steady administrative work in a small, physician-owned practice, that’s a real
+        job here. To apply, use the address below with “Administrative” in the subject line.
       </p>
     </div>
   </SectionBand>
 
-  <!-- 5 · Where they are now -->
+  <!-- 5 · The training path -->
+  <SectionBand id="the-path" tone="evergreen" aria-labelledby="path-heading">
+    <div class="band-prose" data-reveal>
+      <h2 id="path-heading">The training path</h2>
+      <p>
+        For about twenty years, this practice has also been a place pre-PA and pre-med graduates
+        come to get their clinical hours. The training isn’t a classroom program. You work next to
+        Dr. Moinfar and the physician assistants and learn the way they did — seeing the conditions
+        in person, hearing how a diagnosis gets made, doing the parts you’re cleared to do and
+        watching the rest.
+      </p>
+      <p>
+        More than 100 people have come through that way, and a number of them are physician
+        assistants or physicians now. Madeline Fee and Shylie Falahati, two of the physician
+        assistants on staff, both started here as medical assistants, went to PA school, and came
+        back.
+      </p>
+      <p>
+        If that’s your plan, we hire knowing it. When you’re ready to apply, you leave with
+        clinical hours that hold up, a reference from the dermatologist who trained you, and help
+        thinking through where to apply. Dermatology has a turnover problem; here, the people who
+        leave leave for a reason we’re glad to have been part of.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 6 · Where they are now -->
   <SectionBand aria-labelledby="now-heading">
     <p class="now__intro" data-reveal>
       As alumni give us permission to include them, this is where the last twenty years have gone.
@@ -103,34 +127,37 @@ const description =
     <AlumniGallery heading="Where they are now" entries={alumni} />
   </SectionBand>
 
-  <!-- 6 · Who this is for -->
+  <!-- 7 · Who this is for -->
   <SectionBand tone="fog" aria-labelledby="fit-heading">
     <div class="prose" data-reveal>
       <h2 id="fit-heading">Who this is for</h2>
       <p>
-        <strong>A good fit</strong> if you have a science background and a specific plan — PA school,
-        medical school, or nursing — and you want clinical hours that will stand up in an application.
-        If you’re reliable, quick to learn, and comfortable being told when something is wrong.
+        <strong>The medical assistant role</strong> fits you if you want hands-on clinical work,
+        you’re reliable and quick to learn, and you’re comfortable being told when something’s
+        wrong — whether you’re building a career or getting clinical hours before a program. It’s a
+        harder fit if you need a slow, predictable pace and a fixed schedule; the exam rooms don’t
+        work that way.
       </p>
       <p>
-        <strong>Not the right fit</strong> if you’re looking for a long-term administrative role, if you
-        need a predictable pace and a fixed schedule, or if you’re not planning to go on to a clinical
-        program. None of that is a criticism — it’s just not what this particular job is.
+        <strong>An administrative role</strong> fits you if you’re organized, steady, and good with
+        patients on the phone and at the desk, and you want to stay somewhere a while. You don’t
+        need a clinical background.
       </p>
     </div>
   </SectionBand>
 
-  <!-- 7 · How to apply -->
+  <!-- 8 · How to apply -->
   <SectionBand id="apply" aria-labelledby="apply-heading">
     <div class="prose" data-reveal>
       <h2 id="apply-heading">How to apply</h2>
       <p>
-        Email a resume and a short note — why now, and what you’re aiming for — to
+        Email a resume and a short note — why now, and what you’re looking for — to
         <a
           class="link-underline"
           href="mailto:derm@dermsc.com?subject=Medical%20assistant%20application">derm@dermsc.com</a
         >
-        with “Medical assistant” in the subject line. If you’d rather call, the practice number is
+        with “Medical assistant” in the subject line, or “Administrative” if you’re applying for a
+        front-office role. If you’d rather call, the practice number is
         <a class="link-underline" href={`tel:${practice.phoneHref}`}>{practice.phone}</a>.
       </p>
       <p>
@@ -140,17 +167,17 @@ const description =
     </div>
   </SectionBand>
 
-  <!-- 8 · Closing CTA -->
+  <!-- 9 · Closing CTA -->
   <SectionBand tone="evergreen-deep" aria-labelledby="cta-heading">
     <div class="closing" data-reveal>
       <h2 id="cta-heading">Apply</h2>
       <p>
-        Send a resume and a short note about where you’re headed. If it’s a fit, we’ll bring you in
-        to meet the team and see the clinic.
+        Send a resume and a short note about the role you want and why now. If it’s a fit, we’ll
+        bring you in to meet the team and see the clinic.
       </p>
       <div class="closing__cta">
         <Button
-          href="mailto:derm@dermsc.com?subject=Medical%20assistant%20application"
+          href="mailto:derm@dermsc.com?subject=Application"
           variant="primary"
         >
           Email your resume
@@ -177,10 +204,14 @@ const description =
     padding-block: var(--space-12) var(--section-y);
   }
   .hero__copy {
-    margin-top: var(--space-8);
+    margin-top: 0;
   }
   .hero .lede {
     margin-top: var(--space-4);
+    max-width: 60ch;
+  }
+  .hero__hiring {
+    margin-top: var(--space-6);
     max-width: 60ch;
   }
   .hero__cta {
