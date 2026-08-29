@@ -1,0 +1,177 @@
+---
+/**
+ * "Where they are now" — the medical-assistant → PA / physician pipeline, shown as a
+ * responsive grid (design rule 5: no carousels). No JavaScript.
+ *
+ * Consent is enforced here, not at the call site: any entry with
+ * `consentOnFile: false` is dropped before render, so a real name can't ship by
+ * accident. `photo: null` renders a dignified initials block — never a stock image
+ * or a silhouette icon (style guide §7).
+ *
+ * Caption convention per card: name · "Medical assistant, <year>" → "Now: <role>
+ * (<year>)" · optional short quote. Sample rows are tagged so the practice can see
+ * which to replace.
+ */
+import { Image } from 'astro:assets';
+import PlaceholderImage from '@components/PlaceholderImage.astro';
+import type { AlumniEntry } from '@data/alumni';
+
+interface Props {
+  entries: AlumniEntry[];
+  /** Optional heading rendered above the grid. */
+  heading?: string;
+}
+
+const { entries, heading } = Astro.props;
+
+const shown = entries.filter((e) => e.consentOnFile);
+
+const initials = (name: string) =>
+  name
+    .replace(/,.*$/, '')
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? '')
+    .join('');
+
+const nowLine = (e: AlumniEntry) =>
+  e.currentYear === 'Present' ? e.currentRole : `${e.currentRole} (${e.currentYear})`;
+
+const altFor = (e: AlumniEntry) =>
+  `${e.name}, former medical assistant at Advanced Dermatology, now ${e.currentRole}`;
+---
+
+{
+  heading && (
+    <h2 class="ag__heading section-title" data-reveal>
+      {heading}
+    </h2>
+  )
+}
+
+{
+  shown.length === 0 ? (
+    <div data-reveal>
+      <PlaceholderImage
+        label="alumni portraits — pending signed photo releases; see docs/content-spec.md → PAGE: Join us"
+        ratio="3 / 1"
+      />
+    </div>
+  ) : (
+    <ul class="ag" data-reveal>
+      {shown.map((e) => (
+        <li class="ag__card">
+          {e.photo ? (
+            <Image
+              class="ag__photo"
+              src={e.photo}
+              alt={altFor(e)}
+              width={320}
+              height={320}
+              densities={[1, 2]}
+            />
+          ) : (
+            <span class="ag__photo ag__photo--initials" role="img" aria-label={altFor(e)}>
+              <span aria-hidden="true">{e.isSample ? '—' : initials(e.name)}</span>
+            </span>
+          )}
+
+          <div class="ag__body">
+            <p class="ag__name">
+              {e.name}
+              {e.isSample && <span class="ag__tag"> · sample</span>}
+            </p>
+            <p class="ag__path">
+              <span class="ag__then">
+                {e.roleAtStart}, {e.yearStarted}
+              </span>
+              <span class="ag__arrow" aria-hidden="true">
+                →
+              </span>
+              <span class="ag__now">Now: {nowLine(e)}</span>
+            </p>
+            {e.quote && <blockquote class="ag__quote">{e.quote}</blockquote>}
+          </div>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+<style>
+  .ag__heading {
+    margin-bottom: var(--space-12);
+  }
+
+  .ag {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--space-12);
+  }
+  @media (min-width: 640px) {
+    .ag {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (min-width: 1000px) {
+    .ag {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .ag__card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .ag__photo {
+    width: 100%;
+    max-width: 180px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+
+  .ag__photo--initials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--fog);
+    border: 1px solid var(--line);
+    font-family: var(--display);
+    font-size: 1.75rem;
+    color: var(--evergreen);
+  }
+
+  .ag__name {
+    font-weight: 600;
+  }
+  .ag__tag {
+    font-weight: 400;
+    font-size: var(--fs-small);
+    color: var(--stone);
+  }
+
+  .ag__path {
+    margin-top: var(--space-2);
+    font-size: var(--fs-small);
+    color: var(--stone);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2);
+  }
+  .ag__now {
+    color: var(--ink);
+  }
+
+  .ag__quote {
+    margin-top: var(--space-3);
+    padding-left: var(--space-4);
+    border-left: 2px solid var(--line);
+    max-width: 40ch;
+  }
+</style>

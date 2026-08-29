@@ -73,6 +73,7 @@ export const footerLinks: { heading: string; links: { label: string; href: strin
     links: [
       { label: 'About', href: '/about/' },
       { label: 'Our providers', href: '/about/#providers' },
+      { label: 'Join us', href: '/join-us/' },
       { label: 'Contact', href: '/contact/' },
       { label: 'Request an appointment', href: '/contact/' },
     ],

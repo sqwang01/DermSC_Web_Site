@@ -50,7 +50,13 @@ move to Cloudflare optional, later.
 - [x] Home `/` — built to the content-spec (hero, four doors, independence §12.3,
       providers, patient-story slot, location). Needs: real photos, "three providers" / "two PAs"
       wording check against current staff, client copy proof.
-- [ ] About `/about/` (independence explainer §7.5, the team, the building, careers stub)
+- [ ] About `/about/` (independence explainer §7.5, the team, the building, careers stub) —
+      the §5 "Coming up through the practice" line now links to `/join-us/` (D31)
+- [x] Join us `/join-us/` — standalone careers page for the medical-assistant → PA/physician
+      pipeline (D31). Long-form Astro page + `src/data/alumni.ts` + `src/components/AlumniGallery.astro`
+      (responsive grid, consent-filtered). Evergreen, no brass. Drafted from the client careers brief;
+      **pending client proof** and the open items in `content-spec.md` → "PAGE: Join us" (signed
+      photo releases, real alumni rows to replace the samples, careers inbox, application-form build).
 - [ ] Provider bios: `/about/dr-maryam-moinfar/`, `/dr-jeffrey-lander/`, `/madeline-fee-pa-c/`,
       `/shylie-falahati-pa-c/` (`Physician` schema each)
 - [ ] Contact `/contact/` — callback form + map embed + NAP + hours

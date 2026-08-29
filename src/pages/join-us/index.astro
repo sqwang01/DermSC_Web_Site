@@ -1,0 +1,248 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import SectionBand from '@components/SectionBand.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+import Button from '@components/Button.astro';
+import AlumniGallery from '@components/AlumniGallery.astro';
+import { practice } from '@data/site';
+import { alumni } from '@data/alumni';
+
+const title = 'Medical Assistant Careers in Dana Point';
+const description =
+  'We hire pre-PA and pre-med medical assistants and train them at the exam table. Two of our physician assistants started in that role. How the path works, and how to apply.';
+---
+
+<BaseLayout title={title} description={description} path="/join-us/">
+  <!-- 1 · Hero -->
+  <SectionBand as="div" class="hero">
+    <Breadcrumbs
+      crumbs={[
+        { label: 'Home', href: '/' },
+        { label: 'Join us', href: '/join-us/' },
+      ]}
+    />
+    <div class="hero__copy" data-reveal>
+      <span class="eyebrow">Join us</span>
+      <h1>Two of our physician assistants started here as medical assistants.</h1>
+      <p class="lede">
+        For about twenty years, this practice has hired college graduates on their way to PA or
+        medical school, trained them at the exam table, and sent them off to their programs. More
+        than 100 people have come through that way. We’re hiring the next medical assistant now.
+      </p>
+      <div class="hero__cta">
+        <Button href="#apply" variant="primary">How to apply</Button>
+        <Button href="#the-path" variant="secondary">How the path works ↓</Button>
+      </div>
+    </div>
+  </SectionBand>
+
+  <!-- 2 · How the path works -->
+  <SectionBand id="the-path" tone="evergreen" aria-labelledby="path-heading">
+    <div class="band-prose" data-reveal>
+      <h2 id="path-heading">How the path works</h2>
+      <p>
+        The role is medical assistant. It’s a real clinical job — rooming patients, preparing rooms
+        and instruments, assisting during procedures, and keeping a busy dermatology practice
+        moving.
+      </p>
+      <p>
+        The training isn’t a classroom program. You work next to Dr. Moinfar and the physician
+        assistants, and you learn the way they did: seeing the conditions in person, hearing how a
+        diagnosis gets made, doing the parts you’re cleared to do and watching the rest.
+      </p>
+      <p>
+        Over about twenty years, more than 100 pre-PA and pre-med graduates have worked here on
+        their way to a program. A number of them are now physician assistants or physicians.
+        Madeline Fee and Shylie Falahati, two of the physician assistants on staff now, both started
+        here as medical assistants, went to PA school, and came back.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 3 · What the job actually is -->
+  <SectionBand aria-labelledby="job-heading">
+    <div class="prose" data-reveal>
+      <h2 id="job-heading">What the job actually is</h2>
+      <p>
+        A medical assistant here rooms patients and records their history, sets up and assists with
+        biopsies and excisions, works alongside Dr. Lander on Mohs surgery days, assists with
+        cosmetic procedures, handles patient callbacks, and documents visits in the practice’s
+        record system. The room turns over quickly and the day is full.
+      </p>
+      <p>
+        You’re given real responsibility early, which also means the first few months are a lot to
+        absorb. It’s a demanding job, and most people do it for a year or two before moving on to a
+        program. That’s the design, not a failure of it.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 4 · Why people leave, addressed directly -->
+  <SectionBand tone="fog" aria-labelledby="leave-heading">
+    <div class="prose" data-reveal>
+      <h2 id="leave-heading">People leave this job. That’s the point.</h2>
+      <p>
+        Most people who take this role are using it as a deliberate step toward PA school, medical
+        school, or nursing, and we hire knowing that. When someone is ready to apply, they leave
+        with clinical hours that hold up, a reference from a board-certified dermatologist who
+        trained them, and help thinking through where to apply.
+      </p>
+      <p>
+        Dermatology has a turnover problem. Here, people leave for a reason we’re glad to have been
+        part of.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 5 · Where they are now -->
+  <SectionBand aria-labelledby="now-heading">
+    <p class="now__intro" data-reveal>
+      As alumni give us permission to include them, this is where the last twenty years have gone.
+      Names and photos are added only with a signed release.
+    </p>
+    <AlumniGallery heading="Where they are now" entries={alumni} />
+  </SectionBand>
+
+  <!-- 6 · Who this is for -->
+  <SectionBand tone="fog" aria-labelledby="fit-heading">
+    <div class="prose" data-reveal>
+      <h2 id="fit-heading">Who this is for</h2>
+      <p>
+        <strong>A good fit</strong> if you have a science background and a specific plan — PA school,
+        medical school, or nursing — and you want clinical hours that will stand up in an application.
+        If you’re reliable, quick to learn, and comfortable being told when something is wrong.
+      </p>
+      <p>
+        <strong>Not the right fit</strong> if you’re looking for a long-term administrative role, if you
+        need a predictable pace and a fixed schedule, or if you’re not planning to go on to a clinical
+        program. None of that is a criticism — it’s just not what this particular job is.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 7 · How to apply -->
+  <SectionBand id="apply" aria-labelledby="apply-heading">
+    <div class="prose" data-reveal>
+      <h2 id="apply-heading">How to apply</h2>
+      <p>
+        Email a resume and a short note — why now, and what you’re aiming for — to
+        <a
+          class="link-underline"
+          href="mailto:derm@dermsc.com?subject=Medical%20assistant%20application">derm@dermsc.com</a
+        >
+        with “Medical assistant” in the subject line. If you’d rather call, the practice number is
+        <a class="link-underline" href={`tel:${practice.phoneHref}`}>{practice.phone}</a>.
+      </p>
+      <p>
+        We read every application that comes in. If it looks like a fit, you’ll come in to meet the
+        team and spend time in the clinic before anyone decides.
+      </p>
+    </div>
+  </SectionBand>
+
+  <!-- 8 · Closing CTA -->
+  <SectionBand tone="evergreen-deep" aria-labelledby="cta-heading">
+    <div class="closing" data-reveal>
+      <h2 id="cta-heading">Apply</h2>
+      <p>
+        Send a resume and a short note about where you’re headed. If it’s a fit, we’ll bring you in
+        to meet the team and see the clinic.
+      </p>
+      <div class="closing__cta">
+        <Button
+          href="mailto:derm@dermsc.com?subject=Medical%20assistant%20application"
+          variant="primary"
+        >
+          Email your resume
+        </Button>
+        <Button href={`tel:${practice.phoneHref}`} variant="secondary">
+          Call {practice.phone}
+        </Button>
+      </div>
+      <p class="closing__cross">
+        Want to know how the practice is set up first?
+        <a class="link-underline" href="/about/">About Advanced Dermatology</a>.
+      </p>
+    </div>
+  </SectionBand>
+</BaseLayout>
+
+<style>
+  .section-title {
+    margin-bottom: var(--space-12);
+  }
+
+  /* Hero */
+  .hero {
+    padding-block: var(--space-12) var(--section-y);
+  }
+  .hero__copy {
+    margin-top: var(--space-8);
+  }
+  .hero .lede {
+    margin-top: var(--space-4);
+    max-width: 60ch;
+  }
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+
+  /* Generic prose */
+  .prose {
+    max-width: 60ch;
+  }
+  .prose h2 {
+    margin-bottom: var(--space-6);
+  }
+  .prose p + p {
+    margin-top: var(--space-4);
+  }
+
+  /* Evergreen band prose */
+  .band-prose {
+    max-width: 60ch;
+  }
+  .band-prose h2 {
+    margin-bottom: var(--space-6);
+  }
+  .band-prose p + p {
+    margin-top: var(--space-6);
+  }
+
+  /* Where they are now */
+  .now__intro {
+    max-width: 60ch;
+    margin-bottom: var(--space-12);
+    color: var(--stone);
+  }
+
+  /* Closing */
+  .closing {
+    max-width: 60ch;
+  }
+  .closing h2 {
+    margin-bottom: var(--space-6);
+  }
+  .closing__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+  }
+  .closing__cross {
+    margin-top: var(--space-8);
+    color: var(--stone);
+  }
+  /* Secondary "Call" button sits on the evergreen-deep band — lift it off the dark. */
+  .closing__cta :global(.btn--secondary) {
+    color: var(--paper);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  .closing__cta :global(.btn--secondary:hover) {
+    color: var(--paper);
+    border-color: var(--paper);
+  }
+</style>

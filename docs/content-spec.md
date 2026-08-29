@@ -1979,6 +1979,101 @@ outcome claims; numbers from the Proof Bank only. Bio copy lives in `src/data/si
 - **Schema:** `MedicalBusiness` only.
 - **Internal links:** Skin cancer (urgent spots), General dermatology, About.
 
+### PAGE: Join us `/join-us/`
+
+Added 2026-08-29 (D31) from the client careers brief. Standalone top-level page — this
+supersedes the `TODO(client): careers email or /careers/ page` placeholder in the About spec
+§5 ("Coming up through the practice"); About's section-5 line should link here once About is
+built.
+
+- **Title:** `Medical Assistant Careers in Dana Point` (39; renders with ` · Advanced Dermatology`)
+- **Meta:** `We hire pre-PA and pre-med medical assistants and train them at the exam table. Two of our physician assistants started in that role. How the path works, and how to apply.`
+- **H1:** `Two of our physician assistants started here as medical assistants.`
+- **Audience:** a recent college graduate with a pre-med / pre-PA / pre-nursing background,
+  looking for clinical hours before applying to a program, comparing this against other MA,
+  scribe, and CNA jobs. Treat as a serious young professional making a strategic decision.
+- **Pillar:** Continuity (§7, message map "Careers" row). **Evergreen only — no brass.** This is
+  a master-brand page; the pipeline is presented publicly as continuity/mentorship, never as the
+  internal succession/staffing plan (§6.3 🔒, §5.2 note).
+- **Proofs:** P14 (two PAs began as MAs), P23 (Dr. Moinfar trained both PAs herself at the exam
+  table), **P24** (100+ pre-PA/pre-med graduates mentored over ~20 years; a number became PAs or
+  physicians — added to the Proof Bank 2026-08-29, D31). No invented sub-counts, no named alumni
+  beyond Fee and Falahati, no average-tenure number (internal/unverified — §6.3).
+
+**Sections**
+
+1. **Hero** — eyebrow `Join us`; H1 (P14); lede: ~20 years of hiring graduates headed for PA/med
+   school, training them at the exam table, "more than 100" through that way, hiring the next MA
+   now. Breadcrumb `Home / Join us`. CTA `How to apply` (→ `#apply`) · `How the path works ↓`
+   (→ `#the-path`).
+2. **How the path works** _(id: `the-path`; `--evergreen` band)_ — the role is medical assistant,
+   a real clinical job; training is exam-table apprenticeship, not a classroom program; the "100+"
+   figure (P24) framed as continuity; Fee and Falahati named as the proof (P14).
+3. **What the job actually is** — honest, specific: rooming, history, biopsy/excision setup, Mohs
+   surgery days with Dr. Lander, cosmetic-procedure assisting, callbacks, documentation; fast room
+   turnover; real responsibility early; demanding; most do it a year or two before a program —
+   "that's the design, not a failure of it."
+4. **People leave this job. That's the point.** _(`--fog` band)_ — reframes tenure: most take the
+   role as a deliberate step; on the way out they get clinical hours that hold up, a reference from
+   the dermatologist who trained them, and help choosing programs. Closes on the approved §12.6
+   line adapted: _"Dermatology has a turnover problem. Here, people leave for a reason we're glad
+   to have been part of."_
+5. **Where they are now** — intro line (alumni added only with a signed release), then
+   `<AlumniGallery>` (responsive grid — **not a carousel**, design rule 5). Card caption
+   convention: name · "Medical assistant, `<yearStarted>`" → "Now: `<currentRole>` (`<year>`)" ·
+   optional ≤25-word quote. `photo: null` → dignified initials block (no stock, no silhouette).
+   Data in `src/data/alumni.ts`; component filters out any `consentOnFile: false` entry at build
+   time.
+6. **Who this is for** — good-fit / not-a-fit lists (mirrors the EmSculpt Neo candidacy pattern):
+   good fit = science background + a specific clinical plan + wants hours that hold up, reliable,
+   coachable; not a fit = wants a long-term admin role / fixed pace and schedule / not heading to
+   a clinical program ("not a criticism — just not what this job is").
+7. **How to apply** _(id: `apply`)_ — email a resume + short note ("why now, what you're aiming
+   for") to `derm@dermsc.com`, subject "Medical assistant"; or call the practice line. "We read
+   every application. If it's a fit, you'll come in to meet the team and spend time in the clinic
+   before anyone decides."
+8. **Closing CTA** _(`--evergreen-deep` band)_ — `Email your resume` (mailto) · `Call 949.248.4547`;
+   cross-link to `/about/`.
+
+- **Voice / claims fence:** calm, factual, numbers over adjectives; "over 100" only, never a
+  precise figure or sub-count; no outcome guarantee that a program will admit anyone (candidacy,
+  not results); banned-word list applies, plus the brief's list (no "family", "passionate",
+  "rockstar", "dream job", "fun", no exclamation marks, no urgency/scarcity, no "best/#1").
+- **Consent:** no real name, photo, or quote in the gallery without a signed release. Enforced in
+  `AlumniGallery.astro` (drops `consentOnFile: false`). This note is internal — it does not
+  render on the page.
+- **CTA:** primary is the resume email; secondary `Call 949.248.4547`.
+- **Schema:** `MedicalBusiness` only (base layout). `BreadcrumbList` from the two-item crumb.
+  A `JobPosting` is deliberately **not** emitted — revisit once employment type, a comp range,
+  and a way to keep `datePosted` / `validThrough` fresh on a static site are settled.
+- **Internal links:** About (how the practice is set up), Dr. Moinfar and the PAs via the
+  named-alumni sentence. Footer "Practice" column links here (`src/data/site.ts`).
+
+**Open items (confirm before launch)**
+
+- [ ] Signed photo/quote releases on file for **Madeline Fee** and **Shylie Falahati** — the two
+      real gallery entries are set `consentOnFile: true` on the strength of their existing site
+      presence; confirm the release actually covers this use, then add portraits.
+- [ ] Year each of Fee and Falahati started as an MA (`yearStarted` in `src/data/alumni.ts` is a
+      `[CONFIRM]` placeholder; the entries render the year in the "Medical assistant, <year>" line).
+- [ ] Delete the six `isSample` rows in `src/data/alumni.ts` and replace with real, consented
+      alumni.
+- [ ] Exact "100+" figure — keep the copy at "more than 100" unless the client gives a firm
+      number; do not invent precision. Same for the split of that group into PAs vs. physicians
+      vs. other clinical roles (copy says "a number of them").
+- [ ] Dedicated careers inbox? Copy currently routes applications to `derm@dermsc.com` with a
+      subject-line tag; swap if the practice wants a separate address.
+- [ ] Full application-form spec (for a later build, once file upload has a home — D4 keeps the
+      site to callback forms with no upload today): fields = name, phone, email, resume upload,
+      school/program (if applicable), "why now" free text. Needs its own serverless handler and a
+      storage/retention decision; until then the email route stands.
+- [ ] Hiring timeline and interview steps — copy says only "we read every application" and "come
+      in to meet the team"; tighten if the practice wants specifics.
+- [ ] `JobPosting` structured data — see Schema note above.
+- [ ] Average MA tenure (~1.5 yr) and ramp time (~3 mo) exist in internal ops notes but are
+      **not** published (§6.3) and were estimated internally; keep them off the page unless
+      verified for public use.
+
 ### PAGE: Legal — `/privacy/` and `/accessibility/` (both `noindex`)
 
 #### Privacy policy `/privacy/`
