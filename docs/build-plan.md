@@ -74,20 +74,31 @@ move to Cloudflare optional, later.
 - [x] `/cosmetic/emsculpt-neo/` and `/cosmetic/coolsculpting/` — built D17 as two pages. EmSculpt Neo
       area-specific table rendered as a real `<table>` (§9.2); GLP-1 adjacency only, no causal
       connector (§9.3). CoolSculpting names PAH honestly. "FDA-cleared" throughout.
-- [x] `/cosmetic/injectables-and-laser/` (Botox/tox, fillers, laser, peels, microneedling) — built D17;
-      candidacy language only, no percentages/promises; §7.6 sentence 5 verbatim; laser device names
-      still TODO(client).
-- [x] `/cosmetic/restore-membership/` — built D17 against **placeholder pricing (D17)**, marked
-      provisional on-page; no VIP/club/loyalty framing; pricing stated as plain figures (no "free"
-      months); §12.6 verbatim. Refund/cancellation policy page still TODO(client).
+- [x] **Face treatment pages — seven single-modality pages (D24, replaces `/cosmetic/injectables-and-laser/`):**
+      `/cosmetic/neuromodulators/`, `/cosmetic/fillers/`, `/cosmetic/collagen-stimulators/`,
+      `/cosmetic/laser/`, `/cosmetic/thread-lift/` (Silhouette InstaLift), `/cosmetic/chemical-peels/`,
+      `/cosmetic/microneedling/`. All render through the shared `src/layouts/RestoreTreatmentPage.astro`
+      shell (§11.2 structure; §7.2 "why here" + §7.6 sentence 5 + §12.8 + §12.10 verbatim baked in);
+      candidacy language only, no percentages/promises; per-page `MedicalProcedure` + `FAQPage` schema.
+      **Client-confirmed 2026-08-29:** lasers are **VBeam** (pulsed-dye, vascular) + **IPL** (pigment)
+      — no resurfacing laser on site, so the Laser page is reframed around redness/vessels/brown
+      spots; and delivery is **Dr. Moinfar assesses everyone + injects filler / collagen stimulators
+      / threads herself; PAs perform neuromodulators, microneedling, laser/IPL, and peels** — the old
+      `whoPerforms` / device TODOs are resolved (a `whoPerforms` prop on `RestoreTreatmentPage`
+      carries it). Specs: `content-spec.md` → the seven `### PAGE:` blocks. Old
+      `/cosmetic/injectables-and-laser/` 301s to `/cosmetic/` (`redirects.md`, `vercel.json`).
+- [x] ~~`/cosmetic/restore-membership/`~~ — **removed (D24, reverses D17).** Program is not launching;
+      page deleted, `/cosmetic/restore-membership/` 301s to `/cosmetic/`; stripped from
+      `brand-positioning-v2.md` (§5.1, §5.3, §12.11, §13, §14.3), `content-spec.md` (page list + CTA
+      table), and `src/data/site.ts` (`cta.membership`).
 - [x] GLP-1 Restore `/glp-1-restore/` — cleared booklet copy ported (hair/skin/muscle, what-to-expect
       timelines, first-visit, 9 FAQs, Moinfar pull-quote). **One page, three split-ready track
       modules** (`#hair` / `#skin` / `#muscle`), each a self-contained `<article>` that lifts out
       whole if promoted to sub-pages later — see `content-spec.md` → GLP-1 Restore → "Structure
       decision". Drafted copy in `content-spec.md`; pending client proof (§11.3).
 - [x] EmSculpt Neo area-specific claims table rendered intact (not five identical bullets)
-- [x] Cross-linking pass: every Restore page → 1 other Restore page + 1 provider bio (hub → 5 sub-pages
-      + Moinfar bio; each sub-page → ≥1 sibling + Moinfar bio/card)
+- [x] Cross-linking pass: every Restore page → 1 other Restore page + 1 provider bio (hub → 10
+      sub-pages + Moinfar bio; each sub-page → ≥1 sibling via the "Related" block + Moinfar bio/card)
 
 ## Phase 4 — SEO, QA, launch (Week 4)
 
@@ -142,7 +153,7 @@ Deferred deliberately — not launch blockers. Tracked here so they aren't lost.
 - [ ] Decision: keep literal `/emsculpt-neo/` path, or 301 it to `/cosmetic/emsculpt-neo/`
 - [x] Who writes page copy — **Claude Code drafts to spec** (D16); client reviews before publish
 - [ ] Any real photos available now (building exterior tight crop, exam rooms, 4 provider headshots)
-- [x] Restore Membership — building against **placeholder pricing** (D17); client confirms final number/inclusions before launch
+- [x] ~~Restore Membership placeholder pricing~~ — **program removed before launch (D24, reverses D17)**
 - [ ] Confirm fax number, hours, parking/access details for Contact page + schema
 
 ## Definition of done (per page)

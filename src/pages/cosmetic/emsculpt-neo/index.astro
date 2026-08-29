@@ -72,13 +72,7 @@ const faqs = [
 >
   <!-- 1 · Hero -->
   <SectionBand as="div" class="hero">
-    <Breadcrumbs
-      crumbs={[
-        { label: 'Home', href: '/' },
-        { label: 'Cosmetic', href: '/cosmetic/' },
-        { label: 'EmSculpt Neo', href: '/cosmetic/emsculpt-neo/' },
-      ]}
-    />
+    <Breadcrumbs crumbs={[{ label: 'EmSculpt Neo', href: '/cosmetic/emsculpt-neo/' }]} />
     <div class="hero__copy" data-reveal>
       <span class="eyebrow">Restore — under a physician’s direction</span>
       <h1>Muscle and fat, in one 30-minute treatment.</h1>
@@ -405,6 +399,15 @@ const faqs = [
     flex-wrap: wrap;
     gap: var(--space-4);
     margin-top: var(--space-8);
+  }
+  /* Secondary "Call" button sits on the evergreen-deep band — lift it off the dark. */
+  .closing__cta :global(.btn--secondary) {
+    color: var(--paper);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  .closing__cta :global(.btn--secondary:hover) {
+    color: var(--paper);
+    border-color: var(--paper);
   }
 
   /* Cross-sell */

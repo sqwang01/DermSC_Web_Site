@@ -246,7 +246,6 @@ export const cta = {
   cosmetic: { primary: 'Book a consultation', secondary: 'How it works' },
   hair: { primary: 'Request a hair consultation', secondary: 'About Dr. Moinfar' },
   glp1: { primary: 'Request a Restore consultation', secondary: 'How it works' },
-  membership: { primary: 'Join Restore', secondary: "See what's included" },
 } as const;
 
 export const formEndpoint = '/api/callback';

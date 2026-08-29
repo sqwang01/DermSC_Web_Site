@@ -1,0 +1,97 @@
+---
+import RestoreTreatmentPage from '@layouts/RestoreTreatmentPage.astro';
+import { practice, siteMeta } from '@data/site';
+
+const title = 'Microneedling in Dana Point · Collagen Induction';
+const description =
+  'Microneedling in Dana Point, with or without growth factors — controlled micro-injury that stimulates collagen over months. Gradual by design, usually a short series.';
+const path = '/cosmetic/microneedling/';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalProcedure',
+    name: 'Microneedling treatment',
+    procedureType: 'https://schema.org/TherapeuticProcedure',
+    bodyLocation: 'Skin',
+    howPerformed:
+      'A dermatologist assessment, then a device with fine needles set to a controlled depth is passed over the skin to create hundreds of micro-injuries, prompting a collagen-building healing response over the following months. Growth factors or platelet-rich plasma may be applied afterward. Usually done as a short series of sessions spaced weeks apart.',
+    provider: {
+      '@type': 'MedicalBusiness',
+      name: practice.legalName,
+      '@id': `${siteMeta.origin}/#practice`,
+    },
+  },
+];
+
+const offerings = [
+  {
+    name: 'How it works',
+    body: 'A device with fine needles makes hundreds of tiny controlled punctures at a set depth. The healing response that follows lays down new collagen over the following months. It is used for texture, fine lines, pores, and some rolling acne scars.',
+  },
+  {
+    name: 'With or without growth factors',
+    body: 'Growth factors, or platelet-rich plasma drawn from your own blood, can be applied to the skin afterward to support healing. Whether that adds enough to be worth it is discussed at the consultation, not assumed.',
+  },
+  {
+    name: 'A short series',
+    body: 'Most plans are three to six sessions spaced about four weeks apart. The result builds over months and compounds across sessions rather than appearing after any single one.',
+  },
+  {
+    name: 'Recovery',
+    body: 'Redness like a mild sunburn for a day or two, sometimes light flaking. Most people are back to normal activity the next day, with sun protection.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Does microneedling hurt?',
+    a: 'Topical numbing is applied first. Most people describe a sandpaper or prickling sensation, more noticeable over bone such as the forehead.',
+  },
+  {
+    q: 'How much downtime is there?',
+    a: 'Redness resembling a mild sunburn for one to two days, occasionally light flaking. Makeup is usually fine the next day.',
+  },
+  {
+    q: 'How many sessions will I need?',
+    a: 'Usually three to six, spaced around four weeks apart, with the number confirmed at the consultation based on what you are treating.',
+  },
+  {
+    q: 'When will I see results?',
+    a: 'Skin often looks fresher within a week from swelling and circulation, but the real change is collagen forming over the following two to six months.',
+  },
+  {
+    q: 'What are growth factors and PRP?',
+    a: 'Both are applied after the needling to support healing. PRP is platelet-rich plasma separated from a small draw of your own blood. Growth-factor serums are a manufactured alternative.',
+  },
+  {
+    q: 'Is an at-home derma-roller the same thing?',
+    a: 'No. Professional microneedling uses a controlled depth and sterile single-use tips. At-home rollers do not reach the same depth, and they carry an infection risk — we do not recommend them.',
+  },
+];
+---
+
+<RestoreTreatmentPage
+  title={title}
+  description={description}
+  path={path}
+  schema={schema}
+  breadcrumbLabel="Microneedling"
+  h1="Collagen you build gradually."
+  lede="Microneedling makes hundreds of tiny controlled punctures in the skin. The healing response that follows lays down new collagen over the following months. It is used for texture, fine lines, pores, and some scarring — and it works by compounding, not by any single session."
+  offerings={offerings}
+  offeredNote="Microneedling is a gradual, series-based treatment. The result builds over months and is maintained over time."
+  candidacyGoodFit="if you have early texture change, enlarged pores, fine lines, or rolling acne scars, and you are patient with a result that develops over months across a series."
+  candidacyNotRight="if you have active acne or a skin infection in the area, if you are prone to keloid scarring or on blood thinners — both reviewed at the consultation — if you are pregnant or breastfeeding and considering the PRP add-on, or if you want a single-session change."
+  whoPerforms="Dr. Moinfar assesses every patient and sets the plan. One of our physician assistants performs the microneedling."
+  faqs={faqs}
+>
+  <p slot="cross-sell">
+    For deeper resurfacing or for vessels and pigment,
+    <a class="link-underline" href="/cosmetic/laser/">laser</a> is covered separately. For surface
+    tone and mild texture with a chemical rather than a device,
+    <a class="link-underline" href="/cosmetic/chemical-peels/">chemical peels</a> address similar
+    concerns. The program is directed by
+    <a class="link-underline" href="/about/dr-maryam-moinfar/">Dr. Maryam Moinfar</a>.
+  </p>
+</RestoreTreatmentPage>

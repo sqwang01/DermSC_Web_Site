@@ -1,0 +1,97 @@
+---
+import RestoreTreatmentPage from '@layouts/RestoreTreatmentPage.astro';
+import { practice, siteMeta } from '@data/site';
+
+const title = 'Chemical Peels in Dana Point · Tone & Texture';
+const description =
+  'Superficial and medium-depth chemical peels in Dana Point — for tone, texture, and sun damage, usually as a short series, with downtime set by the depth of the peel.';
+const path = '/cosmetic/chemical-peels/';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalProcedure',
+    name: 'Chemical peel treatment',
+    procedureType: 'https://schema.org/TherapeuticProcedure',
+    bodyLocation: 'Skin',
+    howPerformed:
+      'A dermatologist assessment including skin-type evaluation, then application of a chemical solution — superficial acids such as glycolic, salicylic, or lactic, or a medium-depth agent such as TCA or Jessner’s — to remove outer layers of skin in a controlled way. Depth determines both the result and the downtime. A short series is common, and diligent sun protection afterward is required.',
+    provider: {
+      '@type': 'MedicalBusiness',
+      name: practice.legalName,
+      '@id': `${siteMeta.origin}/#practice`,
+    },
+  },
+];
+
+const offerings = [
+  {
+    name: 'Superficial peels',
+    body: 'Glycolic, salicylic, and lactic acid solutions that lift the outermost layer. Used for dull or uneven tone, mild rough texture, and congestion. Little to a day of flaking; usually done as a series.',
+  },
+  {
+    name: 'Medium-depth peels',
+    body: 'Agents such as TCA or Jessner’s that reach further, for sun damage, deeper texture, and some acne scarring. Expect about a week of visible peeling and redness.',
+  },
+  {
+    name: 'Depth sets everything',
+    body: 'How deep the peel goes decides how much it does and how much downtime it asks for. We match the depth to your skin, your goal, and how much recovery time you can give it.',
+  },
+  {
+    name: 'Skin type and aftercare',
+    body: 'Deeper peels carry a risk of pigment change, and that risk is higher in darker skin — we assess this first. Sun protection afterward is not optional; it is part of the treatment.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'How many peels will I need?',
+    a: 'Superficial peels are typically done in a series of three to six, spaced a few weeks apart. A medium-depth peel may be a single treatment repeated once or twice a year. We plan it at the consultation.',
+  },
+  {
+    q: 'Does it hurt?',
+    a: 'Superficial peels tingle or sting briefly. Medium-depth peels feel hot and are more uncomfortable for a few minutes; we talk you through what to expect.',
+  },
+  {
+    q: 'How much downtime is there?',
+    a: 'A superficial peel means little to a day of light flaking. A medium-depth peel means about a week of visible peeling and redness before new skin surfaces.',
+  },
+  {
+    q: 'Are peels safe for darker skin?',
+    a: 'Superficial peels generally are. Deeper peels carry a higher risk of pigment change in darker skin and need caution — which is what the assessment is for.',
+  },
+  {
+    q: 'Can I wear makeup afterward?',
+    a: 'Usually the next day for a superficial peel. For a medium-depth peel, we ask you to wait until the skin has finished peeling and healed.',
+  },
+  {
+    q: 'Can I have a peel while pregnant?',
+    a: 'Some agents are considered acceptable in pregnancy and some are not. Tell us at the consultation and we will choose accordingly or ask you to wait.',
+  },
+];
+---
+
+<RestoreTreatmentPage
+  title={title}
+  description={description}
+  path={path}
+  schema={schema}
+  breadcrumbLabel="Chemical peels"
+  h1="Tone and texture, one layer at a time."
+  lede="A chemical peel removes the outer layers of skin in a controlled way so newer skin surfaces. Lighter peels even out tone and rough texture with little downtime; deeper ones do more and ask for a week of visible peeling. Most people do a short series rather than one."
+  offerings={offerings}
+  offeredNote="Peels are not one-and-done: superficial peels work as a series, and even a medium-depth peel is maintained over time with sun protection and topical care."
+  candidacyGoodFit="if you have dull or uneven tone, sun spots, rough texture, or mild acne scarring, and you are willing to do a series and stay out of the sun."
+  candidacyNotRight="if you have an active cold sore or skin infection, if you have recently taken isotretinoin — we wait several months — if your skin is very sensitised, or if you expect one visit to do everything."
+  whoPerforms="Dr. Moinfar assesses every patient and sets the plan. One of our physician assistants performs the peel."
+  faqs={faqs}
+>
+  <p slot="cross-sell">
+    For pigment or vessels a peel will not reach,
+    <a class="link-underline" href="/cosmetic/laser/">laser</a> is covered separately. For collagen
+    and texture through controlled micro-injury,
+    <a class="link-underline" href="/cosmetic/microneedling/">microneedling</a> works on similar
+    concerns. The program is directed by
+    <a class="link-underline" href="/about/dr-maryam-moinfar/">Dr. Maryam Moinfar</a>.
+  </p>
+</RestoreTreatmentPage>

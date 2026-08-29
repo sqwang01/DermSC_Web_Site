@@ -136,8 +136,7 @@ const faqs = [
       </p>
       <p>
         Sometimes those answers are right. Often they’re what you get when no one has had time to
-        look properly. A condition that keeps returning has a reason it keeps returning. This visit
-        is about finding that reason, not renewing a prescription that isn’t working.
+        look properly. A condition that keeps returning has a reason it keeps returning.
       </p>
     </div>
   </SectionBand>
@@ -169,13 +168,7 @@ const faqs = [
 
   <!-- 4 · What we treat -->
   <SectionBand tone="fog" aria-labelledby="treat-heading">
-    <h2 id="treat-heading" class="section-title" data-reveal>What we treat</h2>
-    <p class="treat__intro" data-reveal>
-      Most of what we see is one of the following. If a spot is new, changing, bleeding, or won’t
-      heal, that’s a skin-cancer question — <a class="link-underline" href="/skin-cancer/"
-        >see what to watch for</a
-      >.
-    </p>
+    <h2 id="treat-heading" class="section-title" data-reveal>Common conditions we treat</h2>
     <div class="treat" data-reveal>
       {
         conditions.map((c) => (
@@ -333,10 +326,6 @@ const faqs = [
   }
 
   /* What we treat */
-  .treat__intro {
-    max-width: var(--wrap-prose);
-    margin-bottom: var(--space-12);
-  }
   .treat {
     display: grid;
     gap: var(--space-12);

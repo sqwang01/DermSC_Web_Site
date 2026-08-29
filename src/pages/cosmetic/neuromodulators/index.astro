@@ -1,0 +1,98 @@
+---
+import RestoreTreatmentPage from '@layouts/RestoreTreatmentPage.astro';
+import { practice, siteMeta } from '@data/site';
+
+const title = 'Neuromodulators (Botox, Dysport) · Dana Point';
+const description =
+  'Botox, Dysport, and equivalent wrinkle relaxers in Dana Point — dosed conservatively by a dermatologist, so the muscle still moves and the face still reads as yours.';
+const path = '/cosmetic/neuromodulators/';
+
+// MedicalProcedure — methodology and candidacy only, no outcome or percentage claims (§9.1).
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalProcedure',
+    name: 'Neuromodulator treatment (Botox, Dysport)',
+    procedureType: 'https://schema.org/TherapeuticProcedure',
+    bodyLocation: 'Face',
+    howPerformed:
+      'A dermatologist assessment, then small injections of a botulinum toxin type A product into targeted muscles of facial expression. The effect is temporary — it wears off over a few months — and is dosed conservatively so movement is softened rather than removed.',
+    provider: {
+      '@type': 'MedicalBusiness',
+      name: practice.legalName,
+      '@id': `${siteMeta.origin}/#practice`,
+    },
+  },
+];
+
+const offerings = [
+  {
+    name: 'What a neuromodulator does',
+    body: 'Botox, Dysport, and equivalents relax the specific muscles that fold the skin during expression. The lines those movements etch in over years soften as the movement eases. It does not add volume, and it does nothing for lines caused by sun damage or thinning.',
+  },
+  {
+    name: 'Where it is used',
+    body: 'Most often the horizontal forehead lines, the frown lines between the brows, and the creases at the outer corners of the eyes. Other areas — a downturned mouth, neck bands, a gummy smile — are assessed case by case.',
+  },
+  {
+    name: 'It is maintained, not banked',
+    body: 'The effect appears over a few days, settles by about two weeks, and wears off over roughly three to four months. Keeping the result means repeating it a few times a year. Stopping simply returns you to your baseline over time.',
+  },
+  {
+    name: 'Dosed to keep the face moving',
+    body: 'The aim is a softer version of your own expression, not a still one. We would rather start lighter and add at a two-week check than overtreat and wait months for it to wear off.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Does Botox hurt?',
+    a: 'Most people describe it as a quick pinch. The needles are very fine and each area takes a few seconds. No anesthesia is needed.',
+  },
+  {
+    q: 'How long does it last?',
+    a: 'Generally about three to four months, depending on the area, the dose, and how strong the muscle is. It is maintained over time rather than done once.',
+  },
+  {
+    q: 'How much is Botox in Dana Point?',
+    a: 'It is priced per area — or per unit for some products — and quoted in writing at your consultation, once we know what you are treating. We do not discount it or run promotions, so the figure you are quoted is the figure.',
+  },
+  {
+    q: 'Will my face look frozen?',
+    a: 'Not if it is dosed correctly. The intent is that your expressions still read as yours, only softer. If you have had an over-done result elsewhere, tell us — we tend to start conservative and adjust at a follow-up.',
+  },
+  {
+    q: 'How soon will I see it work?',
+    a: 'You will usually notice a change in three to five days, with the full effect by about two weeks. We schedule any touch-up after that two-week mark.',
+  },
+  {
+    q: 'Can I have it while pregnant or breastfeeding?',
+    a: 'No. We ask you to wait. Bring it up at the consultation and we will plan around it.',
+  },
+];
+---
+
+<RestoreTreatmentPage
+  title={title}
+  description={description}
+  path={path}
+  schema={schema}
+  breadcrumbLabel="Neuromodulators"
+  h1="Soften the movement that etches lines in."
+  lede="Botox, Dysport, and equivalent neuromodulators relax the specific muscles that fold the skin over time. The effect is temporary by design — a few months — and we dose it conservatively, so the muscle still moves and the face still reads as yours."
+  offerings={offerings}
+  offeredNote="Neuromodulators are maintenance, not a one-time fix: the result fades over a few months and is kept up rather than added to."
+  candidacyGoodFit="if the lines that bother you appear or deepen when you make an expression, you want them softened rather than erased, and you are willing to repeat the treatment a few times a year."
+  candidacyNotRight="if the lines are there at rest from volume loss or sun damage — those need filler or a skin-surface treatment, not a neuromodulator — or if you are pregnant or breastfeeding, in which case we will ask you to wait. Some neuromuscular conditions and medications change how these products behave; we review that at the consultation."
+  whoPerforms="Dr. Moinfar assesses every patient and sets the plan. One of our physician assistants performs the injections."
+  faqs={faqs}
+>
+  <p slot="cross-sell">
+    For volume that has been lost rather than movement lines,
+    <a class="link-underline" href="/cosmetic/fillers/">dermal fillers</a> are covered separately. To
+    prompt your own collagen over months,
+    <a class="link-underline" href="/cosmetic/collagen-stimulators/">collagen-stimulating injectables</a>
+    do a different job. The program is directed by
+    <a class="link-underline" href="/about/dr-maryam-moinfar/">Dr. Maryam Moinfar</a>.
+  </p>
+</RestoreTreatmentPage>

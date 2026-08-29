@@ -1,0 +1,98 @@
+---
+import RestoreTreatmentPage from '@layouts/RestoreTreatmentPage.astro';
+import { practice, siteMeta } from '@data/site';
+
+const title = 'Dermal Fillers in Dana Point · Hyaluronic Acid';
+const description =
+  'Hyaluronic-acid dermal fillers in Dana Point — used to replace volume that has been lost, matched to your own proportions, and dissolvable if the result is not right.';
+const path = '/cosmetic/fillers/';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalProcedure',
+    name: 'Dermal filler treatment (hyaluronic acid)',
+    procedureType: 'https://schema.org/TherapeuticProcedure',
+    bodyLocation: 'Face',
+    howPerformed:
+      'A dermatologist assessment, then injection of a hyaluronic-acid gel to replace lost facial volume, matched to the patient’s own proportions. Doses are conservative; hyaluronic-acid filler can be dissolved with hyaluronidase if needed. The effect is temporary and maintained over time.',
+    provider: {
+      '@type': 'MedicalBusiness',
+      name: practice.legalName,
+      '@id': `${siteMeta.origin}/#practice`,
+    },
+  },
+];
+
+const offerings = [
+  {
+    name: 'Hyaluronic acid, specifically',
+    body: 'The fillers we use are hyaluronic acid — a gel that holds water, and a version of a substance your skin already makes. It replaces volume that thinning and time have taken. Because it is hyaluronic acid, it can be broken down with an enzyme if you or we are not happy with the result.',
+  },
+  {
+    name: 'Where it is used',
+    body: 'Cheeks, the hollow under the eye, lips, chin and jawline, and the folds from the nose to the mouth. It is placed in small amounts and built up over more than one visit if needed, rather than all at once.',
+  },
+  {
+    name: 'How long it lasts',
+    body: 'Several months to a couple of years, depending on the product and the area — lips tend to be on the shorter end, deeper structural placement on the longer. It is maintained over time, not done once.',
+  },
+  {
+    name: 'Conservative by default',
+    body: 'The aim is that the change reads as rested, not filled. If a small amount will not get you where you want to be, we would rather tell you that than keep adding syringes.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'How long does filler last?',
+    a: 'It depends on the product and the area — generally several months to a couple of years. It is maintained over time rather than done once.',
+  },
+  {
+    q: 'Does it hurt?',
+    a: 'Most hyaluronic-acid fillers contain a local anesthetic, and we can apply topical numbing first. Most people describe pressure more than pain.',
+  },
+  {
+    q: 'Can filler be undone?',
+    a: 'Hyaluronic-acid filler can be dissolved with an enzyme called hyaluronidase. That is one of the reasons we use it rather than permanent or semi-permanent products.',
+  },
+  {
+    q: 'Will my face look puffy or overfilled?',
+    a: 'Not if it is dosed and placed well. Overfilling usually comes from treating one area in isolation and chasing volume; the assessment looks at the whole face and starts conservative.',
+  },
+  {
+    q: 'How much is filler in Dana Point?',
+    a: 'It is priced per syringe or per area and quoted in writing at your consultation. We do not run packages or promotions, so the figure you are quoted is the figure.',
+  },
+  {
+    q: 'Can I have filler while I am on a GLP-1 medication?',
+    a: 'Yes, many patients do. If facial volume loss is part of why you are here, the GLP-1 Restore program addresses that specifically.',
+  },
+];
+---
+
+<RestoreTreatmentPage
+  title={title}
+  description={description}
+  path={path}
+  schema={schema}
+  breadcrumbLabel="Dermal fillers"
+  h1="Replace the volume, not the face."
+  lede="The fillers we use are hyaluronic acid — a gel that holds water and is a version of something your skin already makes. It replaces volume that thinning and time have taken, in small amounts, matched to your own proportions. If the result is not right, hyaluronic acid can be dissolved."
+  offerings={offerings}
+  offeredNote="Filler is temporary and maintained over time. It replaces volume — it does not soften expression lines, which is a neuromodulator’s job."
+  candidacyGoodFit="if volume loss is showing up as hollowing or shadowing — under the eyes, in the cheeks, along the jaw — you want it corrected subtly, and you understand it is maintained rather than permanent."
+  candidacyNotRight="if you want a dramatic structural change, if there is an active skin infection at the site, or if you are pregnant or breastfeeding, in which case we will ask you to wait. A history of severe allergic reactions is reviewed at the consultation."
+  whoPerforms="Dr. Moinfar assesses every patient and injects the filler herself."
+  faqs={faqs}
+>
+  <p slot="cross-sell">
+    For lines that appear with movement rather than lost volume,
+    <a class="link-underline" href="/cosmetic/neuromodulators/">neuromodulators</a> are the better
+    tool. To rebuild firmness gradually with your own collagen,
+    <a class="link-underline" href="/cosmetic/collagen-stimulators/">collagen-stimulating injectables</a>
+    are covered separately. On a GLP-1 medication with facial volume loss? See
+    <a class="link-underline" href="/glp-1-restore/">GLP-1 Restore</a>. The program is directed by
+    <a class="link-underline" href="/about/dr-maryam-moinfar/">Dr. Maryam Moinfar</a>.
+  </p>
+</RestoreTreatmentPage>

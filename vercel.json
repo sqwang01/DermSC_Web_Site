@@ -28,7 +28,19 @@
     { "source": "/coolsculpting", "destination": "/cosmetic/coolsculpting/", "permanent": true },
     { "source": "/coolsculpting/", "destination": "/cosmetic/coolsculpting/", "permanent": true },
     { "source": "/emsculpt-neo", "destination": "/cosmetic/emsculpt-neo/", "permanent": true },
-    { "source": "/emsculpt-neo/", "destination": "/cosmetic/emsculpt-neo/", "permanent": true }
+    { "source": "/emsculpt-neo/", "destination": "/cosmetic/emsculpt-neo/", "permanent": true },
+    {
+      "source": "/cosmetic/injectables-and-laser",
+      "destination": "/cosmetic/",
+      "permanent": true
+    },
+    {
+      "source": "/cosmetic/injectables-and-laser/",
+      "destination": "/cosmetic/",
+      "permanent": true
+    },
+    { "source": "/cosmetic/restore-membership", "destination": "/cosmetic/", "permanent": true },
+    { "source": "/cosmetic/restore-membership/", "destination": "/cosmetic/", "permanent": true }
   ],
   "headers": [
     {

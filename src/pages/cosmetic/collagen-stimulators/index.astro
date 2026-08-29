@@ -1,0 +1,97 @@
+---
+import RestoreTreatmentPage from '@layouts/RestoreTreatmentPage.astro';
+import { practice, siteMeta } from '@data/site';
+
+const title = 'Collagen-Stimulating Injectables · Dana Point';
+const description =
+  'Poly-L-lactic acid and calcium hydroxylapatite injectables in Dana Point — they prompt your own collagen over months, across a short series, rather than adding volume on the day.';
+const path = '/cosmetic/collagen-stimulators/';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalProcedure',
+    name: 'Collagen-stimulating injectable treatment',
+    procedureType: 'https://schema.org/TherapeuticProcedure',
+    bodyLocation: 'Face',
+    howPerformed:
+      'A dermatologist assessment, then injection of a collagen-stimulating product — poly-L-lactic acid or calcium hydroxylapatite — usually across a short series of sessions spaced weeks apart. The change develops gradually as the skin lays down its own collagen over the following months. The effect is not permanent and is maintained over years.',
+    provider: {
+      '@type': 'MedicalBusiness',
+      name: practice.legalName,
+      '@id': `${siteMeta.origin}/#practice`,
+    },
+  },
+];
+
+const offerings = [
+  {
+    name: 'What these are',
+    body: 'Injectable products such as poly-L-lactic acid and calcium hydroxylapatite. They do not fill a line on the day the way hyaluronic acid does. They act as a scaffold that prompts your skin to lay down its own collagen over the months that follow.',
+  },
+  {
+    name: 'How it differs from filler',
+    body: 'The result is gradual, it works with your own tissue rather than sitting in it, and it is not dissolvable the way hyaluronic acid is. That is a real trade-off, and it is the reason we place it conservatively and in stages.',
+  },
+  {
+    name: 'A short series, then patience',
+    body: 'Most plans are two or three sessions spaced several weeks apart. The change builds over roughly three to six months. It is slow by nature — which is part of why it tends to read as natural.',
+  },
+  {
+    name: 'Where it fits',
+    body: 'Diffuse thinning and loss of firmness across larger areas — cheeks, temples — rather than the correction of a single fold. For a specific line or lip volume, hyaluronic-acid filler is usually the better choice.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'How is this different from filler?',
+    a: 'Hyaluronic-acid filler adds volume the day it is placed and can be dissolved. Collagen-stimulating injectables work by prompting your own collagen over months, and are not reversible in the same way. They suit gradual, broader changes rather than spot correction.',
+  },
+  {
+    q: 'How long until I see a result?',
+    a: 'It builds over about three to six months as collagen forms. There is usually a small immediate change from the volume of the product and fluid, which settles within days.',
+  },
+  {
+    q: 'How many sessions will I need?',
+    a: 'Typically two or three, spaced several weeks apart. We confirm the number at the consultation based on the area and the degree of thinning.',
+  },
+  {
+    q: 'How long does it last?',
+    a: 'Generally around two years, then it is maintained. It is not permanent.',
+  },
+  {
+    q: 'Is it reversible?',
+    a: 'Not the way hyaluronic-acid filler is. That is why we dose it conservatively and across a series rather than all at once.',
+  },
+  {
+    q: 'Does it hurt?',
+    a: 'The products can be mixed with local anesthetic, and topical numbing is used. Most people report pressure and brief stinging.',
+  },
+];
+---
+
+<RestoreTreatmentPage
+  title={title}
+  description={description}
+  path={path}
+  schema={schema}
+  breadcrumbLabel="Collagen-stimulating injectables"
+  h1="Rebuild what time thinned, gradually."
+  lede="These injectables — poly-L-lactic acid and calcium hydroxylapatite — do not fill a line on the day. They prompt your skin to lay down its own collagen over the following months, usually across a short series of sessions. The change is slow by nature, which is part of why it reads as natural."
+  offerings={offerings}
+  offeredNote="This is a gradual, staged treatment that is not reversible the way hyaluronic-acid filler is — which is exactly why it is placed conservatively."
+  candidacyGoodFit="if the change you see is diffuse thinning and lost firmness over a broader area, you are patient with a result that develops over months, and you are willing to do a short series."
+  candidacyNotRight="if you want an immediate change, or spot correction of a single line or the lips — hyaluronic-acid filler suits that better — or if you are pregnant or breastfeeding, have an active infection at the site, or have certain autoimmune conditions, which we review at the consultation."
+  whoPerforms="Dr. Moinfar assesses every patient and performs the injections herself."
+  faqs={faqs}
+>
+  <p slot="cross-sell">
+    For immediate volume in a specific area, or the lips,
+    <a class="link-underline" href="/cosmetic/fillers/">hyaluronic-acid fillers</a> are the better
+    fit. For lines that appear with expression,
+    <a class="link-underline" href="/cosmetic/neuromodulators/">neuromodulators</a> are covered
+    separately. The program is directed by
+    <a class="link-underline" href="/about/dr-maryam-moinfar/">Dr. Maryam Moinfar</a>.
+  </p>
+</RestoreTreatmentPage>

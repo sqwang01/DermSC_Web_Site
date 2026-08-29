@@ -1,0 +1,96 @@
+---
+import RestoreTreatmentPage from '@layouts/RestoreTreatmentPage.astro';
+import { practice, siteMeta } from '@data/site';
+
+const title = 'Laser & IPL in Dana Point · VBeam and Photofacial';
+const description =
+  'VBeam pulsed-dye laser and IPL in Dana Point — for facial redness, visible vessels, rosacea, and brown sun spots, matched to your skin type and staged over a short series.';
+const path = '/cosmetic/laser/';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalProcedure',
+    name: 'Laser and intense pulsed light (IPL) treatment',
+    procedureType: 'https://schema.org/TherapeuticProcedure',
+    bodyLocation: 'Skin',
+    howPerformed:
+      'A physician-assistant treatment after a dermatologist assessment that includes skin-type evaluation. VBeam, a pulsed-dye laser, targets blood vessels for facial redness, broken capillaries, and rosacea. IPL, a broad-spectrum light, targets brown pigment and uneven tone. Both work by aiming energy at colour in the skin, so they are matched to skin type and are usually done as a short series with a few days of visible redness or spot-darkening and strict sun avoidance.',
+    provider: {
+      '@type': 'MedicalBusiness',
+      name: practice.legalName,
+      '@id': `${siteMeta.origin}/#practice`,
+    },
+  },
+];
+
+const offerings = [
+  {
+    name: 'VBeam (pulsed-dye laser) — for red',
+    body: 'Targets the blood vessel itself. Used for facial redness, broken capillaries, and the flushing and visible vessels of rosacea, and sometimes for red or raised scars and certain birthmarks. Usually a short series. Expect a day or two of pink; at stronger settings it can leave brief bruising in the treated spots.',
+  },
+  {
+    name: 'IPL (intense pulsed light) — for brown',
+    body: 'Not a laser but a broad-spectrum light. It lifts brown sun spots and evens out blotchy background tone on the face, chest, and hands. A series of roughly three to five, spaced weeks apart. Treated spots darken like coffee grounds for several days, then flake off.',
+  },
+  {
+    name: 'Skin type comes first',
+    body: 'Both devices work by aiming energy at colour in the skin — red or brown — so they are safest on lighter, untanned skin and carry a real risk of burns or pigment change on tanned or darker skin. We check this before booking, and we will tell you if neither device is right for your skin or for what you are describing.',
+  },
+  {
+    name: 'What these do not do',
+    body: 'Neither VBeam nor IPL is a resurfacing laser — they do not do much for deep lines, texture, or scarring. For surface renewal, chemical peels and microneedling are the tools, and they are covered on their own pages.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'How long is the recovery?',
+    a: 'With VBeam, a day or two of pink, and sometimes short-lived bruising in the treated spots at higher settings. With IPL, the brown spots look darker for about a week and then flake off. Most people go back to normal activity the same day, with sun protection.',
+  },
+  {
+    q: 'Does it hurt?',
+    a: 'Both feel like a quick snap of heat, often compared to a rubber band. No anaesthesia is usually needed; topical numbing is available for more sensitive areas.',
+  },
+  {
+    q: 'Is VBeam or IPL safe for darker skin?',
+    a: 'Both target colour in the skin, so they carry more risk of burns and pigment change on tanned or darker skin. We assess your skin type first and will tell you honestly if we do not have the right device for your skin.',
+  },
+  {
+    q: 'How many sessions will I need?',
+    a: 'Typically three to five for both, spaced a few weeks apart, then occasional maintenance — rosacea and sun damage tend to recur over time. We give you a plan at the consultation.',
+  },
+  {
+    q: 'Can IPL treat melasma?',
+    a: 'We usually avoid it. IPL can worsen melasma. That is treated instead with topical therapy and strict daily sun protection.',
+  },
+  {
+    q: 'When can I be in the sun afterward?',
+    a: 'Not right before treatment, and not until any redness or spot-darkening has fully settled — then daily broad-spectrum SPF. Sun exposure around treatment raises the risk of burns and pigment problems.',
+  },
+];
+---
+
+<RestoreTreatmentPage
+  title={title}
+  description={description}
+  path={path}
+  schema={schema}
+  breadcrumbLabel="Laser & IPL"
+  h1="Matched to your skin, not a setting on a menu."
+  lede="VBeam and IPL are the two devices we use most. VBeam, a pulsed-dye laser, targets red — facial redness, broken vessels, rosacea. IPL targets brown — sun spots and uneven tone. Both aim energy at colour in the skin, so whether they are safe for your skin type is a clinical decision, and so is whether either is the right tool for what you are describing."
+  offerings={offerings}
+  offeredNote="VBeam and IPL are the devices we use most. Both are a planned series with a few days of visible redness or spot-darkening and strict sun avoidance — not a one-time treatment."
+  candidacyGoodFit="if you are dealing with facial redness, visible vessels, rosacea flushing, brown sun spots, or blotchy uneven tone, your skin is on the lighter side and not currently tanned, and you can plan around a few days of redness and staying out of the sun."
+  candidacyNotRight="if your skin is tanned or recently sun-exposed — we wait — if you have a deeper skin tone where the risk of burns or pigment change is higher and we may not have the right device, if you have melasma (IPL can worsen it), if there is an active infection or cold sore in the area, if you expect one session to finish it, or if you are pregnant, in which case elective light treatment is deferred."
+  whoPerforms="Dr. Moinfar assesses every patient and sets the plan. One of our physician assistants performs the VBeam or IPL treatment."
+  faqs={faqs}
+>
+  <p slot="cross-sell">
+    For surface texture and tone rather than redness or brown spots,
+    <a class="link-underline" href="/cosmetic/chemical-peels/">chemical peels</a> and
+    <a class="link-underline" href="/cosmetic/microneedling/">microneedling</a> are the tools, each
+    on its own page. The program is directed by
+    <a class="link-underline" href="/about/dr-maryam-moinfar/">Dr. Maryam Moinfar</a>.
+  </p>
+</RestoreTreatmentPage>

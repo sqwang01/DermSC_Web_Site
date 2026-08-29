@@ -2,6 +2,8 @@
 /**
  * Breadcrumb trail + BreadcrumbList JSON-LD. Omit on the home page.
  * `crumbs` is ordered root → current. The last item is the current page (not linked).
+ * A single-crumb trail (cosmetic procedure pages, D25) renders the page name only and
+ * emits no JSON-LD — a one-item BreadcrumbList carries no information.
  */
 import { siteMeta } from '@data/site';
 
@@ -43,7 +45,11 @@ const schema = {
   </ol>
 </nav>
 
-<script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+{
+  crumbs.length > 1 && (
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+  )
+}
 
 <style>
   .crumbs ol {

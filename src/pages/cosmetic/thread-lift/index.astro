@@ -1,0 +1,97 @@
+---
+import RestoreTreatmentPage from '@layouts/RestoreTreatmentPage.astro';
+import { practice, siteMeta } from '@data/site';
+
+const title = 'Silhouette InstaLift Thread Lift · Dana Point';
+const description =
+  'Silhouette InstaLift in Dana Point — dissolvable sutures that lift mild mid-face and jawline laxity and prompt collagen, for patients who want some lift without an operating room.';
+const path = '/cosmetic/thread-lift/';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalProcedure',
+    name: 'Silhouette InstaLift thread lift',
+    procedureType: 'https://schema.org/TherapeuticProcedure',
+    bodyLocation: 'Mid-face and jawline',
+    howPerformed:
+      'An in-office procedure under local anesthesia in which absorbable poly-L-lactic acid sutures with bidirectional anchors are placed under the skin to lift mild mid-face or jawline laxity and to prompt collagen as they dissolve. It is a smaller intervention than a surgical facelift, with a correspondingly smaller and shorter-lasting effect.',
+    provider: {
+      '@type': 'MedicalBusiness',
+      name: practice.legalName,
+      '@id': `${siteMeta.origin}/#practice`,
+    },
+  },
+];
+
+const offerings = [
+  {
+    name: 'What it is',
+    body: 'Silhouette InstaLift uses absorbable sutures — the same poly-L-lactic acid used in collagen-stimulating injectables — with small cones along them that catch the tissue and hold it in a lifted position. It is placed in the office under local anesthesia.',
+  },
+  {
+    name: 'Two effects, on two timelines',
+    body: 'There is a modest lift on the day, from the sutures being tightened. Then, as they dissolve over the following months, they prompt some collagen along their path. The sutures are gone within about six months; the collagen effect is what carries the result after that.',
+  },
+  {
+    name: 'How long it lasts',
+    body: 'Generally around a year to two, then it can be repeated. It is temporary and partial by design.',
+  },
+  {
+    name: 'It is not a facelift',
+    body: 'It does a smaller job than surgery — early jowl or mid-face heaviness, not significant sagging. If a facelift is what would actually get you the result you are describing, we will tell you that, and that recommendation sends you elsewhere.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'How long does a Silhouette InstaLift last?',
+    a: 'Generally about one to two years. The sutures themselves dissolve within roughly six months; the longer-term effect comes from the collagen laid down along them.',
+  },
+  {
+    q: 'Does it hurt?',
+    a: 'It is done under local anesthetic. You will feel pressure and some tugging during placement, and the area is sore for a few days afterward.',
+  },
+  {
+    q: 'What is the downtime?',
+    a: 'Bruising and swelling for up to a week. We ask you to avoid heavy chewing, wide expressions, and sleeping face-down for a short period so the sutures settle.',
+  },
+  {
+    q: 'Is it the same as a facelift?',
+    a: 'No. A facelift removes and repositions tissue surgically and lasts many years. A thread lift is a smaller lift, with a shorter result, and no surgery. For significant sagging, a facelift is the honest answer.',
+  },
+  {
+    q: 'Can the threads be felt or seen?',
+    a: 'Occasionally they can be felt in the first few weeks, especially with wide expressions. That settles as they soften and dissolve. Visible dimpling is uncommon and usually resolves; tell us if it does not.',
+  },
+  {
+    q: 'Who places the threads?',
+    a: 'A dermatologist. Dr. Moinfar assesses whether you are a candidate and performs the placement.',
+  },
+];
+---
+
+<RestoreTreatmentPage
+  title={title}
+  description={description}
+  path={path}
+  schema={schema}
+  breadcrumbLabel="Silhouette InstaLift"
+  h1="A little lift, no operating room."
+  lede="Silhouette InstaLift uses dissolvable sutures placed under the skin to lift mild sagging in the mid-face and along the jawline, and to prompt some collagen as they dissolve. It is a smaller intervention than a surgical facelift, and it does a smaller job — that trade is the point."
+  offerings={offerings}
+  offeredNote="A thread lift is temporary and partial. It does not replace a facelift, and we will say so if surgery is what your goal actually calls for."
+  candidacyGoodFit="if you have early jowl or mid-face laxity, you want a subtle lift, you accept that it is temporary and partial, and you can take about a week of social downtime."
+  candidacyNotRight="if you have significant sagging or heavy tissue — a facelift is the honest answer — if your tissue is very thin, if there is an active infection, or if you are pregnant or breastfeeding."
+  whoPerforms="Dr. Moinfar assesses whether you are a candidate and places the threads herself."
+  faqs={faqs}
+>
+  <p slot="cross-sell">
+    If the sagging is really volume loss underneath,
+    <a class="link-underline" href="/cosmetic/fillers/">fillers</a> or
+    <a class="link-underline" href="/cosmetic/collagen-stimulators/">collagen-stimulating injectables</a>
+    may address it more directly. For the skin surface itself,
+    <a class="link-underline" href="/cosmetic/laser/">laser</a> is covered separately. The program is
+    directed by <a class="link-underline" href="/about/dr-maryam-moinfar/">Dr. Maryam Moinfar</a>.
+  </p>
+</RestoreTreatmentPage>

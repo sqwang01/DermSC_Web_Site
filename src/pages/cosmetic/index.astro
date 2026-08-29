@@ -13,32 +13,69 @@ const description =
 
 const moinfar = providers.find((p) => p.slug === 'dr-maryam-moinfar')!;
 
-// The five sub-page cards. One sentence each, in the patient's language (content-spec → Cosmetic hub §3).
-const menu = [
+// Menu — one sentence each, in the patient's language (content-spec → Cosmetic hub §3).
+// Split into face and body/hair after the injectables-and-laser page was broken out
+// into seven single-modality pages and the membership was retired (decisions.md D24).
+const menuGroups = [
   {
-    href: '/cosmetic/injectables-and-laser/',
-    label: 'Injectables & laser',
-    line: 'Meant to look like you, ten years ago.',
+    heading: 'For the face',
+    items: [
+      {
+        href: '/cosmetic/neuromodulators/',
+        label: 'Neuromodulators',
+        line: 'Botox, Dysport, and the muscles that etch lines in.',
+      },
+      {
+        href: '/cosmetic/fillers/',
+        label: 'Dermal fillers',
+        line: 'Hyaluronic acid, to replace volume that has been lost.',
+      },
+      {
+        href: '/cosmetic/collagen-stimulators/',
+        label: 'Collagen-stimulating injectables',
+        line: 'Prompt your own collagen, gradually, over months.',
+      },
+      {
+        href: '/cosmetic/laser/',
+        label: 'Laser & IPL',
+        line: 'VBeam and IPL — for redness, vessels, and brown sun spots.',
+      },
+      {
+        href: '/cosmetic/thread-lift/',
+        label: 'Silhouette InstaLift',
+        line: 'Dissolvable sutures for a little lift, no operating room.',
+      },
+      {
+        href: '/cosmetic/chemical-peels/',
+        label: 'Chemical peels',
+        line: 'Surface renewal for tone and texture, usually a short series.',
+      },
+      {
+        href: '/cosmetic/microneedling/',
+        label: 'Microneedling',
+        line: 'Controlled micro-injury that builds collagen gradually.',
+      },
+    ],
   },
   {
-    href: '/cosmetic/emsculpt-neo/',
-    label: 'EmSculpt Neo',
-    line: 'Muscle and fat, in one 30-minute treatment.',
-  },
-  {
-    href: '/cosmetic/coolsculpting/',
-    label: 'CoolSculpting',
-    line: 'Cryolipolysis for pinchable fat.',
-  },
-  {
-    href: '/cosmetic/hair-restoration/',
-    label: 'Hair restoration',
-    line: 'Hair loss is a symptom. We find out of what.',
-  },
-  {
-    href: '/cosmetic/restore-membership/',
-    label: 'The Restore Membership',
-    line: 'The practice you already trust, on a schedule.',
+    heading: 'For the body and hair',
+    items: [
+      {
+        href: '/cosmetic/emsculpt-neo/',
+        label: 'EmSculpt Neo',
+        line: 'Muscle and fat, in one 30-minute treatment.',
+      },
+      {
+        href: '/cosmetic/coolsculpting/',
+        label: 'CoolSculpting',
+        line: 'Cryolipolysis for pinchable fat.',
+      },
+      {
+        href: '/cosmetic/hair-restoration/',
+        label: 'Hair restoration',
+        line: 'Hair loss is a symptom. We find out of what.',
+      },
+    ],
   },
 ];
 
@@ -53,7 +90,7 @@ const faqs = [
   },
   {
     q: 'Who performs the treatments?',
-    a: 'Dr. Moinfar assesses every patient. She and the Restore team perform the treatments; we’ll tell you who at your consultation.',
+    a: 'Dr. Moinfar assesses every patient. She injects filler and collagen stimulators and places threads herself; our physician assistants perform neuromodulators, microneedling, laser and IPL, and peels.',
   },
   {
     q: 'Do you photograph results?',
@@ -102,18 +139,23 @@ const faqs = [
   <!-- 3 · The menu -->
   <SectionBand tone="fog" aria-labelledby="menu-heading">
     <h2 id="menu-heading" class="section-title" data-reveal>What Restore covers</h2>
-    <ul class="menu" data-reveal>
-      {
-        menu.map((m) => (
-          <li>
-            <Card href={m.href} restore>
-              <span class="menu__label">{m.label}</span>
-              <span class="menu__line">{m.line}</span>
-            </Card>
-          </li>
-        ))
-      }
-    </ul>
+    {
+      menuGroups.map((g) => (
+        <div class="menu-group" data-reveal>
+          <h3 class="menu-group__heading">{g.heading}</h3>
+          <ul class="menu">
+            {g.items.map((m) => (
+              <li>
+                <Card href={m.href} restore>
+                  <span class="menu__label">{m.label}</span>
+                  <span class="menu__line">{m.line}</span>
+                </Card>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
   </SectionBand>
 
   <!-- 4 · Who you'll see -->
@@ -122,8 +164,9 @@ const faqs = [
     <div class="team" data-reveal>
       <ProviderCard provider={moinfar} />
       <p class="team__note">
-        Dr. Maryam Moinfar leads Restore and does the assessments herself.
-        {/* TODO(client): name the injector(s) and PA(s) who deliver treatments once confirmed. */}
+        Dr. Maryam Moinfar leads Restore and assesses every patient herself. She injects filler and
+        collagen stimulators and places threads; our physician assistants perform neuromodulators,
+        microneedling, laser and IPL, and peels.
       </p>
     </div>
   </SectionBand>
@@ -223,6 +266,16 @@ const faqs = [
   }
 
   /* Menu */
+  .menu-group + .menu-group {
+    margin-top: var(--space-12);
+  }
+  .menu-group__heading {
+    font-family: var(--display);
+    font-size: var(--fs-h3);
+    line-height: var(--lh-h3);
+    color: var(--evergreen);
+    margin-bottom: var(--space-6);
+  }
   .menu {
     list-style: none;
     padding: 0;
@@ -287,6 +340,15 @@ const faqs = [
     flex-wrap: wrap;
     gap: var(--space-4);
     margin-top: var(--space-8);
+  }
+  /* Secondary "Call" button sits on the evergreen-deep band — lift it off the dark. */
+  .closing__cta :global(.btn--secondary) {
+    color: var(--paper);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  .closing__cta :global(.btn--secondary:hover) {
+    color: var(--paper);
+    border-color: var(--paper);
   }
 
   /* Cross-sell */

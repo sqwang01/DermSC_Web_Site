@@ -51,11 +51,16 @@ new tab, `rel="noopener"`). **No review count. No "as seen in" strip. No social 
 | `/skin-cancer/`                      | Skin cancer                    | 2 Depth         | no          | MedicalProcedure (Mohs), FAQPage        |
 | `/skin-cancer/#referring-physicians` | Referring physicians (section) | 2 Depth         | no          | —                                       |
 | `/cosmetic/`                         | Cosmetic hub                   | 4 Restraint     | yes         | FAQPage                                 |
-| `/cosmetic/injectables-and-laser/`   | Injectables & laser            | 4 Restraint     | yes         | MedicalProcedure, FAQPage               |
+| `/cosmetic/neuromodulators/`         | Neuromodulators (Botox/Dysport) | 4 Restraint     | yes         | MedicalProcedure, FAQPage               |
+| `/cosmetic/fillers/`                 | Dermal fillers (hyaluronic acid) | 4 Restraint    | yes         | MedicalProcedure, FAQPage               |
+| `/cosmetic/collagen-stimulators/`    | Collagen-stimulating injectables | 4 Restraint    | yes         | MedicalProcedure, FAQPage               |
+| `/cosmetic/laser/`                   | Laser & IPL (VBeam, photofacial) | 4 Restraint    | yes         | MedicalProcedure, FAQPage               |
+| `/cosmetic/thread-lift/`             | Silhouette InstaLift thread lift | 4 Restraint    | yes         | MedicalProcedure, FAQPage               |
+| `/cosmetic/chemical-peels/`          | Chemical peels                 | 4 Restraint     | yes         | MedicalProcedure, FAQPage               |
+| `/cosmetic/microneedling/`           | Microneedling                  | 4 Restraint     | yes         | MedicalProcedure, FAQPage               |
 | `/cosmetic/emsculpt-neo/`            | EmSculpt Neo                   | 4 Restraint + 2 | yes         | MedicalProcedure, FAQPage               |
 | `/cosmetic/coolsculpting/`           | CoolSculpting                  | 4 Restraint     | yes         | MedicalProcedure, FAQPage               |
 | `/cosmetic/hair-restoration/`        | Hair restoration               | 1 Accuracy + 4  | yes         | MedicalProcedure, FAQPage               |
-| `/cosmetic/restore-membership/`      | The Restore Membership         | 3 Continuity    | yes         | —                                       |
 | `/glp-1-restore/`                    | GLP-1 Restore                  | 4 Restraint + 2 | yes         | MedicalProcedure, FAQPage               |
 | `/about/`                            | About                          | all four        | no          | —                                       |
 | `/about/dr-maryam-moinfar/`          | Dr. Moinfar bio                | —               | no          | Physician                               |
@@ -74,7 +79,6 @@ CTA strings are fixed — use verbatim (§12.11):
 | Cosmetic / EmSculpt / CoolSculpting | `Book a consultation`            | `How it works ↓`        |
 | Hair restoration                    | `Request a hair consultation`    | `About Dr. Moinfar →`   |
 | GLP-1 Restore                       | `Request a Restore consultation` | `How it works ↓`        |
-| Membership                          | `Join Restore`                   | `See what's included →` |
 
 _(All "Book/Request a consultation" routes to the same callback form; never "complimentary/free".)_
 
@@ -531,7 +535,7 @@ built this program." — Dr. Maryam Moinfar, board-certified dermatologist
    slower but it's the only "treated" that holds. The in-house-lab / chosen-dermatopathologist /
    weekly-review proof moved out of this section and out of the hero lede (D23) — it still runs in
    the first-visit steps and the `MedicalProcedure` schema.
-4. **What we treat** — grouped, anchor-linked blocks (2–4 sentences each; candidacy / management
+4. **Common conditions we treat** — grouped, anchor-linked blocks (2–4 sentences each; candidacy / management
    language, never cure or outcome), **not** individual condition sub-pages at launch (D18).
    Groups + anchors: `#acne` **Acne** · `#inflammatory-skin` **Eczema, psoriasis & rosacea**
    (grouped — same diagnostic approach) · `#rashes-hives` **Rashes & hives** · `#infections-growths`
@@ -604,8 +608,7 @@ the acne would pass with age, or that thinning hair was just hormones — and mo
 nothing had changed.
 
 Sometimes those answers are right. Often they're what you get when no one has had time to look
-properly. A condition that keeps returning has a reason it keeps returning. This visit is about
-finding that reason, not renewing a prescription that isn't working.
+properly. A condition that keeps returning has a reason it keeps returning.
 
 **3 · How we get the diagnosis right** _(§12.5 verbatim — revised D23)_
 
@@ -625,10 +628,7 @@ Finding the reason is slower. It's also the only version of "treated" that holds
 
 → _How the practice is set up_ → `/about/`
 
-**4 · What we treat**
-
-Intro: Most of what we see is one of the following. If a spot is new, changing, bleeding, or won't
-heal, that's a skin-cancer question — see [what to watch for](/skin-cancer/).
+**4 · Common conditions we treat**
 
 - **Acne** (`#acne`) — Teenage and adult acne aren't the same condition and don't respond to the
   same things. Adult acne especially is often driven by something — hormones, a product, a
@@ -761,21 +761,28 @@ surgery](/skin-cancer/) are handled by the same team, in the same building.
    to look like you ten years ago, not like work. The person who assesses you is a board-certified
    dermatologist who will tell you when a treatment won't help — "We will turn people away. That's
    the point of having a physician involved." (§7.6, verbatim.)
-3. **The menu** — five sub-page cards, each with the brass top-rule, one sentence in the patient's
-   language, and a link:
-   - **Injectables & laser** — _"Meant to look like you, ten years ago."_ → `/cosmetic/injectables-and-laser/`
+3. **The menu** — sub-page cards, each with the brass top-rule, one sentence in the patient's
+   language, and a link. Grouped **For the face** / **For the body and hair** (D24):
+   - **Neuromodulators** — _"Botox, Dysport, and the muscles that etch lines in."_ → `/cosmetic/neuromodulators/`
+   - **Dermal fillers** — _"Hyaluronic acid, to replace volume that has been lost."_ → `/cosmetic/fillers/`
+   - **Collagen-stimulating injectables** — _"Prompt your own collagen, gradually, over months."_ → `/cosmetic/collagen-stimulators/`
+   - **Laser & IPL** — _"VBeam and IPL — for redness, vessels, and brown sun spots."_ → `/cosmetic/laser/`
+   - **Silhouette InstaLift** — _"Dissolvable sutures for a little lift, no operating room."_ → `/cosmetic/thread-lift/`
+   - **Chemical peels** — _"Surface renewal for tone and texture, usually a short series."_ → `/cosmetic/chemical-peels/`
+   - **Microneedling** — _"Controlled micro-injury that builds collagen gradually."_ → `/cosmetic/microneedling/`
    - **EmSculpt Neo** — _"Muscle and fat, in one 30-minute treatment."_ → `/cosmetic/emsculpt-neo/`
    - **CoolSculpting** — _"Cryolipolysis for pinchable fat."_ → `/cosmetic/coolsculpting/`
    - **Hair restoration** — _"Hair loss is a symptom. We find out of what."_ → `/cosmetic/hair-restoration/`
-   - **The Restore Membership** — _"The practice you already trust, on a schedule."_ → `/cosmetic/restore-membership/`
-4. **Who you'll see** — Dr. Moinfar leads Restore; name the injector(s)/PA(s) involved as the
-   practice confirms them (TODO client). Photo placeholders. Link to Dr. Moinfar's bio.
+4. **Who you'll see** — Dr. Moinfar leads Restore and assesses every patient. She injects filler
+   and collagen stimulators and places threads herself; the physician assistants perform
+   neuromodulators, microneedling, laser/IPL, and peels (client, 2026-08-29). Photo placeholders.
+   Link to Dr. Moinfar's bio.
 5. **We don't run sales** — §12.8 pricing-integrity paragraph **verbatim** ("We don't run flash
    sales, holiday promotions, or discount packages. The price is the price…").
 6. **The consultation** — §12.10 **verbatim** (twenty minutes; we look at the area, review your
    history and medications, and tell you plainly whether it will help and what it won't do).
 7. **FAQ** — "is a consultation an obligation to book", "will results look natural", "who performs
-   the injections", "do you photograph results" (yes — P17), "do you offer payment plans"
+   the treatments", "do you photograph results" (yes — P17), "do you offer payment plans"
    (TODO client). `FAQPage` schema.
 8. **Closing CTA** — `Book a consultation`.
 9. **Cross-sell** — one line to GLP-1 Restore (for patients on a GLP-1 specifically).
@@ -788,14 +795,16 @@ surgery](/skin-cancer/) are handled by the same team, in the same building.
   "complimentary/free" (D11).
 - **CTA:** primary `Book a consultation` → `/contact/`; secondary `How it works ↓` (anchor to §2).
 - **Schema:** `FAQPage`, `MedicalBusiness`.
-- **Internal links:** all five sub-pages, Dr. Moinfar bio, GLP-1 Restore. (Restore cross-link rule
-  §11.4 satisfied.)
+- **Internal links:** all ten Restore sub-pages (seven face + EmSculpt Neo, CoolSculpting, hair
+  restoration), Dr. Moinfar bio, GLP-1 Restore. (Restore cross-link rule §11.4 satisfied.)
 
 #### Drafted copy (D16 — 2026-08-28, pending client proof)
 
 Final prose for the build. Section anchor for the secondary CTA: `#how-it-works` (the restraint
-case). Open placeholders, none blocking the build: the injector(s)/PA(s) who deliver treatments
-(named once the practice confirms); whether payment plans are offered (FAQ item held back).
+case). Delivery model is client-confirmed (2026-08-29): Dr. Moinfar assesses every patient and does
+filler, collagen stimulators, and threads herself; the physician assistants do neuromodulators,
+microneedling, laser/IPL, and peels. Open placeholder, not blocking: whether payment plans are
+offered (FAQ item held back).
 
 **Meta**
 
@@ -824,18 +833,29 @@ The person who assesses you is a board-certified dermatologist. She will tell yo
 won't get you what you're after, and she won't book it. We will turn people away. That's the point
 of having a physician involved.
 
-**3 · The menu** _(five cards, each with the brass top-rule)_
+**3 · What Restore covers** _(cards with the brass top-rule, grouped under two subheads)_
 
-- **Injectables & laser** — Meant to look like you, ten years ago. → `/cosmetic/injectables-and-laser/`
+_For the face_
+
+- **Neuromodulators** — Botox, Dysport, and the muscles that etch lines in. → `/cosmetic/neuromodulators/`
+- **Dermal fillers** — Hyaluronic acid, to replace volume that has been lost. → `/cosmetic/fillers/`
+- **Collagen-stimulating injectables** — Prompt your own collagen, gradually, over months. → `/cosmetic/collagen-stimulators/`
+- **Laser & IPL** — VBeam and IPL — for redness, vessels, and brown sun spots. → `/cosmetic/laser/`
+- **Silhouette InstaLift** — Dissolvable sutures for a little lift, no operating room. → `/cosmetic/thread-lift/`
+- **Chemical peels** — Surface renewal for tone and texture, usually a short series. → `/cosmetic/chemical-peels/`
+- **Microneedling** — Controlled micro-injury that builds collagen gradually. → `/cosmetic/microneedling/`
+
+_For the body and hair_
+
 - **EmSculpt Neo** — Muscle and fat, in one 30-minute treatment. → `/cosmetic/emsculpt-neo/`
 - **CoolSculpting** — Cryolipolysis for pinchable fat. → `/cosmetic/coolsculpting/`
 - **Hair restoration** — Hair loss is a symptom. We find out of what. → `/cosmetic/hair-restoration/`
-- **The Restore Membership** — The practice you already trust, on a schedule. → `/cosmetic/restore-membership/`
 
 **4 · Who you'll see**
 
-Dr. Maryam Moinfar leads Restore and does the assessments herself. _(TODO client: name the
-injector(s) and PA(s) who deliver treatments once confirmed.)_ Provider card → `/about/dr-maryam-moinfar/`.
+Dr. Maryam Moinfar leads Restore and assesses every patient herself. She injects filler and
+collagen stimulators and places threads; our physician assistants perform neuromodulators,
+microneedling, laser and IPL, and peels. Provider card → `/about/dr-maryam-moinfar/`.
 
 **5 · We don't run sales** _(§12.8 verbatim)_
 
@@ -857,8 +877,9 @@ health history and medications, and tell you plainly whether this will help — 
 2. **Will results look natural?** — That's the whole intent. Everything here is dosed conservatively
    and matched to your own face and body. Most patients hear that they look rested, not that they
    look different.
-3. **Who performs the treatments?** — Dr. Moinfar assesses every patient. She and the Restore team
-   perform the treatments; we'll tell you who at your consultation.
+3. **Who performs the treatments?** — Dr. Moinfar assesses every patient. She injects filler and
+   collagen stimulators and places threads herself; our physician assistants perform
+   neuromodulators, microneedling, laser and IPL, and peels.
 4. **Do you photograph results?** — Yes. We take standardized photographs at baseline and follow-up,
    on a fixed protocol, so you and the physician are looking at evidence rather than impressions.
 
@@ -875,161 +896,367 @@ CTAs: `Book a consultation` → `/contact/` · `Call 949.248.4547`
 On a GLP-1 medication and dealing with hair shedding, facial volume loss, or lost strength? That
 has its own program — [GLP-1 Restore](/glp-1-restore/).
 
-### PAGE: Injectables & laser `/cosmetic/injectables-and-laser/` (brass)
+### PAGE: Neuromodulators `/cosmetic/neuromodulators/` (brass)
 
-- **Title:** `Injectables & Laser Treatments · Dana Point` (43)
-- **Meta:** `Neuromodulators, dermal fillers, laser, chemical peels, and microneedling in Dana Point — conservative, physician-directed, and matched to your own anatomy.`
-- **H1:** `Meant to look like you, ten years ago.`
+- **Title:** `Neuromodulators (Botox, Dysport) · Dana Point` (45)
+- **Meta:** `Botox, Dysport, and equivalent wrinkle relaxers in Dana Point — dosed conservatively by a dermatologist, so the muscle still moves and the face still reads as yours.`
+- **H1:** `Soften the movement that etches lines in.`
 - **Audience:** the Existing Patient (§3.1). **Pillar:** 4 Restraint. Most restrained register on
-  the site (§8.5) — understatement is the sale.
+  the site (§8.5) — understatement is the sale; never a percentage or a promise.
 - **Proofs:** P17 (standardized photography — baseline and follow-up), P10/P11 (a medical practice
   underneath), P2 (~20 years of natural-result work), P1 context (no product quota — §7.4).
 
-**Sections** (Restore variant)
+**Sections** (Restore variant — shared `RestoreTreatmentPage` shell, D24)
 
 1. **Hero** — eyebrow _"Restore — under a physician's direction"_ + H1 + lede. CTA `Book a
-   consultation` / `How it works ↓`.
-2. **What's offered** — plain grouped list, one honest line each, candidacy not outcome, **never a
-   percentage or a promise:**
-   - **Neuromodulators** (Botox and equivalents) — soften the muscle movement that etches lines in;
-     wears off in a few months by design.
-   - **Dermal fillers** — replace lost volume; matched to your own face; conservative by default.
-   - **Laser** — resurfacing and vascular/pigment treatments, matched to skin type; downtime
-     stated at consultation. TODO client: confirm devices/platforms in use.
-   - **Chemical peels** — surface renewal for tone and texture; usually a short series.
-   - **Microneedling** (± growth factors) — collagen stimulation that compounds over months.
-3. **How a treatment visit works** — assessment; standardized baseline photography (P17); the
-   treatment; what recovery looks like; when change shows; when to come back.
-4. **Candidacy** — good fit if you want a change no one can point to / not right for you if you
-   want a dramatic or immediate structural change, or if you're pregnant or breastfeeding (defer).
-5. **Why here rather than a storefront** — claim then structure (§7.2): a dermatologist assesses
-   you and has no product target to hit; the same "we will turn people away" line (§7.6).
-6. **Who you'll see** — Dr. Moinfar and the injector(s) as confirmed (TODO client). Photo placeholders.
-7. **Evidence** — honest interim statement: results are photographed at baseline and follow-up with
-   a fixed protocol; the practice publishes only its own images and has consented sets in progress
-   (§6.4). No stock, no borrowed before/afters.
-8. **The consultation & pricing** — §12.10 verbatim; §12.8 pricing-integrity paragraph verbatim;
-   itemized pricing in writing at the consultation (no published price list — TODO client if that
-   changes).
-9. **FAQ** — long-tail: "does Botox hurt", "how long does filler last", "how much is Botox in Dana
-   Point" (priced per area at consultation — §12.8 logic), "how long is laser recovery", "can I
-   have filler while I'm on a GLP-1" (yes — cross-link GLP-1 Restore, **no causal claim**), "will I
-   look done". `FAQPage` schema.
+   consultation` / `How it works ↓`. Breadcrumb: Neuromodulators only (D25).
+2. **What's offered** (id: `how-it-works`) — what a neuromodulator does (relaxes the muscle that
+   folds the skin; not volume, not sun-damage lines); common areas (forehead, glabella, crow's
+   feet); maintained not banked (onset days, settles ~2 weeks, wears off ~3–4 months); dosed to
+   keep the face moving (start light, review at two weeks). Candidacy language only.
+3. **How a treatment visit works** — shared five-step (assessment → baseline photo → treatment →
+   recovery → photographed follow-up).
+4. **Candidacy** — good fit: lines that appear/deepen with expression, want softened not erased,
+   willing to repeat a few times a year. Not right: static lines from volume loss or sun damage
+   (need filler/resurfacing); pregnant or breastfeeding (defer); some neuromuscular
+   conditions/medications reviewed at consult.
+5. **Why here rather than a storefront** — §7.2 claim-then-structure, closing on §7.6 sentence 5
+   verbatim ("When we say a procedure isn't right for you, that recommendation costs us money…").
+   Shared across the seven face pages.
+6. **Who you'll see** — Dr. Moinfar assesses and sets the plan; a **physician assistant** performs
+   the injections (client, 2026-08-29 — PAs do neuromodulators, microneedling, laser/IPL, peels).
+7. **Evidence** — standardized baseline/follow-up photography (P17); own images only; no stock, no
+   borrowed before/afters.
+8. **The consultation & pricing** — §12.10 verbatim, then §12.8 verbatim; itemized pricing in
+   writing at the consultation; no published price list.
+9. **FAQ** — "does Botox hurt", "how long does it last", "how much is Botox in Dana Point" (per
+   area/unit, in writing, no promotions), "will my face look frozen", "how soon does it work",
+   "can I have it while pregnant or breastfeeding" (no — wait). `FAQPage` schema.
 10. **Closing CTA** — `Book a consultation`.
-11. **Cross-sell** — one line to EmSculpt Neo / CoolSculpting (body, not face).
+11. **Cross-sell** — fillers (volume), collagen-stimulating injectables (own collagen), Dr. Moinfar bio.
 
-- **Honest limitation:** neuromodulators and fillers are temporary and need maintenance; laser and
-  peels need a series and real downtime; nothing here is one-and-done.
-- **Claims fence:** area/candidacy language only — never outcome promises or percentages; no
-  "youthful / flawless / transform"; device names stay TODO until confirmed; brass on Restore
-  pages only; never "complimentary/free".
+- **Honest limitation:** neuromodulators are maintenance — the result fades over a few months and
+  is kept up rather than added to.
+- **Claims fence:** candidacy/methodology only — never an outcome or a percentage; "botulinum toxin
+  type A" framing, no brand superlatives; brass on Restore pages only; never "complimentary/free".
 - **CTA:** primary `Book a consultation` → `/contact/`; secondary `How it works ↓`.
-- **Schema:** `MedicalProcedure` (injectable and laser cosmetic dermatology), `FAQPage`, `MedicalBusiness`.
-- **Internal links:** Cosmetic hub, EmSculpt Neo, GLP-1 Restore, Dr. Moinfar bio.
+- **Schema:** `MedicalProcedure` (neuromodulator treatment), `FAQPage`, `MedicalBusiness`.
+- **Internal links:** fillers, collagen-stimulators, Dr. Moinfar bio, GLP-1 Restore (via FAQ context on fillers page, not required here). Cosmetic hub is reached via the global nav/footer only — the breadcrumb no longer carries it (D25).
 
-#### Drafted copy (D16 — 2026-08-28, pending client proof)
+#### Drafted copy (D16 / D24 — 2026-08-29, pending client proof)
 
-Final prose for the build. Section anchor for the secondary CTA: `#how-it-works` (what's offered).
-Most restrained register on the site (§8.5) — understatement is the sale; never a percentage or a
-promise. Open placeholders: laser device/platform names; the injector(s)/PA(s) alongside Dr. Moinfar.
+Built and live from `src/pages/cosmetic/neuromodulators/index.astro` via the shared
+`RestoreTreatmentPage` layout. Delivery model is client-confirmed (2026-08-29): Dr. Moinfar
+assesses, a physician assistant injects. Copy is in the page file; the section list above is the
+spec of record.
 
-**Meta**
+---
 
-- Title: `Injectables & Laser Treatments · Dana Point`
-- Description: `Neuromodulators, dermal fillers, laser, chemical peels, and microneedling in Dana Point — conservative, physician-directed, and matched to your own anatomy.`
+### PAGE: Dermal fillers `/cosmetic/fillers/` (brass)
 
-**1 · Hero**
+- **Title:** `Dermal Fillers in Dana Point · Hyaluronic Acid` (46)
+- **Meta:** `Hyaluronic-acid dermal fillers in Dana Point — used to replace volume that has been lost, matched to your own proportions, and dissolvable if the result is not right.`
+- **H1:** `Replace the volume, not the face.`
+- **Audience:** the Existing Patient (§3.1). **Pillar:** 4 Restraint.
+- **Proofs:** P17, P10/P11, P2, P1 context (no product quota — §7.4).
 
-- Eyebrow: Restore — under a physician's direction
-- H1: Meant to look like you, ten years ago.
-- Descriptor (sub-head): Restore at Advanced Dermatology.
-- Lede: Neuromodulators, dermal fillers, laser, chemical peels, and microneedling — dosed
-  conservatively, matched to your own face, and assessed first by a dermatologist who will tell you
-  when something won't help.
-- CTAs: `Book a consultation` → `/contact/` · `How it works ↓` (anchor to §2)
+**Sections** (Restore variant — shared `RestoreTreatmentPage` shell, D24)
 
-**2 · What's offered** _(id: `how-it-works`; candidacy language only, never an outcome or a percentage)_
+1. **Hero** — eyebrow + H1 + lede (hyaluronic acid; replaces lost volume, small amounts, matched to
+   your proportions; dissolvable). Breadcrumb: Dermal fillers only (D25).
+2. **What's offered** (id: `how-it-works`) — hyaluronic acid specifically (a substance the skin
+   already makes; reversible with an enzyme); where it's used (cheeks, tear trough, lips, chin/jaw,
+   nasolabial folds); how long it lasts (several months to a couple of years by product/area);
+   conservative by default.
+3. **How a treatment visit works** — shared five-step.
+4. **Candidacy** — good fit: volume loss showing as hollowing/shadowing, want subtle correction,
+   understand it's maintained. Not right: want a dramatic structural change; active skin infection
+   at the site; pregnant or breastfeeding (defer); severe allergy history reviewed at consult.
+5. **Why here rather than a storefront** — shared §7.2 block.
+6. **Who you'll see** — **Dr. Moinfar injects the filler herself** (client, 2026-08-29 — she does
+   all filler, collagen stimulators, and threads; PAs do not).
+7. **Evidence** — P17, own images only.
+8. **The consultation & pricing** — §12.10 + §12.8 verbatim; itemized pricing in writing.
+9. **FAQ** — "how long does filler last", "does it hurt" (lidocaine in product + topical numbing),
+   "can it be undone" (yes — hyaluronidase), "will my face look puffy/overfilled", "how much is
+   filler in Dana Point" (per syringe/area, in writing, no packages), "can I have filler on a
+   GLP-1" (yes — cross-link GLP-1 Restore, **no causal claim**). `FAQPage` schema.
+10. **Closing CTA** — `Book a consultation`.
+11. **Cross-sell** — neuromodulators (movement lines), collagen-stimulating injectables (own
+    collagen), GLP-1 Restore (facial volume loss on a GLP-1), Dr. Moinfar bio.
 
-- **Neuromodulators** (Botox and equivalents) — Soften the muscle movement that etches lines in
-  over time. The effect isn't permanent; it wears off over a few months by design, and it's
-  maintained rather than banked.
-- **Dermal fillers** — Replace volume that's been lost, matched to your own proportions.
-  Conservative by default — the aim is that the change reads as "rested," not "filled."
-- **Laser** — Resurfacing, and treatments for visible vessels and pigment, matched to your skin
-  type. Downtime is real and depends on the setting; we tell you what to expect before you book.
-  _(TODO client: confirm devices/platforms in use.)_
-- **Chemical peels** — Surface renewal for tone and texture, usually a short series rather than a
-  single treatment.
-- **Microneedling** (with or without growth factors) — Stimulates collagen over months. Gradual by
-  nature; the result compounds rather than appears.
+- **Honest limitation:** filler is temporary and maintained; it replaces volume and does nothing
+  for expression lines.
+- **Claims fence:** HA-specific; reversibility with hyaluronidase is a factual candidacy point, not
+  an outcome claim; duration ranges kept non-specific, no guarantee; GLP-1 adjacency only, never a
+  causal connector (§9.3); never "complimentary/free".
+- **CTA:** primary `Book a consultation`; secondary `How it works ↓`.
+- **Schema:** `MedicalProcedure` (dermal filler treatment, hyaluronic acid), `FAQPage`, `MedicalBusiness`.
+- **Internal links:** Cosmetic hub, neuromodulators, collagen-stimulators, GLP-1 Restore, Dr. Moinfar bio.
 
-**3 · How a treatment visit works**
+#### Drafted copy (D16 / D24 — 2026-08-29, pending client proof)
 
-1. Assessment — we look at the area, review your history and medications, and agree on what's
-   realistic.
-2. Standardized photographs at baseline, on a fixed protocol.
-3. The treatment itself.
-4. Recovery — what to expect, and for how long.
-5. A follow-up, with photographs, to see what the treatment actually did.
+Built from `src/pages/cosmetic/fillers/index.astro` via `RestoreTreatmentPage`. Delivery model is
+client-confirmed (2026-08-29): Dr. Moinfar injects filler herself. Section list above is the spec
+of record.
 
-**4 · Candidacy**
+---
 
-- A good fit if you want a change no one can point to — softer lines, restored volume, better tone
-  — and you're willing to maintain it.
-- Not right for you if you want a dramatic or immediate structural change, or if you're pregnant or
-  breastfeeding, in which case we'll ask you to wait.
+### PAGE: Collagen-stimulating injectables `/cosmetic/collagen-stimulators/` (brass)
 
-**5 · Why here rather than a storefront** _(§7.2 — claim, then structure)_
+- **Title:** `Collagen-Stimulating Injectables · Dana Point` (44)
+- **Meta:** `Poly-L-lactic acid and calcium hydroxylapatite injectables in Dana Point — they prompt your own collagen over months, across a short series, rather than adding volume on the day.`
+- **H1:** `Rebuild what time thinned, gradually.`
+- **Audience:** the Existing Patient (§3.1). **Pillar:** 4 Restraint.
+- **Proofs:** P17, P10/P11, P2, P1 context (§7.4).
 
-A dermatologist assesses you, and no one here has a product target to hit. When a treatment won't
-get you what you're after, we say so — and we don't book it. When we say a procedure isn't right for
-you, that recommendation costs us money. It costs no one else anything, which is exactly why you can
-trust it.
+**Sections** (Restore variant — shared `RestoreTreatmentPage` shell, D24)
 
-**6 · Who you'll see**
+1. **Hero** — eyebrow + H1 + lede (poly-L-lactic acid and calcium hydroxylapatite; prompt your own
+   collagen over months; short series; gradual by nature). Breadcrumb: Collagen-stimulating
+   injectables only (D25).
+2. **What's offered** (id: `how-it-works`) — what these are (products such as PLLA and CaHA; a
+   scaffold, not day-one volume); how it differs from HA filler (gradual, works with your own
+   tissue, not dissolvable the same way); a short series then patience (2–3 sessions weeks apart,
+   builds over ~3–6 months); where it fits (diffuse thinning over larger areas, not a single fold).
+3. **How a treatment visit works** — shared five-step.
+4. **Candidacy** — good fit: diffuse thinning/lost firmness over a broader area, patient with a
+   result over months, willing to do a series. Not right: want an immediate change or single-line
+   spot correction (HA filler better); pregnant/breastfeeding; active infection at the site;
+   certain autoimmune conditions reviewed at consult.
+5. **Why here rather than a storefront** — shared §7.2 block.
+6. **Who you'll see** — **Dr. Moinfar performs the injections herself** (client, 2026-08-29 — she
+   does all filler, collagen stimulators, and threads; PAs do not).
+7. **Evidence** — P17, own images only.
+8. **The consultation & pricing** — §12.10 + §12.8 verbatim; itemized pricing in writing.
+9. **FAQ** — "how is this different from filler", "how long until I see a result" (weeks to
+   months), "how many sessions", "how long does it last" (~2 years then maintained), "is it
+   reversible" (not the way HA is), "does it hurt". `FAQPage` schema.
+10. **Closing CTA** — `Book a consultation`.
+11. **Cross-sell** — fillers (immediate/spot volume, lips), neuromodulators (expression lines), Dr. Moinfar bio.
 
-Dr. Moinfar assesses every patient. _(TODO client: name the injector(s)/PA(s) who deliver
-treatments.)_ Provider card → `/about/dr-maryam-moinfar/`.
+- **Honest limitation:** gradual and staged, and not reversible the way HA filler is.
+- **Claims fence:** candidacy/methodology only; "products such as" for brand names; no percentage or
+  outcome claims; not permanent; never "complimentary/free".
+- **CTA:** primary `Book a consultation`; secondary `How it works ↓`.
+- **Schema:** `MedicalProcedure` (collagen-stimulating injectable treatment), `FAQPage`, `MedicalBusiness`.
+- **Internal links:** Cosmetic hub, fillers, neuromodulators, Dr. Moinfar bio.
 
-**7 · Evidence**
+#### Drafted copy (D16 / D24 — 2026-08-29, pending client proof)
 
-Results here are photographed at baseline and follow-up on a fixed protocol. We publish only our
-own images, and consented sets are still being built. We don't use stock photography or borrowed
-before-and-afters.
+Built from `src/pages/cosmetic/collagen-stimulators/index.astro` via `RestoreTreatmentPage`.
+Delivery model is client-confirmed (2026-08-29): Dr. Moinfar performs the injections herself.
+Section list above is the spec of record.
 
-**8 · The consultation & pricing**
+---
 
-§12.10 verbatim (the consultation promise). Then §12.8 verbatim (the pricing-integrity paragraph).
-Itemized pricing is provided in writing at the consultation; there's no published price list.
+### PAGE: Laser & IPL `/cosmetic/laser/` (brass)
 
-**9 · FAQ** _(FAQPage schema)_
+- **Title:** `Laser & IPL in Dana Point · VBeam and Photofacial` (49)
+- **Meta:** `VBeam pulsed-dye laser and IPL in Dana Point — for facial redness, visible vessels, rosacea, and brown sun spots, matched to your skin type and staged over a short series.`
+- **H1:** `Matched to your skin, not a setting on a menu.`
+- **Audience:** the Existing Patient (§3.1). **Pillar:** 4 Restraint.
+- **Proofs:** P17, P10/P11, P2, P1 context (§7.4).
+- **Devices (client, 2026-08-29):** **VBeam** (pulsed-dye laser — vascular: redness, capillaries,
+  rosacea) and **IPL** (broad-spectrum light — brown pigment, uneven tone). **No resurfacing /
+  ablative / fractional laser on site** — the earlier "resurfacing" framing was wrong and is removed.
 
-1. **Does Botox hurt?** — Most people describe it as a quick pinch. The needles are very fine and
-   each area takes a few seconds. No anesthesia is needed.
-2. **How long does filler last?** — It depends on the product and the area — generally several
-   months to a couple of years. It's maintained over time rather than done once.
-3. **How much is Botox in Dana Point?** — It's priced per area and quoted in writing at your
-   consultation, once we know what you're treating. We don't discount it or run promotions, so the
-   figure you're quoted is the figure.
-4. **How long is laser recovery?** — Anywhere from a day or two of redness for lighter settings to
-   about a week of visible peeling for deeper resurfacing. We tell you which applies before you book.
-5. **Can I have filler while I'm on a GLP-1 medication?** — Yes, many patients do. If facial volume
-   loss is part of why you're here, the [GLP-1 Restore](/glp-1-restore/) program addresses that
-   specifically.
-6. **Will I look "done"?** — Not if we've done our job. Everything is dosed conservatively and
-   matched to your own features; the intent is that people see you looking rested, not that they
-   see the work.
+**Sections** (Restore variant — shared `RestoreTreatmentPage` shell, D24)
 
-**10 · Book a consultation** _(closing)_
+1. **Hero** — eyebrow + H1 + lede (VBeam targets *red*, IPL targets *brown*; both aim energy at
+   colour in the skin, so skin-type safety and tool choice are clinical decisions). Breadcrumb:
+   Laser & IPL only (D25).
+2. **What's offered** (id: `how-it-works`) — VBeam for red (vessels, facial redness, rosacea; a day
+   or two of pink, brief bruising at higher settings); IPL for brown (sun spots, blotchy tone on
+   face/chest/hands; ~3–5 sessions; spots darken then flake over ~a week); skin type comes first
+   (both target colour, so higher burn / pigment-change risk on tanned or darker skin — we may not
+   have the right device and will say so); what these do **not** do (not resurfacing — deep lines,
+   texture, scarring are peels/microneedling territory).
+3. **How a treatment visit works** — shared five-step.
+4. **Candidacy** — good fit: facial redness, visible vessels, rosacea flushing, brown sun spots, or
+   blotchy tone; lighter, untanned skin; can plan around a few days of redness/spot-darkening and
+   sun avoidance. Not right: tanned/recent sun exposure (wait); deeper skin tone where risk is
+   higher and the right device may not be available; melasma (IPL can worsen it); active
+   infection/cold sore; expecting one-and-done; pregnant (defer elective light treatment).
+5. **Why here rather than a storefront** — shared §7.2 block.
+6. **Who you'll see** — Dr. Moinfar assesses and sets the plan; a **physician assistant** performs
+   the VBeam / IPL treatment (client, 2026-08-29).
+7. **Evidence** — P17, own images only.
+8. **The consultation & pricing** — §12.10 + §12.8 verbatim; itemized pricing in writing.
+9. **FAQ** — "how long is the recovery", "does it hurt", "is VBeam or IPL safe for darker skin"
+   (both target colour — higher risk on tanned/darker skin; assessed first), "how many sessions",
+   "can IPL treat melasma" (usually avoided — IPL can worsen it), "when can I be in the sun
+   afterward". `FAQPage` schema.
+10. **Closing CTA** — `Book a consultation`.
+11. **Cross-sell** — chemical peels + microneedling (surface texture/tone, not redness or brown
+    spots), Dr. Moinfar bio.
 
-A consultation is twenty minutes and a straight answer about whether a treatment will help. Leave
-your name and number and our team will call you back.
-CTAs: `Book a consultation` → `/contact/` · `Call 949.248.4547`
+- **Honest limitation:** VBeam and IPL are a planned series with a few days of visible
+  redness/spot-darkening and strict sun avoidance — not a one-time treatment; and neither is a
+  resurfacing device.
+- **Claims fence:** candidacy/methodology only; **no percentages**; VBeam and IPL named (client
+  confirmed); skin-type / burn risk stated honestly; melasma framed as *worsenable* by IPL; IPL
+  called out as light, not a laser; never "complimentary/free".
+- **CTA:** primary `Book a consultation`; secondary `How it works ↓`.
+- **Schema:** `MedicalProcedure` (laser and intense pulsed light (IPL) treatment), `FAQPage`, `MedicalBusiness`.
+- **Internal links:** Cosmetic hub, chemical peels, microneedling, Dr. Moinfar bio.
 
-**11 · Cross-sell**
+#### Drafted copy (D16 / D24 — 2026-08-29, pending client proof)
 
-For the body rather than the face, [EmSculpt Neo](/cosmetic/emsculpt-neo/) and
-[CoolSculpting](/cosmetic/coolsculpting/) are covered on their own pages.
+Built from `src/pages/cosmetic/laser/index.astro` via `RestoreTreatmentPage`. Devices (VBeam, IPL)
+and the physician-assistant delivery model are client-confirmed (2026-08-29). Section list above is
+the spec of record.
+
+---
+
+### PAGE: Silhouette InstaLift thread lift `/cosmetic/thread-lift/` (brass)
+
+- **Title:** `Silhouette InstaLift Thread Lift · Dana Point` (44)
+- **Meta:** `Silhouette InstaLift in Dana Point — dissolvable sutures that lift mild mid-face and jawline laxity and prompt collagen, for patients who want some lift without an operating room.`
+- **H1:** `A little lift, no operating room.`
+- **Audience:** the Existing Patient (§3.1). **Pillar:** 4 Restraint. Echoes the approved
+  provider-bio framing (D21): "a non-surgical alternative to facelift surgery for patients who want
+  lift without an operating room."
+- **Proofs:** P17, P10/P11, P2, P1 context (§7.4).
+
+**Sections** (Restore variant — shared `RestoreTreatmentPage` shell, D24)
+
+1. **Hero** — eyebrow + H1 + lede (dissolvable sutures lift mild sagging in the mid-face/jawline
+   and prompt collagen as they dissolve; smaller intervention than a facelift, smaller job — that
+   trade is the point). Breadcrumb: Silhouette InstaLift only (D25).
+2. **What's offered** (id: `how-it-works`) — what it is (absorbable poly-L-lactic acid sutures with
+   cones; in-office, local anesthesia); two effects on two timelines (modest lift on the day; then
+   collagen along the suture path as it dissolves over months; sutures gone within ~6 months); how
+   long it lasts (~1–2 years, repeatable); it is not a facelift (early jowl/mid-face heaviness, not
+   significant sagging — and if a facelift is the right answer we say so and it sends you elsewhere).
+3. **How a treatment visit works** — shared five-step.
+4. **Candidacy** — good fit: early jowl or mid-face laxity, want a subtle lift, accept temporary
+   and partial, can take ~a week of social downtime. Not right: significant sagging or heavy tissue
+   (a facelift is the honest answer); very thin tissue; active infection; pregnant/breastfeeding.
+5. **Why here rather than a storefront** — shared §7.2 block; §7.6 sentence 5 is especially apt
+   here (turning someone toward surgery elsewhere is the concrete example).
+6. **Who you'll see** — Dr. Moinfar assesses candidacy and performs the placement.
+7. **Evidence** — P17, own images only.
+8. **The consultation & pricing** — §12.10 + §12.8 verbatim; itemized pricing in writing.
+9. **FAQ** — "how long does a Silhouette InstaLift last", "does it hurt", "what's the downtime",
+   "is it the same as a facelift" (no), "can the threads be felt or seen", "who places the
+   threads" (a dermatologist). `FAQPage` schema.
+10. **Closing CTA** — `Book a consultation`.
+11. **Cross-sell** — fillers / collagen-stimulating injectables (volume loss underneath), laser
+    (skin surface), Dr. Moinfar bio.
+
+- **Honest limitation:** a thread lift is temporary and partial; it does not replace a facelift.
+- **Claims fence:** candidacy/methodology only; no timing claims about recovery beyond general
+  ranges; "alternative to facelift" framing matches the approved bio wording (D21); no outcome or
+  percentage claims; never "complimentary/free".
+- **CTA:** primary `Book a consultation`; secondary `How it works ↓`.
+- **Schema:** `MedicalProcedure` (Silhouette InstaLift thread lift), `FAQPage`, `MedicalBusiness`.
+- **Internal links:** Cosmetic hub, fillers, collagen-stimulators, laser, Dr. Moinfar bio.
+
+#### Drafted copy (D16 / D24 — 2026-08-29, pending client proof)
+
+Built from `src/pages/cosmetic/thread-lift/index.astro` via `RestoreTreatmentPage`. Section list
+above is the spec of record.
+
+---
+
+### PAGE: Chemical peels `/cosmetic/chemical-peels/` (brass)
+
+- **Title:** `Chemical Peels in Dana Point · Tone & Texture` (43)
+- **Meta:** `Superficial and medium-depth chemical peels in Dana Point — for tone, texture, and sun damage, usually as a short series, with downtime set by the depth of the peel.`
+- **H1:** `Tone and texture, one layer at a time.`
+- **Audience:** the Existing Patient (§3.1). **Pillar:** 4 Restraint.
+- **Proofs:** P17, P10/P11, P2, P1 context (§7.4).
+
+**Sections** (Restore variant — shared `RestoreTreatmentPage` shell, D24)
+
+1. **Hero** — eyebrow + H1 + lede (removes outer layers in a controlled way so newer skin
+   surfaces; lighter peels even out tone with little downtime, deeper ones ask for a week of
+   peeling; usually a short series). Breadcrumb: Chemical peels only (D25).
+2. **What's offered** (id: `how-it-works`) — superficial peels (glycolic, salicylic, lactic; tone,
+   mild texture, congestion; little downtime; a series); medium-depth peels (TCA, Jessner's; sun
+   damage, deeper texture, some scarring; ~a week of peeling); depth sets everything; skin type and
+   aftercare (deeper peels carry pigment-change risk, higher in darker skin; sun protection after
+   is part of the treatment).
+3. **How a treatment visit works** — shared five-step.
+4. **Candidacy** — good fit: dull/uneven tone, sun spots, rough texture, mild acne scarring;
+   willing to do a series and avoid sun. Not right: active cold sore/infection; recent isotretinoin
+   (wait several months); very sensitised skin; expecting one visit to do everything.
+5. **Why here rather than a storefront** — shared §7.2 block.
+6. **Who you'll see** — Dr. Moinfar assesses and sets the plan; a **physician assistant** performs
+   the peel (client, 2026-08-29).
+7. **Evidence** — P17, own images only.
+8. **The consultation & pricing** — §12.10 + §12.8 verbatim; itemized pricing in writing.
+9. **FAQ** — "how many peels will I need", "does it hurt", "how much downtime is there", "are peels
+   safe for darker skin" (superficial generally yes; deeper needs caution), "can I wear makeup
+   afterward", "can I have a peel while pregnant" (some agents yes, some no). `FAQPage` schema.
+10. **Closing CTA** — `Book a consultation`.
+11. **Cross-sell** — laser (pigment/vessels a peel won't reach), microneedling (collagen through
+    micro-injury), Dr. Moinfar bio.
+
+- **Honest limitation:** peels are not one-and-done — superficial peels work as a series, and even
+  a medium-depth peel is maintained with sun protection and topical care.
+- **Claims fence:** candidacy/methodology only; no percentages; pigment-change risk stated
+  honestly; pregnancy handled by agent selection, not a blanket yes; never "complimentary/free".
+- **CTA:** primary `Book a consultation`; secondary `How it works ↓`.
+- **Schema:** `MedicalProcedure` (chemical peel treatment), `FAQPage`, `MedicalBusiness`.
+- **Internal links:** Cosmetic hub, laser, microneedling, Dr. Moinfar bio.
+
+#### Drafted copy (D16 / D24 — 2026-08-29, pending client proof)
+
+Built from `src/pages/cosmetic/chemical-peels/index.astro` via `RestoreTreatmentPage`. Delivery
+model is client-confirmed (2026-08-29): Dr. Moinfar assesses, a physician assistant performs the
+peel. Section list above is the spec of record.
+
+---
+
+### PAGE: Microneedling `/cosmetic/microneedling/` (brass)
+
+- **Title:** `Microneedling in Dana Point · Collagen Induction` (46)
+- **Meta:** `Microneedling in Dana Point, with or without growth factors — controlled micro-injury that stimulates collagen over months. Gradual by design, usually a short series.`
+- **H1:** `Collagen you build gradually.`
+- **Audience:** the Existing Patient (§3.1). **Pillar:** 4 Restraint.
+- **Proofs:** P17, P10/P11, P2, P1 context (§7.4).
+
+**Sections** (Restore variant — shared `RestoreTreatmentPage` shell, D24)
+
+1. **Hero** — eyebrow + H1 + lede (hundreds of tiny controlled punctures; the healing response
+   lays down new collagen over months; texture, fine lines, pores, some scarring; works by
+   compounding). Breadcrumb: Microneedling only (D25).
+2. **What's offered** (id: `how-it-works`) — how it works (fine needles at a set depth; collagen
+   over the following months); with or without growth factors (or platelet-rich plasma from your
+   own blood, applied after; whether it adds enough is discussed, not assumed); a short series (3–6
+   sessions ~4 weeks apart; builds over months); recovery (redness like a mild sunburn for a day or
+   two). RF microneedling is **out of scope** for this page.
+3. **How a treatment visit works** — shared five-step.
+4. **Candidacy** — good fit: early texture change, enlarged pores, fine lines, rolling acne scars;
+   patient with a result over months across a series. Not right: active acne or skin infection in
+   the area; keloid-prone or on blood thinners (reviewed at consult); pregnant/breastfeeding for
+   the PRP add-on; want a single-session change.
+5. **Why here rather than a storefront** — shared §7.2 block.
+6. **Who you'll see** — Dr. Moinfar assesses and sets the plan; a **physician assistant** performs
+   the microneedling (client, 2026-08-29).
+7. **Evidence** — P17, own images only.
+8. **The consultation & pricing** — §12.10 + §12.8 verbatim; itemized pricing in writing.
+9. **FAQ** — "does microneedling hurt", "how much downtime is there", "how many sessions", "when
+   will I see results", "what are growth factors and PRP", "is an at-home derma-roller the same
+   thing" (no — depth and sterility differ; not recommended). `FAQPage` schema.
+10. **Closing CTA** — `Book a consultation`.
+11. **Cross-sell** — laser & IPL (redness, vessels, brown sun spots), chemical peels (surface
+    tone), Dr. Moinfar bio.
+
+- **Honest limitation:** gradual and series-based; the result builds over months and is maintained.
+- **Claims fence:** candidacy/methodology only; no percentages; PRP described as autologous, no
+  outcome claim; at-home rolling flagged for infection risk; never "complimentary/free".
+- **CTA:** primary `Book a consultation`; secondary `How it works ↓`.
+- **Schema:** `MedicalProcedure` (microneedling treatment), `FAQPage`, `MedicalBusiness`.
+- **Internal links:** Cosmetic hub, laser, chemical peels, Dr. Moinfar bio.
+
+#### Drafted copy (D16 / D24 — 2026-08-29, pending client proof)
+
+Built from `src/pages/cosmetic/microneedling/index.astro` via `RestoreTreatmentPage`. Delivery
+model is client-confirmed (2026-08-29): Dr. Moinfar assesses, a physician assistant performs the
+microneedling. Section list above is the spec of record.
 
 ### PAGE: EmSculpt Neo `/cosmetic/emsculpt-neo/` (brass)
 
@@ -1557,158 +1784,6 @@ CTAs: `Request a hair consultation` → `/contact/` · `Call 949.248.4547`
 - On a GLP-1 medication? Shedding is covered by the hair track of [GLP-1 Restore](/glp-1-restore/).
 - Scalp conditions like seborrheic dermatitis and psoriasis are treated through
   [general dermatology](/general-dermatology/).
-
-### PAGE: The Restore Membership `/cosmetic/restore-membership/` (brass)
-
-- **Title:** `The Restore Membership · Dana Point` (35)
-- **Meta:** `A priority annual skin exam, regular skin-health visits, and member pricing on cosmetic and Restore services at Advanced Dermatology in Dana Point. Pricing being finalized.`
-- **H1:** `The practice you already trust, on a schedule.`
-- **Audience:** the Existing Patient (§3.1). **Pillar:** 3 Continuity. **No "VIP / Club / Rewards /
-  exclusive / luxury" language (§5.3, §8.3)** — it is a care schedule, not a loyalty tier.
-- **Proofs:** P2 (one practice since 2006), P3 (same physicians ~25 years), P14 (PAs who came up
-  through the practice), P17 (standardized photography baseline), P15 (a direct line).
-
-**Sections** (Restore variant — _What it costs_ stands in for §11.2 pricing)
-
-1. **Hero** — eyebrow _"Restore — under a physician's direction"_ + H1 + one-line "what this is":
-   the same people in the same building, on a set cadence — not a loyalty tier and not insurance.
-   CTA `Join Restore` / `See what's included →`.
-2. **Who it's for / who it isn't** — for: patients who want their skin looked at on a regular
-   schedule without chasing an appointment each time, and who use cosmetic or Restore services.
-   Not for: anyone after a discount club, or looking for something that acts like insurance.
-   Honest limitation, verbatim: _"If you come in twice a year anyway, this mostly just formalizes
-   that — it is not a discount club."_
-3. **What's included** — plain table, no checkmark-spam (D17 placeholder inclusions):
-   one priority annual skin exam with a provider · two skin-health visits per year · a standardized
-   photography baseline set once a year (P17) · member pricing on cosmetic and Restore services ·
-   priority scheduling for routine visits and a direct line.
-4. **What it costs** — the D17 placeholder: **`$149/month`, or `$1,490` paid once a year (vs. `$1,788` at the monthly rate)**,
-   with a visible _"pricing is being finalized — this figure is provisional"_ note until the client
-   confirms the final number and inclusions.
-5. **What it is not** — membership is not insurance and does not replace it; visits billable to
-   insurance are still billed to insurance (§9.4 logic); it does not cover Mohs surgery or any
-   medically necessary treatment; refund and cancellation terms are set by practice policy (link,
-   not inlined — TODO client for the policy page).
-6. **How it works month to month** — join; schedule your baseline; book visits against the
-   allowance; member pricing applied at checkout; pause or cancel per policy.
-7. **The continuity paragraph** — §12.6 **verbatim**.
-8. **FAQ** — "can I pause it", "is this insurance" (no), "what if I move away", "does it cover Mohs
-   or skin cancer treatment" (no — those are billed to insurance and scheduled on clinical need,
-   not membership), "can non-members still book cosmetic services" (yes), "does membership move me
-   ahead for an urgent spot" (no — urgent concerns are triaged on clinical need for everyone).
-   `FAQPage` schema.
-9. **Closing CTA** — `Join Restore`.
-10. **Cross-sell** — one line to the Cosmetic hub, one line to Dr. Moinfar's bio.
-
-- **Honest limitation:** the §2 line verbatim — "it is not a discount club." No savings or outcome
-  guarantees.
-- **Claims fence:** no "VIP / Club / Rewards / exclusive / luxury" (§5.3, §8.3); member priority
-  scoped to routine cosmetic and skin-health scheduling only — **never** worded as paying to jump
-  the line for cancer care; pricing marked provisional (D17); never "complimentary/free"; brass on
-  Restore pages only.
-- **CTA:** primary `Join Restore` → `/contact/`; secondary `See what's included →` (anchor to §3).
-- **Schema:** `FAQPage`, `MedicalBusiness`.
-- **Internal links:** Cosmetic hub, Skin cancer (for the "does it cover Mohs" answer), Dr. Moinfar bio.
-
-#### Drafted copy (D16 — 2026-08-28, pending client proof)
-
-Final prose for the build. Section anchor for the secondary CTA: `#whats-included`. **No "VIP /
-Club / Rewards / exclusive / luxury" language (§5.3, §8.3)** — it is a care schedule, not a loyalty
-tier. Pricing is the D17 placeholder, marked provisional on the page. Member priority is scoped to
-routine cosmetic and skin-health scheduling only — never worded as paying to jump the line for
-cancer care. Open placeholders: final price and inclusions (D17); the refund/cancellation policy
-page (plain link once it exists).
-
-**Meta**
-
-- Title: `The Restore Membership · Dana Point`
-- Description: `A priority annual skin exam, regular skin-health visits, and member pricing on cosmetic and Restore services at Advanced Dermatology in Dana Point. Pricing being finalized.`
-
-**1 · Hero**
-
-- Eyebrow: Restore — under a physician's direction
-- H1: The practice you already trust, on a schedule.
-- Descriptor (sub-head): The same people, in the same building, on a set cadence. It is a care
-  schedule, not a loyalty tier, and it is not insurance.
-- CTAs: `Join Restore` → `/contact/` · `See what's included →` (anchor to §3)
-
-**2 · Who it's for, and who it isn't**
-
-For: patients who want their skin looked at on a regular schedule without chasing an appointment
-each time, and who use cosmetic or Restore services.
-
-Not for: anyone after a discount club, or something that acts like insurance.
-
-Honest limitation, verbatim: If you come in twice a year anyway, this mostly just formalizes that —
-it is not a discount club.
-
-**3 · What's included** _(id: `whats-included`; plain table, D17 placeholder inclusions)_
-
-| Included                                              | How often |
-| ---------------------------------------------------- | --------- |
-| Priority annual skin exam with a provider            | Once a year |
-| Skin-health visits                                   | Twice a year |
-| Standardized photography baseline set                | Once a year |
-| Member pricing on cosmetic and Restore services      | Ongoing   |
-| Priority scheduling for routine visits, and a direct line | Ongoing |
-
-Note: Inclusions are provisional pending final confirmation (D17).
-
-**4 · What it costs**
-
-$149/month, or $1,490 paid once a year — compared with $1,788 at the monthly rate.
-
-Note: Pricing is being finalized — this figure is provisional. Stated as plain figures rather than
-a "free months" or discount frame (§8.3, §12.8).
-
-**5 · What it is not**
-
-- It is not insurance and does not replace it. Visits billable to insurance are still billed to
-  insurance.
-- It does not cover Mohs surgery or any medically necessary treatment — those are scheduled on
-  clinical need, not membership.
-- Refund and cancellation terms are set by practice policy. _(TODO client: link to the policy page.)_
-
-**6 · How it works month to month**
-
-1. Join.
-2. Schedule your baseline photography and first visit.
-3. Book visits against the annual allowance.
-4. Member pricing is applied at checkout.
-5. Pause or cancel per practice policy.
-
-**7 · The continuity paragraph** _(§12.6 verbatim)_
-
-Dr. Moinfar and Dr. Lander trained together in residency and have practiced side by side for nearly
-twenty-five years. Two of our physician assistants started here as medical assistants — they went
-to PA school because of what they learned at the exam table here, and they came back to the
-building where they started. Dermatology has a turnover problem. We don't.
-
-**8 · FAQ** _(FAQPage schema)_
-
-1. **Can I pause it?** — Yes, per the practice's cancellation and pause policy. Ask our team for
-   the current terms.
-2. **Is this insurance?** — No. It doesn't replace insurance, and anything billable to your plan is
-   still billed to your plan.
-3. **What if I move away?** — You can cancel under the practice policy. The membership only makes
-   sense if you're seen here regularly.
-4. **Does it cover Mohs surgery or skin cancer treatment?** — No. Medically necessary care is
-   billed to insurance and scheduled on clinical need, not on membership.
-5. **Can non-members still book cosmetic services?** — Yes. Membership changes the pricing and the
-   scheduling cadence, not access.
-6. **Does membership move me ahead for an urgent spot?** — No. A concerning or changing spot is
-   triaged on clinical need for everyone, member or not.
-
-**9 · Join Restore** _(closing)_
-
-A membership is a care schedule with member pricing attached. Leave your name and number and our
-team will walk you through the current terms.
-CTAs: `Join Restore` → `/contact/` · `Call 949.248.4547`
-
-**10 · Cross-sell**
-
-- New to Restore? The [cosmetic overview](/cosmetic/) lists what's offered.
-- The program is directed by [Dr. Maryam Moinfar](/about/dr-maryam-moinfar/).
 
 ### PAGE: About `/about/`
 
