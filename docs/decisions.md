@@ -1,6 +1,9 @@
 # Decision Log
 
-Locked decisions. Do not relitigate without an explicit change request from the client.
+Settled decisions. Don't reopen these casually or mid-task to save effort. They can change
+when the client asks, when a decision is found to contradict the reference docs or itself, or
+when new facts make it wrong — record the change here with a new date and rationale rather than
+editing history away.
 
 | #   | Date       | Decision                                                                                                                                                                                                                                                                                                                                                                                                      | Rationale                                                                                                                               |
 | --- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |

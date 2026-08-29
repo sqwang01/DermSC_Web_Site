@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import SectionBand from '@components/SectionBand.astro';
-import Breadcrumbs from '@components/Breadcrumbs.astro';
 import Faq from '@components/Faq.astro';
 import Button from '@components/Button.astro';
 import { practice, siteMeta } from '@data/site';
@@ -107,12 +106,6 @@ const faqs = [
 >
   <!-- 1 · Hero -->
   <SectionBand as="div" class="hero">
-    <Breadcrumbs
-      crumbs={[
-        { label: 'Home', href: '/' },
-        { label: 'GLP-1 Restore', href: '/glp-1-restore/' },
-      ]}
-    />
     <div class="hero__copy" data-reveal>
       <span class="eyebrow">Restore — under a physician’s direction</span>
       <h1>You lost the weight. Now restore your hair, skin, and muscle.</h1>
@@ -465,10 +458,7 @@ const faqs = [
 
   /* Hero */
   .hero {
-    padding-block: var(--section-y);
-  }
-  .hero__copy {
-    margin-top: var(--space-8);
+    padding-block: var(--space-12) var(--section-y);
   }
   .hero__sub {
     color: var(--stone);

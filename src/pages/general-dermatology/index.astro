@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import SectionBand from '@components/SectionBand.astro';
-import Breadcrumbs from '@components/Breadcrumbs.astro';
 import CalloutClay from '@components/CalloutClay.astro';
 import Faq from '@components/Faq.astro';
 import ProviderCard from '@components/ProviderCard.astro';
@@ -113,12 +112,6 @@ const faqs = [
 >
   <!-- 1 · Hero -->
   <SectionBand as="div" class="hero">
-    <Breadcrumbs
-      crumbs={[
-        { label: 'Home', href: '/' },
-        { label: 'General dermatology', href: '/general-dermatology/' },
-      ]}
-    />
     <div class="hero__grid">
       <div class="hero__copy" data-reveal>
         <span class="eyebrow">Serious medicine. Natural results.</span>
@@ -316,15 +309,15 @@ const faqs = [
     margin-bottom: var(--space-12);
   }
 
+  /* Breadcrumb bar — sits above the hero, not inside it */
   /* Hero */
   .hero {
-    padding-block: var(--section-y);
+    padding-block: var(--space-12) var(--section-y);
   }
   .hero__grid {
     display: grid;
     gap: var(--space-12);
     align-items: center;
-    margin-top: var(--space-8);
   }
   .hero__cta {
     display: flex;

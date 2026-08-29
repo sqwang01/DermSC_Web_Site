@@ -115,11 +115,11 @@ _(All "Book/Request a consultation" routes to the same callback form; never "com
 ## PAGE: Skin cancer `/skin-cancer/`
 
 - **Title:** `Skin Cancer Treatment & Mohs Surgery · Dana Point` (49)
-- **Meta:** `Fellowship-trained Mohs surgery, next-day reconstruction by the same surgeon, and Sensus SRT radiation for skin cancer in Dana Point. Caught early, it stays a small procedure.`
+- **Meta:** `Fellowship-trained Mohs surgery, reconstruction by the same surgeon, and Sensus SRT radiation for skin cancer in Dana Point. Caught early, it stays a small procedure.`
 - **H1:** `Caught early, it's a small procedure.`
 - **Audience:** the New Medical Patient (§3.4) + referring physicians (§3.5). **Pillar:** 2 Depth.
-- **Proofs:** P4 (800 Mohs/yr, Dr. Lander), P5 (fellowship-trained Mohs), P6 (Mohs + next-day
-  reconstruction, same surgeon, here), P7 (Sensus SRT on site), P8 (PDT / field treatment),
+- **Proofs:** P4 (800 Mohs/yr, Dr. Lander), P5 (fellowship-trained Mohs), P6 (Mohs +
+  reconstruction, same surgeon, here — no timing stated), P7 (Sensus SRT on site), P8 (PDT / field treatment),
   P9 (dermoscopy every provider), P10 (chosen dermatopathologist), P20 (spouses and friends).
 
 **Sections** (medical variant — _Surveillance_ replaces _Pricing_)
@@ -129,8 +129,8 @@ _(All "Book/Request a consultation" routes to the same callback form; never "com
    signal, never elsewhere). New / changing / non-healing / bleeding / asymmetric lesions.
 3. **How Mohs works** — plain mechanism: one thin layer at a time, margins read under the
    microscope between layers, surgery stops when they're clear. What the room and the day are like.
-4. **The full range** — Mohs surgery; next-day reconstruction by the same surgeon (**never**
-   same-day); Sensus SRT for patients who can't or shouldn't have surgery (⚠️ candidacy language →
+4. **The full range** — Mohs surgery; reconstruction by the same surgeon, done here (**state no
+   timing** — not "same-day", not "next-day"); Sensus SRT for patients who can't or shouldn't have surgery (⚠️ candidacy language →
    counsel, §9.5); PDT and field treatment for diffuse sun damage; biopsy processed in-house, read
    by a dermatopathologist Dr. Moinfar selected personally.
 5. **Candidacy** — good fit if… / this is not the right path if…
@@ -1743,20 +1743,20 @@ least one service page and one other bio (§11.4). No outcome claims; numbers fr
 #### `/about/dr-jeffrey-lander/`
 
 - **Title:** `Dr. Jeffrey Lander · Advanced Dermatology` (41)
-- **Meta:** `Dr. Jeffrey Lander is a board-certified dermatologist and fellowship-trained Mohs surgeon in Dana Point. He performs more than 800 Mohs cases a year and the reconstruction himself, the next day.`
+- **Meta:** `Dr. Jeffrey Lander is a board-certified dermatologist and fellowship-trained Mohs surgeon in Dana Point. He performs more than 800 Mohs cases a year and the reconstruction himself.`
 - **H1:** `Dr. Jeffrey Lander` · **First reference:** _Dr. Jeffrey Lander, board-certified
   dermatologist and fellowship-trained Mohs surgeon._
 - **Proofs:** P5 (fellowship-trained in Mohs — lead), P4 (more than 800 Mohs cases a year),
-  P6 (reconstruction here, same surgeon, next day), P3 (trained with Dr. Moinfar in residency,
+  P6 (reconstruction here, same surgeon — no timing stated), P3 (trained with Dr. Moinfar in residency,
   ~25 years side by side).
 - **How he practices:** one thin layer at a time, margins read between layers, surgery stops when
-  they're clear; does the reconstruction himself the following day — **never same-day** (§11.3).
+  they're clear; does the reconstruction himself, here — **state no timing** (§11.3).
 - **Education & training:** board certification; Mohs fellowship (TODO client: institution/year if
   approved to publish); residency alongside Dr. Moinfar.
 - **Links:** Skin cancer, `/skin-cancer/#referring-physicians`; Dr. Moinfar's bio.
 - **CTA:** `Request a skin check`.
 - **Claims fence:** no cure-rate or outcome numbers (P21); no cumulative career Mohs figure unless
-  confirmed and defensible (§6.1 note, §14.2); "next day", never "same day".
+  confirmed and defensible (§6.1 note, §14.2); reconstruction stated without timing — neither "next day" nor "same day".
 
 #### `/about/madeline-fee-pa-c/`
 

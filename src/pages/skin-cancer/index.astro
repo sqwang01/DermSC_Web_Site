@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import SectionBand from '@components/SectionBand.astro';
-import Breadcrumbs from '@components/Breadcrumbs.astro';
 import CalloutClay from '@components/CalloutClay.astro';
 import Faq from '@components/Faq.astro';
 import ProviderCard from '@components/ProviderCard.astro';
@@ -10,7 +9,7 @@ import { practice, providers, siteMeta } from '@data/site';
 
 const title = 'Skin Cancer Treatment & Mohs Surgery · Dana Point';
 const description =
-  'Fellowship-trained Mohs surgery, next-day reconstruction by the same surgeon, and Sensus SRT radiation for skin cancer in Dana Point. Caught early, it stays a small procedure.';
+  'Fellowship-trained Mohs surgery, reconstruction by the same surgeon, and Sensus SRT radiation for skin cancer in Dana Point. Caught early, it stays a small procedure.';
 
 // Dr. Lander performs Mohs and reconstruction; Dr. Moinfar reads the pathology.
 const careTeam = ['dr-jeffrey-lander', 'dr-maryam-moinfar']
@@ -25,7 +24,7 @@ const mohsSchema = {
   procedureType: 'https://schema.org/SurgicalProcedure',
   bodyLocation: 'Skin',
   howPerformed:
-    'The skin cancer is removed one thin layer at a time. Each layer is mapped and examined under the microscope before the next layer is taken, and surgery stops once the margins are clear. Reconstruction is performed by the same surgeon the following day.',
+    'The skin cancer is removed one thin layer at a time. Each layer is mapped and examined under the microscope before the next layer is taken, and surgery stops once the margins are clear. Reconstruction is performed by the same surgeon.',
   provider: {
     '@type': 'MedicalBusiness',
     name: practice.legalName,
@@ -40,7 +39,7 @@ const faqs = [
   },
   {
     q: 'Will I need reconstruction?',
-    a: 'Often, yes — it depends on where the cancer was and how much tissue had to be removed to clear it. Reconstruction is done the next day by the same surgeon who removed the cancer. Some small wounds in certain locations heal well on their own; that decision is made once the cancer is out and the wound is known.',
+    a: 'Often, yes — it depends on where the cancer was and how much tissue had to be removed to clear it. Reconstruction is done by the same surgeon who removed the cancer. Some small wounds in certain locations heal well on their own; that decision is made once the cancer is out and the wound is known.',
   },
   {
     q: 'Is Mohs surgery painful?',
@@ -60,18 +59,12 @@ const faqs = [
 <BaseLayout title={title} description={description} path="/skin-cancer/" schema={[mohsSchema]}>
   <!-- 1 · Hero -->
   <SectionBand as="div" class="hero">
-    <Breadcrumbs
-      crumbs={[
-        { label: 'Home', href: '/' },
-        { label: 'Skin cancer', href: '/skin-cancer/' },
-      ]}
-    />
     <div class="hero__copy" data-reveal>
       <span class="eyebrow">Serious medicine. Natural results.</span>
       <h1>Caught early, it’s a small procedure.</h1>
       <p class="lede">
         Caught late, it’s a different conversation. Screening, Mohs micrographic surgery, and
-        reconstruction are all done here — by the same surgeon, the next day — for skin cancer in
+        reconstruction are all done here — by the same surgeon — for skin cancer in
         Dana Point and South Orange County.
       </p>
       <div class="hero__cta">
@@ -113,7 +106,7 @@ const faqs = [
         Dr. Jeffrey Lander is a fellowship-trained Mohs surgeon and performs more than 800 Mohs
         cases a year. The cancer is removed one thin layer at a time, with the margins examined
         under the microscope between layers, and the surgery stops the moment they’re clear.
-        Reconstruction is done here as well, by the same surgeon, the following day — not referred
+        Reconstruction is done here as well, by the same surgeon — not referred
         out to someone who wasn’t in the room.
       </p>
       <p>
@@ -139,10 +132,10 @@ const faqs = [
         </p>
       </article>
       <article class="range__item prose">
-        <h3>Next-day reconstruction</h3>
+        <h3>Reconstruction here</h3>
         <p>
-          You return the day after surgery and the same surgeon who removed the cancer repairs the
-          wound. It is not handed to another practice or a specialist who wasn’t there. Some small
+          The same surgeon who removed the cancer repairs the wound. It is not handed to another
+          practice or a specialist who wasn’t there. Some small
           wounds in certain locations are left to heal on their own — a decision made once the
           cancer is out and the defect is known.
         </p>
@@ -214,7 +207,7 @@ const faqs = [
       <h2 id="why-heading">Why here rather than anywhere with a scalpel</h2>
       <p>
         Plenty of places can cut out a skin cancer. Fewer can read the margin while you wait, repair
-        the wound the next day with the same hands, and offer radiation to the patient who shouldn’t
+        the wound with the same hands, and offer radiation to the patient who shouldn’t
         be cut at all.
       </p>
       <p>
@@ -294,8 +287,8 @@ const faqs = [
       <h2 id="refer-heading">For referring physicians</h2>
       <p>
         Dr. Jeffrey Lander is fellowship-trained in Mohs surgery and performs more than 800 cases a
-        year. Tissue is processed in our own lab; reconstruction is done here by the same surgeon,
-        the next day. For patients who aren’t surgical candidates, superficial radiation therapy is
+        year. Tissue is processed in our own lab; reconstruction is done here by the same surgeon.
+        For patients who aren’t surgical candidates, superficial radiation therapy is
         available on site. Pathology across all of our providers is reviewed weekly by Dr. Moinfar.
       </p>
       <p>
@@ -324,10 +317,7 @@ const faqs = [
 
   /* Hero */
   .hero {
-    padding-block: var(--section-y);
-  }
-  .hero__copy {
-    margin-top: var(--space-8);
+    padding-block: var(--space-12) var(--section-y);
   }
   .hero .lede {
     margin-top: var(--space-4);

@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import SectionBand from '@components/SectionBand.astro';
-import Breadcrumbs from '@components/Breadcrumbs.astro';
 import Card from '@components/Card.astro';
 import Faq from '@components/Faq.astro';
 import ProviderCard from '@components/ProviderCard.astro';
@@ -67,12 +66,6 @@ const faqs = [
 <BaseLayout title={title} description={description} path="/cosmetic/" restore>
   <!-- 1 · Hero -->
   <SectionBand as="div" class="hero">
-    <Breadcrumbs
-      crumbs={[
-        { label: 'Home', href: '/' },
-        { label: 'Cosmetic', href: '/cosmetic/' },
-      ]}
-    />
     <div class="hero__copy" data-reveal>
       <span class="eyebrow">Restore — under a physician’s direction</span>
       <h1>Nobody should be able to tell. That’s the whole job.</h1>
@@ -201,10 +194,7 @@ const faqs = [
 
   /* Hero */
   .hero {
-    padding-block: var(--section-y);
-  }
-  .hero__copy {
-    margin-top: var(--space-8);
+    padding-block: var(--space-12) var(--section-y);
   }
   .hero__sub {
     color: var(--stone);

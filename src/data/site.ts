@@ -51,7 +51,6 @@ export const primaryNav: {
   { label: 'Skin cancer', href: '/skin-cancer/' },
   { label: 'Cosmetic', href: '/cosmetic/', restore: true },
   { label: 'GLP-1 Restore', href: '/glp-1-restore/', restore: true },
-  { label: 'About', href: '/about/' },
 ];
 
 export const footerLinks: { heading: string; links: { label: string; href: string }[] }[] = [
@@ -117,7 +116,7 @@ export const providers: Provider[] = [
     credential: 'MD, board-certified dermatologist, fellowship-trained Mohs surgeon',
     role: 'Mohs micrographic surgery and reconstruction',
     cardLine:
-      'Fellowship-trained in Mohs surgery. Performs the reconstruction himself, the next day. Trained alongside Dr. Moinfar in residency.',
+      'Fellowship-trained in Mohs surgery. Performs the reconstruction himself. Trained alongside Dr. Moinfar in residency.',
     serviceLinks: [{ label: 'Skin cancer & Mohs surgery', href: '/skin-cancer/' }],
   },
   {

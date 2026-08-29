@@ -61,7 +61,7 @@ move to Cloudflare optional, later.
       "What we treat" section (`#acne`, `#inflammatory-skin`, `#rashes-hives`, `#infections-growths`,
       `#hair-scalp-nails`, `#pediatric`, `#skin-exams`), 2–4 sentences each. Drafted copy is in
       `content-spec.md` → General dermatology → "Drafted copy (D16)".
-- [ ] Skin Cancer `/skin-cancer/` (pillar: Depth; Mohs, next-day reconstruction, Sensus SRT,
+- [ ] Skin Cancer `/skin-cancer/` (pillar: Depth; Mohs, same-surgeon reconstruction, Sensus SRT,
       PDT/field, surveillance) + Referring Physicians section/anchor
 
 ## Phase 3 — Restore pages (Week 3, brass sub-brand)
@@ -99,7 +99,7 @@ move to Cloudflare optional, later.
 - [ ] Lighthouse mobile ≥ 95 across the board; Core Web Vitals green
 - [ ] axe / accessibility pass (AA), keyboard-only pass, screen-reader spot check, 18px + contrast verify
 - [ ] §11.3 pre-publication checklist run against every page (no brackets, no 🔒 leaks, no banned
-      words, next-day reconstruction, one H1, NAP match, reads aloud calmly)
+      words, reconstruction stated without timing, one H1, NAP match, reads aloud calmly)
 - [ ] Plausible/Fathom installed; Google Search Console verified; sitemap submitted
 - [ ] Final content proof by client
 - [ ] DNS cutover: A/CNAME → Vercel, TTL lowered 24h prior, **MX untouched**, verify SSL
