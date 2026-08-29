@@ -103,7 +103,7 @@ _(All "Book/Request a consultation" routes to the same callback form; never "com
    placeholder ("A patient story belongs here — we're collecting them with consent"). Flagged §6.4.
 6. **Location & hours** — NAP, map embed, parking/access line, `Request an appointment`.
 
-- **Honest limitation:** the honest-access paragraph (§12.9) — routine visits booked months out;
+- **Honest limitation:** the honest-access paragraph (§12.9) — routine visits booked weeks out;
   concerning spots seen sooner; Restore consults separate.
 - **Claims fence:** no review count (D13); no superlatives; independence stated as reason not boast.
 - **CTA:** primary `Request an appointment` → `/contact/`; secondary `Call 949.248.4547`.
@@ -161,7 +161,7 @@ _(All "Book/Request a consultation" routes to the same callback form; never "com
 10. **Closing CTA** — what a skin check is, how to request one, honest lead time; urgent-spot note.
 11. **Cross-sell** — one line to General dermatology (annual skin exams).
 
-- **Honest limitation:** routine appointments booked months out; concerning/changing spots
+- **Honest limitation:** routine appointments booked weeks out; concerning/changing spots
   triaged sooner — say so plainly.
 - **Claims fence:** no cure-rate or outcome numbers (P21); SRT device = **Sensus SRT**; SRT
   candidacy phrasing to counsel; P20 wording exactly as approved; no superlatives ("leading",
@@ -502,7 +502,7 @@ built this program." — Dr. Maryam Moinfar, board-certified dermatologist
 
 - **Title:** `General Dermatology & Skin Conditions · Dana Point` (49)
 - **Meta:** `Acne, eczema, rosacea, psoriasis, rashes, hair and nail concerns, and annual skin exams in Dana Point. We look for the cause before we treat the symptom.`
-- **H1:** `Chronic doesn't mean unexplained.`
+- **H1:** `We look for the cause before we treat.`
 - **Audience:** the New Medical Patient (§3.4) — including the patient dismissed elsewhere ("it's
   just stress", "you'll grow out of it") whose problem never resolved. **Pillar:** 1 Accuracy.
 - **Proofs:** P11 (Dr. Moinfar reviews pathology across all providers weekly — lead), P9 (dermoscopy
@@ -512,10 +512,11 @@ built this program." — Dr. Maryam Moinfar, board-certified dermatologist
 
 **Sections** (medical variant — _Surveillance / what to watch for_ replaces _Pricing_)
 
-1. **Hero** — eyebrow _"Serious medicine. Natural results."_ + H1 + lede (the conditions in the
-   patient's words + "every provider examines with a dermatoscope; every biopsy gets a second read").
-   CTA `Request an appointment` / `Call 949.248.4547`. Placeholder: `[Photo: exam room, natural light]`.
-2. **The problem** — "We look for the cause before we treat the symptom." Name the dismissed-before
+1. **Hero** — eyebrow _"Serious medicine. Natural results."_ + H1 (the practice's position, stated
+   first: cause before symptom) + lede (the conditions in the patient's words + "every provider
+   examines with a dermatoscope; every biopsy gets a second read"). CTA `Request an appointment` /
+   `Call 949.248.4547`. Placeholder: `[Photo: exam room, natural light]`.
+2. **The problem** — "Chronic doesn't mean unexplained." Name the dismissed-before
    experience plainly: a rash called stress, acne you were told to wait out, and it never cleared —
    that usually means the cause was never found. Tone §8.5: patient, thorough, faintly relieving.
 3. **The accuracy paragraph** — §12.5 **verbatim** (dermatoscope on every provider; in-house lab;
@@ -525,19 +526,19 @@ built this program." — Dr. Maryam Moinfar, board-certified dermatologist
    Groups + anchors: `#acne` **Acne** · `#inflammatory-skin` **Eczema, psoriasis & rosacea**
    (grouped — same diagnostic approach) · `#rashes-hives` **Rashes & hives** · `#infections-growths`
    **Skin infections, warts & molluscum** · `#hair-scalp-nails` **Hair, scalp & nails** (links to
-   `/cosmetic/hair-restoration/` for diagnostic hair work) · `#pediatric` **Pediatric dermatology** ·
-   `#skin-exams` **Annual full-skin exams** (links to `/skin-cancer/`). Each block repeats the core
+   `/cosmetic/hair-restoration/` for diagnostic hair work) · `#skin-exams` **Annual full-skin
+   exams** (links to `/skin-cancer/`). Each block repeats the core
    move: a changing or non-healing spot is a skin-cancer question → `/skin-cancer/`.
 5. **How a first visit works** — history; full-skin exam with a dermatoscope; biopsy only if the
    skin calls for one — processed in our lab, read by the dermatopathologist Dr. Moinfar selected,
-   then reviewed again by her that week; a written plan. "You'll leave knowing what it is, or knowing
-   exactly what we're doing to find out." Some conditions take more than one visit — say so.
+   then reviewed again by her that week. "You'll leave knowing what it is, or knowing exactly what
+   we're doing to find out." Some conditions take more than one visit — say so.
 6. **Who you'll see** — Dr. Moinfar, Madeline Fee PA-C, Shylie Falahati PA-C. Photo placeholders.
    Continuity note trimmed from §12.6 ("Dermatology has a turnover problem. We don't.").
 7. **Surveillance / what to watch for** — when to come back sooner rather than wait for the annual
    visit: a spot that is new, changing, non-healing, bleeding, or itching persistently; a rash that
    spreads or blisters; a nail change in one nail only. Rendered with `--clay` (`CalloutClay`).
-8. **Honest access** — §12.9 honest-access paragraph (routine visits booked months out; concerning
+8. **Honest access** — §12.9 honest-access paragraph (routine visits booked weeks out; concerning
    or changing spots seen sooner; Restore consultations scheduled separately).
 9. **FAQ** — long-tail: "how long does it take to get a dermatology appointment in Dana Point",
    "do I need a referral to see a dermatologist", "what happens during a skin biopsy", "will I get a
@@ -547,7 +548,7 @@ built this program." — Dr. Maryam Moinfar, board-certified dermatologist
     urgent-spot exception. `Request an appointment`.
 11. **Cross-sell** — one line to `/skin-cancer/` (annual skin exams and screening).
 
-- **Honest limitation:** routine appointments are booked months out; and some conditions need a
+- **Honest limitation:** routine appointments are booked weeks out; and some conditions need a
   biopsy or a second visit to pin down — we would rather tell you we are still working it out than
   guess.
 - **Claims fence:** no superlatives ("best dermatologist", "leading"); no outcome or cure language —
@@ -564,7 +565,7 @@ built this program." — Dr. Maryam Moinfar, board-certified dermatologist
 #### Drafted copy (D16 — 2026-08-28, pending client proof)
 
 Final prose for the build. Condition-block anchors: `#acne`, `#inflammatory-skin`, `#rashes-hives`,
-`#infections-growths`, `#hair-scalp-nails`, `#pediatric`, `#skin-exams`. Open placeholders:
+`#infections-growths`, `#hair-scalp-nails`, `#skin-exams`. Open placeholders:
 exam-room photo; Restore consultation lead time; whether teledermatology is offered (FAQ item held
 back until confirmed).
 
@@ -576,7 +577,7 @@ back until confirmed).
 **1 · Hero**
 
 - Eyebrow: Serious medicine. Natural results.
-- H1: Chronic doesn't mean unexplained.
+- H1: We look for the cause before we treat.
 - Lede: Acne that never fully cleared. A rash that keeps coming back. Eczema, psoriasis, rosacea,
   hives, or a nail or patch of scalp that changed. Every provider here examines with a dermatoscope,
   and every biopsy is read twice — once by a dermatopathologist Dr. Moinfar chose herself, and again
@@ -584,7 +585,7 @@ back until confirmed).
 - CTAs: `Request an appointment` → `/contact/` · `Call 949.248.4547`
 - Photo: exam room, natural light
 
-**2 · The problem — "We look for the cause before we treat the symptom."**
+**2 · The problem — "Chronic doesn't mean unexplained."**
 
 A lot of the people we see have been somewhere else first. They were told a rash was stress, that
 the acne would pass with age, or that thinning hair was just hormones — and months or years later,
@@ -634,10 +635,6 @@ heal, that's a skin-cancer question — see [what to watch for](/skin-cancer/).
   here. Hair that's thinning or shedding needs a fuller evaluation — trichoscopy, bloodwork,
   sometimes a scalp biopsy — which is covered on the [hair restoration](/cosmetic/hair-restoration/)
   page.
-- **Pediatric dermatology** (`#pediatric`) — We see children for eczema, warts, molluscum, rashes,
-  birthmarks, and adolescent acne, among other things. The exam and the explanation are pitched to
-  the child and the parent, and we're conservative about what actually needs treating at a young
-  age versus what will settle on its own.
 - **Annual full-skin exams** (`#skin-exams`) — A yearly head-to-toe check with a dermatoscope, for
   anyone with a history of sun exposure, blistering sunburns, atypical moles, or skin cancer in the
   family. It's the same exam whether or not you have a specific worry. A spot you're already
@@ -650,7 +647,6 @@ heal, that's a skin-cancer question — see [what to watch for](/skin-cancer/).
 2. A full-skin examination with a dermatoscope, not just a look at the area you came in about.
 3. A biopsy only if the skin calls for one. If we take one, it's processed in our lab, read by the
    dermatopathologist Dr. Moinfar selected, and reviewed again by her that week.
-4. A written plan you leave with.
 
 You'll leave knowing what it is, or knowing exactly what we're doing to find out. Some conditions
 take more than one visit to pin down — we'll tell you when that's where we are rather than guess.
@@ -678,7 +674,7 @@ move you up.
 
 **8 · Getting an appointment** _(adapted §12.9)_
 
-Request an appointment and our team will call you back. We're often booked several months out for
+Request an appointment and our team will call you back. We're often booked several weeks out for
 routine visits — if you have a concerning or changing spot, tell us when you call and we'll get you
 in sooner. Hair and cosmetic consultations through Restore are scheduled separately from medical
 visits.
@@ -686,7 +682,7 @@ visits.
 **9 · FAQ** _(FAQPage schema)_
 
 1. **How long does it take to get a dermatology appointment in Dana Point?** — For a routine visit,
-   often a few months; we're a small practice and don't shorten visits to fit more in. If you have
+   often a few weeks; we're a small practice and don't shorten visits to fit more in. If you have
    a spot that's new, changing, bleeding, or not healing, tell our team when you call and you'll be
    seen sooner than the routine schedule.
 2. **Do I need a referral to see a dermatologist?** — For most PPO plans, no — you can book
@@ -714,7 +710,7 @@ for whom.)_
 
 An appointment is a full look at your skin, a history, and a plan — with a biopsy only if the skin
 calls for one. Leave your name and number and our team will call you back. Routine visits are often
-booked months out; a spot that's new, changing, bleeding, or not healing is triaged sooner, so tell
+booked weeks out; a spot that's new, changing, bleeding, or not healing is triaged sooner, so tell
 us when you call.
 CTAs: `Request an appointment` → `/contact/` · `Call 949.248.4547`
 
@@ -1832,7 +1828,7 @@ outcome claims; numbers from the Proof Bank only. Bio copy lives in `src/data/si
 **Sections**
 
 1. **Hero + lede** — leave your name and number, we call back, usually within one business day;
-   routine visits are booked months out, concerning or changing spots are seen sooner.
+   routine visits are booked weeks out, concerning or changing spots are seen sooner.
 2. **Callback form** (component already built) — full name, phone, email (optional), best time to
    reach you, area of care (select: general dermatology / skin cancer / cosmetic / GLP-1 Restore /
    not sure), how did you hear about us (optional). **No free-text medical field (D4).** Microcopy

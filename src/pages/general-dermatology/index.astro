@@ -25,7 +25,7 @@ const dermExamSchema = {
   procedureType: 'https://schema.org/DiagnosticProcedure',
   bodyLocation: 'Skin',
   howPerformed:
-    'A clinical history and a full-skin examination with a dermatoscope. When the skin calls for it, a biopsy is processed in the practice’s own laboratory and read by a dermatopathologist, then reviewed again by Dr. Moinfar the same week. The visit concludes with a written diagnosis and management plan.',
+    'A clinical history and a full-skin examination with a dermatoscope. When the skin calls for it, a biopsy is processed in the practice’s own laboratory and read by a dermatopathologist, then reviewed again by Dr. Moinfar the same week. The visit concludes with a diagnosis and a management plan.',
   provider: {
     '@type': 'MedicalBusiness',
     name: practice.legalName,
@@ -62,11 +62,6 @@ const conditions = [
     link: { label: 'Diagnostic hair and scalp evaluation', href: '/cosmetic/hair-restoration/' },
   },
   {
-    id: 'pediatric',
-    title: 'Pediatric dermatology',
-    body: 'We see children for eczema, warts, molluscum, rashes, birthmarks, and adolescent acne, among other things. The exam and the explanation are pitched to the child and the parent, and we’re conservative about what actually needs treating at a young age versus what will settle on its own.',
-  },
-  {
     id: 'skin-exams',
     title: 'Annual full-skin exams',
     body: 'A yearly head-to-toe check with a dermatoscope, for anyone with a history of sun exposure, blistering sunburns, atypical moles, or skin cancer in the family. It’s the same exam whether or not you have a specific worry.',
@@ -77,7 +72,7 @@ const conditions = [
 const faqs = [
   {
     q: 'How long does it take to get a dermatology appointment in Dana Point?',
-    a: 'For a routine visit, often a few months — we’re a small practice and don’t shorten visits to fit more in. If you have a spot that’s new, changing, bleeding, or not healing, tell our team when you call and you’ll be seen sooner than the routine schedule.',
+    a: 'For a routine visit, often a few weeks — we’re a small practice and don’t shorten visits to fit more in. If you have a spot that’s new, changing, bleeding, or not healing, tell our team when you call and you’ll be seen sooner than the routine schedule.',
   },
   {
     q: 'Do I need a referral to see a dermatologist?',
@@ -115,7 +110,7 @@ const faqs = [
     <div class="hero__grid">
       <div class="hero__copy" data-reveal>
         <span class="eyebrow">Serious medicine. Natural results.</span>
-        <h1>Chronic doesn’t mean unexplained.</h1>
+        <h1>We look for the cause before we treat.</h1>
         <p class="lede">
           Acne that never fully cleared. A rash that keeps coming back. Eczema, psoriasis, rosacea,
           hives, or a nail or patch of scalp that changed. Every provider here examines with a
@@ -138,7 +133,7 @@ const faqs = [
   <!-- 2 · The problem -->
   <SectionBand tone="fog" aria-labelledby="problem-heading">
     <div class="prose" data-reveal>
-      <h2 id="problem-heading">We look for the cause before we treat the symptom.</h2>
+      <h2 id="problem-heading">Chronic doesn’t mean unexplained.</h2>
       <p>
         A lot of the people we see have been somewhere else first. They were told a rash was stress,
         that the acne would pass with age, or that thinning hair was just hormones — and months or
@@ -214,7 +209,6 @@ const faqs = [
           A biopsy only if the skin calls for one. If we take one, it’s processed in our lab, read
           by the dermatopathologist Dr. Moinfar selected, and reviewed again by her that week.
         </li>
-        <li>A written plan you leave with.</li>
       </ol>
       <p>
         You’ll leave knowing what it is, or knowing exactly what we’re doing to find out. Some
@@ -265,7 +259,7 @@ const faqs = [
     <div class="prose" data-reveal>
       <h2 id="access-heading">Getting an appointment</h2>
       <p>
-        Request an appointment and our team will call you back. We’re often booked several months
+        Request an appointment and our team will call you back. We’re often booked several weeks
         out for routine visits — if you have a concerning or changing spot, tell us when you call
         and we’ll get you in sooner. Hair and cosmetic consultations through Restore are scheduled
         separately from medical visits.
@@ -285,7 +279,7 @@ const faqs = [
       <p>
         An appointment is a full look at your skin, a history, and a plan — with a biopsy only if
         the skin calls for one. Leave your name and number and our team will call you back. Routine
-        visits are often booked months out; a spot that’s new, changing, bleeding, or not healing is
+        visits are often booked weeks out; a spot that’s new, changing, bleeding, or not healing is
         triaged sooner, so tell us when you call.
       </p>
       <div class="closing__cta">

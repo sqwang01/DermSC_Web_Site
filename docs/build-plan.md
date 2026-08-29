@@ -59,7 +59,7 @@ move to Cloudflare optional, later.
 - [ ] General Dermatology `/general-dermatology/` (pillar: Accuracy) — **one long-form page, no
       condition sub-pages at launch (D18).** Conditions fold in as a grouped, anchor-linked
       "What we treat" section (`#acne`, `#inflammatory-skin`, `#rashes-hives`, `#infections-growths`,
-      `#hair-scalp-nails`, `#pediatric`, `#skin-exams`), 2–4 sentences each. Drafted copy is in
+      `#hair-scalp-nails`, `#skin-exams`), 2–4 sentences each. Drafted copy is in
       `content-spec.md` → General dermatology → "Drafted copy (D16)".
 - [ ] Skin Cancer `/skin-cancer/` (pillar: Depth; Mohs, same-surgeon reconstruction, Sensus SRT,
       PDT/field, surveillance) + Referring Physicians section/anchor
