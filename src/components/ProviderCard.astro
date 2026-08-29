@@ -1,10 +1,12 @@
 ---
 /**
- * Provider summary card. Photo is a labeled placeholder until real headshots exist
- * (no lab-coat-on-white, no stock — style guide §7).
+ * Provider summary card. Uses the client-supplied portrait (2026-08-29).
+ * Portraits are low-resolution source files — capped at a small square crop so they
+ * stay sharp; replace with proper headshots when available (no lab-coat-on-white,
+ * no stock — style guide §7).
  */
+import { Image } from 'astro:assets';
 import type { Provider } from '@data/site';
-import PlaceholderImage from './PlaceholderImage.astro';
 
 interface Props {
   provider: Provider;
@@ -22,10 +24,13 @@ const shortName = provider.name.startsWith('Dr.')
 ---
 
 <article class="pc">
-  <PlaceholderImage
-    label={`${provider.name}, eye-level portrait in the working environment, daylight`}
-    ratio="4 / 5"
+  <Image
     class="pc__photo"
+    src={provider.photo}
+    alt={provider.photoAlt}
+    width={320}
+    height={320}
+    densities={[1, 2]}
   />
   <div class="pc__body">
     <h3 class="pc__name">{provider.name}</h3>
@@ -49,7 +54,11 @@ const shortName = provider.name.startsWith('Dr.')
   }
 
   .pc__photo {
-    max-width: 320px;
+    width: 100%;
+    max-width: 180px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: var(--radius);
   }
 
   .pc__name {

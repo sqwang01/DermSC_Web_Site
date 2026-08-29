@@ -86,7 +86,7 @@ _(All "Book/Request a consultation" routes to the same callback form; never "com
 - **Meta:** `Physician-owned dermatology in Dana Point, CA — medical skin care, skin cancer and Mohs surgery, cosmetic treatments, and GLP-1 recovery. Serving South Orange County since 2006.`
 - **H1 (pick at build):** `The diagnosis comes before the treatment.` _(alt: `Physician-owned dermatology in Dana Point`)_ — practice name + location appear in a visible sub-head regardless.
 - **Audience:** mixed entry point — route quickly. **Pillars:** all four, lightly.
-- **Proofs:** P2 (one location/owner since 2006), P3 (trained together ~25 yrs), P4 (800 Mohs/yr), P11 (weekly pathology review), P1/P10 (independence, chosen dermatopathologist).
+- **Proofs:** P2 (one location/owner since 2006), P3 (trained together ~25 yrs), P4 (1,000 Mohs/yr), P11 (weekly pathology review), P1/P10 (independence, chosen dermatopathologist).
 
 **Sections**
 
@@ -121,7 +121,7 @@ _(All "Book/Request a consultation" routes to the same callback form; never "com
   of treatment, not with Mohs. The page walks least-invasive → most: exam/dermoscopy → field
   treatment / PDT → Mohs → SRT. Mohs is one option among several, not the headline.
 - **Proofs:** P9 (dermoscopy every provider), P11 (weekly pathology review), P8 (PDT / field
-  treatment), P4 (800 Mohs/yr, Dr. Lander), P5 (fellowship-trained Mohs), P6 (Mohs + reconstruction,
+  treatment), P4 (1,000 Mohs/yr, Dr. Lander), P5 (fellowship-trained Mohs), P6 (Mohs + reconstruction,
   same surgeon, here — no timing stated), P7 (Sensus SRT on site). Pathology read by **a
   board-certified dermatopathologist** — the P10 "Dr. Moinfar selected him personally, not by
   contract" framing and the P20 spouses-and-friends line were both dropped from this page per client
@@ -1717,7 +1717,11 @@ CTAs: `Join Restore` → `/contact/` · `Call 949.248.4547`
    in Orange County have been bought…" through "…the only arrangement in which the person examining
    you answers to you"). Rendered in an `--evergreen-deep` band. This is the anchor every "how do I
    know that's true" link elsewhere points to.
-4. **The team** — four provider cards → bios. Continuity paragraph §12.6 **verbatim** beneath.
+4. **The team** — opens with the client's section intro _"The people you'll actually see"_ (two
+   paragraphs: MA→PA pipeline as continuity, then P11 weekly pathology review; added 2026-08-29,
+   D21) → four provider cards → bios. Continuity paragraph §12.6 **verbatim** still to be placed
+   beneath in the full About pass — hold it until then so the MA→PA sentence isn't stated twice in
+   one section.
 5. **Coming up through the practice** — P14, framed publicly as continuity: _"Two of our physician
    assistants started here as medical assistants, went to PA school, and came back."_ One line
    inviting MAs and PAs who want that path to get in touch (TODO client: careers email or
@@ -1737,11 +1741,16 @@ CTAs: `Join Restore` → `/contact/` · `Call 949.248.4547`
 
 ### PAGE: Provider bios `/about/<slug>/` (`Physician` schema each)
 
-Shared pattern (all four): breadcrumb → real-photo placeholder (eye level, working environment,
-**no lab coat staged on white**, §7) → name (first reference per §5.4) → credential line → how they
-practice (2–3 short paragraphs) → education and training → one human detail (**TODO client per
-provider** — do not invent) → links to the service pages they cover → CTA. Each bio links to at
-least one service page and one other bio (§11.4). No outcome claims; numbers from the Proof Bank only.
+Shared pattern (all four): breadcrumb → portrait (client-supplied, 2026-08-29 — low-res, flagged
+for replacement; no lab coat staged on white, §7) → name (first reference per §5.4) → credential
+line → how they practice (2–3 short paragraphs) → education and training → one human detail
+(client-supplied per provider; Dr. Lander gave none, so his bio carries an observed-behaviour line
+instead) → links to the service pages they cover → CTA. Each bio links to at least one service page
+and one other bio (§11.4). Copy adapted from the client's provider-bios draft
+(`docs/reference/provider-bios.md` — carries unresolved `[confirm]` brackets; the "same day"
+reconstruction phrasing in the Lander draft must drop the timing per §6.3 before it ships). No
+outcome claims; numbers from the Proof Bank only. Bio copy lives in `src/data/site.ts`
+(`providers[]`).
 
 #### `/about/dr-maryam-moinfar/`
 
@@ -1755,7 +1764,11 @@ least one service page and one other bio (§11.4). No outcome claims; numbers fr
   providers (P11), routine and unbilled; leads the Restore program; sees general medical
   dermatology and hair/scalp.
 - **Education & training:** P12 wording exactly; residency hair-specialist mentorship per P13,
-  mentor unnamed.
+  mentor unnamed; UC Berkeley molecular and cell biology (honors); Alpha Omega Alpha; Woman of the
+  Year in Medicine and Healthcare, 2009 (client-confirmed to keep, 2026-08-29 — D21).
+- **Human detail:** raising a practice and a daughter over the same twenty years.
+- **Also published (client sign-off, D21):** Silhouette InstaLift listed among her cosmetic work;
+  the D11 physician-families referral line, approved wording.
 - **Links:** General dermatology, Hair restoration, GLP-1 Restore; Dr. Lander's bio.
 - **CTA:** `Request an appointment` (secondary `Request a hair consultation` where the page context
   is hair).
@@ -1763,16 +1776,19 @@ least one service page and one other bio (§11.4). No outcome claims; numbers fr
 #### `/about/dr-jeffrey-lander/`
 
 - **Title:** `Dr. Jeffrey Lander · Advanced Dermatology` (41)
-- **Meta:** `Dr. Jeffrey Lander is a board-certified dermatologist and fellowship-trained Mohs surgeon in Dana Point. He performs more than 800 Mohs cases a year and the reconstruction himself.`
+- **Meta:** `Dr. Jeffrey Lander is a board-certified dermatologist and fellowship-trained Mohs surgeon in Dana Point. He performs more than 1,000 Mohs cases a year and the reconstruction himself.`
 - **H1:** `Dr. Jeffrey Lander` · **First reference:** _Dr. Jeffrey Lander, board-certified
   dermatologist and fellowship-trained Mohs surgeon._
-- **Proofs:** P5 (fellowship-trained in Mohs — lead), P4 (more than 800 Mohs cases a year),
+- **Proofs:** P5 (fellowship-trained in Mohs — lead), P4 (more than 1,000 Mohs cases a year),
   P6 (reconstruction here, same surgeon — no timing stated), P3 (trained with Dr. Moinfar in residency,
   ~25 years side by side).
 - **How he practices:** one thin layer at a time, margins read between layers, surgery stops when
   they're clear; does the reconstruction himself, here — **state no timing** (§11.3).
-- **Education & training:** board certification; Mohs fellowship (TODO client: institution/year if
-  approved to publish); residency alongside Dr. Moinfar.
+- **Education & training:** PhD in biological sciences, UC Irvine; medical school + dermatology
+  residency at the University of Minnesota (alongside Dr. Moinfar); one additional year of
+  fellowship in Mohs micrographic surgery and cutaneous oncology (institution/year not published).
+- **Human detail:** none supplied — bio uses an observed-behaviour line (unhurried, explains
+  findings as he goes) in its place.
 - **Links:** Skin cancer, `/skin-cancer/#referring-physicians`; Dr. Moinfar's bio.
 - **CTA:** `Request a skin check`.
 - **Claims fence:** no cure-rate or outcome numbers (P21); no cumulative career Mohs figure unless
@@ -1786,7 +1802,10 @@ least one service page and one other bio (§11.4). No outcome claims; numbers fr
 - **Proofs:** P14 (MA → PA school → returned), P3 / §12.6 (continuity).
 - **How she practices:** general medical dermatology within the practice's model; the same faces
   for years.
-- **Education & training:** PA program (TODO client: name/year); began here as a medical assistant.
+- **Education & training:** UC Berkeley, integrative biology (Rotary International volunteer); Master
+  of Health Science, Duke University PA program ("top-ranked program in the country" / "top of her
+  class" phrasing kept per client sign-off, D21); began here as a medical assistant.
+- **Human detail:** hikes, dances, travels.
 - **Links:** General dermatology; Shylie Falahati's bio. **CTA:** `Request an appointment`.
 
 #### `/about/shylie-falahati-pa-c/`
@@ -1794,9 +1813,13 @@ least one service page and one other bio (§11.4). No outcome claims; numbers fr
 - **Title:** `Shylie Falahati, PA-C · Advanced Dermatology` (44)
 - **Meta:** `Shylie Falahati, PA-C, practices medical dermatology at Advanced Dermatology in Dana Point, California.`
 - **H1:** `Shylie Falahati, PA-C` · **First reference:** _Shylie Falahati, PA-C._
-- **Proofs:** §12.6 (continuity). Individual bio details **TODO client** — keep the page short and
-  factual until confirmed; do not invent training, interests, or a start year.
-- **How she practices:** general medical dermatology across the practice's model.
+- **Proofs:** §12.6 (continuity), P14 (MA → PA school → returned, same path as Madeline Fee).
+- **How she practices:** general medical dermatology across the practice's model; member of the
+  NCCPA and the AAPA; stays current on new dermatologic treatments.
+- **Education & training:** Cal State Long Beach (cum laude); MS in Physician Assistant Studies,
+  Pacific University, Oregon ("top of her class" phrasing kept per client sign-off, D21); trained
+  here as a medical assistant before PA school.
+- **Human detail:** reads, pilates and hot yoga, swims, always trying a new restaurant.
 - **Links:** General dermatology; Madeline Fee's bio. **CTA:** `Request an appointment`.
 
 ### PAGE: Contact `/contact/`

@@ -1,11 +1,11 @@
 ---
 import type { GetStaticPaths } from 'astro';
+import { Image } from 'astro:assets';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import SectionBand from '@components/SectionBand.astro';
 import Breadcrumbs from '@components/Breadcrumbs.astro';
-import PlaceholderImage from '@components/PlaceholderImage.astro';
-import StubNotice from '@components/StubNotice.astro';
-import { providers, siteMeta, practice } from '@data/site';
+import Button from '@components/Button.astro';
+import { providers, siteMeta, practice, cta } from '@data/site';
 
 export const getStaticPaths = (() => {
   return providers.map((p) => ({ params: { slug: p.slug }, props: { provider: p } }));
@@ -14,11 +14,19 @@ export const getStaticPaths = (() => {
 const { provider } = Astro.props;
 const path = `/about/${provider.slug}/`;
 
+// "Dr. Maryam Moinfar" -> "Dr. Moinfar"; "Madeline Fee, PA-C" -> "Madeline"
+const parts = provider.name.replace(/,.*$/, '').split(' ');
+const shortName = provider.name.startsWith('Dr.')
+  ? `Dr. ${parts[parts.length - 1]}`
+  : parts[0];
+
 const physicianSchema = {
   '@context': 'https://schema.org',
   '@type': 'Physician',
   name: provider.name,
   medicalSpecialty: 'Dermatology',
+  jobTitle: provider.role,
+  image: new URL(provider.photo.src, siteMeta.origin).href,
   worksFor: {
     '@type': 'MedicalBusiness',
     name: practice.legalName,
@@ -30,7 +38,7 @@ const physicianSchema = {
 
 <BaseLayout
   title={`${provider.name} · Advanced Dermatology`}
-  description={`${provider.firstReference}. ${provider.cardLine}`}
+  description={provider.metaDescription}
   path={path}
   schema={[physicianSchema]}
 >
@@ -43,28 +51,35 @@ const physicianSchema = {
       ]}
     />
     <div class="bio">
-      <PlaceholderImage
-        label={`${provider.name}, eye-level portrait in the working environment, daylight, no lab coat staged on white`}
-        ratio="4 / 5"
-        class="bio__photo"
-      />
-      <div class="bio__body">
+      <div class="bio__aside">
+        <Image
+          class="bio__photo"
+          src={provider.photo}
+          alt={provider.photoAlt}
+          width={440}
+          height={440}
+          densities={[1, 2]}
+        />
+        <p class="bio__accepting">{provider.accepting}</p>
+      </div>
+
+      <div class="bio__body prose">
         <h1>{provider.name}</h1>
         <p class="bio__cred">{provider.credential}</p>
-        <p class="lede">{provider.cardLine}</p>
+        <p class="lede">{provider.bioLede}</p>
         <p class="bio__role">{provider.role}</p>
-        <ul class="bio__links">
-          {
-            provider.serviceLinks.map((l) => (
-              <li>
-                <a class="link-underline" href={l.href}>
-                  {l.label}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-        <StubNotice spec="docs/content-spec.md → Provider bios" />
+
+        <h2>How {shortName} practices</h2>
+        {provider.bioBody.map((para) => <p>{para}</p>)}
+
+        <h2>Education and training</h2>
+        <p>{provider.education}</p>
+
+        {provider.humanNote && <p>{provider.humanNote}</p>}
+
+        <p class="bio__cta">
+          <Button href="/contact/">{cta.medical.primary}</Button>
+        </p>
       </div>
     </div>
   </SectionBand>
@@ -76,25 +91,31 @@ const physicianSchema = {
     gap: var(--space-12);
   }
   .bio__photo {
-    max-width: 360px;
+    width: 100%;
+    max-width: 240px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+  .bio__accepting {
+    margin-top: var(--space-4);
+    font-size: var(--fs-small);
+    color: var(--stone);
+    max-width: 240px;
   }
   .bio__cred {
     color: var(--stone);
     margin: var(--space-2) 0 var(--space-6);
   }
   .bio__role {
-    margin-top: var(--space-4);
+    color: var(--stone);
   }
-  .bio__links {
-    margin-top: var(--space-6);
-    padding-left: 1.1rem;
-  }
-  .bio__links li + li {
-    margin-top: var(--space-2);
+  .bio__cta {
+    margin-top: var(--space-10);
   }
   @media (min-width: 820px) {
     .bio {
-      grid-template-columns: 360px 1fr;
+      grid-template-columns: 240px 1fr;
     }
   }
 </style>

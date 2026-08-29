@@ -22,7 +22,21 @@ import { providers } from '@data/site';
   </SectionBand>
 
   <SectionBand tone="fog" id="providers" aria-labelledby="team-heading">
-    <h2 id="team-heading" class="team-heading">Our providers</h2>
+    <div class="team-intro">
+      <h2 id="team-heading">The people you’ll actually see</h2>
+      <p>
+        Two of the four clinicians on this page started at Advanced Dermatology as medical
+        assistants. That isn’t a coincidence we’re proud of after the fact — it’s how this practice
+        has always built its team, and a big part of why patients here tend to recognize the same
+        faces year after year.
+      </p>
+      <p>
+        Dr. Moinfar and Dr. Lander are both board-certified dermatologists and Diplomates of the
+        American Board of Dermatology. Every biopsy read in this practice is reviewed by Dr. Moinfar
+        personally, every week, across every provider — a second read on every diagnosis before it
+        becomes a treatment plan.
+      </p>
+    </div>
     <div class="team">
       {providers.map((p) => <ProviderCard provider={p} />)}
     </div>
@@ -34,8 +48,15 @@ import { providers } from '@data/site';
 </BaseLayout>
 
 <style>
-  .team-heading {
+  .team-intro {
+    max-width: 60ch;
     margin-bottom: var(--space-12);
+  }
+  .team-intro h2 {
+    margin-bottom: var(--space-6);
+  }
+  .team-intro p + p {
+    margin-top: var(--space-6);
   }
   .team {
     display: grid;
