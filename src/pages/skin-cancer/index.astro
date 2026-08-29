@@ -9,7 +9,7 @@ import { practice, providers, siteMeta } from '@data/site';
 
 const title = 'Skin Cancer Treatment & Mohs Surgery · Dana Point';
 const description =
-  'Fellowship-trained Mohs surgery, reconstruction by the same surgeon, and Sensus SRT radiation for skin cancer in Dana Point. Caught early, it stays a small procedure.';
+  'Skin cancer screening with dermoscopy, non-surgical field treatment, Mohs surgery, and Sensus SRT radiation in Dana Point. Caught early, it stays a small procedure.';
 
 // Dr. Lander performs Mohs and reconstruction; Dr. Moinfar reads the pathology.
 const careTeam = ['dr-jeffrey-lander', 'dr-maryam-moinfar']
@@ -34,6 +34,14 @@ const mohsSchema = {
 
 const faqs = [
   {
+    q: 'How soon can I be seen for a changing mole?',
+    a: 'Sooner than a routine appointment. When you request a skin check, tell our team the spot is new, changing, bleeding, or not healing, and they will move you up.',
+  },
+  {
+    q: 'What happens if a spot turns out to be precancerous rather than cancer?',
+    a: 'Most precancerous spots are treated in the office — frozen with liquid nitrogen if there are only a few, or treated across the whole area with a topical medication or photodynamic therapy when the sun damage is widespread. We then set a schedule to keep an eye on the area.',
+  },
+  {
     q: 'How long does Mohs surgery take?',
     a: 'Plan for most of the day, though much of that is waiting while each layer is processed and read under the microscope. Most cases are clear after one or two layers. Bring something to do, and arrange not to work that afternoon.',
   },
@@ -42,16 +50,8 @@ const faqs = [
     a: 'Often, yes — it depends on where the cancer was and how much tissue had to be removed to clear it. Reconstruction is done by the same surgeon who removed the cancer. Some small wounds in certain locations heal well on their own; that decision is made once the cancer is out and the wound is known.',
   },
   {
-    q: 'Is Mohs surgery painful?',
-    a: 'The area is numbed with local anesthesia, so the surgery itself is not painful. You are awake the whole time. Afterward, most people manage with acetaminophen.',
-  },
-  {
     q: 'What is superficial radiation therapy?',
     a: 'It treats certain basal and squamous cell skin cancers with low-energy X-rays that reach only the top layers of skin, given over a series of short visits. It is mainly an option for patients who cannot or should not have surgery. The unit we use is the Sensus SRT. Whether it is appropriate depends on the tumor type, size, and location and on your overall health — that is a conversation, not a default.',
-  },
-  {
-    q: 'How soon can I be seen for a changing mole?',
-    a: 'Sooner than a routine appointment. When you request a skin check, tell our team the spot is new, changing, bleeding, or not healing, and they will move you up.',
   },
 ];
 ---
@@ -60,12 +60,13 @@ const faqs = [
   <!-- 1 · Hero -->
   <SectionBand as="div" class="hero">
     <div class="hero__copy" data-reveal>
-      <span class="eyebrow">Serious medicine. Natural results.</span>
+      <span class="eyebrow">Skin cancer</span>
       <h1>Caught early, it’s a small procedure.</h1>
       <p class="lede">
-        Caught late, it’s a different conversation. Screening, Mohs micrographic surgery, and
-        reconstruction are all done here — by the same surgeon — for skin cancer in
-        Dana Point and South Orange County.
+        Caught late, it’s a different conversation. Screening with dermoscopy, non-surgical treatment
+        for early and widespread sun damage, Mohs surgery when it’s warranted, and radiation for
+        patients who shouldn’t have surgery — the full range is here, in one building, for Dana Point
+        and South Orange County.
       </p>
       <div class="hero__cta">
         <Button href="/contact/" variant="primary">Request a skin check</Button>
@@ -98,23 +99,21 @@ const faqs = [
     </div>
   </SectionBand>
 
-  <!-- 3 · How Mohs works -->
-  <SectionBand aria-labelledby="mohs-heading">
+  <!-- 3 · The comprehensive skin exam -->
+  <SectionBand aria-labelledby="exam-heading">
     <div class="prose" data-reveal>
-      <h2 id="mohs-heading">How Mohs surgery works</h2>
+      <h2 id="exam-heading">The comprehensive skin exam</h2>
       <p>
-        Dr. Jeffrey Lander is a fellowship-trained Mohs surgeon and performs more than 800 Mohs
-        cases a year. The cancer is removed one thin layer at a time, with the margins examined
-        under the microscope between layers, and the surgery stops the moment they’re clear.
-        Reconstruction is done here as well, by the same surgeon — not referred
-        out to someone who wasn’t in the room.
+        Every skin cancer conversation starts with a full look at your skin — not only the spot that
+        brought you in. Every provider here examines with a dermatoscope, a handheld lens that shows
+        the pigment and vessel patterns under the surface that the naked eye misses, and each is
+        trained in reading what it shows.
+        <!-- TODO(client): confirm phrasing for dermoscopy training / certification per provider -->
       </p>
       <p>
-        In practice, that means you’re numbed with local anesthetic, the first layer is taken, and
-        then you wait — often an hour or more — while it’s processed and read. If any cancer remains
-        at an edge, only that area is treated again. Most cases are clear after one or two layers.
-        It spares the most healthy tissue of any method, which matters most on the face, ears, and
-        hands.
+        If a spot needs a closer look, the biopsy is processed in our own lab and read by a
+        board-certified dermatopathologist. That reading determines everything that happens next,
+        and every week Dr. Moinfar reviews the pathology from all of our providers herself.
       </p>
     </div>
   </SectionBand>
@@ -123,21 +122,31 @@ const faqs = [
   <SectionBand tone="fog" aria-labelledby="range-heading">
     <h2 id="range-heading" class="section-title" data-reveal>The full range, in one building</h2>
     <div class="range" data-reveal>
+      <p class="range__intro">
+        Skin cancer isn’t one problem with one answer. What’s right depends on the type, the size,
+        where it is, and your overall health — and because we can offer the whole range, the plan
+        follows the cancer rather than the one procedure a practice happens to do.
+      </p>
       <article class="range__item prose">
-        <h3>Mohs micrographic surgery</h3>
+        <h3>Field treatment and photodynamic therapy</h3>
         <p>
-          The tissue-sparing approach described above, for basal and squamous cell carcinomas —
-          particularly on the face, head, neck, hands, and lower legs, and for cancers that have
-          recurred or have unclear borders.
+          When sun damage is spread across an area rather than concentrated in one spot — many
+          rough, scaly precancerous patches at once — a topical medication or a light-activated
+          medication applied in the office can treat the whole field instead of one lesion at a
+          time. It is the least invasive option, and often the right first step before anything
+          becomes a cancer.
         </p>
       </article>
       <article class="range__item prose">
-        <h3>Reconstruction here</h3>
+        <h3>Mohs micrographic surgery</h3>
         <p>
-          The same surgeon who removed the cancer repairs the wound. It is not handed to another
-          practice or a specialist who wasn’t there. Some small
-          wounds in certain locations are left to heal on their own — a decision made once the
-          cancer is out and the defect is known.
+          For many basal and squamous cell carcinomas — particularly on the face, ears, hands, and
+          lower legs, and for cancers that have recurred or have unclear borders — Mohs removes the
+          cancer one thin layer at a time, with the margin read under the microscope before any more
+          is taken, so the least possible healthy tissue goes with it. Dr. Jeffrey Lander is
+          fellowship-trained in Mohs surgery and performs more than 800 cases a year. When the wound
+          needs repair, the same surgeon does it here — not referred out to someone who wasn’t in
+          the room.
         </p>
       </article>
       <article class="range__item prose">
@@ -151,32 +160,15 @@ const faqs = [
           before anything is scheduled.
         </p>
       </article>
-      <article class="range__item prose">
-        <h3>Photodynamic therapy and field treatment</h3>
-        <p>
-          When sun damage is spread across an area rather than concentrated in one spot — many
-          rough, scaly precancerous patches at once — a light-activated medication applied in the
-          office can treat the whole field instead of one lesion at a time.
-        </p>
-      </article>
-      <article class="range__item prose">
-        <h3>Biopsy and pathology</h3>
-        <p>
-          A biopsy is processed in our own lab and read by a dermatopathologist Dr. Moinfar
-          selected personally — not one assigned by a contract. That reading determines everything
-          that happens next, and every week she reviews the pathology from all of our providers
-          herself.
-        </p>
-      </article>
     </div>
   </SectionBand>
 
-  <!-- 5 · Candidacy -->
+  <!-- 5 · How the choice gets made -->
   <SectionBand aria-labelledby="candidacy-heading">
-    <h2 id="candidacy-heading" class="section-title" data-reveal>Is Mohs surgery right for you?</h2>
+    <h2 id="candidacy-heading" class="section-title" data-reveal>How the choice gets made</h2>
     <div class="candidacy" data-reveal>
       <div class="candidacy__col">
-        <h3>It’s often the right approach if</h3>
+        <h3>Mohs is often the right call when</h3>
         <ul>
           <li>
             You have a biopsy-confirmed basal or squamous cell carcinoma on the face, head, neck,
@@ -184,18 +176,22 @@ const faqs = [
           </li>
           <li>A skin cancer has come back after a previous treatment</li>
           <li>An earlier excision came back with a positive or unclear margin</li>
-          <li>You want the method that removes the least healthy tissue to clear the cancer</li>
+          <li>Sparing the most healthy tissue matters most for how the area will look and heal</li>
         </ul>
       </div>
       <div class="candidacy__col">
-        <h3>It’s not the path if</h3>
+        <h3>A different path may fit better when</h3>
         <ul>
-          <li>The diagnosis isn’t confirmed yet — that starts with a skin check and a biopsy</li>
+          <li>The diagnosis isn’t confirmed yet — that starts with a skin exam and a biopsy</li>
+          <li>
+            The damage is spread across an area rather than one lesion — field treatment or
+            photodynamic therapy may treat it in one pass
+          </li>
+          <li>Surgery carries more risk than benefit for you — radiation may be the better option</li>
           <li>
             The cancer is a type or stage better managed another way, or by a surgical oncologist —
             we’ll tell you plainly and help arrange it
           </li>
-          <li>Surgery carries more risk than benefit for you — radiation may be the better option</li>
         </ul>
       </div>
     </div>
@@ -204,18 +200,16 @@ const faqs = [
   <!-- 6 · Why here (claim, then structure — §7.2) -->
   <SectionBand tone="evergreen" aria-labelledby="why-heading">
     <div class="band-prose" data-reveal>
-      <h2 id="why-heading">Why here rather than anywhere with a scalpel</h2>
+      <h2 id="why-heading">Why here, and not just anywhere</h2>
       <p>
-        Plenty of places can cut out a skin cancer. Fewer can read the margin while you wait, repair
-        the wound with the same hands, and offer radiation to the patient who shouldn’t
-        be cut at all.
+        Plenty of places can cut out a skin cancer. Fewer can treat a whole field of sun damage
+        without surgery, read the margin while you wait, repair the wound with the same hands, and
+        offer radiation to the patient who shouldn’t be cut at all.
       </p>
       <p>
-        We’ve kept a radiation unit for the patients who need it — even though it isn’t the most
-        profitable room in the building — because nobody upstream was ever going to ask what its
-        margin was.
+        Our experience, our independence, and that range of options are what let us recommend the
+        best treatment, not the most expensive one — because no one here has a target to hit.
       </p>
-      <p>Physicians in our community bring their own spouses and friends here.</p>
       <p>
         <a class="link-underline band-prose__link" href="/about/">How the practice is set up</a>
       </p>
@@ -288,8 +282,9 @@ const faqs = [
       <p>
         Dr. Jeffrey Lander is fellowship-trained in Mohs surgery and performs more than 800 cases a
         year. Tissue is processed in our own lab; reconstruction is done here by the same surgeon.
-        For patients who aren’t surgical candidates, superficial radiation therapy is
-        available on site. Pathology across all of our providers is reviewed weekly by Dr. Moinfar.
+        Photodynamic therapy and field treatment are available for diffuse actinic damage, and
+        superficial radiation therapy on site for patients who aren’t surgical candidates. Pathology
+        across all of our providers is reviewed weekly by Dr. Moinfar.
       </p>
       <p>
         To refer a patient or discuss a case, call
@@ -346,9 +341,16 @@ const faqs = [
     display: grid;
     gap: var(--space-12);
   }
+  .range__intro {
+    max-width: 60ch;
+    color: var(--stone);
+  }
   @media (min-width: 760px) {
     .range {
       grid-template-columns: 1fr 1fr;
+    }
+    .range__intro {
+      grid-column: 1 / -1;
     }
   }
   .range__item h3 {

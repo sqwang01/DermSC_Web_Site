@@ -114,32 +114,50 @@ _(All "Book/Request a consultation" routes to the same callback form; never "com
 ## PAGE: Skin cancer `/skin-cancer/`
 
 - **Title:** `Skin Cancer Treatment & Mohs Surgery · Dana Point` (49)
-- **Meta:** `Fellowship-trained Mohs surgery, reconstruction by the same surgeon, and Sensus SRT radiation for skin cancer in Dana Point. Caught early, it stays a small procedure.`
+- **Meta:** `Skin cancer screening with dermoscopy, non-surgical field treatment, Mohs surgery, and Sensus SRT radiation in Dana Point. Caught early, it stays a small procedure.`
 - **H1:** `Caught early, it's a small procedure.`
 - **Audience:** the New Medical Patient (§3.4) + referring physicians (§3.5). **Pillar:** 2 Depth.
-- **Proofs:** P4 (800 Mohs/yr, Dr. Lander), P5 (fellowship-trained Mohs), P6 (Mohs +
-  reconstruction, same surgeon, here — no timing stated), P7 (Sensus SRT on site), P8 (PDT / field treatment),
-  P9 (dermoscopy every provider), P10 (chosen dermatopathologist), P20 (spouses and friends).
+- **Positioning (per client, 2026-08-29 — see D19):** lead with early detection and the _full range_
+  of treatment, not with Mohs. The page walks least-invasive → most: exam/dermoscopy → field
+  treatment / PDT → Mohs → SRT. Mohs is one option among several, not the headline.
+- **Proofs:** P9 (dermoscopy every provider), P11 (weekly pathology review), P8 (PDT / field
+  treatment), P4 (800 Mohs/yr, Dr. Lander), P5 (fellowship-trained Mohs), P6 (Mohs + reconstruction,
+  same surgeon, here — no timing stated), P7 (Sensus SRT on site). Pathology read by **a
+  board-certified dermatopathologist** — the P10 "Dr. Moinfar selected him personally, not by
+  contract" framing and the P20 spouses-and-friends line were both dropped from this page per client
+  (2026-08-29).
 
 **Sections** (medical variant — _Surveillance_ replaces _Pricing_)
 
-1. **Hero** — H1 + lede: the two-outcomes idea. CTA `Request a skin check`.
+1. **Hero** — H1 + lede: two-outcomes idea, then the full range in one building (screening →
+   non-surgical → Mohs → radiation). Eyebrow is the plain category label `Skin cancer` (not the
+   `Serious medicine. Natural results.` tagline — wrong register for oncology). CTA `Request a skin check`.
 2. **What to watch for** — the "when to call us sooner" list. Rendered with `--clay` (clinical
    signal, never elsewhere). New / changing / non-healing / bleeding / asymmetric lesions.
-3. **How Mohs works** — plain mechanism: one thin layer at a time, margins read under the
-   microscope between layers, surgery stops when they're clear. What the room and the day are like.
-4. **The full range** — Mohs surgery; reconstruction by the same surgeon, done here (**state no
-   timing** — not "same-day", not "next-day"); Sensus SRT for patients who can't or shouldn't have surgery (⚠️ candidacy language →
-   counsel, §9.5); PDT and field treatment for diffuse sun damage; biopsy processed in-house, read
-   by a dermatopathologist Dr. Moinfar selected personally.
-5. **Candidacy** — good fit if… / this is not the right path if…
-6. **Why here rather than anywhere with a scalpel** — claim then structure (§7.2): "We kept a
-   radiation unit for the patients who need it" → "because nobody upstream asked what its margin
-   was." The spouses-and-friends line lands here.
+3. **The comprehensive skin exam** — a full-skin look, not just the presenting spot; every provider
+   examines with a dermatoscope and is trained in reading it (P9; ⚠️ TODO client to confirm training
+   phrasing); biopsy processed in-house and read by a board-certified dermatopathologist; weekly
+   pathology review across all providers (P11).
+4. **The full range** — ordered least-invasive → most: PDT and field treatment for diffuse sun
+   damage (P8); Mohs micrographic surgery (P4/P5), one thin layer at a time, margin read between
+   layers, with reconstruction by the same surgeon folded in (**state no timing** — not "same-day",
+   not "next-day"); Sensus SRT for patients who can't or shouldn't have surgery (⚠️ candidacy
+   language → counsel, §9.5). Short intro framing the choice as "plan follows the cancer".
+5. **How the choice gets made** — Mohs is often the right call when… / a different path may fit
+   better when… (candidacy language, not Mohs-only — names field tx / PDT and radiation as the
+   alternatives).
+6. **Why here, and not just anywhere** — two short paragraphs: (1) the range of capability (field tx
+   without surgery, margin read while you wait, reconstruction by the same hands, radiation for the
+   patient who shouldn't be cut); (2) the §12.3 line — experience + independence + that range "are
+   what let us recommend the best treatment, not the most expensive one — because no one here has a
+   target to hit" (ties the page to the homepage "Who we answer to" block). Close with the
+   `/about/` link. Per client (2026-08-29) the "kept a radiation unit / nobody upstream asked what
+   its margin was" beat and the spouses-and-friends line were removed from this section.
 7. **Who you'll see** — Dr. Lander (Mohs), Dr. Moinfar (pathology review). Photo placeholders.
 8. **Surveillance / what happens after** — recall cadence, self-checks, when to come back sooner.
-9. **FAQ** — long-tail: "how long does Mohs take", "will I need reconstruction", "is Mohs painful",
-   "what is superficial radiation therapy", "how soon can I be seen for a changing mole".
+9. **FAQ** — long-tail: "how soon can I be seen for a changing mole", "what happens if a spot is
+   precancerous rather than cancer" (field tx / PDT / cryo), "how long does Mohs take", "will I need
+   reconstruction", "what is superficial radiation therapy".
 10. **Closing CTA** — what a skin check is, how to request one, honest lead time; urgent-spot note.
 11. **Cross-sell** — one line to General dermatology (annual skin exams).
 
@@ -147,16 +165,19 @@ _(All "Book/Request a consultation" routes to the same callback form; never "com
   triaged sooner — say so plainly.
 - **Claims fence:** no cure-rate or outcome numbers (P21); SRT device = **Sensus SRT**; SRT
   candidacy phrasing to counsel; P20 wording exactly as approved; no superlatives ("leading",
-  "best Mohs surgeon" — banned).
+  "best Mohs surgeon" — banned). The §12.3 clause "the best treatment, not the most expensive one"
+  is the one sanctioned use of "best" (verbatim from the approved independence paragraph). Dermoscopy
+  **training/certification** language is not yet a Proof Bank entry — carries a TODO(client) until confirmed.
 - **CTA:** primary `Request a skin check`; secondary `What to watch for →` (anchor to section 2).
 - **Schema:** `MedicalProcedure` (Mohs micrographic surgery), `FAQPage`, `MedicalBusiness`.
 - **Internal links:** Dr. Lander bio, About/independence, General dermatology, `#referring-physicians`.
 
 ### Section anchor: Referring physicians `#referring-physicians`
 
-Fellowship-trained Mohs; in-house processing + reconstruction; Sensus SRT for surgical-risk
-patients; weekly pathology review across all providers; direct line for referrals. Tone: peer to
-peer, factual. CTA: `Refer a patient` → phone/fax + secure fax line.
+Fellowship-trained Mohs; in-house processing + reconstruction; PDT / field treatment for diffuse
+actinic damage; Sensus SRT for surgical-risk patients; weekly pathology review across all providers;
+direct line for referrals. Tone: peer to peer, factual. CTA: `Refer a patient` → phone/fax + secure
+fax line.
 
 ---
 
