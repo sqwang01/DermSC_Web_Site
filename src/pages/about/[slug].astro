@@ -25,7 +25,7 @@ const physicianSchema = {
   '@type': 'Physician',
   name: provider.name,
   medicalSpecialty: 'Dermatology',
-  jobTitle: provider.role,
+  ...(provider.role ? { jobTitle: provider.role } : {}),
   image: new URL(provider.photo.src, siteMeta.origin).href,
   worksFor: {
     '@type': 'MedicalBusiness',
@@ -67,10 +67,16 @@ const physicianSchema = {
         <h1>{provider.name}</h1>
         <p class="bio__cred">{provider.credential}</p>
         <p class="lede">{provider.bioLede}</p>
-        <p class="bio__role">{provider.role}</p>
+        {provider.role && <p class="bio__role">{provider.role}</p>}
 
         <h2>How {shortName} practices</h2>
-        {provider.bioBody.map((para) => <p>{para}</p>)}
+        {
+          provider.bioBody.map((para) => (
+            <p id={para.endsWith('an operating room.') ? 'hair-focus' : undefined}>
+              {para}
+            </p>
+          ))
+        }
 
         <h2>Education and training</h2>
         <p>{provider.education}</p>

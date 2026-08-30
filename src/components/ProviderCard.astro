@@ -14,11 +14,13 @@ interface Props {
   showLink?: boolean;
   /** Override the provider's default card line for a page-specific context. */
   line?: string;
+  /** Override the bio link target — e.g. deep-link to a section of the bio. */
+  bioHref?: string;
 }
 
-const { provider, showLink = true, line } = Astro.props;
+const { provider, showLink = true, line, bioHref: bioHrefOverride } = Astro.props;
 const cardLine = line ?? provider.cardLine;
-const bioHref = `/about/${provider.slug}/`;
+const bioHref = bioHrefOverride ?? `/about/${provider.slug}/`;
 // "Dr. Maryam Moinfar" -> "Dr. Moinfar"; "Madeline Fee, PA-C" -> "Madeline Fee"
 const parts = provider.name.replace(/,.*$/, '').split(' ');
 const shortName = provider.name.startsWith('Dr.')

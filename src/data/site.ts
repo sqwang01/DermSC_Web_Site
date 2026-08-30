@@ -93,7 +93,8 @@ export type Provider = {
   /** How they are referred to on first mention, per brand doc. */
   firstReference: string;
   credential: string;
-  role: string;
+  /** Practice-area summary line on the bio page. Omitted where the client asked it removed. */
+  role?: string;
   /** One-line summary for cards. No superlatives. */
   cardLine: string;
   /** Portrait supplied by the client (2026-08-29). See note below on resolution. */
@@ -130,7 +131,6 @@ export const providers: Provider[] = [
     name: 'Dr. Maryam Moinfar',
     firstReference: 'Dr. Maryam Moinfar, board-certified dermatologist',
     credential: 'MD, board-certified dermatologist',
-    role: 'Founder and medical director; medical and cosmetic dermatology; hair and scalp',
     cardLine:
       'Founded the practice in 2006. Reviews pathology across all providers each week. Leads the Restore program.',
     photo: moinfarPhoto,
@@ -138,7 +138,7 @@ export const providers: Provider[] = [
     metaDescription:
       'Dr. Maryam Moinfar is a board-certified dermatologist and the founder of Advanced Dermatology in Dana Point. She reviews pathology across all providers every week.',
     bioLede:
-      'Dr. Maryam Moinfar founded Advanced Dermatology in 2006 and still practices here full-time, twenty years later.',
+      'Founded Advanced Dermatology in 2006 and still practices here full-time, twenty years later.',
     bioBody: [
       'Her clinical work spans skin cancer detection and treatment, surgical dermatology, and cosmetic dermatology, including Silhouette InstaLift — a non-surgical alternative to facelift surgery for patients who want lift without an operating room.',
       'Hair loss is a particular focus of hers, and a personal one. She spent nearly twenty-five years working in the field. Successfully treating her own hair loss successfully is what pushed her to go deeper — into the pathophysiology, and into conventional, innovative, and holistic approaches alike. That depth is what she now brings to the hundreds of patients she has helped see real regrowth.',
