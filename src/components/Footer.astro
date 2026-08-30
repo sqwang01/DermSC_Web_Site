@@ -141,7 +141,7 @@ const year = new Date().getFullYear();
   .site-footer__legal {
     margin-top: var(--space-16);
     padding-top: var(--space-8);
-    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    border-top: 1px solid var(--line-on-dark);
     color: var(--paper-dim);
     display: flex;
     flex-wrap: wrap;
@@ -149,7 +149,7 @@ const year = new Date().getFullYear();
     gap: var(--space-4);
   }
   .site-footer__legal p {
-    max-width: 62ch;
+    max-width: var(--wrap-prose);
   }
 
   @media (min-width: 720px) {

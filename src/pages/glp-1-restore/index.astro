@@ -159,7 +159,7 @@ const faqs = [
 
   <!-- 3 · The Restore approach -->
   <SectionBand tone="evergreen" aria-labelledby="approach-heading">
-    <div class="band-prose" data-reveal>
+    <div class="prose prose--on-dark" data-reveal>
       <h2 id="approach-heading">The Restore approach</h2>
       <p>
         Restore was built for one specific patient: someone doing everything right on a GLP-1
@@ -182,13 +182,6 @@ const faqs = [
        on a future split, lift it whole to /glp-1-restore/{hair,skin,muscle}/ (see
        docs/content-spec.md → GLP-1 Restore → "Structure decision"). -->
   <SectionBand id="how-it-works" aria-label="The three recovery tracks">
-    <p class="tracks__intro" data-reveal>
-      Hair, skin, and muscle change for different reasons and are treated in different ways. Each
-      track begins with its own assessment by
-      <a class="link-underline" href="/about/dr-maryam-moinfar/">Dr. Maryam Moinfar</a> and its own
-      written plan.
-    </p>
-
     <!-- TRACK: HAIR — split-ready module -->
     <article id="hair" class="track" data-reveal>
       <h2>Hair</h2>
@@ -489,55 +482,36 @@ const faqs = [
 </BaseLayout>
 
 <style>
-  .section-title {
-    margin-bottom: var(--space-12);
-  }
-
-  /* Hero */
-  .hero {
-    padding-block: var(--space-12) var(--section-y);
-  }
+  /* Hero — padding-block from .section; h1 → sub-line → lede gaps are global. */
   .hero__sub {
     color: var(--stone);
-    margin-top: var(--space-3);
-  }
-  .hero .lede {
-    margin-top: var(--space-4);
-    max-width: 60ch;
-  }
-  .hero__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
   }
 
   /* Does this sound familiar? */
   .familiar__intro {
-    max-width: 60ch;
-    margin-bottom: var(--space-10);
+    max-width: var(--wrap-prose);
+    margin-bottom: var(--space-12);
   }
   .familiar {
     display: grid;
-    gap: var(--space-10);
+    gap: var(--space-6);
   }
   @media (min-width: 760px) {
     .familiar {
       grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-8);
     }
   }
   .familiar__group h3 {
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-6);
   }
   .familiar__checks {
     list-style: none;
     padding-left: 0;
-    max-width: 42ch;
+    max-width: var(--wrap-narrow);
   }
   .familiar__checks li {
     position: relative;
-    padding-left: 1.9rem;
+    padding-left: var(--space-8);
   }
   .familiar__checks li + li {
     margin-top: var(--space-3);
@@ -547,81 +521,60 @@ const faqs = [
     position: absolute;
     left: 0;
     top: 0;
-    color: var(--brass);
-    font-weight: 700;
+    color: var(--brass-deep);
+    font-weight: 600;
   }
   .familiar__more {
     display: inline-block;
-    margin-top: var(--space-5);
+    margin-top: var(--space-6);
     font-weight: 600;
   }
   .familiar__close {
-    margin-top: var(--space-10);
-    max-width: 60ch;
+    margin-top: var(--space-12);
+    max-width: var(--wrap-prose);
     color: var(--stone);
   }
 
-  /* Evergreen band prose */
-  .band-prose {
-    max-width: 60ch;
-  }
-  .band-prose h2 {
-    margin-bottom: var(--space-6);
-  }
-  .band-prose p + p {
-    margin-top: var(--space-6);
-  }
-
   /* Tracks */
-  .tracks__intro {
-    max-width: 60ch;
-    margin-bottom: var(--space-16);
-  }
   .track {
     padding-top: var(--space-12);
     border-top: var(--border-hair);
+  }
+  .track:first-of-type {
+    padding-top: 0;
+    border-top: 0;
   }
   .track + .track {
     margin-top: var(--space-16);
   }
   .track > h2 {
-    margin-bottom: var(--space-6);
-  }
-  .track .prose {
-    max-width: 60ch;
-  }
-  .track .prose h3 {
-    margin-bottom: var(--space-4);
-  }
-  .track .prose p + p {
-    margin-top: var(--space-4);
+    margin-bottom: var(--space-12);
   }
   .track__cols {
     display: grid;
-    gap: var(--space-10);
-    margin-top: var(--space-10);
+    gap: var(--space-6);
+    margin-top: var(--space-8);
   }
   @media (min-width: 760px) {
     .track__cols {
       grid-template-columns: 1fr 1fr;
-      gap: var(--space-12);
     }
   }
   .track__col h3 {
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-6);
   }
   .track__col ul {
-    padding-left: 1.1rem;
-    max-width: 48ch;
+    padding-left: var(--list-indent);
+    max-width: var(--wrap-narrow);
   }
   .track__col li + li {
     margin-top: var(--space-3);
   }
   .track__col p {
-    max-width: 48ch;
+    max-width: var(--wrap-narrow);
   }
   .track__col p + ul {
-    margin-top: var(--space-4);
+    margin-top: var(--space-6);
   }
   .track__includes + p {
     margin-top: var(--space-6);
@@ -654,58 +607,17 @@ const faqs = [
   }
 
   .tracks__close {
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
     margin-top: var(--space-16);
     color: var(--stone);
   }
 
-  /* First visit / generic prose */
-  .prose {
-    max-width: 60ch;
-  }
-  .prose h2 {
-    margin-bottom: var(--space-6);
-  }
-  .prose h3 {
-    margin: var(--space-8) 0 var(--space-4);
-  }
-  .prose p + p {
-    margin-top: var(--space-4);
-  }
-  .prose ul {
-    padding-left: 1.1rem;
-  }
-  .prose li + li {
-    margin-top: var(--space-3);
-  }
-
-  /* Closing */
-  .closing {
-    max-width: 60ch;
-  }
-  .closing h2 {
-    margin-bottom: var(--space-6);
-  }
-  .closing__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
-  }
-  /* Secondary "Call" button sits on the evergreen-deep band — lift it off the dark. */
-  .closing__cta :global(.btn--secondary) {
-    color: var(--paper);
-    border-color: rgba(255, 255, 255, 0.4);
-  }
-  .closing__cta :global(.btn--secondary:hover) {
-    color: var(--paper);
-    border-color: var(--paper);
-  }
+  /* Closing — .closing / .closing__cta are shared */
   .closing__quote {
     margin: var(--space-16) 0 0;
     padding-left: var(--space-8);
     border-left: 3px solid var(--brass);
-    max-width: 56ch;
+    max-width: var(--wrap-lede);
   }
   .closing__quote p {
     font-family: var(--display);
@@ -724,7 +636,7 @@ const faqs = [
   .more__list {
     list-style: none;
     padding-left: 0;
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
   }
   .more__list li {
     padding-top: var(--space-6);

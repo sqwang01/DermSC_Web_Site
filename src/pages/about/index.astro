@@ -12,6 +12,7 @@ import { providers } from '@data/site';
   path="/about/"
 >
   <SectionBand>
+    <span class="eyebrow">About</span>
     <h1>Independent since 2006.</h1>
     <p class="lede">
       Advanced Dermatology is a physician-owned dermatology practice in Dana Point, California.
@@ -48,19 +49,16 @@ import { providers } from '@data/site';
 
 <style>
   .team-intro {
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
     margin-bottom: var(--space-12);
   }
   .team-intro h2 {
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-12);
   }
   .team-intro p + p {
     margin-top: var(--space-6);
   }
-  .team {
-    display: grid;
-    gap: var(--space-12);
-  }
+  /* base grid + gap come from the shared .team */
   @media (min-width: 640px) {
     .team {
       grid-template-columns: 1fr 1fr;

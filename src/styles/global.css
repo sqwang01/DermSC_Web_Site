@@ -253,6 +253,26 @@ a:hover {
   margin-top: var(--space-12);
 }
 
+/* A prose block that opens with its section heading: heading → first content is
+   --space-12 (style guide §4). Bios and heading-less prose lead with <h1> or a
+   paragraph and are unaffected. */
+.prose > h2:first-child + * {
+  margin-top: var(--space-12);
+}
+
+.prose :is(ul, ol) {
+  padding-left: var(--list-indent);
+}
+
+.prose :is(ul, ol) > li + li {
+  margin-top: var(--space-3);
+}
+
+/* Same block on an evergreen band: only the link colour changes. */
+.prose--on-dark a {
+  color: var(--paper);
+}
+
 .eyebrow {
   font-family: var(--body);
   font-size: var(--fs-eyebrow);
@@ -270,11 +290,73 @@ a:hover {
   color: var(--ink);
 }
 
+/* A lede or hero sub-line directly under its heading (or a sub-line then the lede)
+   always gets this gap. */
+:is(h1, h2) + .lede,
+:is(h1, h2) + .hero__sub,
+.hero__sub + .lede {
+  margin-top: var(--space-4);
+}
+
 .stat {
   font-family: var(--display);
   font-size: var(--fs-stat);
   line-height: 1;
   color: var(--evergreen);
+}
+
+/* ---------- Shared page constructs — used across every section/hub page ---------- */
+
+/* Section-opening heading → its first content (style guide §4 fixed values). */
+.section-title {
+  margin-bottom: var(--space-12);
+}
+
+/* Hero band. The hero gets its vertical rhythm from .section (via SectionBand) —
+   it must NOT re-declare padding-block. When a <Breadcrumbs> sits inside the band,
+   it carries the gap down to the copy. */
+.hero .crumbs,
+.hero .crumbs--back {
+  margin-bottom: var(--space-8);
+}
+
+.hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+
+/* Closing CTA block. */
+.closing {
+  max-width: var(--wrap-prose);
+}
+.closing h2 {
+  margin-bottom: var(--space-12);
+}
+.closing__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+/* The closing block usually sits on an evergreen-deep band; lift the outline
+   button and any hairline off the dark. */
+.section--evergreen .closing__cta .btn--secondary,
+.section--evergreen-deep .closing__cta .btn--secondary {
+  color: var(--paper);
+  border-color: var(--line-on-dark);
+}
+.section--evergreen .closing__cta .btn--secondary:hover,
+.section--evergreen-deep .closing__cta .btn--secondary:hover {
+  color: var(--paper);
+  border-color: var(--paper);
+}
+
+/* Card / provider grid — one gap for every grid, any column count (§4, D37). */
+.team {
+  display: grid;
+  gap: var(--space-6);
 }
 
 /* ---------- Accessibility utilities ---------- */

@@ -33,7 +33,7 @@ const { heading, class: className } = Astro.props;
 
   .clay__body :global(ul) {
     margin: 0;
-    padding-left: 1.25rem;
+    padding-left: var(--list-indent);
   }
 
   .clay__body :global(li + li) {

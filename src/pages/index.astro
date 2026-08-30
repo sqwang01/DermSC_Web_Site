@@ -95,7 +95,7 @@ const doors = [
 
   <!-- 3 · Independence, compressed (brand doc §12.3, verbatim) -->
   <SectionBand tone="evergreen" aria-labelledby="independence-heading">
-    <div class="band-prose" data-reveal>
+    <div class="prose prose--on-dark" data-reveal>
       <h2 id="independence-heading">Who we answer to.</h2>
       <p>
         Most dermatology practices in Orange County have been bought — by hospital systems, by
@@ -111,7 +111,7 @@ const doors = [
         We treat you the way we’d want our own families treated. That is why physicians in our
         community bring their own spouses and friends here.
       </p>
-      <p><a class="link-underline band-prose__link" href="/about/">More about the practice</a></p>
+      <p><a class="link-underline" href="/about/">More about the practice</a></p>
     </div>
   </SectionBand>
 
@@ -175,14 +175,7 @@ const doors = [
 </BaseLayout>
 
 <style>
-  .section-title {
-    margin-bottom: var(--space-12);
-  }
-
-  /* Hero */
-  .hero {
-    padding-block: var(--section-y);
-  }
+  /* Hero — padding-block comes from .section (via SectionBand). */
   .hero__grid {
     display: grid;
     gap: var(--space-12);
@@ -199,13 +192,7 @@ const doors = [
   .hero__sub {
     color: var(--stone);
     margin: var(--space-4) 0 var(--space-6);
-    max-width: 52ch;
-  }
-  .hero__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
+    max-width: var(--wrap-lede);
   }
   .hero__media {
     /* Stacked layout: sit at the copy's left edge, roughly the lede measure wide. */
@@ -257,20 +244,6 @@ const doors = [
     color: var(--brass-deep);
   }
 
-  /* Evergreen band prose */
-  .band-prose {
-    max-width: 60ch;
-  }
-  .band-prose h2 {
-    margin-bottom: var(--space-12);
-  }
-  .band-prose p + p {
-    margin-top: var(--space-6);
-  }
-  .band-prose__link {
-    color: var(--paper);
-  }
-
   /* Providers */
   .providers {
     display: grid;
@@ -288,13 +261,13 @@ const doors = [
   }
   .providers__note {
     margin-top: var(--space-12);
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
     color: var(--stone);
   }
 
   /* Patient story */
   .story {
-    max-width: 54ch;
+    max-width: var(--wrap-lede);
     border-left: 3px solid var(--line);
     padding-left: var(--space-8);
   }
@@ -316,7 +289,7 @@ const doors = [
   .location__nap {
     font-style: normal;
     font-size: var(--fs-lede);
-    line-height: 1.6;
+    line-height: var(--lh-body);
     margin: var(--space-12) 0 var(--space-4);
   }
   .location__phone {
@@ -330,7 +303,7 @@ const doors = [
   }
   .location__parking {
     color: var(--paper-dim);
-    max-width: 46ch;
+    max-width: var(--wrap-narrow);
     margin-bottom: var(--space-8);
   }
   @media (min-width: 900px) {

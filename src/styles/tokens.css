@@ -12,6 +12,7 @@
   /* ---- Restore sub-brand — permitted on Cosmetic + GLP-1 Restore only ---- */
   --brass: #a5854e; /* rules, dots, borders, display-size Restore text only */
   --brass-deep: #7a6033; /* Restore body-size text and filled Restore buttons */
+  --brass-deepest: #6a5330; /* filled Restore button :hover only */
 
   /* ---- Neutrals ---- */
   --ink: #20272a; /* primary text */
@@ -21,6 +22,7 @@
   --paper-dim: #cdd8d0; /* muted text on evergreen bands — 8.3:1 on --evergreen, 10.6:1 on --evergreen-deep (AAA) */
   --fog: #eeeae0; /* alternating section bands */
   --line: #e2ddd0; /* 1px rules and borders only — never text */
+  --line-on-dark: rgba(255, 255, 255, 0.22); /* rules / outline borders on evergreen bands */
 
   /* ---- Clinical signal — medical urgency only (style guide §2.4) ---- */
   --clay: #9c5f45; /* "call us sooner" content. Never near a price or a badge. */
@@ -68,8 +70,10 @@
   --wrap: 1220px;
   --wrap-prose: 60ch; /* body prose measure */
   --wrap-lede: 54ch; /* hero / lede measure */
+  --wrap-narrow: 46ch; /* captions, notes, single-column lists */
   --gutter: clamp(1.25rem, 4vw, 3rem);
   --section-y: clamp(4.5rem, 9vw, 8rem);
+  --list-indent: 1.25rem; /* padding-left for prose <ul>/<ol> and custom-marker lists */
 
   /* ---- Shape ---- */
   --radius: 3px; /* maximum. Or zero. No pill shapes. */

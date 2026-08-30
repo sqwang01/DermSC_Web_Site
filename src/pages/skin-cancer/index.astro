@@ -209,7 +209,7 @@ const faqs = [
 
   <!-- 6 · Why here (claim, then structure — §7.2) -->
   <SectionBand tone="evergreen" aria-labelledby="why-heading">
-    <div class="band-prose" data-reveal>
+    <div class="prose prose--on-dark" data-reveal>
       <h2 id="why-heading">Why here, and not just anywhere</h2>
       <p>
         Plenty of places can cut out a skin cancer. Fewer can treat a whole field of sun damage
@@ -221,7 +221,7 @@ const faqs = [
         best treatment, not the most expensive one — because no one here has a target to hit.
       </p>
       <p>
-        <a class="link-underline band-prose__link" href="/about/">How the practice is set up</a>
+        <a class="link-underline" href="/about/">How the practice is set up</a>
       </p>
     </div>
   </SectionBand>
@@ -316,27 +316,11 @@ const faqs = [
 </BaseLayout>
 
 <style>
-  .section-title {
-    margin-bottom: var(--space-12);
-  }
-
-  /* Hero */
-  .hero {
-    padding-block: var(--space-12) var(--section-y);
-  }
-  .hero .lede {
-    margin-top: var(--space-4);
-  }
-  .hero__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
-  }
+  /* Hero — padding-block comes from .section; h1 → .lede gap is global. */
 
   /* What to watch for */
   .watch {
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
   }
   .watch__intro {
     margin-bottom: var(--space-6);
@@ -349,10 +333,10 @@ const faqs = [
   /* The full range */
   .range {
     display: grid;
-    gap: var(--space-12);
+    gap: var(--space-6);
   }
   .range__intro {
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
     color: var(--stone);
   }
   @media (min-width: 760px) {
@@ -363,11 +347,8 @@ const faqs = [
       grid-column: 1 / -1;
     }
   }
-  .range__item h3 {
-    margin-bottom: var(--space-3);
-  }
   .range__cta {
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
     margin-top: var(--space-12);
   }
   .range__cta p {
@@ -377,7 +358,7 @@ const faqs = [
   /* Candidacy */
   .candidacy {
     display: grid;
-    gap: var(--space-12);
+    gap: var(--space-6);
   }
   @media (min-width: 760px) {
     .candidacy {
@@ -385,35 +366,17 @@ const faqs = [
     }
   }
   .candidacy__col h3 {
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-6);
   }
   .candidacy__col ul {
-    padding-left: 1.1rem;
-    max-width: 46ch;
+    padding-left: var(--list-indent);
+    max-width: var(--wrap-narrow);
   }
   .candidacy__col li + li {
     margin-top: var(--space-3);
   }
 
-  /* Evergreen band prose */
-  .band-prose {
-    max-width: 60ch;
-  }
-  .band-prose h2 {
-    margin-bottom: var(--space-6);
-  }
-  .band-prose p + p {
-    margin-top: var(--space-6);
-  }
-  .band-prose__link {
-    color: var(--paper);
-  }
-
-  /* Who you'll see */
-  .team {
-    display: grid;
-    gap: var(--space-12);
-  }
+  /* Who you'll see — grid + gap come from the shared .team */
   @media (min-width: 640px) {
     .team {
       grid-template-columns: 1fr 1fr;
@@ -421,23 +384,11 @@ const faqs = [
   }
   .team__note {
     margin-top: var(--space-12);
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
     color: var(--stone);
   }
 
-  /* Closing */
-  .closing {
-    max-width: 60ch;
-  }
-  .closing h2 {
-    margin-bottom: var(--space-6);
-  }
-  .closing__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
-  }
+  /* Closing — .closing / .closing__cta are shared */
   .closing__cross {
     margin-top: var(--space-8);
     color: var(--stone);
@@ -445,10 +396,10 @@ const faqs = [
 
   /* Referring physicians */
   .refer {
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
   }
   .refer h2 {
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-12);
   }
   .refer p + p {
     margin-top: var(--space-6);

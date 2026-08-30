@@ -110,7 +110,7 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
     display: flex;
     align-items: center;
     gap: var(--space-8);
-    min-height: 76px;
+    min-height: 76px; /* fixed header height — a structural dimension, not spacing rhythm */
     padding-block: var(--space-3);
   }
 
@@ -122,17 +122,16 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
   .wordmark__name {
     display: block;
     font-family: var(--display);
-    font-size: 1.3rem;
+    font-size: 1.3rem; /* wordmark identity size — sits between --fs-lede and --fs-h3 */
     color: var(--evergreen);
-    letter-spacing: -0.01em;
   }
   .wordmark__place {
     display: block;
-    font-size: 0.7rem;
-    letter-spacing: 0.14em;
+    font-size: var(--fs-eyebrow);
+    letter-spacing: var(--tracking-eyebrow);
     text-transform: uppercase;
     color: var(--stone);
-    margin-top: 2px;
+    margin-top: var(--space-1);
   }
 
   .nav-desktop {
@@ -183,9 +182,10 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
   }
 
   .header-cta {
-    /* uses global .btn rules; tighten height for the bar */
+    /* Compact header chrome — 44px is the sanctioned exception to the 52px rule
+       (style guide §5); every in-page button stays 52px. */
     min-height: 44px;
-    padding-block: 0.6rem;
+    padding-block: var(--space-2);
   }
 
   /* ---- Mobile disclosure ---- */
@@ -197,7 +197,7 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
     display: flex;
     align-items: center;
     gap: var(--space-2);
-    min-height: 44px;
+    min-height: 44px; /* compact header chrome — sanctioned 44px (style guide §5) */
     padding: var(--space-2) var(--space-3);
     list-style: none;
     cursor: pointer;
@@ -238,7 +238,7 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
   .nav-mobile__panel .nav-link {
     display: block;
     padding: var(--space-4) 0;
-    font-size: 1.05rem;
+    font-size: var(--fs-body);
   }
   .nav-mobile__panel .btn {
     width: 100%;

@@ -295,40 +295,29 @@ const faqs = [
 </BaseLayout>
 
 <style>
-  .section-title {
-    margin-bottom: var(--space-12);
-  }
-
-  /* Breadcrumb bar — sits above the hero, not inside it */
-  /* Hero */
-  .hero {
-    padding-block: var(--space-12) var(--section-y);
-  }
+  /* Hero — padding-block comes from .section; grid matches the locked home page. */
   .hero__grid {
     display: grid;
     gap: var(--space-12);
     align-items: center;
   }
-  .hero__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
-  }
   .hero__media {
-    max-width: 420px;
+    max-width: var(--wrap-lede);
   }
   @media (min-width: 900px) {
     .hero__grid {
-      grid-template-columns: 1.3fr 1fr;
+      grid-template-columns: 1.3fr minmax(0, 420px);
       gap: var(--space-24);
+    }
+    .hero__media {
+      max-width: none;
     }
   }
 
   /* What we treat */
   .treat {
     display: grid;
-    gap: var(--space-12);
+    gap: var(--space-6);
   }
   @media (min-width: 760px) {
     .treat {
@@ -336,37 +325,22 @@ const faqs = [
     }
   }
   .treat__item {
-    scroll-margin-top: 6rem;
-  }
-  .treat__item h3 {
-    margin-bottom: var(--space-3);
-  }
-  .treat__item p + p {
-    margin-top: var(--space-4);
+    scroll-margin-top: var(--space-24);
   }
   .treat__cta {
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
     margin-top: var(--space-12);
   }
   .treat__cta p {
     margin-bottom: var(--space-6);
   }
 
-  /* First visit */
-  .visit {
-    max-width: var(--wrap-prose);
-    padding-left: 1.4rem;
-    margin: var(--space-6) 0;
-  }
+  /* First visit — measure + list indent come from .prose */
   .visit li + li {
-    margin-top: var(--space-4);
+    margin-top: var(--space-3);
   }
 
-  /* Who you'll see */
-  .team {
-    display: grid;
-    gap: var(--space-12);
-  }
+  /* Who you'll see — grid + gap come from the shared .team */
   @media (min-width: 640px) {
     .team {
       grid-template-columns: 1fr 1fr;
@@ -377,9 +351,10 @@ const faqs = [
       grid-template-columns: repeat(3, 1fr);
     }
   }
+
   /* When to come in sooner */
   .sooner {
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
   }
   .sooner__intro {
     margin-bottom: var(--space-6);
@@ -389,19 +364,7 @@ const faqs = [
     color: var(--stone);
   }
 
-  /* Closing */
-  .closing {
-    max-width: 60ch;
-  }
-  .closing h2 {
-    margin-bottom: var(--space-6);
-  }
-  .closing__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
-  }
+  /* Closing — .closing / .closing__cta are shared; only the cross-link note is local */
   .closing__cross {
     margin-top: var(--space-8);
     color: var(--stone);

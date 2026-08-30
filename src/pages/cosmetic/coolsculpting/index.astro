@@ -248,51 +248,18 @@ const faqs = [
 </BaseLayout>
 
 <style>
-  .section-title {
-    margin-bottom: var(--space-12);
-  }
-
-  /* Hero */
-  .hero {
-    padding-block: var(--section-y);
-  }
-  .hero__copy {
-    margin-top: var(--space-8);
-  }
-  .hero .lede {
-    margin-top: var(--space-4);
-    max-width: 60ch;
-  }
-  .hero__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
-  }
-
-  /* Generic prose */
-  .prose {
-    max-width: 60ch;
-  }
-  .prose h2 {
-    margin-bottom: var(--space-6);
-  }
-  .prose p + p {
-    margin-top: var(--space-4);
-  }
+  /* Hero — padding-block from .section; breadcrumb carries the gap (global
+     .hero .crumbs); h1 → .lede gap is global. */
 
   /* Compare */
   .compare {
     display: grid;
-    gap: var(--space-10);
+    gap: var(--space-6);
   }
   @media (min-width: 760px) {
     .compare {
       grid-template-columns: 1fr 1fr;
     }
-  }
-  .compare__item h3 {
-    margin-bottom: var(--space-3);
   }
   .compare__cta {
     display: flex;
@@ -301,14 +268,10 @@ const faqs = [
     margin-top: var(--space-8);
   }
 
-  /* Who you'll see */
-  .team {
-    display: grid;
-    gap: var(--space-8);
-  }
+  /* Who you'll see — base grid + gap from the shared .team */
   .team__cards {
     display: grid;
-    gap: var(--space-8);
+    gap: var(--space-6);
   }
   /* Multiple providers: stack as full-width rows with a hairline between,
      so each name and role has room. Photo above the text on narrow screens,
@@ -343,34 +306,12 @@ const faqs = [
     }
   }
   .team__note {
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
     color: var(--stone);
   }
 
-  /* Closing */
-  .closing {
-    max-width: 60ch;
-  }
-  .closing h2 {
-    margin-bottom: var(--space-6);
-  }
-  .closing__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
-  }
-  /* Secondary "Call" button sits on the evergreen-deep band — lift it off the dark. */
-  .closing__cta :global(.btn--secondary) {
-    color: var(--paper);
-    border-color: rgba(255, 255, 255, 0.4);
-  }
-  .closing__cta :global(.btn--secondary:hover) {
-    color: var(--paper);
-    border-color: var(--paper);
-  }
-
+  /* Closing — .closing / .closing__cta are shared */
   .more {
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
   }
 </style>

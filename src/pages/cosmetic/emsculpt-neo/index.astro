@@ -191,7 +191,7 @@ const faqs = [
 
   <!-- 6 · Why here rather than a storefront (client copy, 2026-08-29; device-neutrality point kept — P19) -->
   <SectionBand tone="evergreen" aria-labelledby="why-heading">
-    <div class="band-prose" data-reveal>
+    <div class="prose prose--on-dark" data-reveal>
       <h2 id="why-heading">Why here rather than a storefront</h2>
       <p>
         Dr. Moinfar assesses you. She won’t book a treatment that’s wrong for you, or more of it
@@ -287,50 +287,12 @@ const faqs = [
 </BaseLayout>
 
 <style>
-  .section-title {
-    margin-bottom: var(--space-12);
-  }
-
-  /* Hero */
-  .hero {
-    padding-block: var(--section-y);
-  }
-  .hero__copy {
-    margin-top: var(--space-8);
-  }
-  .hero .lede {
-    margin-top: var(--space-4);
-    max-width: 60ch;
-  }
-  .hero__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
-  }
-
-  /* Generic prose */
-  .prose {
-    max-width: 60ch;
-  }
-  .prose h2 {
-    margin-bottom: var(--space-6);
-  }
-  .prose p + p {
-    margin-top: var(--space-4);
-  }
-
-  /* Evergreen band prose */
-  .band-prose {
-    max-width: 60ch;
-  }
-  .band-prose h2 {
-    margin-bottom: var(--space-6);
-  }
+  /* Hero — padding-block from .section; breadcrumb carries the gap (global
+     .hero .crumbs); h1 → .lede gap is global. */
 
   /* Treatment-area table */
   .areas__intro {
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
     margin-bottom: var(--space-8);
   }
   .areas__scroll {
@@ -349,12 +311,12 @@ const faqs = [
   }
   .areas thead th {
     font-family: var(--body);
-    font-size: var(--fs-small);
+    font-size: var(--fs-eyebrow);
     font-weight: 600;
     letter-spacing: var(--tracking-eyebrow);
     text-transform: uppercase;
     color: var(--stone);
-    border-bottom: 1.5px solid var(--line);
+    border-bottom: var(--border-hair);
   }
   .areas tbody th {
     font-family: var(--body);
@@ -366,19 +328,15 @@ const faqs = [
   }
   .areas__caption {
     margin-top: var(--space-6);
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
     font-size: var(--fs-small);
     color: var(--stone);
   }
 
-  /* Who you'll see */
-  .team {
-    display: grid;
-    gap: var(--space-8);
-  }
+  /* Who you'll see — base grid + gap from the shared .team */
   .team__cards {
     display: grid;
-    gap: var(--space-8);
+    gap: var(--space-6);
   }
   /* Multiple providers: stack as full-width rows with a hairline between,
      so each name and role has room. Photo above the text on narrow screens,
@@ -413,36 +371,15 @@ const faqs = [
     }
   }
   .team__note {
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
     color: var(--stone);
   }
 
-  /* Closing */
-  .closing {
-    max-width: 60ch;
-  }
-  .closing h2 {
-    margin-bottom: var(--space-6);
-  }
-  .closing__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
-  }
-  /* Secondary "Call" button sits on the evergreen-deep band — lift it off the dark. */
-  .closing__cta :global(.btn--secondary) {
-    color: var(--paper);
-    border-color: rgba(255, 255, 255, 0.4);
-  }
-  .closing__cta :global(.btn--secondary:hover) {
-    color: var(--paper);
-    border-color: var(--paper);
-  }
+  /* Closing — .closing / .closing__cta are shared */
 
   /* Cross-sell */
   .more {
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
   }
   .more__list {
     list-style: none;

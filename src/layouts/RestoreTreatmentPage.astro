@@ -157,7 +157,7 @@ const alsoSeen = (Astro.props.alsoSeenSlugs ?? []).map((slug) =>
 
   <!-- 5 · Why here rather than a storefront (§7.2 claim-then-structure; client copy, 2026-08-29) -->
   <SectionBand tone="evergreen" aria-labelledby="why-heading">
-    <div class="band-prose" data-reveal>
+    <div class="prose prose--on-dark" data-reveal>
       <h2 id="why-heading">Why here rather than a storefront</h2>
       <p>
         Dr. Moinfar assesses you. She won’t book a treatment that’s wrong for you, or more of it
@@ -239,84 +239,31 @@ const alsoSeen = (Astro.props.alsoSeenSlugs ?? []).map((slug) =>
 </BaseLayout>
 
 <style>
-  .section-title {
-    margin-bottom: var(--space-12);
-  }
-
-  /* Hero */
-  .hero {
-    padding-block: var(--section-y);
-  }
-  .hero__copy {
-    margin-top: var(--space-8);
-  }
-  .hero .lede {
-    margin-top: var(--space-4);
-    max-width: 60ch;
-  }
-  .hero__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
-  }
+  /* Hero — padding-block from .section; the breadcrumb carries the gap to the copy
+     (global .hero .crumbs); h1 → .lede gap is global. */
 
   /* Offerings */
   .offerings {
     display: grid;
-    gap: var(--space-12);
+    gap: var(--space-6);
   }
   @media (min-width: 760px) {
     .offerings {
       grid-template-columns: 1fr 1fr;
     }
   }
-  .offering h3 {
-    margin-bottom: var(--space-3);
-  }
-  .offering p + p {
-    margin-top: var(--space-4);
-  }
   .offerings__note {
     margin-top: var(--space-12);
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
     color: var(--stone);
   }
 
-  /* Generic prose */
-  .prose {
-    max-width: 60ch;
-  }
-  .prose h2 {
-    margin-bottom: var(--space-6);
-  }
-  .prose p + p {
-    margin-top: var(--space-4);
-  }
-  .steps {
-    padding-left: 1.4rem;
-    margin-top: var(--space-6);
-  }
-  .steps li + li {
-    margin-top: var(--space-4);
-  }
+  /* Visit steps — measure, list indent and li spacing come from .prose */
 
-  /* Evergreen band prose */
-  .band-prose {
-    max-width: 60ch;
-  }
-  .band-prose h2 {
-    margin-bottom: var(--space-6);
-  }
-
-  /* Who you'll see */
-  .team {
-    display: grid;
-    gap: var(--space-8);
-  }
+  /* Who you'll see — base grid + gap from the shared .team */
   .team__cards {
     display: grid;
-    gap: var(--space-8);
+    gap: var(--space-6);
   }
   /* PAs deliver this modality: stack the provider cards as full-width rows
      with a hairline between, so each name and role has room. Photo above the
@@ -352,40 +299,18 @@ const alsoSeen = (Astro.props.alsoSeenSlugs ?? []).map((slug) =>
     }
   }
   .team__note {
-    max-width: 44ch;
+    max-width: var(--wrap-narrow);
     color: var(--stone);
   }
   .team--multi .team__note {
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
   }
 
-  /* Closing */
-  .closing {
-    max-width: 60ch;
-  }
-  .closing h2 {
-    margin-bottom: var(--space-6);
-  }
-  .closing__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
-  }
-  /* Secondary "Call" button sits on the evergreen-deep band — lift it off the dark. */
-  .closing__cta :global(.btn--secondary) {
-    color: var(--paper);
-    border-color: rgba(255, 255, 255, 0.4);
-  }
-  .closing__cta :global(.btn--secondary:hover) {
-    color: var(--paper);
-    border-color: var(--paper);
-  }
-
+  /* Closing — .closing / .closing__cta are shared */
   .more {
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
   }
   .more :global(p + p) {
-    margin-top: var(--space-4);
+    margin-top: var(--space-6);
   }
 </style>

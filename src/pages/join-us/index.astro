@@ -94,7 +94,7 @@ const description =
 
   <!-- 5 · The training path -->
   <SectionBand id="the-path" tone="evergreen" aria-labelledby="path-heading">
-    <div class="band-prose" data-reveal>
+    <div class="prose prose--on-dark" data-reveal>
       <h2 id="path-heading">The training path</h2>
       <p>
         For about twenty years, this practice has also been a place pre-PA and pre-med graduates
@@ -195,85 +195,22 @@ const description =
 </BaseLayout>
 
 <style>
-  .section-title {
-    margin-bottom: var(--space-12);
-  }
-
-  /* Hero */
-  .hero {
-    padding-block: var(--space-12) var(--section-y);
-  }
-  .hero__copy {
-    margin-top: 0;
-  }
-  .hero .lede {
-    margin-top: var(--space-4);
-    max-width: 60ch;
-  }
+  /* Hero — padding-block from .section; h1 → .lede gap is global. */
   .hero__hiring {
     margin-top: var(--space-6);
-    max-width: 60ch;
-  }
-  .hero__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
-  }
-
-  /* Generic prose */
-  .prose {
-    max-width: 60ch;
-  }
-  .prose h2 {
-    margin-bottom: var(--space-6);
-  }
-  .prose p + p {
-    margin-top: var(--space-4);
-  }
-
-  /* Evergreen band prose */
-  .band-prose {
-    max-width: 60ch;
-  }
-  .band-prose h2 {
-    margin-bottom: var(--space-6);
-  }
-  .band-prose p + p {
-    margin-top: var(--space-6);
+    max-width: var(--wrap-prose);
   }
 
   /* Where they are now */
   .now__intro {
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
     margin-bottom: var(--space-12);
     color: var(--stone);
   }
 
-  /* Closing */
-  .closing {
-    max-width: 60ch;
-  }
-  .closing h2 {
-    margin-bottom: var(--space-6);
-  }
-  .closing__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
-  }
+  /* Closing — .closing / .closing__cta are shared; only the cross-link note is local */
   .closing__cross {
     margin-top: var(--space-8);
     color: var(--stone);
-  }
-  /* Secondary "Call" button sits on the evergreen-deep band — lift it off the dark. */
-  .closing__cta :global(.btn--secondary) {
-    color: var(--paper);
-    border-color: rgba(255, 255, 255, 0.4);
-  }
-  .closing__cta :global(.btn--secondary:hover) {
-    color: var(--paper);
-    border-color: var(--paper);
   }
 </style>

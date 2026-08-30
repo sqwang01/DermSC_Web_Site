@@ -90,12 +90,13 @@ const physicianSchema = {
 
 <style>
   .bio {
+    --aside-w: 240px;
     display: grid;
     gap: var(--space-12);
   }
   .bio__photo {
     width: 100%;
-    max-width: 240px;
+    max-width: var(--aside-w);
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: var(--radius);
@@ -104,7 +105,7 @@ const physicianSchema = {
     margin-top: var(--space-4);
     font-size: var(--fs-small);
     color: var(--stone);
-    max-width: 240px;
+    max-width: var(--aside-w);
   }
   .bio__cred {
     color: var(--stone);
@@ -114,11 +115,11 @@ const physicianSchema = {
     color: var(--stone);
   }
   .bio__cta {
-    margin-top: var(--space-10);
+    margin-top: var(--space-12);
   }
   @media (min-width: 820px) {
     .bio {
-      grid-template-columns: 240px 1fr;
+      grid-template-columns: var(--aside-w) 1fr;
     }
   }
 </style>

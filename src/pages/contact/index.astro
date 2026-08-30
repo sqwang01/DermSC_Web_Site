@@ -12,6 +12,7 @@ import { practice } from '@data/site';
   path="/contact/"
 >
   <SectionBand>
+    <span class="eyebrow">Contact</span>
     <h1>Request an appointment.</h1>
     <p class="lede">
       Leave your name and number and our team will call you back, usually within one business day.
@@ -59,9 +60,12 @@ import { practice } from '@data/site';
     gap: var(--space-16);
     margin-top: var(--space-12);
   }
+  .contact__aside h2 {
+    margin-bottom: var(--space-6);
+  }
   .contact__aside address {
     font-style: normal;
-    line-height: 1.7;
+    line-height: var(--lh-body);
     margin-bottom: var(--space-4);
   }
   .contact__hours {

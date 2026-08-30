@@ -106,7 +106,7 @@ const services = [
   .cbf__note {
     font-size: var(--fs-small);
     color: var(--stone);
-    max-width: 52ch;
+    max-width: var(--wrap-lede);
     margin-bottom: var(--space-8);
   }
 
@@ -148,10 +148,10 @@ const services = [
   input,
   select {
     min-height: var(--control-min-h);
-    padding: 0.75rem 0.9rem;
-    font-size: 1.0625rem; /* >= 17px so iOS does not zoom; visually ~18px */
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--fs-body); /* 18px — above the iOS zoom threshold, meets §5 */
     background: var(--paper);
-    border: 1px solid var(--stone);
+    border: 1px solid var(--stone); /* heavier than --line so the field reads as editable (AA contrast) */
     border-radius: var(--radius);
   }
   input:focus-visible,

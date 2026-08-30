@@ -121,7 +121,7 @@ const faqs = [
 
   <!-- 2 · It all starts with the correct diagnosis (§7.4 in patient terms) -->
   <SectionBand id="how-it-works" tone="evergreen" aria-labelledby="why-heading">
-    <div class="band-prose" data-reveal>
+    <div class="prose prose--on-dark" data-reveal>
       <h2 id="why-heading">It all starts with the correct diagnosis</h2>
       <p>
         Five hair conditions can look identical in the mirror. They require five different
@@ -300,86 +300,30 @@ const faqs = [
 </BaseLayout>
 
 <style>
-  .section-title {
-    margin-bottom: var(--space-12);
-  }
+  /* Hero — padding-block from .section; breadcrumb carries the gap (global
+     .hero .crumbs); h1 → .lede gap is global. */
 
-  /* Hero */
-  .hero {
-    padding-block: var(--section-y);
-  }
-  .hero__copy {
-    margin-top: var(--space-8);
-  }
-  .hero .lede {
-    margin-top: var(--space-4);
-    max-width: 60ch;
-  }
-  .hero__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
-  }
-
-  /* Generic prose */
-  .prose {
-    max-width: 60ch;
-  }
-  .prose h2 {
-    margin-bottom: var(--space-6);
-  }
-  .prose p + p {
-    margin-top: var(--space-4);
-  }
-  .steps {
-    padding-left: 1.4rem;
-    margin-top: var(--space-6);
-  }
-  .steps li + li {
-    margin-top: var(--space-4);
-  }
-  .list {
-    padding-left: 1.1rem;
-    margin-top: var(--space-6);
-  }
-  .list li + li {
-    margin-top: var(--space-3);
-  }
-
-  /* Evergreen band prose */
-  .band-prose {
-    max-width: 60ch;
-  }
-  .band-prose h2 {
-    margin-bottom: var(--space-6);
-  }
-  .band-prose p + p {
-    margin-top: var(--space-6);
-  }
+  /* Lists in prose take their indent + li spacing from .prose */
 
   /* Causes */
   .causes {
     display: grid;
-    gap: var(--space-10);
+    gap: var(--space-6);
   }
   @media (min-width: 760px) {
     .causes {
       grid-template-columns: 1fr 1fr;
     }
   }
-  .causes__item h3 {
-    margin-bottom: var(--space-3);
-  }
   .causes__note {
-    margin-top: var(--space-10);
-    max-width: 60ch;
+    margin-top: var(--space-12);
+    max-width: var(--wrap-prose);
     color: var(--stone);
   }
 
   /* Billing table */
   .billing__intro {
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
     margin-bottom: var(--space-8);
   }
   .billing__scroll {
@@ -399,25 +343,21 @@ const faqs = [
   }
   .billing thead th {
     font-family: var(--body);
-    font-size: var(--fs-small);
+    font-size: var(--fs-eyebrow);
     font-weight: 600;
     letter-spacing: var(--tracking-eyebrow);
     text-transform: uppercase;
     color: var(--stone);
-    border-bottom: 1.5px solid var(--line);
+    border-bottom: var(--border-hair);
   }
   .billing__caption {
     margin-top: var(--space-6);
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
     font-size: var(--fs-small);
     color: var(--stone);
   }
 
-  /* Who you'll see */
-  .team {
-    display: grid;
-    gap: var(--space-8);
-  }
+  /* Who you'll see — base grid + gap from the shared .team */
   @media (min-width: 760px) {
     .team {
       grid-template-columns: 320px 1fr;
@@ -426,27 +366,15 @@ const faqs = [
     }
   }
   .team__note {
-    max-width: 44ch;
+    max-width: var(--wrap-narrow);
     color: var(--stone);
   }
 
-  /* Closing */
-  .closing {
-    max-width: 60ch;
-  }
-  .closing h2 {
-    margin-bottom: var(--space-6);
-  }
-  .closing__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
-  }
+  /* Closing — .closing / .closing__cta are shared */
 
   /* Cross-sell */
   .more {
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
   }
   .more__list {
     list-style: none;

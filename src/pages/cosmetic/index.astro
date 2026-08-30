@@ -119,7 +119,7 @@ const faqs = [
 
   <!-- 2 · Our philosophy (client-supplied copy, 2026-08-29 — supersedes the §7.6 verbatim lines here) -->
   <SectionBand id="how-it-works" tone="evergreen" aria-labelledby="restraint-heading">
-    <div class="band-prose" data-reveal>
+    <div class="prose prose--on-dark" data-reveal>
       <h2 id="restraint-heading">Our philosophy</h2>
       <p>
         Good cosmetic work can’t be pointed to. Nobody says you look different. They say you look
@@ -155,7 +155,7 @@ const faqs = [
             {g.items.map((m) => (
               <li>
                 <Card href={m.href} restore>
-                  <span class="menu__label">{m.label}</span>
+                  <h4 class="menu__label">{m.label}</h4>
                   <span class="menu__line">{m.line}</span>
                 </Card>
               </li>
@@ -227,64 +227,30 @@ const faqs = [
 </BaseLayout>
 
 <style>
-  .section-title {
-    margin-bottom: var(--space-12);
-  }
-
-  /* Hero */
-  .hero {
-    padding-block: var(--space-12) var(--section-y);
-  }
-  .hero .lede {
-    margin-top: var(--space-4);
-    max-width: 60ch;
-  }
-  .hero__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
-  }
-
-  /* Evergreen band prose */
-  .band-prose {
-    max-width: 60ch;
-  }
-  .band-prose h2 {
-    margin-bottom: var(--space-6);
-  }
-  .band-prose p + p {
-    margin-top: var(--space-6);
-  }
+  /* Hero — padding-block from .section; h1 → .lede gap is global. */
 
   /* Menu */
   .menu-group + .menu-group {
     margin-top: var(--space-12);
   }
   .menu-group__heading {
-    font-family: var(--display);
-    font-size: var(--fs-h3);
-    line-height: var(--lh-h3);
-    color: var(--evergreen);
     margin-bottom: var(--space-6);
   }
   .menu {
     list-style: none;
     padding: 0;
     display: grid;
-    gap: var(--space-4);
+    gap: var(--space-6);
   }
   @media (min-width: 640px) {
     .menu {
       grid-template-columns: 1fr 1fr;
     }
   }
+  /* Card title: a real <h4>, sized up to the display H3 step (tokens only). */
   .menu__label {
-    display: block;
-    font-family: var(--display);
     font-size: var(--fs-h3);
     line-height: var(--lh-h3);
-    color: var(--evergreen);
   }
   .menu__line {
     display: block;
@@ -292,11 +258,7 @@ const faqs = [
     color: var(--ink);
   }
 
-  /* Who you'll see */
-  .team {
-    display: grid;
-    gap: var(--space-8);
-  }
+  /* Who you'll see — base grid + gap from the shared .team; one card + a note here. */
   @media (min-width: 760px) {
     .team {
       grid-template-columns: 320px 1fr;
@@ -305,46 +267,12 @@ const faqs = [
     }
   }
   .team__note {
-    max-width: 44ch;
+    max-width: var(--wrap-narrow);
     color: var(--stone);
-  }
-
-  /* Generic prose */
-  .prose {
-    max-width: 60ch;
-  }
-  .prose h2 {
-    margin-bottom: var(--space-6);
-  }
-  .prose p + p {
-    margin-top: var(--space-4);
-  }
-
-  /* Closing */
-  .closing {
-    max-width: 60ch;
-  }
-  .closing h2 {
-    margin-bottom: var(--space-6);
-  }
-  .closing__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    margin-top: var(--space-8);
-  }
-  /* Secondary "Call" button sits on the evergreen-deep band — lift it off the dark. */
-  .closing__cta :global(.btn--secondary) {
-    color: var(--paper);
-    border-color: rgba(255, 255, 255, 0.4);
-  }
-  .closing__cta :global(.btn--secondary:hover) {
-    color: var(--paper);
-    border-color: var(--paper);
   }
 
   /* Cross-sell */
   .more {
-    max-width: 60ch;
+    max-width: var(--wrap-prose);
   }
 </style>
