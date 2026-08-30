@@ -33,7 +33,7 @@ const procedureSchema = {
 const causes = [
   {
     name: 'Telogen effluvium',
-    body: 'Shedding a few months after a stress event: illness, surgery, rapid weight loss, childbirth. Usually settles once the trigger passes.',
+    body: 'Shedding a few months after a stress event: illness, surgery, chemotherapy, rapid weight loss, childbirth. Usually settles once the trigger passes.',
   },
   {
     name: 'Androgenetic (pattern) hair loss',
@@ -41,7 +41,7 @@ const causes = [
   },
   {
     name: 'Scarring alopecias',
-    body: 'Lichen planopilaris, frontal fibrosing alopecia, CCCA. These destroy follicles permanently and need a biopsy to catch.',
+    body: 'Lichen planopilaris, frontal fibrosing alopecia, central centrifugal cicatricial alopecia. These destroy follicles permanently and need a biopsy to catch.',
   },
   {
     name: 'Alopecia areata',
@@ -119,18 +119,25 @@ const faqs = [
     </div>
   </SectionBand>
 
-  <!-- 2 · Why the diagnosis comes first (§7.4 in patient terms) -->
+  <!-- 2 · It all starts with the correct diagnosis (§7.4 in patient terms) -->
   <SectionBand id="how-it-works" tone="evergreen" aria-labelledby="why-heading">
     <div class="band-prose" data-reveal>
-      <h2 id="why-heading">Why the diagnosis comes first</h2>
+      <h2 id="why-heading">It all starts with the correct diagnosis</h2>
       <p>
-        A practice with a revenue target sells the PRP series, because that’s the product. If the
-        cause is a scarring alopecia — lichen planopilaris, frontal fibrosing alopecia, CCCA — that
-        series does nothing while the follicles are lost for good. A biopsy first can tell you PRP
-        is the wrong treatment for you. The benefit is the follicles you keep.
+        Five hair conditions can look identical in the mirror. They require five different
+        treatments — and one of them, caught late, can’t be reversed at all.
       </p>
       <p>
-        No one here has a monthly target, so the evaluation isn’t shaped by what’s easiest to sell.
+        Telling them apart takes experience, knowledge, and judgment. Dr. Moinfar has spent twenty
+        years focused on hair and scalp disorders.
+      </p>
+      <p>
+        She’s also experienced hair loss herself — which is part of why she insists on a real
+        diagnosis before anyone starts treatment.
+      </p>
+      <p>
+        Get the diagnosis right, and everything downstream changes — the treatment, the timeline,
+        what’s still salvageable.
       </p>
     </div>
   </SectionBand>
@@ -168,8 +175,22 @@ const faqs = [
     </div>
   </SectionBand>
 
-  <!-- 5 · Billing, stated plainly (§9.4) -->
-  <SectionBand tone="fog" aria-labelledby="billing-heading">
+  <!-- 5 · Treatment, once there's a diagnosis -->
+  <SectionBand tone="fog" aria-labelledby="treatment-heading">
+    <div class="prose" data-reveal>
+      <h2 id="treatment-heading">Treatment, once there’s a diagnosis</h2>
+      <ul class="list">
+        <li>Prescription therapy matched to the diagnosis — topical or oral.</li>
+        <li>PRP or PRF where the diagnosis supports it — never as a default.</li>
+        <li>Treatment of an underlying scarring process, where that’s the cause.</li>
+        <li>Supplements only to correct a deficiency we’ve documented on labs.</li>
+        <li>Referral where the cause sits outside dermatology.</li>
+      </ul>
+    </div>
+  </SectionBand>
+
+  <!-- 6 · Billing, stated plainly (§9.4) -->
+  <SectionBand aria-labelledby="billing-heading">
     <h2 id="billing-heading" class="section-title" data-reveal>Billing, stated plainly</h2>
     <p class="billing__intro" data-reveal>
       The medical workup is billed to your insurance as medical care, because that’s what it is. The
@@ -201,47 +222,19 @@ const faqs = [
     </p>
   </SectionBand>
 
-  <!-- 6 · Treatment, once there's a diagnosis -->
-  <SectionBand aria-labelledby="treatment-heading">
-    <div class="prose" data-reveal>
-      <h2 id="treatment-heading">Treatment, once there’s a diagnosis</h2>
-      <ul class="list">
-        <li>Prescription therapy matched to the diagnosis — topical or oral.</li>
-        <li>PRP or PRF where the diagnosis supports it — never as a default.</li>
-        <li>Treatment of an underlying scarring process, where that’s the cause.</li>
-        <li>Supplements only to correct a deficiency we’ve documented on labs.</li>
-        <li>Referral where the cause sits outside dermatology.</li>
-      </ul>
-    </div>
-  </SectionBand>
-
-  <!-- 7 · Post-chemotherapy hair (gentlest tone — §8.5; never "cosmetic") -->
-  <SectionBand tone="fog" aria-labelledby="chemo-heading">
-    <div class="prose" data-reveal>
-      <h2 id="chemo-heading">Post-chemotherapy hair</h2>
-      <p>
-        Hair after chemotherapy regrows on its own timeline, and it often comes back with a
-        different texture or color for a while before it settles. We can tell you what’s normal,
-        what helps, and when it makes sense to start. This is medical care, not a cosmetic service.
-      </p>
-      {/* TODO(client): name the oncology referral partner only if approved. */}
-    </div>
-  </SectionBand>
-
-  <!-- 8 · Who you'll see -->
-  <SectionBand aria-labelledby="team-heading">
+  <!-- 7 · Who you'll see -->
+  <SectionBand tone="fog" aria-labelledby="team-heading">
     <h2 id="team-heading" class="section-title" data-reveal>Who you’ll see</h2>
     <div class="team" data-reveal>
-      <ProviderCard provider={moinfar} />
-      <p class="team__note">
-        Dr. Maryam Moinfar handles hair and scalp. She trained under a hair specialist during
-        residency.
-      </p>
+      <ProviderCard
+        provider={moinfar}
+        line="Twenty years of clinical focus on hair and scalp. Dr. Moinfar has successfully treated hundreds of patients — including herself."
+      />
     </div>
   </SectionBand>
 
-  <!-- 9 · Evidence -->
-  <SectionBand tone="fog" aria-labelledby="evidence-heading">
+  <!-- 8 · Evidence -->
+  <SectionBand aria-labelledby="evidence-heading">
     <div class="prose" data-reveal>
       <h2 id="evidence-heading">Evidence</h2>
       <p>
@@ -251,8 +244,8 @@ const faqs = [
     </div>
   </SectionBand>
 
-  <!-- 10 · The consultation & pricing (§12.10 verbatim; §12.8 opener, minus the "price is the price" line per client 2026-08-29) -->
-  <SectionBand aria-labelledby="pricing-heading">
+  <!-- 9 · The consultation & pricing (§12.10 verbatim; §12.8 opener, minus the "price is the price" line per client 2026-08-29) -->
+  <SectionBand tone="fog" aria-labelledby="pricing-heading">
     <div class="prose" data-reveal>
       <h2 id="pricing-heading">The consultation &amp; pricing</h2>
       <p>
@@ -264,12 +257,12 @@ const faqs = [
     </div>
   </SectionBand>
 
-  <!-- 11 · FAQ -->
-  <SectionBand tone="fog" aria-labelledby="faq-heading">
+  <!-- 10 · FAQ -->
+  <SectionBand aria-labelledby="faq-heading">
     <Faq heading="Questions patients ask" items={faqs} />
   </SectionBand>
 
-  <!-- 12 · Closing CTA -->
+  <!-- 11 · Closing CTA -->
   <SectionBand tone="evergreen-deep" aria-labelledby="cta-heading">
     <div class="closing" data-reveal>
       <h2 id="cta-heading">Request a hair consultation</h2>
@@ -287,7 +280,7 @@ const faqs = [
     </div>
   </SectionBand>
 
-  <!-- 13 · Cross-sell -->
+  <!-- 12 · Cross-sell -->
   <SectionBand aria-labelledby="more-heading">
     <div class="more" data-reveal>
       <h2 id="more-heading" class="section-title">Related</h2>

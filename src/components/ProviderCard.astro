@@ -12,9 +12,12 @@ interface Props {
   provider: Provider;
   /** Link to the full bio. */
   showLink?: boolean;
+  /** Override the provider's default card line for a page-specific context. */
+  line?: string;
 }
 
-const { provider, showLink = true } = Astro.props;
+const { provider, showLink = true, line } = Astro.props;
+const cardLine = line ?? provider.cardLine;
 const bioHref = `/about/${provider.slug}/`;
 // "Dr. Maryam Moinfar" -> "Dr. Moinfar"; "Madeline Fee, PA-C" -> "Madeline Fee"
 const parts = provider.name.replace(/,.*$/, '').split(' ');
@@ -35,7 +38,7 @@ const shortName = provider.name.startsWith('Dr.')
   <div class="pc__body">
     <h3 class="pc__name">{provider.name}</h3>
     <p class="pc__cred">{provider.credential}</p>
-    <p class="pc__line">{provider.cardLine}</p>
+    <p class="pc__line">{cardLine}</p>
     {
       showLink && (
         <a class="pc__link link-underline" href={bioHref}>
