@@ -8,7 +8,7 @@ import { alumni } from '@data/alumni';
 
 const title = 'Admin and medical assistant careers';
 const description =
-  'A small, physician-owned dermatology practice in Dana Point, hiring front-office staff and medical assistants — permanent roles, plus a pre-PA training path. How to apply.';
+  'A small, physician-owned dermatology practice in Dana Point, hiring front-office staff and medical assistants — permanent roles, plus a pre-PA mentoring path. How to apply.';
 ---
 
 <BaseLayout title={title} description={description} path="/join-us/">
@@ -18,87 +18,63 @@ const description =
       <span class="eyebrow">Join us</span>
       <h1>We’re a small, physician-owned practice, and we’re hiring.</h1>
       <p class="lede">
-        Advanced Dermatology has been in Dana Point since 2006. It’s physician-owned and
-        independent, all in one building, with a team of about seventeen. Two board-certified
-        dermatologists — one a fellowship-trained Mohs surgeon who does more than 1,000 Mohs cases
-        a year — and two physician assistants see patients here, and every week Dr. Moinfar reviews
-        the pathology across all of them. The reasoning behind a diagnosis gets talked through
-        rather than kept to one person. If you want to learn the medicine and not just get through
-        the day, it’s worth working here.
+        Advanced Dermatology has been in Dana Point since 2006 — physician-owned, independent, one
+        building, one team of about seventeen staff.
       </p>
       <p class="hero__hiring">
-        We’re hiring for two kinds of roles: administrative staff for the front office, and medical
-        assistants for the exam rooms. Both can be long-term jobs. Some of our medical assistants
-        also use the role as a step toward PA or medical school — a path we’ve supported for about
-        twenty years, and one more than 100 people have taken.
+        We’re hiring for two kinds of roles: front office and medical assistant.
       </p>
       <div class="hero__cta">
         <Button href="#apply" variant="primary">How to apply</Button>
-        <Button href="#the-path" variant="secondary">The training path ↓</Button>
+        <Button href="#mentoring" variant="secondary">The mentoring path ↓</Button>
       </div>
     </div>
   </SectionBand>
 
-  <!-- 2 · What we're hiring for -->
+  <!-- 2 · The roles -->
   <SectionBand id="roles" tone="fog" aria-labelledby="roles-heading">
     <div class="prose" data-reveal>
-      <h2 id="roles-heading">What we’re hiring for</h2>
+      <h2 id="roles-heading">The roles</h2>
+
+      <h3>Medical assistant</h3>
       <p>
-        <strong>Medical assistants</strong> work in the exam rooms — rooming patients, setting up
-        procedures, and assisting the physicians and PAs through the day. It’s hands-on clinical
-        work from the first week. Some people build a career in the role; others use it for a year
-        or two of clinical experience before PA or medical school. We hire for both.
+        You’re in the exam rooms from week one — rooming patients, taking history, setting up and
+        assisting with biopsies and excisions, working alongside Dr. Lander on Mohs days, assisting
+        cosmetic procedures, handling callbacks, documenting visits. The room turns over fast and
+        the day stays full.
       </p>
       <p>
-        <strong>Administrative staff</strong> run the front office — scheduling, patient
-        coordination, and billing. These are long-term roles, and the work is steadier than the
-        exam rooms by design.
+        You’re given real responsibility early, so the first few months are a lot to absorb. Some
+        people use the role for a year or two of clinical experience before PA or medical school.
+        Others build a career here. We hire for both, and neither one is the fallback option.
+      </p>
+
+      <h3>Administrative</h3>
+      <p>
+        You run the front office — scheduling, patient coordination, billing. It’s steadier work
+        than the exam rooms, by design, and it’s meant to be a long-term seat, not a stepping
+        stone.
+      </p>
+      <p>
+        In a practice this size, the front desk isn’t one of forty. You know the patients who come
+        through, and you work directly with the providers, not through three layers of management.
+      </p>
+
+      <p>
+        To apply, email
+        <a class="link-underline" href="mailto:derm@dermsc.com">derm@dermsc.com</a> — put “Medical
+        assistant” or “Administrative” in the subject line.
       </p>
     </div>
   </SectionBand>
 
-  <!-- 3 · The medical assistant role -->
-  <SectionBand aria-labelledby="job-heading">
-    <div class="prose" data-reveal>
-      <h2 id="job-heading">The medical assistant role</h2>
-      <p>
-        A medical assistant here rooms patients and records their history, sets up and assists with
-        biopsies and excisions, works alongside Dr. Lander on Mohs surgery days, assists with
-        cosmetic procedures, handles patient callbacks, and documents visits in the practice’s
-        record system. The room turns over quickly and the day is full.
-      </p>
-      <p>
-        You’re given real responsibility early, which means the first few months are a lot to
-        absorb. It’s a demanding job. Some people do it for a year or two and move on to a clinical
-        program; others make it a career. Both are what the role is for.
-      </p>
-    </div>
-  </SectionBand>
-
-  <!-- 4 · Administrative roles -->
-  <SectionBand id="admin" tone="fog" aria-labelledby="admin-heading">
-    <div class="prose" data-reveal>
-      <h2 id="admin-heading">Administrative roles</h2>
-      <p>
-        The front office is a different kind of work from the exam rooms and a different kind of
-        hire. Scheduling, patient coordination, and billing keep the practice running, and those
-        roles are meant to last. In a practice this size, the front desk isn’t one seat of forty —
-        you know the patients who come through, and you work directly with the providers.
-      </p>
-      <p>
-        If you want steady administrative work in a small, physician-owned practice, that’s a real
-        job here. To apply, use the address below with “Administrative” in the subject line.
-      </p>
-    </div>
-  </SectionBand>
-
-  <!-- 5 · The training path -->
-  <SectionBand id="the-path" tone="evergreen" aria-labelledby="path-heading">
+  <!-- 3 · The mentoring path -->
+  <SectionBand id="mentoring" tone="evergreen" aria-labelledby="path-heading">
     <div class="prose prose--on-dark" data-reveal>
-      <h2 id="path-heading">The training path</h2>
+      <h2 id="path-heading">The mentoring path</h2>
       <p>
         For about twenty years, this practice has also been a place pre-PA and pre-med graduates
-        come to get their clinical hours. The training isn’t a classroom program. You work next to
+        come to get their clinical hours. It isn’t a classroom program. You work next to
         Dr. Moinfar and the physician assistants and learn the way they did — seeing the conditions
         in person, hearing how a diagnosis gets made, doing the parts you’re cleared to do and
         watching the rest.
@@ -118,7 +94,7 @@ const description =
     </div>
   </SectionBand>
 
-  <!-- 6 · Where they are now -->
+  <!-- 4 · Where they are now -->
   <SectionBand aria-labelledby="now-heading">
     <p class="now__intro" data-reveal>
       As alumni give us permission to include them, this is where the last twenty years have gone.
@@ -127,7 +103,7 @@ const description =
     <AlumniGallery heading="Where they are now" entries={alumni} />
   </SectionBand>
 
-  <!-- 7 · Who this is for -->
+  <!-- 5 · Who this is for -->
   <SectionBand tone="fog" aria-labelledby="fit-heading">
     <div class="prose" data-reveal>
       <h2 id="fit-heading">Who this is for</h2>
@@ -146,7 +122,7 @@ const description =
     </div>
   </SectionBand>
 
-  <!-- 8 · How to apply -->
+  <!-- 6 · How to apply -->
   <SectionBand id="apply" aria-labelledby="apply-heading">
     <div class="prose" data-reveal>
       <h2 id="apply-heading">How to apply</h2>
@@ -167,7 +143,7 @@ const description =
     </div>
   </SectionBand>
 
-  <!-- 9 · Closing CTA -->
+  <!-- 7 · Closing CTA -->
   <SectionBand tone="evergreen-deep" aria-labelledby="cta-heading">
     <div class="closing" data-reveal>
       <h2 id="cta-heading">Apply</h2>

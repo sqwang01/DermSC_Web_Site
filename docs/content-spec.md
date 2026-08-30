@@ -1987,10 +1987,19 @@ built.
 **Repositioned 2026-08-29 (D32).** The page no longer leads with the MA→PA/physician pipeline.
 It now leads with the practice as a place to work and states plainly that it recruits for **two
 role families — administrative staff and medical assistants — both able to be permanent**. The
-pipeline is retained as **one highlighted section** ("The training path"), not the page thesis.
+pipeline is retained as **one highlighted section**, not the page thesis.
+
+**Trimmed 2026-08-30 (D39).** Hero lede cut to one sentence (founded 2006 · physician-owned ·
+independent · one building · ~17 staff) and the hero's second line cut to "hiring for two kinds
+of roles: front office and medical assistant" — the Mohs-volume / weekly-pathology-review /
+"learn the medicine" detail and the "more than 100" figure no longer appear in the hero. The
+three role sections ("What we're hiring for" + "The medical assistant role" + "Administrative
+roles") collapse into **one section, "The roles"**, with `<h3>` sub-heads `Medical assistant`
+and `Administrative` and a closing apply line. **"The training path" → "The mentoring path"**
+(id `the-path` → `mentoring`; CTA label and the `#` anchor follow).
 
 - **Title:** `Admin and medical assistant careers` (34; renders with ` · Advanced Dermatology`)
-- **Meta:** `A small, physician-owned dermatology practice in Dana Point, hiring front-office staff and medical assistants — permanent roles, plus a pre-PA training path. How to apply.`
+- **Meta:** `A small, physician-owned dermatology practice in Dana Point, hiring front-office staff and medical assistants — permanent roles, plus a pre-PA mentoring path. How to apply.`
 - **H1:** `We’re a small, physician-owned practice, and we’re hiring.`
 - **Audience:** two readers now — (a) someone looking for a permanent job (front-office **or**
   career MA) at a small independent practice, and (b) the original reader: a pre-med / pre-PA
@@ -2002,64 +2011,60 @@ pipeline is retained as **one highlighted section** ("The training path"), not t
   continuity, never the internal succession/staffing plan (§6.3 🔒, §5.2 note).
 - **Proofs:** P1 (physician-owned, independent), P14 (two PAs began as MAs), P23 (Dr. Moinfar
   trained both PAs at the exam table), **P24** (100+ graduates over ~20 years; a number became
-  PAs or physicians). Hero also uses confirmed careers-brief facts: founded 2006, one location,
-  ~17 staff, weekly pathology review, Dr. Lander fellowship-trained Mohs / >1,000 cases a year
-  (§6.1 boilerplate figure). No invented sub-counts, no named alumni beyond Fee and Falahati, no
-  average-tenure number (internal/unverified — §6.3), **no claim about front-office staff tenure**.
+  PAs or physicians). Hero uses confirmed careers-brief facts: founded 2006, one location,
+  ~17 staff. (The weekly-pathology-review and Dr. Lander >1,000-Mohs-cases figures are no longer
+  used on this page as of D39.) No invented sub-counts, no named alumni beyond Fee and Falahati,
+  no average-tenure number (internal/unverified — §6.3), **no claim about front-office staff tenure**.
 
 **Sections**
 
-1. **Hero** — eyebrow `Join us`; H1 (the practice + the ask, not P14). Lede: founded 2006,
-   physician-owned and independent, one building, ~17 people; two board-certified dermatologists
-   (one fellowship-trained Mohs, >1,000 cases/yr) + two PAs; weekly pathology review → "the
-   reasoning behind a diagnosis gets talked through"; "if you want to learn the medicine and not
-   just get through the day, it's worth working here." Second paragraph (`.hero__hiring`, normal
-   weight — **not** de-emphasised): hiring for two kinds of roles, admin for the front office and
-   MAs for the exam rooms, both can be long-term; some MAs also use it as a step toward PA/med
-   school, "more than 100 people have taken" that path. **No breadcrumb** (removed 2026-08-29,
-   D32 — client): the page opens straight on the eyebrow + H1. CTA `How to apply` (→ `#apply`) ·
-   `The training path ↓` (→ `#the-path`).
-2. **What we're hiring for** _(id: `roles`; `--fog` band)_ — two short paragraphs, bolded
-   lead-ins. **Medical assistants:** exam-room clinical work from week one; "some build a career
-   in the role; others use it for a year or two of clinical experience before PA or medical
-   school. We hire for both." **Administrative staff:** front office — scheduling, patient
-   coordination, billing; long-term roles, "steadier than the exam rooms by design." Keep
+1. **Hero** — eyebrow `Join us`; H1 (the practice + the ask, not P14). Lede (one sentence):
+   "Advanced Dermatology has been in Dana Point since 2006 — physician-owned, independent, one
+   building, one team of about seventeen staff." Second paragraph (`.hero__hiring`, normal
+   weight — **not** de-emphasised): "We're hiring for two kinds of roles: front office and
+   medical assistant." **No breadcrumb** (removed 2026-08-29, D32 — client): the page opens
+   straight on the eyebrow + H1. CTA `How to apply` (→ `#apply`) · `The mentoring path ↓`
+   (→ `#mentoring`).
+2. **The roles** _(id: `roles`; `--fog` band; D39 — collapses the former sections 2–4)_ — one
+   section, two `<h3>` sub-heads.
+   **Medical assistant:** exam rooms from week one — rooming, history, biopsy/excision setup,
+   Mohs days with Dr. Lander, cosmetic-procedure assisting, callbacks, documentation; "the room
+   turns over fast and the day stays full"; real responsibility early. "Some people use the role
+   for a year or two of clinical experience before PA or medical school. Others build a career
+   here. We hire for both, and neither one is the fallback option."
+   **Administrative:** "You run the front office — scheduling, patient coordination, billing."
+   Steadier than the exam rooms by design; "a long-term seat, not a stepping stone." "In a
+   practice this size, the front desk isn't one of forty. You know the patients who come through,
+   and you work directly with the providers, not through three layers of management." Keep
    front-office functions generic (open item — actual titles / active openings unconfirmed).
-3. **The medical assistant role** — honest, specific: rooming, history, biopsy/excision setup,
-   Mohs days with Dr. Lander, cosmetic-procedure assisting, callbacks, documentation; fast room
-   turnover; real responsibility early; demanding. Tenure line rewritten for D32: "some do it a
-   year or two and move on to a clinical program; others make it a career. Both are what the role
-   is for." (was "that's the design, not a failure of it.")
-4. **Administrative roles** _(id: `admin`; `--fog` band; D32)_ — front office is a different kind
-   of work and a different kind of hire; scheduling / patient coordination / billing; "meant to
-   last"; in a practice this size "the front desk isn't one seat of forty — you know the patients
-   who come through, and you work directly with the providers"; apply with "Administrative" in the
-   subject line.
-5. **The training path** _(id: `the-path`; `--evergreen` band)_ — the retained pipeline highlight
-   (merges the old "How the path works" + "People leave this job"). "For about twenty years, this
-   practice has **also** been a place pre-PA and pre-med graduates come to get their clinical
-   hours." Exam-table apprenticeship, not a classroom program; "more than 100" (P24); Fee and
-   Falahati named (P14). Closes on candidacy-not-results support for those who leave (hours that
-   hold up, a reference from the dermatologist who trained you, help choosing programs) and the
-   approved §12.6 turnover line, adapted: _"Dermatology has a turnover problem; here, the people
-   who leave leave for a reason we're glad to have been part of."_
-6. **Where they are now** — intro line (alumni added only with a signed release), then
+   Closes with the apply line: email `derm@dermsc.com`, "Medical assistant" or "Administrative"
+   in the subject line.
+3. **The mentoring path** _(id: `mentoring`; `--evergreen` band; renamed from "The training
+   path", D39)_ — the retained pipeline highlight (merges the old "How the path works" + "People
+   leave this job"). "For about twenty years, this practice has **also** been a place pre-PA and
+   pre-med graduates come to get their clinical hours." Exam-table apprenticeship, not a
+   classroom program; "more than 100" (P24); Fee and Falahati named (P14). Closes on
+   candidacy-not-results support for those who leave (hours that hold up, a reference from the
+   dermatologist who trained you, help choosing programs) and the approved §12.6 turnover line,
+   adapted: _"Dermatology has a turnover problem; here, the people who leave leave for a reason
+   we're glad to have been part of."_
+4. **Where they are now** — intro line (alumni added only with a signed release), then
    `<AlumniGallery>` (responsive grid — **not a carousel**, design rule 5). Card caption
    convention: name · "Medical assistant, `<yearStarted>`" → "Now: `<currentRole>` (`<year>`)" ·
    optional ≤25-word quote. `photo: null` → dignified initials block (no stock, no silhouette).
    Data in `src/data/alumni.ts`; component filters out any `consentOnFile: false` entry at build
    time.
-7. **Who this is for** _(`--fog` band)_ — two bolded lead-ins, no not-a-fit door-slam (D32).
+5. **Who this is for** _(`--fog` band)_ — two bolded lead-ins, no not-a-fit door-slam (D32).
    **The medical assistant role:** wants hands-on clinical work, reliable, quick to learn,
    coachable — "whether you're building a career or getting clinical hours before a program";
    harder fit if you need a slow, predictable pace and a fixed schedule. **An administrative
    role:** organised, steady, good with patients on the phone and at the desk, wants to stay a
    while; "you don't need a clinical background."
-8. **How to apply** _(id: `apply`)_ — email a resume + short note ("why now, what you're looking
+6. **How to apply** _(id: `apply`)_ — email a resume + short note ("why now, what you're looking
    for") to `derm@dermsc.com`, subject "Medical assistant" — or "Administrative" for a front-office
    role; or call the practice line. "We read every application. If it's a fit, you'll come in to
    meet the team and spend time in the clinic before anyone decides."
-9. **Closing CTA** _(`--evergreen-deep` band)_ — `Email your resume` (mailto, subject `Application`
+7. **Closing CTA** _(`--evergreen-deep` band)_ — `Email your resume` (mailto, subject `Application`
    — generic, serves both tracks) · `Call 949.248.4547`; cross-link to `/about/`. Body copy: "a
    short note about the role you want and why now."
 
