@@ -224,10 +224,6 @@ const faqs = [
     <div class="team" data-reveal>
       {careTeam.map((p) => <ProviderCard provider={p} />)}
     </div>
-    <p class="team__note" data-reveal>
-      Two of our physician assistants started here as medical assistants, went to PA school, and
-      came back. Dermatology has a turnover problem. We don’t.
-    </p>
   </SectionBand>
 
   <!-- 7 · When to come in sooner -->
@@ -381,12 +377,6 @@ const faqs = [
       grid-template-columns: repeat(3, 1fr);
     }
   }
-  .team__note {
-    margin-top: var(--space-12);
-    max-width: 60ch;
-    color: var(--stone);
-  }
-
   /* When to come in sooner */
   .sooner {
     max-width: 60ch;
