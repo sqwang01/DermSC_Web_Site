@@ -81,7 +81,7 @@ const doors = [
       {
         doors.map((d) => (
           <Card href={d.href} restore={d.restore} class="door">
-            <span class="door__kicker">{d.kicker}</span>
+            <span class="eyebrow door__kicker">{d.kicker}</span>
             <p class="door__headline">{d.headline}</p>
             <p class="door__blurb">{d.blurb}</p>
             <span class="door__go" aria-hidden="true">
@@ -208,12 +208,18 @@ const doors = [
     margin-top: var(--space-8);
   }
   .hero__media {
-    max-width: 420px;
+    /* Stacked layout: sit at the copy's left edge, roughly the lede measure wide. */
+    max-width: var(--wrap-lede);
   }
   @media (min-width: 900px) {
     .hero__grid {
-      grid-template-columns: 1.3fr 1fr;
+      /* Size the media track to the image so it meets the wrap's right edge —
+         a 1fr track left the image floating with dead space beside it. */
+      grid-template-columns: 1.3fr minmax(0, 420px);
       gap: var(--space-24);
+    }
+    .hero__media {
+      max-width: none;
     }
   }
 
@@ -228,13 +234,7 @@ const doors = [
     }
   }
   .door__kicker {
-    font-family: var(--body);
-    font-size: var(--fs-eyebrow);
-    font-weight: 600;
-    letter-spacing: var(--tracking-eyebrow);
-    text-transform: uppercase;
-    color: var(--stone);
-    display: block;
+    /* visual style comes from the shared .eyebrow class */
     margin-bottom: var(--space-3);
   }
   .door__headline {
@@ -262,7 +262,7 @@ const doors = [
     max-width: 60ch;
   }
   .band-prose h2 {
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-12);
   }
   .band-prose p + p {
     margin-top: var(--space-6);
@@ -274,7 +274,7 @@ const doors = [
   /* Providers */
   .providers {
     display: grid;
-    gap: var(--space-12);
+    gap: var(--space-6);
   }
   @media (min-width: 640px) {
     .providers {
@@ -317,7 +317,7 @@ const doors = [
     font-style: normal;
     font-size: var(--fs-lede);
     line-height: 1.6;
-    margin: var(--space-6) 0 var(--space-4);
+    margin: var(--space-12) 0 var(--space-4);
   }
   .location__phone {
     color: var(--paper);
@@ -325,11 +325,11 @@ const doors = [
   .location__hours {
     display: flex;
     flex-direction: column;
-    color: #cdd8d0;
+    color: var(--paper-dim);
     margin-bottom: var(--space-4);
   }
   .location__parking {
-    color: #cdd8d0;
+    color: var(--paper-dim);
     max-width: 46ch;
     margin-bottom: var(--space-8);
   }

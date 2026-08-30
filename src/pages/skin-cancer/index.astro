@@ -12,7 +12,13 @@ const description =
   'Skin cancer screening with dermoscopy, non-surgical field treatment, Mohs surgery, and Sensus SRT radiation in Dana Point. Caught early, it stays a small procedure.';
 
 // Dr. Lander performs Mohs and reconstruction; Dr. Moinfar reads the pathology.
-const careTeam = ['dr-jeffrey-lander', 'dr-maryam-moinfar']
+// The two PAs handle screening skin checks and surgical follow-up.
+const careTeam = [
+  'dr-jeffrey-lander',
+  'dr-maryam-moinfar',
+  'madeline-fee-pa-c',
+  'shylie-falahati-pa-c',
+]
   .map((slug) => providers.find((p) => p.slug === slug))
   .filter((p): p is (typeof providers)[number] => Boolean(p));
 
@@ -160,6 +166,10 @@ const faqs = [
           before anything is scheduled.
         </p>
       </article>
+    </div>
+    <div class="range__cta" data-reveal>
+      <p>Which one is right depends on what the exam and the biopsy show.</p>
+      <Button href="/contact/" variant="primary">Request a skin check</Button>
     </div>
   </SectionBand>
 
@@ -355,6 +365,13 @@ const faqs = [
   }
   .range__item h3 {
     margin-bottom: var(--space-3);
+  }
+  .range__cta {
+    max-width: 60ch;
+    margin-top: var(--space-12);
+  }
+  .range__cta p {
+    margin-bottom: var(--space-6);
   }
 
   /* Candidacy */

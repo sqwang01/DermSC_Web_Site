@@ -18,6 +18,7 @@
   --stone: #6a6255; /* secondary text, captions, form hints (never < 15px) */
   --page: #f6f3eb; /* page background */
   --paper: #ffffff; /* raised surfaces: header, cards, panels, fields */
+  --paper-dim: #cdd8d0; /* muted text on evergreen bands — 8.3:1 on --evergreen, 10.6:1 on --evergreen-deep (AAA) */
   --fog: #eeeae0; /* alternating section bands */
   --line: #e2ddd0; /* 1px rules and borders only — never text */
 

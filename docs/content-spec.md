@@ -543,6 +543,9 @@ built this program." — Dr. Maryam Moinfar, board-certified dermatologist
    `/cosmetic/hair-restoration/` for diagnostic hair work) · `#skin-exams` **Annual full-skin
    exams** (links to `/skin-cancer/`). Each block repeats the core
    move: a changing or non-healing spot is a skin-cancer question → `/skin-cancer/`.
+   Closes with a mid-page CTA (D36): lead-in _"Not sure which of these fits? That's what the
+   first visit is for."_ + single primary button `Request an appointment` → `/contact/` (no
+   secondary `Call` — button pair stays with the hero and closing CTAs).
 5. **How a first visit works** — history; full-skin exam with a dermatoscope; biopsy only if the
    skin calls for one — processed in our lab, read by the dermatopathologist Dr. Moinfar selected,
    then reviewed again by her that week. "You'll leave knowing what it is, or knowing exactly what
@@ -660,6 +663,8 @@ Finding the reason is slower. It's also the only version of "treated" that holds
   anyone with a history of sun exposure, blistering sunburns, atypical moles, or skin cancer in the
   family. It's the same exam whether or not you have a specific worry. A spot you're already
   concerned about is handled through [skin cancer](/skin-cancer/), and we'll see you sooner.
+- **Mid-page CTA** (D36) — lead-in: _"Not sure which of these fits? That's what the first visit is
+  for."_ + single primary button `Request an appointment` → `/contact/`. No secondary `Call`.
 
 **5 · What a first visit is like**
 
