@@ -44,11 +44,8 @@ const physicianSchema = {
 >
   <SectionBand>
     <Breadcrumbs
-      crumbs={[
-        { label: 'Home', href: '/' },
-        { label: 'About', href: '/about/' },
-        { label: provider.name, href: path },
-      ]}
+      crumbs={[{ label: provider.name, href: '/about/' }]}
+      backAriaLabel="Back to About"
     />
     <div class="bio">
       <div class="bio__aside">

@@ -97,7 +97,10 @@ const alsoSeen = (Astro.props.alsoSeenSlugs ?? []).map((slug) =>
 <BaseLayout title={title} description={description} path={path} schema={schema} restore>
   <!-- 1 · Hero -->
   <SectionBand as="div" class="hero">
-    <Breadcrumbs crumbs={[{ label: breadcrumbLabel, href: '/cosmetic/#menu-heading' }]} />
+    <Breadcrumbs
+      crumbs={[{ label: breadcrumbLabel, href: '/cosmetic/#menu-heading' }]}
+      backAriaLabel="Back to Cosmetic"
+    />
     <div class="hero__copy" data-reveal>
       <span class="eyebrow">{breadcrumbLabel} — under a physician’s direction</span>
       <h1>{h1}</h1>

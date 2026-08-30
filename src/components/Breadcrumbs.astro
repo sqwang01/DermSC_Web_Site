@@ -2,13 +2,14 @@
 /**
  * Breadcrumb trail + BreadcrumbList JSON-LD. Omit on the home page.
  * `crumbs` is ordered root → current. The last item is the current page (not linked).
- * A single-crumb trail (cosmetic procedure pages, D25) renders the page name only and
- * emits no JSON-LD — a one-item BreadcrumbList carries no information. When that single
- * crumb has an `href`, it renders as a back link — `‹` pointing at the parent section,
- * with the page name shown alongside as plain text — so the procedure pages keep a way
- * up to /cosmetic/ (D29). Only the chevron is a link: the page name sits next to it,
- * not inside the `<a>`, so clicking the name of the procedure you're already reading
- * doesn't accidentally navigate away (D30-fix, client 2026-08-29).
+ * A single-crumb trail (cosmetic procedure pages D25; provider bios) renders the page
+ * name only and emits no JSON-LD — a one-item BreadcrumbList carries no information.
+ * When that single crumb has an `href`, it renders as a back link — `‹` pointing at the
+ * parent section, with the page name shown alongside as plain text — so the page keeps a
+ * way up to its parent (D29). Only the chevron is a link: the page name sits next to it,
+ * not inside the `<a>`, so clicking the name of the page you're already reading doesn't
+ * accidentally navigate away (D30-fix, client 2026-08-29). `backAriaLabel` names the
+ * destination for screen readers (e.g. "Back to Cosmetic", "Back to About").
  */
 import { siteMeta } from '@data/site';
 
@@ -18,9 +19,11 @@ interface Crumb {
 }
 interface Props {
   crumbs: Crumb[];
+  /** aria-label for the single-crumb back link's chevron. Defaults to "Back". */
+  backAriaLabel?: string;
 }
 
-const { crumbs } = Astro.props;
+const { crumbs, backAriaLabel = 'Back' } = Astro.props;
 const backLink = crumbs.length === 1 && crumbs[0].href ? crumbs[0] : null;
 
 const schema = {
@@ -38,7 +41,7 @@ const schema = {
 {
   backLink ? (
     <nav class="crumbs crumbs--back" aria-label="Breadcrumb">
-      <a class="crumbs__chevron" href={backLink.href} aria-label="Back to Cosmetic">
+      <a class="crumbs__chevron" href={backLink.href} aria-label={backAriaLabel}>
         ‹
       </a>
       <span class="crumbs__label">{backLink.label}</span>
