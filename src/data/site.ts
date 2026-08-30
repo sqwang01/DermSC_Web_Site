@@ -147,8 +147,6 @@ export const providers: Provider[] = [
     ],
     education:
       "Dr. Moinfar grew up in Orange County. She earned her undergraduate degree in molecular and cell biology from UC Berkeley, with honors, and her medical degree from Northwestern University's Feinberg School of Medicine, where she was inducted into Alpha Omega Alpha, the national medical honor society. She completed her dermatology residency at the University of Minnesota, training during that time under a hair-loss specialist whose work still shapes the practice's hair and scalp program. She was named Woman of the Year in Medicine and Healthcare in 2009.",
-    humanNote:
-      'Outside the practice, she has spent twenty years raising a practice and a daughter at the same time, and talks about the two in similar terms.',
     accepting: 'Currently accepting new patients.',
     relatedBioSlug: 'dr-jeffrey-lander',
     serviceLinks: [
