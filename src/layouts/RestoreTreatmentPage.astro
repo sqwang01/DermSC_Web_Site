@@ -99,7 +99,7 @@ const alsoSeen = (Astro.props.alsoSeenSlugs ?? []).map((slug) =>
   <SectionBand as="div" class="hero">
     <Breadcrumbs crumbs={[{ label: breadcrumbLabel, href: '/cosmetic/#menu-heading' }]} />
     <div class="hero__copy" data-reveal>
-      <span class="eyebrow">Restore — under a physician’s direction</span>
+      <span class="eyebrow">{breadcrumbLabel} — under a physician’s direction</span>
       <h1>{h1}</h1>
       <p class="lede">{lede}</p>
       <div class="hero__cta">
@@ -197,7 +197,6 @@ const alsoSeen = (Astro.props.alsoSeenSlugs ?? []).map((slug) =>
         your health history and medications, and tell you plainly whether this will help — and what
         it won’t do.
       </p>
-      <p>We don’t run flash sales, holiday promotions, or discount packages.</p>
       <p>
         Itemized pricing is provided in writing at the consultation; there’s no published price
         list.
