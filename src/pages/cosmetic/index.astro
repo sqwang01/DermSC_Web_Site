@@ -142,7 +142,15 @@ const faqs = [
     {
       menuGroups.map((g) => (
         <div class="menu-group" data-reveal>
-          <h3 class="menu-group__heading">{g.heading}</h3>
+          <h3
+            class="menu-group__heading"
+            id={g.heading
+              .toLowerCase()
+              .replace(/[^a-z0-9]+/g, '-')
+              .replace(/(^-|-$)/g, '')}
+          >
+            {g.heading}
+          </h3>
           <ul class="menu">
             {g.items.map((m) => (
               <li>

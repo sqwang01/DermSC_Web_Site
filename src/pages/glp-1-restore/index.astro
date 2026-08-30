@@ -26,10 +26,12 @@ const emsculptSchema = {
 };
 
 // The three "does this sound familiar?" checklists (§2). Booklet copy, kept intact.
+// href points at the matching in-page track below.
 const familiar = [
   {
     id: 'familiar-hair',
     label: 'Hair',
+    href: '#hair',
     items: [
       'There’s more hair in the shower drain than there used to be.',
       'Your ponytail feels thinner in your hand.',
@@ -39,6 +41,7 @@ const familiar = [
   {
     id: 'familiar-skin',
     label: 'Skin',
+    href: '#skin',
     items: [
       'Your face looks more hollow or tired than you expected.',
       'Skin along your jaw or under your chin feels less firm.',
@@ -48,6 +51,7 @@ const familiar = [
   {
     id: 'familiar-muscle',
     label: 'Muscle & strength',
+    href: '#muscle',
     items: [
       'Your clothes are looser, but your arms and legs look soft rather than lean.',
       'Stairs, groceries, and getting up off the floor feel harder.',
@@ -113,10 +117,8 @@ const faqs = [
         A guide to recovery for patients on GLP-1 medications.
       </p>
       <p class="lede">
-        Your medication is working. The number on the scale is going down. And yet — something feels
-        off: more hair in the drain, a face that looks more hollow or tired than you expected,
-        strength that isn’t what it was. All three are real, all three are well-documented, and all
-        three are treatable. None of them is a reason to stop your medication.
+        The weight is coming off — but so is your hair, your fullness, your strength. Restore was
+        built to bring all three back — while your medication keeps doing its job.
       </p>
       <div class="hero__cta">
         <Button href="/contact/" variant="restore">Request a Restore consultation</Button>
@@ -137,11 +139,14 @@ const faqs = [
         familiar.map((group) => (
           <article class="familiar__group" aria-labelledby={group.id}>
             <h3 id={group.id}>{group.label}</h3>
-            <ul>
+            <ul class="familiar__checks">
               {group.items.map((line) => (
                 <li>{line}</li>
               ))}
             </ul>
+            <a class="familiar__more link-underline" href={group.href}>
+              Learn more about {group.label.toLowerCase()} ↓
+            </a>
           </article>
         ))
       }
@@ -211,6 +216,10 @@ const faqs = [
           underlying pattern that won’t resolve on its own. Telling the two apart is the point of the
           evaluation.
         </p>
+        <p>
+          For the full diagnostic workup — trichoscopy, labs, and a scalp biopsy where needed — see
+          <a class="link-underline" href="/cosmetic/hair-restoration/">hair restoration</a>.
+        </p>
       </div>
       <div class="track__cols">
         <div class="track__col">
@@ -264,6 +273,12 @@ const faqs = [
           decline that the weight loss accelerates rather than causes; and nutritional gaps. Unlike
           hair, some of this responds quickly — volume can often be addressed the same day — while
           collagen-building treatments take longer and compound over months.
+        </p>
+        <p>
+          The treatments these plans draw on — microneedling, dermal fillers, collagen stimulators,
+          and peels — are listed under
+          <a class="link-underline" href="/cosmetic/#for-the-face">for the face</a> on the cosmetic
+          page.
         </p>
       </div>
       <div class="track__cols">
@@ -325,10 +340,23 @@ const faqs = [
           and calories, both harder to get when appetite is suppressed, and many patients start
           already deconditioned. Muscle is the one part of this that doesn’t take care of itself.
         </p>
+        <p>
+          <a class="link-underline" href="/cosmetic/emsculpt-neo/">EmSculpt Neo</a> has its own page,
+          including the full treatment-area table.
+        </p>
       </div>
       <div class="track__cols">
         <div class="track__col">
           <h3>What this track includes</h3>
+          <ul class="track__includes">
+            <li>
+              A comprehensive diagnostic assessment — lab work and a medical evaluation of your
+              muscle mass, nutritional status, and rate of loss
+            </li>
+            <li>
+              A 100% plant protein supplement, included with your EmSculpt Neo treatment
+            </li>
+          </ul>
           <p>
             EmSculpt Neo — an FDA-cleared, non-invasive treatment that stimulates muscle
             contractions beyond what you can produce voluntarily, while targeting fat in the treated
@@ -493,12 +521,30 @@ const faqs = [
   .familiar__group h3 {
     margin-bottom: var(--space-4);
   }
-  .familiar__group ul {
-    padding-left: 1.1rem;
+  .familiar__checks {
+    list-style: none;
+    padding-left: 0;
     max-width: 42ch;
   }
-  .familiar__group li + li {
+  .familiar__checks li {
+    position: relative;
+    padding-left: 1.9rem;
+  }
+  .familiar__checks li + li {
     margin-top: var(--space-3);
+  }
+  .familiar__checks li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--brass);
+    font-weight: 700;
+  }
+  .familiar__more {
+    display: inline-block;
+    margin-top: var(--space-5);
+    font-weight: 600;
   }
   .familiar__close {
     margin-top: var(--space-10);
@@ -568,6 +614,9 @@ const faqs = [
   .track__col p + ul {
     margin-top: var(--space-4);
   }
+  .track__includes + p {
+    margin-top: var(--space-6);
+  }
   .track__timeline {
     list-style: none;
     padding-left: 0;
@@ -629,6 +678,15 @@ const faqs = [
     flex-wrap: wrap;
     gap: var(--space-4);
     margin-top: var(--space-8);
+  }
+  /* Secondary "Call" button sits on the evergreen-deep band — lift it off the dark. */
+  .closing__cta :global(.btn--secondary) {
+    color: var(--paper);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  .closing__cta :global(.btn--secondary:hover) {
+    color: var(--paper);
+    border-color: var(--paper);
   }
   .closing__quote {
     margin: var(--space-16) 0 0;
