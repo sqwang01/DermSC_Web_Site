@@ -25,7 +25,7 @@ const description =
         We’re hiring for two kinds of roles: front office and medical assistant.
       </p>
       <div class="hero__cta">
-        <Button href="#apply" variant="primary">How to apply</Button>
+        <Button href="#apply" variant="primary">Apply</Button>
         <Button href="#mentoring" variant="secondary">The mentoring path ↓</Button>
       </div>
     </div>
@@ -48,6 +48,11 @@ const description =
         people use the role for a year or two of clinical experience before PA or medical school.
         Others build a career here. We hire for both, and neither one is the fallback option.
       </p>
+      <p>
+        The role fits you if you want hands-on clinical work, you’re reliable and quick to learn,
+        and you’re comfortable being told when something’s wrong. It’s a harder fit if you need a
+        slow, predictable pace and a fixed schedule — the exam rooms don’t work that way.
+      </p>
 
       <h3>Administrative</h3>
       <p>
@@ -59,12 +64,13 @@ const description =
         In a practice this size, the front desk isn’t one of forty. You know the patients who come
         through, and you work directly with the providers, not through three layers of management.
       </p>
-
       <p>
-        To apply, email
-        <a class="link-underline" href="mailto:derm@dermsc.com">derm@dermsc.com</a> — put “Medical
-        assistant” or “Administrative” in the subject line.
+        The seat fits you if you’re organized, steady, and good with patients on the phone and at
+        the desk, and you want to stay somewhere a while. You don’t need a clinical background.
       </p>
+    </div>
+    <div class="roles__cta" data-reveal>
+      <Button href="#apply" variant="primary">Apply</Button>
     </div>
   </SectionBand>
 
@@ -103,48 +109,8 @@ const description =
     <AlumniGallery heading="Where they are now" entries={alumni} />
   </SectionBand>
 
-  <!-- 5 · Who this is for -->
-  <SectionBand tone="fog" aria-labelledby="fit-heading">
-    <div class="prose" data-reveal>
-      <h2 id="fit-heading">Who this is for</h2>
-      <p>
-        <strong>The medical assistant role</strong> fits you if you want hands-on clinical work,
-        you’re reliable and quick to learn, and you’re comfortable being told when something’s
-        wrong — whether you’re building a career or getting clinical hours before a program. It’s a
-        harder fit if you need a slow, predictable pace and a fixed schedule; the exam rooms don’t
-        work that way.
-      </p>
-      <p>
-        <strong>An administrative role</strong> fits you if you’re organized, steady, and good with
-        patients on the phone and at the desk, and you want to stay somewhere a while. You don’t
-        need a clinical background.
-      </p>
-    </div>
-  </SectionBand>
-
-  <!-- 6 · How to apply -->
-  <SectionBand id="apply" aria-labelledby="apply-heading">
-    <div class="prose" data-reveal>
-      <h2 id="apply-heading">How to apply</h2>
-      <p>
-        Email a resume and a short note — why now, and what you’re looking for — to
-        <a
-          class="link-underline"
-          href="mailto:derm@dermsc.com?subject=Medical%20assistant%20application">derm@dermsc.com</a
-        >
-        with “Medical assistant” in the subject line, or “Administrative” if you’re applying for a
-        front-office role. If you’d rather call, the practice number is
-        <a class="link-underline" href={`tel:${practice.phoneHref}`}>{practice.phone}</a>.
-      </p>
-      <p>
-        We read every application that comes in. If it looks like a fit, you’ll come in to meet the
-        team and spend time in the clinic before anyone decides.
-      </p>
-    </div>
-  </SectionBand>
-
-  <!-- 7 · Closing CTA -->
-  <SectionBand tone="evergreen-deep" aria-labelledby="cta-heading">
+  <!-- 5 · Apply -->
+  <SectionBand id="apply" tone="evergreen-deep" aria-labelledby="cta-heading">
     <div class="closing" data-reveal>
       <h2 id="cta-heading">Apply</h2>
       <p>
@@ -175,6 +141,12 @@ const description =
   .hero__hiring {
     margin-top: var(--space-6);
     max-width: var(--wrap-prose);
+  }
+
+  /* Roles — apply CTA under the prose */
+  .roles__cta {
+    max-width: var(--wrap-prose);
+    margin-top: var(--space-12);
   }
 
   /* Where they are now */
