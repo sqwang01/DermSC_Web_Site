@@ -40,6 +40,8 @@ const compare = [
   {
     name: 'EmSculpt Neo',
     body: 'Builds muscle and, in the abdomen and thighs, also reduces fat.',
+    href: '/cosmetic/emsculpt-neo/',
+    linkText: 'Read about EmSculpt Neo',
   },
 ];
 
@@ -83,11 +85,10 @@ const faqs = [
     <Breadcrumbs crumbs={[{ label: 'CoolSculpting', href: '/cosmetic/#menu-heading' }]} />
     <div class="hero__copy" data-reveal>
       <span class="eyebrow">CoolSculpting — under a physician’s direction</span>
-      <h1>Cryolipolysis for pinchable fat.</h1>
+      <h1>Freeze the fat, not the muscle.</h1>
       <p class="lede">
-        CoolSculpting uses controlled cooling to reduce a pinchable fat bulge in cleared areas. It
-        is not a weight-loss treatment. We offer both CoolSculpting and EmSculpt Neo and have no
-        incentive to steer you toward either.
+        CoolSculpting targets a pinchable bulge in cleared areas with controlled cooling — no
+        surgery, no downtime.
       </p>
       <div class="hero__cta">
         <Button href="/contact/" variant="restore">Book a consultation</Button>
@@ -131,7 +132,7 @@ const faqs = [
     </div>
   </SectionBand>
 
-  <!-- 5 · CoolSculpting or EmSculpt Neo? (plain comparison, no steering — P19) -->
+  <!-- 5 · CoolSculpting or EmSculpt Neo? (plain comparison) -->
   <SectionBand aria-labelledby="compare-heading">
     <h2 id="compare-heading" class="section-title" data-reveal>CoolSculpting or EmSculpt Neo?</h2>
     <div class="compare" data-reveal>
@@ -140,15 +141,20 @@ const faqs = [
           <article class="compare__item prose">
             <h3>{c.name}</h3>
             <p>{c.body}</p>
+            {c.href && (
+              <p>
+                <a class="link-underline" href={c.href}>
+                  {c.linkText}
+                </a>
+              </p>
+            )}
           </article>
         ))
       }
     </div>
-    <p class="compare__note" data-reveal>
-      We own both and have no incentive to recommend one over the other. The consultation is about
-      which one matches what you want to change — or whether neither is right.
-      <a class="link-underline" href="/cosmetic/emsculpt-neo/">Read about EmSculpt Neo</a>.
-    </p>
+    <div class="compare__cta" data-reveal>
+      <Button href="/contact/" variant="restore">Schedule a consultation</Button>
+    </div>
   </SectionBand>
 
   <!-- 6 · Candidacy -->
@@ -288,10 +294,11 @@ const faqs = [
   .compare__item h3 {
     margin-bottom: var(--space-3);
   }
-  .compare__note {
-    margin-top: var(--space-10);
-    max-width: 60ch;
-    color: var(--stone);
+  .compare__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-8);
   }
 
   /* Who you'll see */
@@ -303,15 +310,36 @@ const faqs = [
     display: grid;
     gap: var(--space-8);
   }
+  /* Multiple providers: stack as full-width rows with a hairline between,
+     so each name and role has room. Photo above the text on narrow screens,
+     beside it from 760px. */
+  .team--multi .team__cards {
+    gap: 0;
+  }
+  .team--multi .team__cards :global(.pc) {
+    padding-block: var(--space-8);
+    border-top: var(--border-hair);
+  }
+  .team--multi .team__cards :global(.pc:first-child) {
+    padding-top: 0;
+  }
+  .team--multi .team__cards :global(.pc:last-child) {
+    padding-bottom: 0;
+  }
   @media (min-width: 760px) {
     .team:not(.team--multi) {
       grid-template-columns: 320px 1fr;
       align-items: start;
       gap: var(--space-12);
     }
-    .team--multi .team__cards {
-      grid-template-columns: repeat(3, minmax(0, 240px));
+    .team--multi .team__cards :global(.pc) {
+      flex-direction: row;
+      align-items: flex-start;
       gap: var(--space-12);
+    }
+    .team--multi .team__cards :global(.pc__photo) {
+      flex: 0 0 auto;
+      width: 160px;
     }
   }
   .team__note {

@@ -315,6 +315,22 @@ const alsoSeen = (Astro.props.alsoSeenSlugs ?? []).map((slug) =>
     display: grid;
     gap: var(--space-8);
   }
+  /* PAs deliver this modality: stack the provider cards as full-width rows
+     with a hairline between, so each name and role has room. Photo above the
+     text on narrow screens, beside it from 760px. */
+  .team--multi .team__cards {
+    gap: 0;
+  }
+  .team--multi .team__cards :global(.pc) {
+    padding-block: var(--space-8);
+    border-top: var(--border-hair);
+  }
+  .team--multi .team__cards :global(.pc:first-child) {
+    padding-top: 0;
+  }
+  .team--multi .team__cards :global(.pc:last-child) {
+    padding-bottom: 0;
+  }
   @media (min-width: 760px) {
     /* One provider: card beside the note. */
     .team:not(.team--multi) {
@@ -322,10 +338,14 @@ const alsoSeen = (Astro.props.alsoSeenSlugs ?? []).map((slug) =>
       align-items: start;
       gap: var(--space-12);
     }
-    /* PAs deliver this modality: provider cards in a row, note beneath. */
-    .team--multi .team__cards {
-      grid-template-columns: repeat(3, minmax(0, 240px));
+    .team--multi .team__cards :global(.pc) {
+      flex-direction: row;
+      align-items: flex-start;
       gap: var(--space-12);
+    }
+    .team--multi .team__cards :global(.pc__photo) {
+      flex: 0 0 auto;
+      width: 160px;
     }
   }
   .team__note {

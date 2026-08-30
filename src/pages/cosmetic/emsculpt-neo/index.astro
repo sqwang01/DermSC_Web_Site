@@ -80,9 +80,8 @@ const faqs = [
       <span class="eyebrow">EmSculpt Neo — under a physician’s direction</span>
       <h1>Muscle and fat, in one 30-minute treatment.</h1>
       <p class="lede">
-        EmSculpt Neo is an FDA-cleared, non-invasive treatment. In clinical studies, treated areas
-        showed an average 25% increase in muscle mass and an average 30% reduction in fat.
-        Individual results vary.
+        Up to 25% more muscle. 30% less fat. That’s the average clinical result from EmSculpt Neo,
+        an FDA-cleared, non-invasive treatment. Individual results vary.
       </p>
       <div class="hero__cta">
         <Button href="/contact/" variant="restore">Book a consultation</Button>
@@ -167,8 +166,9 @@ const faqs = [
     <div class="prose" data-reveal>
       <h2 id="feel-heading">What a session feels like</h2>
       <p>
-        Strong but tolerable contractions and a warming sensation, like a hard workout. The
-        intensity is turned up gradually through the session, and you can talk the whole time.
+        Strong contractions and a warming sensation — think hard workout, not pain. Intensity ramps
+        up gradually, and it stays comfortable enough that patients typically chat with staff or
+        scroll their phone through the whole session.
       </p>
     </div>
   </SectionBand>
@@ -199,8 +199,8 @@ const faqs = [
         it.
       </p>
       <p>
-        The practice owns both EmSculpt Neo and CoolSculpting and has no reason to steer you toward
-        one over the other.
+        The practice runs both EmSculpt Neo and CoolSculpting, so Dr. Moinfar can match the device
+        to what your body actually needs — reducing a pinchable bulge, building muscle, or both.
       </p>
     </div>
   </SectionBand>
@@ -380,15 +380,36 @@ const faqs = [
     display: grid;
     gap: var(--space-8);
   }
+  /* Multiple providers: stack as full-width rows with a hairline between,
+     so each name and role has room. Photo above the text on narrow screens,
+     beside it from 760px. */
+  .team--multi .team__cards {
+    gap: 0;
+  }
+  .team--multi .team__cards :global(.pc) {
+    padding-block: var(--space-8);
+    border-top: var(--border-hair);
+  }
+  .team--multi .team__cards :global(.pc:first-child) {
+    padding-top: 0;
+  }
+  .team--multi .team__cards :global(.pc:last-child) {
+    padding-bottom: 0;
+  }
   @media (min-width: 760px) {
     .team:not(.team--multi) {
       grid-template-columns: 320px 1fr;
       align-items: start;
       gap: var(--space-12);
     }
-    .team--multi .team__cards {
-      grid-template-columns: repeat(3, minmax(0, 240px));
+    .team--multi .team__cards :global(.pc) {
+      flex-direction: row;
+      align-items: flex-start;
       gap: var(--space-12);
+    }
+    .team--multi .team__cards :global(.pc__photo) {
+      flex: 0 0 auto;
+      width: 160px;
     }
   }
   .team__note {

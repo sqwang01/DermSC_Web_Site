@@ -1312,8 +1312,9 @@ microneedling. Section list above is the spec of record.
 6. **Why here rather than a storefront** — shared client block (D28): _"Dr. Moinfar assesses you.
    She won't book a treatment that's wrong for you, or more of it than you need — no one upstream
    sets a quota telling her otherwise. That's why you can trust it."_ Plus a second sentence keeping
-   the device-neutrality point (P19): the practice owns both EmSculpt Neo and CoolSculpting and has
-   no reason to steer you toward one over the other. (Fixed-protocol photography moved to §8 Evidence.)
+   the both-devices fact (P19), reframed to capability (D34): _"The practice runs both EmSculpt Neo
+   and CoolSculpting, so Dr. Moinfar can match the device to what your body actually needs —
+   reducing a pinchable bulge, building muscle, or both."_ (Fixed-protocol photography moved to §8 Evidence.)
 7. **Who you'll see** — three provider cards: Dr. Moinfar (assesses and sets the plan) plus
    **Madeline Fee PA-C and Shylie Falahati PA-C**, one of whom performs the treatment (client,
    2026-08-29 / D26). Photo placeholders.
@@ -1406,8 +1407,8 @@ turned up gradually through the session, and you can talk the whole time.
 Dr. Moinfar assesses you. She won't book a treatment that's wrong for you, or more of it than you
 need — no one upstream sets a quota telling her otherwise. That's why you can trust it.
 
-The practice owns both EmSculpt Neo and CoolSculpting and has no reason to steer you toward one
-over the other.
+The practice runs both EmSculpt Neo and CoolSculpting, so Dr. Moinfar can match the device to what
+your body actually needs — reducing a pinchable bulge, building muscle, or both.
 
 **7 · Who you'll see**
 
@@ -1481,11 +1482,13 @@ CTAs: `Book a consultation` → `/contact/` · `Call 949.248.4547`
    thighs, under the buttocks, upper arms. TODO client: confirm applicator set in use.
 4. **What a session feels like** — intense cold and a pulling sensation for the first few minutes,
    then numbness; you can read or work; about 35–60 minutes per applicator.
-5. **CoolSculpting or EmSculpt Neo?** — plain comparison, no steering (P19):
+5. **CoolSculpting or EmSculpt Neo?** — plain comparison (D35: the "we own both / no incentive to
+   recommend one over the other" note removed from this section; P19 neutrality now carried only by
+   the FAQ "We own both" line and the meta description):
    - **CoolSculpting** removes a discrete pinchable fat pocket. No muscle effect.
    - **EmSculpt Neo** builds muscle and reduces fat in cleared areas (abdomen and thighs for fat).
-   - _"We own both and have no incentive to recommend one over the other. The consultation is about
-     which one matches what you want to change — or whether neither is right."_
+     "Read about EmSculpt Neo" link sits under this item.
+   - Section CTA: single primary button, "Schedule a consultation" → `/contact/`.
 6. **Candidacy** — good fit if you have a specific pinchable bulge near your goal weight / not right
    for you for overall weight loss, for loose skin without a fat pocket, or with certain
    cold-related conditions (⚠️ screening at consultation, §9.5).
@@ -1552,14 +1555,13 @@ in use.)_
 Intense cold and a firm pulling sensation for the first several minutes, then the area goes numb.
 You can read or work through it. Each applicator runs roughly 35 to 60 minutes.
 
-**5 · CoolSculpting or EmSculpt Neo?** _(plain comparison, no steering — P19)_
+**5 · CoolSculpting or EmSculpt Neo?** _(plain comparison — D35: neutrality note removed)_
 
 - **CoolSculpting** removes a discrete pinchable fat pocket. It has no effect on muscle.
 - **EmSculpt Neo** builds muscle and, in the abdomen and thighs, also reduces fat.
-- We own both and have no incentive to recommend one over the other. The consultation is about
-  which one matches what you want to change — or whether neither is right.
+  [Read about EmSculpt Neo](/cosmetic/emsculpt-neo/) — link sits under this item.
 
-Link: [EmSculpt Neo](/cosmetic/emsculpt-neo/).
+CTA: single primary button, `Schedule a consultation` → `/contact/`.
 
 **6 · Candidacy**
 
